@@ -1,0 +1,1210 @@
+{
+  "root": "D:\\ISLES-2024\\train",
+  "n_subjects": 149,
+  "n_complete": 80,
+  "n_missing": 69,
+  "n_tici_recorded": 100,
+  "summary": {
+    "mrs_premorbid_mean": 0.8375,
+    "mrs_premorbid_sd": 1.226745720714419,
+    "mrs_3mo_mean": 2.6375,
+    "mrs_3mo_sd": 2.165575025223882,
+    "mrs_shift_mean": 1.8,
+    "mrs_shift_sd": 1.898700421640876,
+    "good_outcome_rate": 0.5125
+  },
+  "rows": [
+    {
+      "subject": "sub-stroke0001",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 6.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0002",
+      "mrs_premorbid": null,
+      "mrs_3mo": 6.0,
+      "mrs_shift": null,
+      "tici_post": "2c",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0003",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0004",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 3.0,
+      "mrs_shift": 3.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0005",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 3.0,
+      "mrs_shift": 2.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0006",
+      "mrs_premorbid": 2.0,
+      "mrs_3mo": 2.0,
+      "mrs_shift": 0.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0007",
+      "mrs_premorbid": null,
+      "mrs_3mo": 4.0,
+      "mrs_shift": null,
+      "tici_post": "2c",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0008",
+      "mrs_premorbid": null,
+      "mrs_3mo": 3.0,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0009",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0010",
+      "mrs_premorbid": 4.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 2.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0011",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 1.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0012",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 4.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0013",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0014",
+      "mrs_premorbid": 2.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 4.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0015",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0016",
+      "mrs_premorbid": null,
+      "mrs_3mo": 2.0,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0017",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 4.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0019",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 5.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0020",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0021",
+      "mrs_premorbid": null,
+      "mrs_3mo": 4.0,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0022",
+      "mrs_premorbid": 3.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0025",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0026",
+      "mrs_premorbid": 3.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 3.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0027",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 4.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0028",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0030",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0033",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 3.0,
+      "mrs_shift": 3.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0036",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 6.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0037",
+      "mrs_premorbid": null,
+      "mrs_3mo": 4.0,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0038",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0040",
+      "mrs_premorbid": null,
+      "mrs_3mo": 1.0,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0043",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0045",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 2.0,
+      "mrs_shift": 2.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0047",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0048",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0049",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0052",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0053",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 5.0,
+      "mrs_shift": 5.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0054",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0055",
+      "mrs_premorbid": 3.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 3.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0057",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 3.0,
+      "mrs_shift": 2.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0062",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 1.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0066",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 4.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0068",
+      "mrs_premorbid": null,
+      "mrs_3mo": 1.0,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0070",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 4.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0071",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": -1.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0073",
+      "mrs_premorbid": null,
+      "mrs_3mo": 3.0,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0074",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 4.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0075",
+      "mrs_premorbid": 3.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 3.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0076",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0077",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 5.0,
+      "mrs_shift": 5.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0078",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 2.0,
+      "mrs_shift": 2.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0079",
+      "mrs_premorbid": 2.0,
+      "mrs_3mo": 2.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0080",
+      "mrs_premorbid": 3.0,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": "2c",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0081",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 2.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0082",
+      "mrs_premorbid": 4.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 2.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0083",
+      "mrs_premorbid": 3.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 3.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0084",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 2.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0085",
+      "mrs_premorbid": 3.0,
+      "mrs_3mo": 3.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0086",
+      "mrs_premorbid": 3.0,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0087",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 3.0,
+      "mrs_shift": 3.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0088",
+      "mrs_premorbid": 2.0,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0089",
+      "mrs_premorbid": null,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": "2b",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0090",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": -1.0,
+      "tici_post": "2b",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0091",
+      "mrs_premorbid": 2.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": -1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0092",
+      "mrs_premorbid": 2.0,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0093",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0094",
+      "mrs_premorbid": 4.0,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0095",
+      "mrs_premorbid": 3.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 3.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0096",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0097",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 6.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0098",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 3.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0099",
+      "mrs_premorbid": 3.0,
+      "mrs_3mo": 3.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0100",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0101",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 6.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0102",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0103",
+      "mrs_premorbid": 2.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": -2.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0104",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0105",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0106",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0107",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 3.0,
+      "mrs_shift": 3.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0108",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0109",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0110",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 5.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0111",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 2.0,
+      "mrs_shift": 2.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0112",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0113",
+      "mrs_premorbid": 4.0,
+      "mrs_3mo": 6.0,
+      "mrs_shift": 2.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0114",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 3.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0115",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": "3",
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0116",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 3.0,
+      "mrs_shift": 3.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0117",
+      "mrs_premorbid": 3.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0118",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0119",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 1.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0133",
+      "mrs_premorbid": null,
+      "mrs_3mo": 5.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0134",
+      "mrs_premorbid": null,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0135",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0136",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0137",
+      "mrs_premorbid": null,
+      "mrs_3mo": 4.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0138",
+      "mrs_premorbid": null,
+      "mrs_3mo": 1.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0139",
+      "mrs_premorbid": null,
+      "mrs_3mo": 1.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0140",
+      "mrs_premorbid": null,
+      "mrs_3mo": 4.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0141",
+      "mrs_premorbid": null,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0142",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0143",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0144",
+      "mrs_premorbid": null,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0145",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0146",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0147",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0148",
+      "mrs_premorbid": null,
+      "mrs_3mo": 1.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0149",
+      "mrs_premorbid": null,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0150",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0151",
+      "mrs_premorbid": null,
+      "mrs_3mo": 1.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0152",
+      "mrs_premorbid": null,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0153",
+      "mrs_premorbid": null,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0154",
+      "mrs_premorbid": null,
+      "mrs_3mo": 6.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0155",
+      "mrs_premorbid": null,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0156",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0157",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0158",
+      "mrs_premorbid": null,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0159",
+      "mrs_premorbid": null,
+      "mrs_3mo": 2.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0161",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0162",
+      "mrs_premorbid": null,
+      "mrs_3mo": null,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0163",
+      "mrs_premorbid": null,
+      "mrs_3mo": 1.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0164",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0165",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0166",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0167",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0168",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0169",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0170",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0171",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0172",
+      "mrs_premorbid": null,
+      "mrs_3mo": 3.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0173",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0174",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0175",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0176",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0177",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0178",
+      "mrs_premorbid": null,
+      "mrs_3mo": 2.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0179",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0180",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0181",
+      "mrs_premorbid": null,
+      "mrs_3mo": 1.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0182",
+      "mrs_premorbid": null,
+      "mrs_3mo": 0.0,
+      "mrs_shift": null,
+      "tici_post": null,
+      "status": "missing_value"
+    },
+    {
+      "subject": "sub-stroke0183",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0184",
+      "mrs_premorbid": 3.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 1.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0185",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 4.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0186",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 0.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0187",
+      "mrs_premorbid": 2.0,
+      "mrs_3mo": 4.0,
+      "mrs_shift": 2.0,
+      "tici_post": "2c",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0188",
+      "mrs_premorbid": 1.0,
+      "mrs_3mo": 1.0,
+      "mrs_shift": 0.0,
+      "tici_post": "3",
+      "status": "ok"
+    },
+    {
+      "subject": "sub-stroke0189",
+      "mrs_premorbid": 0.0,
+      "mrs_3mo": 2.0,
+      "mrs_shift": 2.0,
+      "tici_post": "3",
+      "status": "ok"
+    }
+  ]
+}

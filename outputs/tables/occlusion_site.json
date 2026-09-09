@@ -1,0 +1,2260 @@
+{
+  "root": "D:\\ISLES-2024\\train",
+  "confident_mm": 15.0,
+  "n_subjects": 149,
+  "n_processed": 144,
+  "site_counts": {
+    "M1": 71,
+    "other": 15,
+    "ICA": 16,
+    "other (low-confidence)": 42
+  },
+  "n_confident": 102,
+  "low_confidence_subjects": [
+    "sub-stroke0007",
+    "sub-stroke0008",
+    "sub-stroke0015",
+    "sub-stroke0017",
+    "sub-stroke0019",
+    "sub-stroke0022",
+    "sub-stroke0070",
+    "sub-stroke0075",
+    "sub-stroke0076",
+    "sub-stroke0077",
+    "sub-stroke0078",
+    "sub-stroke0080",
+    "sub-stroke0085",
+    "sub-stroke0099",
+    "sub-stroke0101",
+    "sub-stroke0103",
+    "sub-stroke0108",
+    "sub-stroke0114",
+    "sub-stroke0116",
+    "sub-stroke0118",
+    "sub-stroke0134",
+    "sub-stroke0136",
+    "sub-stroke0138",
+    "sub-stroke0142",
+    "sub-stroke0143",
+    "sub-stroke0144",
+    "sub-stroke0145",
+    "sub-stroke0149",
+    "sub-stroke0150",
+    "sub-stroke0151",
+    "sub-stroke0152",
+    "sub-stroke0153",
+    "sub-stroke0156",
+    "sub-stroke0159",
+    "sub-stroke0161",
+    "sub-stroke0166",
+    "sub-stroke0169",
+    "sub-stroke0178",
+    "sub-stroke0180",
+    "sub-stroke0181",
+    "sub-stroke0184",
+    "sub-stroke0188"
+  ],
+  "skipped": [
+    {
+      "subject": "sub-stroke0016",
+      "status": "shape_mismatch"
+    },
+    {
+      "subject": "sub-stroke0100",
+      "status": "empty_lvo_mask"
+    },
+    {
+      "subject": "sub-stroke0141",
+      "status": "empty_lvo_mask"
+    },
+    {
+      "subject": "sub-stroke0147",
+      "status": "empty_lvo_mask"
+    },
+    {
+      "subject": "sub-stroke0163",
+      "status": "empty_lvo_mask"
+    }
+  ],
+  "rows": [
+    {
+      "subject": "sub-stroke0001",
+      "status": "ok",
+      "lvo_voxels": 16,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 1.2,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 1.2,
+        "L-ICA": 13.94,
+        "L-ACA": 17.3
+      }
+    },
+    {
+      "subject": "sub-stroke0002",
+      "status": "ok",
+      "lvo_voxels": 12,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 1.38,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 1.38,
+        "R-ICA": 10.74,
+        "R-ACA": 15.53
+      }
+    },
+    {
+      "subject": "sub-stroke0003",
+      "status": "ok",
+      "lvo_voxels": 21,
+      "nearest_cow_label": 12,
+      "nearest_cow_name": "L-ACA",
+      "nearest_dist_mm": 0.0,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ACA": 0.0,
+        "L-ICA": 6.5,
+        "L-Pcom": 7.24
+      }
+    },
+    {
+      "subject": "sub-stroke0004",
+      "status": "ok",
+      "lvo_voxels": 17,
+      "nearest_cow_label": 6,
+      "nearest_cow_name": "L-ICA",
+      "nearest_dist_mm": 4.28,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ICA": 4.28,
+        "L-MCA": 4.9,
+        "L-ACA": 9.58
+      }
+    },
+    {
+      "subject": "sub-stroke0005",
+      "status": "ok",
+      "lvo_voxels": 15,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.0,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.0,
+        "L-ICA": 4.92,
+        "L-ACA": 9.16
+      }
+    },
+    {
+      "subject": "sub-stroke0006",
+      "status": "ok",
+      "lvo_voxels": 15,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 1.5,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 1.5,
+        "L-ICA": 11.66,
+        "L-ACA": 17.67
+      }
+    },
+    {
+      "subject": "sub-stroke0007",
+      "status": "ok",
+      "lvo_voxels": 293,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 30.39,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 30.39,
+        "R-PCA": 44.34,
+        "L-Pcom": 46.78
+      }
+    },
+    {
+      "subject": "sub-stroke0008",
+      "status": "ok",
+      "lvo_voxels": 126,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 36.33,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 36.33,
+        "R-PCA": 42.62,
+        "R-ICA": 48.13
+      }
+    },
+    {
+      "subject": "sub-stroke0009",
+      "status": "ok",
+      "lvo_voxels": 22,
+      "nearest_cow_label": 12,
+      "nearest_cow_name": "L-ACA",
+      "nearest_dist_mm": 9.54,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ACA": 9.54,
+        "L-PCA": 17.37,
+        "R-ACA": 19.27
+      }
+    },
+    {
+      "subject": "sub-stroke0010",
+      "status": "ok",
+      "lvo_voxels": 27,
+      "nearest_cow_label": 4,
+      "nearest_cow_name": "R-ICA",
+      "nearest_dist_mm": 0.13,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-ICA": 0.13,
+        "R-ACA": 2.97,
+        "R-Pcom": 12.88
+      }
+    },
+    {
+      "subject": "sub-stroke0011",
+      "status": "ok",
+      "lvo_voxels": 21,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 6.89,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 6.89,
+        "R-ICA": 17.15,
+        "R-ACA": 20.65
+      }
+    },
+    {
+      "subject": "sub-stroke0012",
+      "status": "ok",
+      "lvo_voxels": 21,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.17,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.17,
+        "L-ICA": 4.67,
+        "L-ACA": 9.19
+      }
+    },
+    {
+      "subject": "sub-stroke0013",
+      "status": "ok",
+      "lvo_voxels": 30,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 4.56,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 4.56,
+        "L-ICA": 18.63,
+        "L-ACA": 23.38
+      }
+    },
+    {
+      "subject": "sub-stroke0014",
+      "status": "ok",
+      "lvo_voxels": 28,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.21,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.21,
+        "R-ICA": 12.25,
+        "R-ACA": 16.18
+      }
+    },
+    {
+      "subject": "sub-stroke0015",
+      "status": "ok",
+      "lvo_voxels": 163,
+      "nearest_cow_label": 3,
+      "nearest_cow_name": "L-PCA",
+      "nearest_dist_mm": 20.23,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-PCA": 20.23,
+        "BA": 21.11,
+        "L-ICA": 23.42
+      }
+    },
+    {
+      "subject": "sub-stroke0016",
+      "status": "shape_mismatch"
+    },
+    {
+      "subject": "sub-stroke0017",
+      "status": "ok",
+      "lvo_voxels": 52,
+      "nearest_cow_label": 2,
+      "nearest_cow_name": "R-PCA",
+      "nearest_dist_mm": 35.0,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "R-PCA": 35.0,
+        "BA": 36.62,
+        "R-Pcom": 38.78
+      }
+    },
+    {
+      "subject": "sub-stroke0019",
+      "status": "ok",
+      "lvo_voxels": 138,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 33.46,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 33.46,
+        "L-MCA": 35.52,
+        "L-PCA": 36.9
+      }
+    },
+    {
+      "subject": "sub-stroke0020",
+      "status": "ok",
+      "lvo_voxels": 8,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 13.93,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 13.93,
+        "R-ICA": 24.57,
+        "R-ACA": 28.42
+      }
+    },
+    {
+      "subject": "sub-stroke0021",
+      "status": "ok",
+      "lvo_voxels": 42,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 2.73,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 2.73,
+        "L-ICA": 12.13,
+        "L-ACA": 16.21
+      }
+    },
+    {
+      "subject": "sub-stroke0022",
+      "status": "ok",
+      "lvo_voxels": 65,
+      "nearest_cow_label": 3,
+      "nearest_cow_name": "L-PCA",
+      "nearest_dist_mm": 23.58,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-PCA": 23.58,
+        "L-ICA": 28.58,
+        "BA": 29.29
+      }
+    },
+    {
+      "subject": "sub-stroke0025",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 3.14,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 3.14,
+        "R-ICA": 18.75,
+        "R-ACA": 21.17
+      }
+    },
+    {
+      "subject": "sub-stroke0026",
+      "status": "ok",
+      "lvo_voxels": 32,
+      "nearest_cow_label": 6,
+      "nearest_cow_name": "L-ICA",
+      "nearest_dist_mm": 0.7,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ICA": 0.7,
+        "L-PCA": 16.19,
+        "L-Pcom": 18.62
+      }
+    },
+    {
+      "subject": "sub-stroke0027",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 3,
+      "nearest_cow_name": "L-PCA",
+      "nearest_dist_mm": 7.24,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-PCA": 7.24,
+        "L-ACA": 8.94,
+        "BA": 11.55
+      }
+    },
+    {
+      "subject": "sub-stroke0028",
+      "status": "ok",
+      "lvo_voxels": 23,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.03,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.03,
+        "R-ICA": 8.52,
+        "R-ACA": 12.11
+      }
+    },
+    {
+      "subject": "sub-stroke0030",
+      "status": "ok",
+      "lvo_voxels": 39,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.23,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.23,
+        "R-ICA": 9.31,
+        "R-ACA": 14.13
+      }
+    },
+    {
+      "subject": "sub-stroke0033",
+      "status": "ok",
+      "lvo_voxels": 23,
+      "nearest_cow_label": 12,
+      "nearest_cow_name": "L-ACA",
+      "nearest_dist_mm": 14.02,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ACA": 14.02,
+        "R-ACA": 14.81,
+        "Acom": 34.3
+      }
+    },
+    {
+      "subject": "sub-stroke0036",
+      "status": "ok",
+      "lvo_voxels": 35,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.35,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.35,
+        "R-ICA": 10.48,
+        "R-ACA": 13.79
+      }
+    },
+    {
+      "subject": "sub-stroke0037",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 4,
+      "nearest_cow_name": "R-ICA",
+      "nearest_dist_mm": 0.37,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-ICA": 0.37,
+        "R-ACA": 6.41,
+        "R-Pcom": 12.9
+      }
+    },
+    {
+      "subject": "sub-stroke0038",
+      "status": "ok",
+      "lvo_voxels": 21,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.0,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.0,
+        "L-ICA": 6.66,
+        "L-ACA": 10.44
+      }
+    },
+    {
+      "subject": "sub-stroke0040",
+      "status": "ok",
+      "lvo_voxels": 45,
+      "nearest_cow_label": 4,
+      "nearest_cow_name": "R-ICA",
+      "nearest_dist_mm": 0.16,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-ICA": 0.16,
+        "R-MCA": 1.11,
+        "R-ACA": 3.54
+      }
+    },
+    {
+      "subject": "sub-stroke0043",
+      "status": "ok",
+      "lvo_voxels": 28,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 1.63,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 1.63,
+        "L-ICA": 15.63,
+        "L-ACA": 19.87
+      }
+    },
+    {
+      "subject": "sub-stroke0045",
+      "status": "ok",
+      "lvo_voxels": 38,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.79,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.79,
+        "R-ICA": 5.69,
+        "R-ACA": 9.62
+      }
+    },
+    {
+      "subject": "sub-stroke0047",
+      "status": "ok",
+      "lvo_voxels": 31,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.2,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.2,
+        "L-ICA": 9.54,
+        "L-ACA": 13.24
+      }
+    },
+    {
+      "subject": "sub-stroke0048",
+      "status": "ok",
+      "lvo_voxels": 34,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 4.78,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 4.78,
+        "L-ICA": 19.71,
+        "L-ACA": 23.17
+      }
+    },
+    {
+      "subject": "sub-stroke0049",
+      "status": "ok",
+      "lvo_voxels": 32,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 1.12,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 1.12,
+        "L-ICA": 3.01,
+        "L-ACA": 7.47
+      }
+    },
+    {
+      "subject": "sub-stroke0052",
+      "status": "ok",
+      "lvo_voxels": 51,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 8.09,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 8.09,
+        "L-ICA": 19.08,
+        "L-ACA": 22.59
+      }
+    },
+    {
+      "subject": "sub-stroke0053",
+      "status": "ok",
+      "lvo_voxels": 18,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.66,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.66,
+        "R-ICA": 3.81,
+        "R-Pcom": 11.89
+      }
+    },
+    {
+      "subject": "sub-stroke0054",
+      "status": "ok",
+      "lvo_voxels": 26,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.21,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.21,
+        "L-ICA": 5.73,
+        "L-ACA": 10.89
+      }
+    },
+    {
+      "subject": "sub-stroke0055",
+      "status": "ok",
+      "lvo_voxels": 14,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 13.93,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 13.93,
+        "L-ICA": 23.3,
+        "L-ACA": 27.88
+      }
+    },
+    {
+      "subject": "sub-stroke0057",
+      "status": "ok",
+      "lvo_voxels": 21,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 1.02,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 1.02,
+        "L-ICA": 15.0,
+        "L-ACA": 19.9
+      }
+    },
+    {
+      "subject": "sub-stroke0062",
+      "status": "ok",
+      "lvo_voxels": 30,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.2,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.2,
+        "R-ICA": 14.17,
+        "R-PCA": 24.92
+      }
+    },
+    {
+      "subject": "sub-stroke0066",
+      "status": "ok",
+      "lvo_voxels": 11,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 5.58,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 5.58,
+        "L-ICA": 20.59,
+        "L-ACA": 24.76
+      }
+    },
+    {
+      "subject": "sub-stroke0068",
+      "status": "ok",
+      "lvo_voxels": 45,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 4.58,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 4.58,
+        "L-ICA": 17.88,
+        "L-ACA": 20.46
+      }
+    },
+    {
+      "subject": "sub-stroke0070",
+      "status": "ok",
+      "lvo_voxels": 52,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 39.6,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 39.6,
+        "R-PCA": 41.32,
+        "R-ICA": 44.46
+      }
+    },
+    {
+      "subject": "sub-stroke0071",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 4,
+      "nearest_cow_name": "R-ICA",
+      "nearest_dist_mm": 7.0,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-ICA": 7.0,
+        "R-PCA": 12.48,
+        "R-ACA": 15.45
+      }
+    },
+    {
+      "subject": "sub-stroke0073",
+      "status": "ok",
+      "lvo_voxels": 10,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 12.41,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 12.41,
+        "L-ICA": 17.83,
+        "L-ACA": 30.29
+      }
+    },
+    {
+      "subject": "sub-stroke0074",
+      "status": "ok",
+      "lvo_voxels": 14,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 3.49,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 3.49,
+        "L-ICA": 3.87,
+        "L-ACA": 8.95
+      }
+    },
+    {
+      "subject": "sub-stroke0075",
+      "status": "ok",
+      "lvo_voxels": 355,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 35.49,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 35.49,
+        "L-Pcom": 45.47,
+        "L-PCA": 47.6
+      }
+    },
+    {
+      "subject": "sub-stroke0076",
+      "status": "ok",
+      "lvo_voxels": 114,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 39.36,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 39.36,
+        "R-ICA": 41.93,
+        "R-PCA": 42.25
+      }
+    },
+    {
+      "subject": "sub-stroke0077",
+      "status": "ok",
+      "lvo_voxels": 140,
+      "nearest_cow_label": 3,
+      "nearest_cow_name": "L-PCA",
+      "nearest_dist_mm": 49.31,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-PCA": 49.31,
+        "BA": 50.34,
+        "L-MCA": 51.93
+      }
+    },
+    {
+      "subject": "sub-stroke0078",
+      "status": "ok",
+      "lvo_voxels": 165,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 40.48,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 40.48,
+        "L-PCA": 42.28,
+        "L-ICA": 46.11
+      }
+    },
+    {
+      "subject": "sub-stroke0079",
+      "status": "ok",
+      "lvo_voxels": 21,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.1,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.1,
+        "R-ICA": 4.56,
+        "R-ACA": 7.7
+      }
+    },
+    {
+      "subject": "sub-stroke0080",
+      "status": "ok",
+      "lvo_voxels": 188,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 20.61,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 20.61,
+        "L-ACA": 34.04,
+        "R-ICA": 36.13
+      }
+    },
+    {
+      "subject": "sub-stroke0081",
+      "status": "ok",
+      "lvo_voxels": 45,
+      "nearest_cow_label": 2,
+      "nearest_cow_name": "R-PCA",
+      "nearest_dist_mm": 11.25,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-PCA": 11.25,
+        "BA": 14.01,
+        "L-PCA": 18.23
+      }
+    },
+    {
+      "subject": "sub-stroke0082",
+      "status": "ok",
+      "lvo_voxels": 48,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.18,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.18,
+        "R-ICA": 7.4,
+        "R-ACA": 11.76
+      }
+    },
+    {
+      "subject": "sub-stroke0083",
+      "status": "ok",
+      "lvo_voxels": 20,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 9.46,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 9.46,
+        "L-ICA": 21.13,
+        "L-ACA": 25.3
+      }
+    },
+    {
+      "subject": "sub-stroke0084",
+      "status": "ok",
+      "lvo_voxels": 9,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 14.42,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 14.42,
+        "R-ICA": 21.25,
+        "R-ACA": 24.92
+      }
+    },
+    {
+      "subject": "sub-stroke0085",
+      "status": "ok",
+      "lvo_voxels": 16,
+      "nearest_cow_label": 11,
+      "nearest_cow_name": "R-ACA",
+      "nearest_dist_mm": 16.92,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "R-ACA": 16.92,
+        "L-ACA": 17.31,
+        "Acom": 36.3
+      }
+    },
+    {
+      "subject": "sub-stroke0086",
+      "status": "ok",
+      "lvo_voxels": 23,
+      "nearest_cow_label": 6,
+      "nearest_cow_name": "L-ICA",
+      "nearest_dist_mm": 2.04,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ICA": 2.04,
+        "L-ACA": 6.06,
+        "L-Pcom": 7.63
+      }
+    },
+    {
+      "subject": "sub-stroke0087",
+      "status": "ok",
+      "lvo_voxels": 26,
+      "nearest_cow_label": 12,
+      "nearest_cow_name": "L-ACA",
+      "nearest_dist_mm": 0.2,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ACA": 0.2,
+        "L-PCA": 3.68,
+        "L-MCA": 8.82
+      }
+    },
+    {
+      "subject": "sub-stroke0088",
+      "status": "ok",
+      "lvo_voxels": 19,
+      "nearest_cow_label": 11,
+      "nearest_cow_name": "R-ACA",
+      "nearest_dist_mm": 0.09,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-ACA": 0.09,
+        "L-ACA": 3.62,
+        "Acom": 7.29
+      }
+    },
+    {
+      "subject": "sub-stroke0089",
+      "status": "ok",
+      "lvo_voxels": 11,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 1.11,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 1.11,
+        "R-ICA": 16.5,
+        "R-ACA": 18.91
+      }
+    },
+    {
+      "subject": "sub-stroke0090",
+      "status": "ok",
+      "lvo_voxels": 30,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 14.25,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 14.25,
+        "R-ICA": 25.84,
+        "R-ACA": 28.77
+      }
+    },
+    {
+      "subject": "sub-stroke0091",
+      "status": "ok",
+      "lvo_voxels": 57,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.21,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.21,
+        "R-ICA": 12.34,
+        "R-ACA": 15.97
+      }
+    },
+    {
+      "subject": "sub-stroke0092",
+      "status": "ok",
+      "lvo_voxels": 33,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.43,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.43,
+        "L-ICA": 17.27,
+        "L-ACA": 21.41
+      }
+    },
+    {
+      "subject": "sub-stroke0093",
+      "status": "ok",
+      "lvo_voxels": 11,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 3.42,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 3.42,
+        "R-ICA": 13.44,
+        "R-ACA": 17.26
+      }
+    },
+    {
+      "subject": "sub-stroke0094",
+      "status": "ok",
+      "lvo_voxels": 21,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 5.89,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 5.89,
+        "R-ICA": 20.49,
+        "R-ACA": 23.58
+      }
+    },
+    {
+      "subject": "sub-stroke0095",
+      "status": "ok",
+      "lvo_voxels": 26,
+      "nearest_cow_label": 4,
+      "nearest_cow_name": "R-ICA",
+      "nearest_dist_mm": 6.99,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-ICA": 6.99,
+        "R-ACA": 14.87,
+        "R-PCA": 16.18
+      }
+    },
+    {
+      "subject": "sub-stroke0096",
+      "status": "ok",
+      "lvo_voxels": 42,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 12.34,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 12.34,
+        "R-ICA": 13.53,
+        "R-ACA": 13.85
+      }
+    },
+    {
+      "subject": "sub-stroke0097",
+      "status": "ok",
+      "lvo_voxels": 51,
+      "nearest_cow_label": 4,
+      "nearest_cow_name": "R-ICA",
+      "nearest_dist_mm": 0.0,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-ICA": 0.0,
+        "R-ACA": 4.68,
+        "R-Pcom": 9.53
+      }
+    },
+    {
+      "subject": "sub-stroke0098",
+      "status": "ok",
+      "lvo_voxels": 47,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.13,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.13,
+        "L-ICA": 6.84,
+        "L-ACA": 10.47
+      }
+    },
+    {
+      "subject": "sub-stroke0099",
+      "status": "ok",
+      "lvo_voxels": 206,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 39.41,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 39.41,
+        "L-PCA": 41.66,
+        "L-MCA": 44.41
+      }
+    },
+    {
+      "subject": "sub-stroke0100",
+      "status": "empty_lvo_mask"
+    },
+    {
+      "subject": "sub-stroke0101",
+      "status": "ok",
+      "lvo_voxels": 12,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 25.97,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-MCA": 25.97,
+        "L-PCA": 26.78,
+        "L-ICA": 34.63
+      }
+    },
+    {
+      "subject": "sub-stroke0102",
+      "status": "ok",
+      "lvo_voxels": 12,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 6.33,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 6.33,
+        "L-ICA": 18.32,
+        "L-ACA": 21.99
+      }
+    },
+    {
+      "subject": "sub-stroke0103",
+      "status": "ok",
+      "lvo_voxels": 16,
+      "nearest_cow_label": 12,
+      "nearest_cow_name": "L-ACA",
+      "nearest_dist_mm": 25.09,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-ACA": 25.09,
+        "R-ACA": 25.22,
+        "Acom": 40.31
+      }
+    },
+    {
+      "subject": "sub-stroke0104",
+      "status": "ok",
+      "lvo_voxels": 26,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.19,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.19,
+        "L-ICA": 13.26,
+        "L-ACA": 16.11
+      }
+    },
+    {
+      "subject": "sub-stroke0105",
+      "status": "ok",
+      "lvo_voxels": 39,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 0.19,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "BA": 0.19,
+        "R-PCA": 4.06,
+        "L-PCA": 4.51
+      }
+    },
+    {
+      "subject": "sub-stroke0106",
+      "status": "ok",
+      "lvo_voxels": 17,
+      "nearest_cow_label": 11,
+      "nearest_cow_name": "R-ACA",
+      "nearest_dist_mm": 2.01,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-ACA": 2.01,
+        "R-ICA": 3.11,
+        "R-Pcom": 4.74
+      }
+    },
+    {
+      "subject": "sub-stroke0107",
+      "status": "ok",
+      "lvo_voxels": 33,
+      "nearest_cow_label": 6,
+      "nearest_cow_name": "L-ICA",
+      "nearest_dist_mm": 0.56,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ICA": 0.56,
+        "L-ACA": 8.67,
+        "L-Pcom": 11.19
+      }
+    },
+    {
+      "subject": "sub-stroke0108",
+      "status": "ok",
+      "lvo_voxels": 12,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 19.76,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-MCA": 19.76,
+        "L-ICA": 28.13,
+        "L-ACA": 32.25
+      }
+    },
+    {
+      "subject": "sub-stroke0109",
+      "status": "ok",
+      "lvo_voxels": 52,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.22,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.22,
+        "R-ICA": 7.43,
+        "R-ACA": 10.72
+      }
+    },
+    {
+      "subject": "sub-stroke0110",
+      "status": "ok",
+      "lvo_voxels": 21,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.0,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.0,
+        "R-ICA": 6.41,
+        "R-Pcom": 19.03
+      }
+    },
+    {
+      "subject": "sub-stroke0111",
+      "status": "ok",
+      "lvo_voxels": 49,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.2,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.2,
+        "L-ICA": 5.74,
+        "L-ACA": 11.16
+      }
+    },
+    {
+      "subject": "sub-stroke0112",
+      "status": "ok",
+      "lvo_voxels": 49,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.25,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.25,
+        "L-ICA": 13.17,
+        "L-ACA": 16.17
+      }
+    },
+    {
+      "subject": "sub-stroke0113",
+      "status": "ok",
+      "lvo_voxels": 12,
+      "nearest_cow_label": 12,
+      "nearest_cow_name": "L-ACA",
+      "nearest_dist_mm": 0.29,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ACA": 0.29,
+        "L-PCA": 4.71,
+        "BA": 10.38
+      }
+    },
+    {
+      "subject": "sub-stroke0114",
+      "status": "ok",
+      "lvo_voxels": 102,
+      "nearest_cow_label": 3,
+      "nearest_cow_name": "L-PCA",
+      "nearest_dist_mm": 19.55,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-PCA": 19.55,
+        "L-Pcom": 27.26,
+        "BA": 29.84
+      }
+    },
+    {
+      "subject": "sub-stroke0115",
+      "status": "ok",
+      "lvo_voxels": 35,
+      "nearest_cow_label": 6,
+      "nearest_cow_name": "L-ICA",
+      "nearest_dist_mm": 0.15,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ICA": 0.15,
+        "L-PCA": 10.01,
+        "L-Pcom": 11.44
+      }
+    },
+    {
+      "subject": "sub-stroke0116",
+      "status": "ok",
+      "lvo_voxels": 118,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 40.12,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 40.12,
+        "L-MCA": 45.51,
+        "L-ICA": 46.77
+      }
+    },
+    {
+      "subject": "sub-stroke0117",
+      "status": "ok",
+      "lvo_voxels": 68,
+      "nearest_cow_label": 3,
+      "nearest_cow_name": "L-PCA",
+      "nearest_dist_mm": 8.48,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-PCA": 8.48,
+        "BA": 18.66,
+        "R-PCA": 21.56
+      }
+    },
+    {
+      "subject": "sub-stroke0118",
+      "status": "ok",
+      "lvo_voxels": 87,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 45.47,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 45.47,
+        "R-PCA": 46.72,
+        "R-ICA": 52.92
+      }
+    },
+    {
+      "subject": "sub-stroke0119",
+      "status": "ok",
+      "lvo_voxels": 21,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 8.36,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 8.36,
+        "R-ICA": 20.48,
+        "R-ACA": 24.09
+      }
+    },
+    {
+      "subject": "sub-stroke0133",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 6,
+      "nearest_cow_name": "L-ICA",
+      "nearest_dist_mm": 1.46,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ICA": 1.46,
+        "L-PCA": 11.38,
+        "L-ACA": 20.53
+      }
+    },
+    {
+      "subject": "sub-stroke0134",
+      "status": "ok",
+      "lvo_voxels": 30,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 15.46,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "R-MCA": 15.46,
+        "R-ICA": 19.68,
+        "R-ACA": 21.49
+      }
+    },
+    {
+      "subject": "sub-stroke0135",
+      "status": "ok",
+      "lvo_voxels": 30,
+      "nearest_cow_label": 11,
+      "nearest_cow_name": "R-ACA",
+      "nearest_dist_mm": 0.18,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-ACA": 0.18,
+        "R-ICA": 8.27,
+        "R-PCA": 14.24
+      }
+    },
+    {
+      "subject": "sub-stroke0136",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 23.07,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-MCA": 23.07,
+        "L-ICA": 27.05,
+        "L-PCA": 30.57
+      }
+    },
+    {
+      "subject": "sub-stroke0137",
+      "status": "ok",
+      "lvo_voxels": 44,
+      "nearest_cow_label": 4,
+      "nearest_cow_name": "R-ICA",
+      "nearest_dist_mm": 0.3,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-ICA": 0.3,
+        "R-Pcom": 1.91,
+        "R-ACA": 5.21
+      }
+    },
+    {
+      "subject": "sub-stroke0138",
+      "status": "ok",
+      "lvo_voxels": 140,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 46.42,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 46.42,
+        "L-ICA": 50.7,
+        "L-MCA": 54.05
+      }
+    },
+    {
+      "subject": "sub-stroke0139",
+      "status": "ok",
+      "lvo_voxels": 44,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.26,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.26,
+        "L-ICA": 6.62,
+        "L-ACA": 10.92
+      }
+    },
+    {
+      "subject": "sub-stroke0140",
+      "status": "ok",
+      "lvo_voxels": 44,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.22,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.22,
+        "L-ICA": 7.8,
+        "L-PCA": 18.37
+      }
+    },
+    {
+      "subject": "sub-stroke0141",
+      "status": "empty_lvo_mask"
+    },
+    {
+      "subject": "sub-stroke0142",
+      "status": "ok",
+      "lvo_voxels": 16,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 21.23,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 21.23,
+        "L-PCA": 29.04,
+        "R-PCA": 32.47
+      }
+    },
+    {
+      "subject": "sub-stroke0143",
+      "status": "ok",
+      "lvo_voxels": 133,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 29.07,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 29.07,
+        "L-PCA": 34.27,
+        "R-Pcom": 37.26
+      }
+    },
+    {
+      "subject": "sub-stroke0144",
+      "status": "ok",
+      "lvo_voxels": 212,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 30.71,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 30.71,
+        "R-PCA": 34.07,
+        "R-ICA": 37.49
+      }
+    },
+    {
+      "subject": "sub-stroke0145",
+      "status": "ok",
+      "lvo_voxels": 129,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 41.94,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 41.94,
+        "R-ICA": 49.88,
+        "R-PCA": 50.6
+      }
+    },
+    {
+      "subject": "sub-stroke0146",
+      "status": "ok",
+      "lvo_voxels": 30,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.23,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.23,
+        "L-ICA": 0.5,
+        "L-ACA": 5.39
+      }
+    },
+    {
+      "subject": "sub-stroke0147",
+      "status": "empty_lvo_mask"
+    },
+    {
+      "subject": "sub-stroke0148",
+      "status": "ok",
+      "lvo_voxels": 30,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.89,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.89,
+        "R-ICA": 8.02,
+        "R-PCA": 15.73
+      }
+    },
+    {
+      "subject": "sub-stroke0149",
+      "status": "ok",
+      "lvo_voxels": 12,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 25.06,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "R-MCA": 25.06,
+        "R-ICA": 28.59,
+        "R-ACA": 32.78
+      }
+    },
+    {
+      "subject": "sub-stroke0150",
+      "status": "ok",
+      "lvo_voxels": 42,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 15.83,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-MCA": 15.83,
+        "L-ICA": 25.69,
+        "L-ACA": 29.72
+      }
+    },
+    {
+      "subject": "sub-stroke0151",
+      "status": "ok",
+      "lvo_voxels": 91,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 52.96,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 52.96,
+        "L-ICA": 55.02,
+        "L-MCA": 56.41
+      }
+    },
+    {
+      "subject": "sub-stroke0152",
+      "status": "ok",
+      "lvo_voxels": 12,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 21.01,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-MCA": 21.01,
+        "L-PCA": 22.78,
+        "L-ICA": 26.52
+      }
+    },
+    {
+      "subject": "sub-stroke0153",
+      "status": "ok",
+      "lvo_voxels": 21,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 21.26,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "R-MCA": 21.26,
+        "R-ICA": 29.99,
+        "R-PCA": 34.56
+      }
+    },
+    {
+      "subject": "sub-stroke0154",
+      "status": "ok",
+      "lvo_voxels": 12,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 1.57,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 1.57,
+        "L-ICA": 15.28,
+        "L-ACA": 19.51
+      }
+    },
+    {
+      "subject": "sub-stroke0155",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.25,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.25,
+        "R-ICA": 5.69,
+        "R-ACA": 14.91
+      }
+    },
+    {
+      "subject": "sub-stroke0156",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 16.12,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "R-MCA": 16.12,
+        "R-ICA": 26.18,
+        "R-Pcom": 34.62
+      }
+    },
+    {
+      "subject": "sub-stroke0157",
+      "status": "ok",
+      "lvo_voxels": 71,
+      "nearest_cow_label": 3,
+      "nearest_cow_name": "L-PCA",
+      "nearest_dist_mm": 0.71,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-PCA": 0.71,
+        "L-ICA": 12.84,
+        "BA": 14.03
+      }
+    },
+    {
+      "subject": "sub-stroke0158",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 2.52,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 2.52,
+        "R-ICA": 12.7,
+        "R-ACA": 17.01
+      }
+    },
+    {
+      "subject": "sub-stroke0159",
+      "status": "ok",
+      "lvo_voxels": 12,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 24.44,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-MCA": 24.44,
+        "L-ICA": 30.37,
+        "L-PCA": 33.99
+      }
+    },
+    {
+      "subject": "sub-stroke0161",
+      "status": "ok",
+      "lvo_voxels": 208,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 46.88,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 46.88,
+        "R-PCA": 54.32,
+        "L-PCA": 59.62
+      }
+    },
+    {
+      "subject": "sub-stroke0162",
+      "status": "ok",
+      "lvo_voxels": 25,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.15,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.15,
+        "R-ICA": 8.04,
+        "R-ACA": 19.07
+      }
+    },
+    {
+      "subject": "sub-stroke0163",
+      "status": "empty_lvo_mask"
+    },
+    {
+      "subject": "sub-stroke0164",
+      "status": "ok",
+      "lvo_voxels": 30,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.18,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.18,
+        "R-ICA": 5.94,
+        "R-ACA": 22.4
+      }
+    },
+    {
+      "subject": "sub-stroke0165",
+      "status": "ok",
+      "lvo_voxels": 161,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 6.55,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 6.55,
+        "L-ACA": 25.35,
+        "L-PCA": 30.46
+      }
+    },
+    {
+      "subject": "sub-stroke0166",
+      "status": "ok",
+      "lvo_voxels": 146,
+      "nearest_cow_label": 1,
+      "nearest_cow_name": "BA",
+      "nearest_dist_mm": 34.48,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "BA": 34.48,
+        "R-ICA": 38.88,
+        "R-PCA": 42.98
+      }
+    },
+    {
+      "subject": "sub-stroke0167",
+      "status": "ok",
+      "lvo_voxels": 60,
+      "nearest_cow_label": 4,
+      "nearest_cow_name": "R-ICA",
+      "nearest_dist_mm": 0.22,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-ICA": 0.22,
+        "R-PCA": 13.91,
+        "R-ACA": 16.85
+      }
+    },
+    {
+      "subject": "sub-stroke0168",
+      "status": "ok",
+      "lvo_voxels": 48,
+      "nearest_cow_label": 6,
+      "nearest_cow_name": "L-ICA",
+      "nearest_dist_mm": 0.08,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ICA": 0.08,
+        "L-ACA": 10.7,
+        "L-PCA": 11.1
+      }
+    },
+    {
+      "subject": "sub-stroke0169",
+      "status": "ok",
+      "lvo_voxels": 170,
+      "nearest_cow_label": 2,
+      "nearest_cow_name": "R-PCA",
+      "nearest_dist_mm": 46.83,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "R-PCA": 46.83,
+        "R-ICA": 47.66,
+        "BA": 48.79
+      }
+    },
+    {
+      "subject": "sub-stroke0170",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.32,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.32,
+        "R-ICA": 20.81,
+        "R-ACA": 25.45
+      }
+    },
+    {
+      "subject": "sub-stroke0171",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 7.0,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 7.0,
+        "R-ICA": 21.05,
+        "R-ACA": 25.49
+      }
+    },
+    {
+      "subject": "sub-stroke0172",
+      "status": "ok",
+      "lvo_voxels": 21,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 5.83,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 5.83,
+        "L-ICA": 13.15,
+        "L-PCA": 21.2
+      }
+    },
+    {
+      "subject": "sub-stroke0173",
+      "status": "ok",
+      "lvo_voxels": 26,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.41,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.41,
+        "R-ICA": 6.56,
+        "R-ACA": 11.65
+      }
+    },
+    {
+      "subject": "sub-stroke0174",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 10.33,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 10.33,
+        "R-ICA": 21.86,
+        "R-ACA": 24.39
+      }
+    },
+    {
+      "subject": "sub-stroke0175",
+      "status": "ok",
+      "lvo_voxels": 24,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 10.83,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 10.83,
+        "L-ICA": 19.32,
+        "L-PCA": 26.62
+      }
+    },
+    {
+      "subject": "sub-stroke0176",
+      "status": "ok",
+      "lvo_voxels": 30,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.91,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.91,
+        "L-ICA": 14.35,
+        "L-ACA": 25.85
+      }
+    },
+    {
+      "subject": "sub-stroke0177",
+      "status": "ok",
+      "lvo_voxels": 30,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 5.66,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 5.66,
+        "L-ICA": 16.93,
+        "L-ACA": 23.13
+      }
+    },
+    {
+      "subject": "sub-stroke0178",
+      "status": "ok",
+      "lvo_voxels": 16,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 27.85,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-MCA": 27.85,
+        "L-PCA": 30.78,
+        "L-ICA": 31.87
+      }
+    },
+    {
+      "subject": "sub-stroke0179",
+      "status": "ok",
+      "lvo_voxels": 36,
+      "nearest_cow_label": 6,
+      "nearest_cow_name": "L-ICA",
+      "nearest_dist_mm": 0.23,
+      "site": "ICA",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-ICA": 0.23,
+        "L-PCA": 12.47,
+        "R-ACA": 19.55
+      }
+    },
+    {
+      "subject": "sub-stroke0180",
+      "status": "ok",
+      "lvo_voxels": 30,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 17.88,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-MCA": 17.88,
+        "L-ICA": 27.72,
+        "L-PCA": 32.28
+      }
+    },
+    {
+      "subject": "sub-stroke0181",
+      "status": "ok",
+      "lvo_voxels": 187,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 16.84,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "R-MCA": 16.84,
+        "R-Pcom": 17.77,
+        "R-PCA": 19.16
+      }
+    },
+    {
+      "subject": "sub-stroke0182",
+      "status": "ok",
+      "lvo_voxels": 52,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 0.18,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 0.18,
+        "L-ICA": 2.67,
+        "L-ACA": 12.76
+      }
+    },
+    {
+      "subject": "sub-stroke0183",
+      "status": "ok",
+      "lvo_voxels": 49,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 7.97,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 7.97,
+        "L-ICA": 21.42,
+        "L-ACA": 26.29
+      }
+    },
+    {
+      "subject": "sub-stroke0184",
+      "status": "ok",
+      "lvo_voxels": 114,
+      "nearest_cow_label": 6,
+      "nearest_cow_name": "L-ICA",
+      "nearest_dist_mm": 26.9,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "L-ICA": 26.9,
+        "R-ICA": 41.29
+      }
+    },
+    {
+      "subject": "sub-stroke0185",
+      "status": "ok",
+      "lvo_voxels": 14,
+      "nearest_cow_label": 3,
+      "nearest_cow_name": "L-PCA",
+      "nearest_dist_mm": 0.2,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-PCA": 0.2,
+        "BA": 0.45,
+        "R-PCA": 6.01
+      }
+    },
+    {
+      "subject": "sub-stroke0186",
+      "status": "ok",
+      "lvo_voxels": 21,
+      "nearest_cow_label": 3,
+      "nearest_cow_name": "L-PCA",
+      "nearest_dist_mm": 0.0,
+      "site": "other",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-PCA": 0.0,
+        "L-ICA": 7.05,
+        "BA": 7.6
+      }
+    },
+    {
+      "subject": "sub-stroke0187",
+      "status": "ok",
+      "lvo_voxels": 16,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 0.25,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "R-MCA": 0.25,
+        "R-ICA": 9.49,
+        "R-ACA": 13.71
+      }
+    },
+    {
+      "subject": "sub-stroke0188",
+      "status": "ok",
+      "lvo_voxels": 19,
+      "nearest_cow_label": 5,
+      "nearest_cow_name": "R-MCA",
+      "nearest_dist_mm": 15.55,
+      "site": "other (low-confidence)",
+      "confident": false,
+      "all_label_distances_mm": {
+        "R-MCA": 15.55,
+        "R-ICA": 19.89,
+        "R-ACA": 23.83
+      }
+    },
+    {
+      "subject": "sub-stroke0189",
+      "status": "ok",
+      "lvo_voxels": 26,
+      "nearest_cow_label": 7,
+      "nearest_cow_name": "L-MCA",
+      "nearest_dist_mm": 4.66,
+      "site": "M1",
+      "confident": true,
+      "all_label_distances_mm": {
+        "L-MCA": 4.66,
+        "L-ICA": 18.75,
+        "L-ACA": 28.93
+      }
+    }
+  ]
+}

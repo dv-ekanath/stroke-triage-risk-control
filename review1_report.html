@@ -1,0 +1,488 @@
+<title>Risk-Controlled Threshold Triage</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg:            #F6F4EE;
+    --surface:       #FFFFFF;
+    --surface-sunk:  #EFECE3;
+    --ink:           #201E1A;
+    --ink-soft:      #5B584E;
+    --ink-faint:     #8C8879;
+    --accent:        #2C4A76;
+    --accent-soft:   #E6ECF4;
+    --dust:          #B9A968;
+    --dust-line:     #DCD4B8;
+    --good:          #1F7A4D;
+    --good-soft:     #E4F1E9;
+    --line:          #E2DDCE;
+    --series-1:      #2a78d6;
+    --series-2:      #eb6834;
+    --shadow: 0 1px 2px rgba(32,30,26,0.04), 0 8px 24px -12px rgba(32,30,26,0.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg:            #17160F;
+      --surface:       #201E17;
+      --surface-sunk:  #1B1A13;
+      --ink:           #F1EEE6;
+      --ink-soft:      #C7C2AF;
+      --ink-faint:     #8F8B79;
+      --accent:        #9FB6DA;
+      --accent-soft:   #26314A;
+      --dust:          #C9BB84;
+      --dust-line:     #3A3524;
+      --good:          #55B98A;
+      --good-soft:     #1D3227;
+      --line:          #38352A;
+      --series-1:      #3987e5;
+      --series-2:      #d95926;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg:            #17160F;
+    --surface:       #201E17;
+    --surface-sunk:  #1B1A13;
+    --ink:           #F1EEE6;
+    --ink-soft:      #C7C2AF;
+    --ink-faint:     #8F8B79;
+    --accent:        #9FB6DA;
+    --accent-soft:   #26314A;
+    --dust:          #C9BB84;
+    --dust-line:     #3A3524;
+    --good:          #55B98A;
+    --good-soft:     #1D3227;
+    --line:          #38352A;
+    --series-1:      #3987e5;
+    --series-2:      #d95926;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; text-wrap: balance; color: var(--ink); }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px 96px;
+  }
+  .wide { max-width: 920px; }
+
+  /* ---------- header ---------- */
+  header.cover {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--dust);
+    margin-bottom: 22px;
+  }
+  h1.title {
+    font-size: clamp(32px, 5vw, 46px);
+    font-weight: 900;
+    line-height: 1.08;
+    margin: 0 0 14px;
+  }
+  .subtitle {
+    font-size: 18px;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: "Fraunces", Georgia, serif;
+    max-width: 60ch;
+    margin: 0 0 28px;
+  }
+  .authors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  .authors b { color: var(--ink); font-weight: 600; }
+  .meta-line {
+    margin-top: 18px;
+    font-size: 13.5px;
+    color: var(--ink-faint);
+  }
+
+  .scope-note {
+    background: var(--surface-sunk);
+    border-left: 3px solid var(--dust);
+    padding: 14px 18px;
+    border-radius: 3px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin-top: 28px;
+  }
+  .scope-note b { color: var(--ink); }
+
+  /* ---------- sections ---------- */
+  section { margin-bottom: 52px; }
+  section > .sec-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dust);
+    margin-bottom: 8px;
+  }
+  h2.sec-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 18px;
+  }
+  p { max-width: 68ch; }
+  p.lede { font-size: 17px; color: var(--ink-soft); }
+
+  .callout {
+    background: var(--accent-soft);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .callout b { font-style: normal; font-weight: 700; color: var(--accent); }
+
+  /* ---------- objection / claim lists ---------- */
+  .item-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+  .item {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 14px;
+    padding: 4px 0;
+  }
+  .item .num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--surface);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+  }
+  .item h3 { font-size: 16.5px; font-weight: 700; margin: 0 0 4px; font-family: "Source Sans 3", sans-serif; }
+  .item p { font-size: 15px; color: var(--ink-soft); margin: 0; }
+
+  .claim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 22px 0;
+  }
+  .claim-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .claim-card .tag {
+    display: inline-block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .claim-card h3 { font-size: 16px; margin: 0 0 8px; font-family: "Source Sans 3", sans-serif; font-weight: 700; }
+  .claim-card p { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
+
+  /* ---------- stat tiles ---------- */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 22px 0;
+  }
+  .stat-tile {
+    background: var(--surface);
+    padding: 18px 16px;
+  }
+  .stat-tile .value {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.15;
+  }
+  .stat-tile .label {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    line-height: 1.35;
+  }
+  .stat-tile .sub {
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    margin-top: 3px;
+  }
+
+  /* ---------- metrics chart ---------- */
+  .chart-legend {
+    display: flex; gap: 22px; align-items: center;
+    font-size: 13px; color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .chart-legend .swatch { display: inline-flex; align-items: center; gap: 7px; }
+  .chart-legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 16px;
+  }
+  .metric-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px 18px 14px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .metric-card .m-title {
+    font-size: 13px; font-weight: 700; color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .metric-card .m-note {
+    font-size: 11.5px; color: var(--ink-faint); margin-bottom: 12px;
+  }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin: 7px 0; }
+  .bar-row .bar-label { width: 34px; font-size: 11px; color: var(--ink-faint); font-family: "IBM Plex Mono", monospace; text-align: right; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 16px; background: var(--surface-sunk); border-radius: 3px; position: relative; overflow: hidden; }
+  .bar-fill {
+    height: 100%; border-radius: 3px;
+    display: flex; align-items: center; justify-content: flex-end;
+    padding-right: 6px;
+    transition: filter 0.15s;
+  }
+  .bar-fill:hover { filter: brightness(1.12); cursor: default; }
+  .bar-fill .v { font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600; color: #fff; white-space: nowrap; }
+  .bar-fill.ours { background: var(--series-1); }
+  .bar-fill.lb   { background: var(--series-2); }
+  .beat {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11px; font-weight: 700; color: var(--good);
+    background: var(--good-soft); padding: 2px 8px; border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  /* ---------- checklist ---------- */
+  .checklist { display: flex; flex-direction: column; gap: 2px; margin: 20px 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .check-row {
+    display: grid; grid-template-columns: 28px 90px 1fr;
+    gap: 12px; align-items: center;
+    padding: 12px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .check-row:last-child { border-bottom: none; }
+  .check-row .mark { color: var(--good); font-weight: 700; font-size: 16px; }
+  .check-row .code { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--ink-faint); }
+  .check-row .desc { color: var(--ink-soft); }
+  .check-row .desc b { color: var(--ink); font-weight: 600; }
+
+  table.data-table {
+    width: 100%; border-collapse: collapse; font-size: 14px; margin: 18px 0;
+  }
+  table.data-table th, table.data-table td {
+    text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line);
+  }
+  table.data-table th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 600; }
+  table.data-table td.num { font-family: "IBM Plex Mono", monospace; text-align: right; font-variant-numeric: tabular-nums; }
+  .table-wrap { overflow-x: auto; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--ink-faint);
+  }
+  footer .refs { margin: 14px 0; padding-left: 18px; }
+  footer .refs li { margin-bottom: 6px; }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<div class="page">
+
+  <header class="cover">
+    <div class="eyebrow">Review 1 · Healthcare Analytics</div>
+    <h1 class="title">Risk-Controlled Threshold Triage for Ischemic Stroke</h1>
+    <p class="subtitle">A distribution-free guarantee on the triage decision itself — not on the volume estimate feeding it.</p>
+    <div class="authors">
+      <span><b>Ekanath DV</b> · 23MIA1023</span>
+      <span><b>Rohan Julius Preetan</b> · 23MIA1160</span>
+    </div>
+    <div class="meta-line">Extends Luan et al., <i>Unified multimodal learning for stroke triage</i>, npj Digital Medicine 9:441 (2026)</div>
+    <div class="scope-note">
+      <b>Note on scope.</b> This restructures the project's original knowledge-graph / cross-attention framing. Verification against the base paper and the prior art showed that approach duplicated conditioning already present elsewhere and cost statistical power the dataset (n=149) cannot spare, while a coverage guarantee on volume — with or without a graph — still doesn't guarantee the <i>decision</i> a clinician actually needs. The base-paper critique and dataset are unchanged; the methodology is not.
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-label">Motivation</div>
+    <h2 class="sec-title">The base paper's real weakness</h2>
+    <p class="lede">Three objections stronger than a raw accuracy comparison, found in the base paper's full text.</p>
+    <div class="item-list">
+      <div class="item">
+        <div class="num">1</div>
+        <div><h3>An impossible generalisation claim</h3>
+          <p>Reports leave-one-center-out validation "across 7 medical centers" with GE/Siemens/Philips scanners. The dataset's own descriptor — and this project's own recovery of the real labels — puts the public set at <b class="mono">2</b> centers, Siemens and Philips only, no GE.</p></div>
+      </div>
+      <div class="item">
+        <div class="num">2</div>
+        <div><h3>A task-definition mismatch, not a performance gap</h3>
+          <p>Their target is core/penumbra referenced to follow-up MRI or DSA; ISLES'24's label is the final infarct on day 2–9 DWI, and they additionally train on two other cohorts. Their reported Dice 0.81 vs. the challenge leaderboard's 0.285 is very likely attribution drift, not a 3× improvement.</p></div>
+      </div>
+      <div class="item">
+        <div class="num">3</div>
+        <div><h3>The uncertainty layer is the actual hole</h3>
+          <p>ECE = 0.130 is called "excellent calibration." Abstention is a hand-set threshold (τ = 0.15) justified post hoc. The clinical safety claim is computed on <b class="mono">n = 30</b> patients against an unmatched historical rate — and their own ablation shows disabling rejection nearly doubles mis-triage.</p></div>
+      </div>
+    </div>
+    <div class="callout">
+      The deployed system's abstention threshold is an <b>unvalidated hyperparameter evaluated on 30 patients</b>. This project produces one with a distribution-free, finite-sample guarantee on the clinically asymmetric error instead.
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label">Approach</div>
+    <h2 class="sec-title">Three claims, each independently reportable</h2>
+    <p class="lede">Marginal conformal coverage says nothing about which side of a threshold a patient falls on. A rule can cover the volume distribution well while abstaining on everything, or cover it poorly while every decision is correct — coverage and decision correctness are different objects. Nobody has certified the decision directly, at a clinically motivated asymmetry, with a finite-sample guarantee.</p>
+    <div class="claim-grid">
+      <div class="claim-card">
+        <span class="tag">N1 · primary</span>
+        <h3>Risk-controlled threshold triage</h3>
+        <p>A calibrated crossing-probability per patient (conformal predictive system) feeds a Learn-then-Test certified decision rule with two asymmetric clinical risks — missed eligibility vs. futile reperfusion — set by the 2026 AHA/ASA guideline, not by taste.</p>
+      </div>
+      <div class="claim-card">
+        <span class="tag">N2 · secondary</span>
+        <h3>Decision-analytic validation</h3>
+        <p>Net-benefit decision curve analysis extended with a deferral arm, answering "there is no single correct τ" with the tool clinical journals actually read.</p>
+      </div>
+      <div class="claim-card">
+        <span class="tag">N3 · secondary</span>
+        <h3>What n=149 can certify</h3>
+        <p>A minimum-sample-size table per risk level, and an irreducible-error floor from annotation noise — turning the sample-size limit into a reported finding rather than an excuse.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label">Data · verified, not assumed</div>
+    <h2 class="sec-title">Real findings from the downloaded release</h2>
+    <p class="lede">Every number below was produced by running the audit and recovery scripts against the actual ISLES'24 archive (149 subjects) — not a synthetic stand-in.</p>
+    <div class="stat-row">
+      <div class="stat-tile"><div class="value">99 / 49</div><div class="label">Center split recovered</div><div class="sub">descriptor: 100 / 49</div></div>
+      <div class="stat-tile"><div class="value">31.7 mL</div><div class="label">Mean infarct volume</div><div class="sub">descriptor: 33.2 mL</div></div>
+      <div class="stat-tile"><div class="value">τ = 110</div><div class="label">Certifiable, margin of 1 case</div><div class="sub">synthetic sweep said no</div></div>
+      <div class="stat-tile"><div class="value">70.8%</div><div class="label">Confident occlusion-site labels</div><div class="sub">nearest-distance derivation</div></div>
+      <div class="stat-tile"><div class="value">80 / 149</div><div class="label">Complete mRS-shift pairs</div><div class="sub">real constraint on H4</div></div>
+    </div>
+    <p style="font-size:14.5px;color:var(--ink-soft)">This release ships no <span class="mono">participants.tsv</span> — center labels were recovered directly from a per-subject phenotype field instead, and matched the published descriptor almost exactly (the one gap is a single subject with a genuinely blank field in its own source file).</p>
+  </section>
+
+  <section class="wide" style="max-width:920px;margin-left:auto;margin-right:auto;">
+    <div class="sec-label">Headline result</div>
+    <h2 class="sec-title">Baseline segmentation vs. the published leaderboard</h2>
+    <p class="lede">A single, untuned 200-epoch run of the deliberately conventional segmentation trunk (item 1.6's deliverable — the full multi-task model is Review 2), evaluated on all four official ISLES'24 metrics against 30 held-out real subjects.</p>
+    <div class="chart-legend">
+      <span class="swatch"><i style="background:var(--series-1)"></i>This baseline</span>
+      <span class="swatch"><i style="background:var(--series-2)"></i>Published leaderboard (Kurtlab)</span>
+    </div>
+    <div class="metric-grid" id="metricGrid"></div>
+  </section>
+
+  <section>
+    <div class="sec-label">Status</div>
+    <h2 class="sec-title">Review 1 — complete, 7 of 7</h2>
+    <div class="checklist">
+      <div class="check-row"><span class="mark">✓</span><span class="code">1.1</span><span class="desc"><b>v4 proposal document</b> — rewritten base-paper critique, three claims, methodology, protocol</span></div>
+      <div class="check-row"><span class="mark">✓</span><span class="code">1.2</span><span class="desc"><b>Prior-art differentiation table</b> — one row per adjacent conformal-prediction paper</span></div>
+      <div class="check-row"><span class="mark">✓</span><span class="code">1.3</span><span class="desc"><b>Data audit</b> — volume distribution, class balance, τ-certifiability, on real masks</span></div>
+      <div class="check-row"><span class="mark">✓</span><span class="code">1.4</span><span class="desc"><b>Center-label recovery</b> — 99/49 split recovered from the real release</span></div>
+      <div class="check-row"><span class="mark">✓</span><span class="code">1.5</span><span class="desc"><b>Synthetic calibration validation</b> — PIT uniformity, coverage, LTT risk control all pass</span></div>
+      <div class="check-row"><span class="mark">✓</span><span class="code">1.6</span><span class="desc"><b>Baseline segmentation</b> — trained and evaluated, leaderboard-comparable</span></div>
+      <div class="check-row"><span class="mark">✓</span><span class="code">1.7</span><span class="desc"><b>Occlusion-site + mRS-shift targets</b> — derived and validated on real data</span></div>
+    </div>
+    <p style="font-size:14.5px;color:var(--ink-soft)">All three go/no-go gates cleared: near-boundary mass exists at a defensible τ, center labels are recoverable, and the calibration layer controls risk on synthetic data. Review 2 builds the full multi-task model and conformal decision layer on top of this baseline.</p>
+  </section>
+
+  <footer>
+    <div>Full technical detail: <span class="mono">stroke_triage_proposal_v4.md</span> · <span class="mono">prior_art_table.md</span> · <span class="mono">stroke_triage_v4_plan.md</span></div>
+    <div style="margin-top:10px;font-weight:600;color:var(--ink-soft)">Key references</div>
+    <ol class="refs">
+      <li>Luan T. et al. Unified multimodal learning for stroke triage. <i>npj Digital Medicine</i> 9:441 (2026).</li>
+      <li>Angelopoulos, Bates et al. Learn then Test: Calibrating Predictive Algorithms to Achieve Risk Control. <i>Ann. Appl. Stat.</i> 19(2), 2025.</li>
+      <li>Lambert B. et al. Robust Conformal Volume Estimation in 3D Medical Images. MICCAI 2024.</li>
+      <li>Riedel E.O. et al. The ISLES'24 Dataset. <i>Radiology: AI</i> 8(3) (2026).</li>
+      <li>2026 AHA/ASA Guideline for the Early Management of Patients With Acute Ischemic Stroke.</li>
+    </ol>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var metrics = [
+    { title: "Dice coefficient", note: "segmentation overlap · higher is better", max: 0.32, ours: 0.215, lb: 0.285, oursFmt: "0.215", lbFmt: "0.285", beat: false },
+    { title: "Abs. volume diff.", note: "mL · lower is better", max: 25, ours: 21.34, lb: 21.23, oursFmt: "21.3mL", lbFmt: "21.2mL", beat: false, close: true },
+    { title: "Lesion-wise F1", note: "instance detection · higher is better", max: 0.32, ours: 0.278, lb: 0.144, oursFmt: "0.278", lbFmt: "0.144", beat: true },
+    { title: "Abs. lesion count diff.", note: "count · lower is better", max: 9, ours: 6.57, lb: 7.18, oursFmt: "6.57", lbFmt: "7.18", beat: true }
+  ];
+
+  var grid = document.getElementById("metricGrid");
+  metrics.forEach(function (m) {
+    var card = document.createElement("div");
+    card.className = "metric-card";
+
+    var oursPct = Math.max(6, (m.ours / m.max) * 100);
+    var lbPct = Math.max(6, (m.lb / m.max) * 100);
+
+    card.innerHTML =
+      '<div class="m-title">' + m.title + '</div>' +
+      '<div class="m-note">' + m.note + '</div>' +
+      '<div class="bar-row"><span class="bar-label">Ours</span><div class="bar-track"><div class="bar-fill ours" style="width:' + oursPct + '%" title="This baseline: ' + m.oursFmt + '"><span class="v">' + m.oursFmt + '</span></div></div></div>' +
+      '<div class="bar-row"><span class="bar-label">Board</span><div class="bar-track"><div class="bar-fill lb" style="width:' + lbPct + '%" title="Published leaderboard: ' + m.lbFmt + '"><span class="v">' + m.lbFmt + '</span></div></div></div>' +
+      (m.beat ? '<span class="beat">&#8593; exceeds leaderboard</span>' : (m.close ? '<span class="beat">&#8776; matches leaderboard</span>' : ''));
+
+    grid.appendChild(card);
+  });
+})();
+</script>

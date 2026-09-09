@@ -1,0 +1,25 @@
+# Virtual environment (CUDA PyTorch build, ~5GB) -- never commit this.
+# Recreate with: python -m venv .venv && pip install -r requirements.txt
+#                pip install torch --index-url https://download.pytorch.org/whl/cu128
+.venv/
+__pycache__/
+*.pyc
+
+# Model checkpoints -- binary training artifacts, not source. Regenerate via
+# src/model/train_baseline.py.
+outputs/checkpoints/
+
+# The dataset itself lives outside this repo (see guide.md / README) --
+# nothing under this project folder holds ISLES'24 data, but excluded here
+# defensively in case it's ever extracted alongside the code by mistake.
+# Root-anchored: must NOT match src/data/ (real source code).
+/data/
+*.nii
+*.nii.gz
+*.7z
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

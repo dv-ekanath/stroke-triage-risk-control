@@ -1,0 +1,1092 @@
+{
+  "root": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train",
+  "config": {
+    "root": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train",
+    "mask_pattern": null,
+    "band_ml": 20.0,
+    "alpha_missed": 0.05,
+    "alpha_futile": 0.2,
+    "delta": 0.1,
+    "lesion_counts": true
+  },
+  "distribution": {
+    "n": 149,
+    "mean": 31.68609225231289,
+    "sd": 45.14158649864984,
+    "min": 0.0,
+    "max": 222.12942944335938,
+    "p5": 0.41608501993417746,
+    "q1": 3.8857165625095367,
+    "median": 12.426141305744649,
+    "q3": 38.640316421419385,
+    "p95": 132.81136423079963,
+    "n_zero": 3
+  },
+  "tau_table": [
+    {
+      "tau_ml": 10.0,
+      "n_below": 66,
+      "n_above": 83,
+      "prevalence_above": 0.5570469798657718,
+      "majority_baseline_acc": 0.5570469798657718,
+      "n_within_20ml": 106,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": true,
+      "certifiable": true
+    },
+    {
+      "tau_ml": 20.0,
+      "n_below": 96,
+      "n_above": 53,
+      "prevalence_above": 0.35570469798657717,
+      "majority_baseline_acc": 0.6442953020134228,
+      "n_within_20ml": 112,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": true,
+      "certifiable": true
+    },
+    {
+      "tau_ml": 30.0,
+      "n_below": 106,
+      "n_above": 43,
+      "prevalence_above": 0.28859060402684567,
+      "majority_baseline_acc": 0.7114093959731543,
+      "n_within_20ml": 53,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": true,
+      "certifiable": true
+    },
+    {
+      "tau_ml": 40.0,
+      "n_below": 112,
+      "n_above": 37,
+      "prevalence_above": 0.2483221476510067,
+      "majority_baseline_acc": 0.7516778523489933,
+      "n_within_20ml": 28,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": true,
+      "certifiable": true
+    },
+    {
+      "tau_ml": 50.0,
+      "n_below": 119,
+      "n_above": 30,
+      "prevalence_above": 0.20134228187919462,
+      "majority_baseline_acc": 0.7986577181208053,
+      "n_within_20ml": 21,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": true,
+      "certifiable": true
+    },
+    {
+      "tau_ml": 60.0,
+      "n_below": 124,
+      "n_above": 25,
+      "prevalence_above": 0.16778523489932887,
+      "majority_baseline_acc": 0.8322147651006712,
+      "n_within_20ml": 18,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": true,
+      "certifiable": true
+    },
+    {
+      "tau_ml": 70.0,
+      "n_below": 127,
+      "n_above": 22,
+      "prevalence_above": 0.1476510067114094,
+      "majority_baseline_acc": 0.8523489932885906,
+      "n_within_20ml": 12,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": true,
+      "certifiable": true
+    },
+    {
+      "tau_ml": 80.0,
+      "n_below": 130,
+      "n_above": 19,
+      "prevalence_above": 0.12751677852348994,
+      "majority_baseline_acc": 0.87248322147651,
+      "n_within_20ml": 10,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": true,
+      "certifiable": true
+    },
+    {
+      "tau_ml": 90.0,
+      "n_below": 131,
+      "n_above": 18,
+      "prevalence_above": 0.12080536912751678,
+      "majority_baseline_acc": 0.8791946308724832,
+      "n_within_20ml": 10,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": true,
+      "certifiable": true
+    },
+    {
+      "tau_ml": 100.0,
+      "n_below": 134,
+      "n_above": 15,
+      "prevalence_above": 0.10067114093959731,
+      "majority_baseline_acc": 0.8993288590604027,
+      "n_within_20ml": 10,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": true,
+      "certifiable": true
+    },
+    {
+      "tau_ml": 110.0,
+      "n_below": 137,
+      "n_above": 12,
+      "prevalence_above": 0.08053691275167785,
+      "majority_baseline_acc": 0.9194630872483222,
+      "n_within_20ml": 10,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": true,
+      "certifiable": true
+    },
+    {
+      "tau_ml": 130.0,
+      "n_below": 141,
+      "n_above": 8,
+      "prevalence_above": 0.053691275167785234,
+      "majority_baseline_acc": 0.9463087248322147,
+      "n_within_20ml": 7,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": false,
+      "certifiable": false
+    },
+    {
+      "tau_ml": 150.0,
+      "n_below": 144,
+      "n_above": 5,
+      "prevalence_above": 0.03355704697986577,
+      "majority_baseline_acc": 0.9664429530201343,
+      "n_within_20ml": 4,
+      "floor_missed": 45,
+      "floor_futile": 11,
+      "can_certify_missed": true,
+      "can_certify_futile": false,
+      "certifiable": false
+    }
+  ],
+  "cases": [
+    {
+      "subject": "sub-stroke0001",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0001\\ses-02\\sub-stroke0001_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 7.60869140625,
+      "n_lesions": 18
+    },
+    {
+      "subject": "sub-stroke0002",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0002\\ses-02\\sub-stroke0002_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 184.39148554992676,
+      "n_lesions": 13
+    },
+    {
+      "subject": "sub-stroke0003",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0003\\ses-02\\sub-stroke0003_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 0.7459236145019531,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0004",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0004\\ses-02\\sub-stroke0004_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 2.643866539001465,
+      "n_lesions": 13
+    },
+    {
+      "subject": "sub-stroke0005",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0005\\ses-02\\sub-stroke0005_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 56.03309555053711,
+      "n_lesions": 51
+    },
+    {
+      "subject": "sub-stroke0006",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0006\\ses-02\\sub-stroke0006_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 89.16697540283204,
+      "n_lesions": 1
+    },
+    {
+      "subject": "sub-stroke0007",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0007\\ses-02\\sub-stroke0007_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 61.86522903442383,
+      "n_lesions": 32
+    },
+    {
+      "subject": "sub-stroke0008",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0008\\ses-02\\sub-stroke0008_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 15.749519348144531,
+      "n_lesions": 18
+    },
+    {
+      "subject": "sub-stroke0009",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0009\\ses-02\\sub-stroke0009_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 11.182707153320312,
+      "n_lesions": 12
+    },
+    {
+      "subject": "sub-stroke0010",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0010\\ses-02\\sub-stroke0010_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 13.49761734008789,
+      "n_lesions": 33
+    },
+    {
+      "subject": "sub-stroke0011",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0011\\ses-02\\sub-stroke0011_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 77.98518676757813,
+      "n_lesions": 25
+    },
+    {
+      "subject": "sub-stroke0012",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0012\\ses-02\\sub-stroke0012_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 18.488946533203126,
+      "n_lesions": 10
+    },
+    {
+      "subject": "sub-stroke0013",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0013\\ses-02\\sub-stroke0013_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 0.9171798706054688,
+      "n_lesions": 10
+    },
+    {
+      "subject": "sub-stroke0014",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0014\\ses-02\\sub-stroke0014_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 222.12942944335938,
+      "n_lesions": 28
+    },
+    {
+      "subject": "sub-stroke0015",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0015\\ses-02\\sub-stroke0015_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 3.71490478515625,
+      "n_lesions": 1
+    },
+    {
+      "subject": "sub-stroke0016",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0016\\ses-02\\sub-stroke0016_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 17.6814140625,
+      "n_lesions": 14
+    },
+    {
+      "subject": "sub-stroke0017",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0017\\ses-02\\sub-stroke0017_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 138.63427734375,
+      "n_lesions": 9
+    },
+    {
+      "subject": "sub-stroke0019",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0019\\ses-02\\sub-stroke0019_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 4.541150665283203,
+      "n_lesions": 25
+    },
+    {
+      "subject": "sub-stroke0020",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0020\\ses-02\\sub-stroke0020_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 1.119384765625,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0021",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0021\\ses-02\\sub-stroke0021_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 7.19560546875,
+      "n_lesions": 37
+    },
+    {
+      "subject": "sub-stroke0022",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0022\\ses-02\\sub-stroke0022_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 28.548240661621094,
+      "n_lesions": 5
+    },
+    {
+      "subject": "sub-stroke0025",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0025\\ses-02\\sub-stroke0025_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 76.68377380371093,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0026",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0026\\ses-02\\sub-stroke0026_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 29.612766371011734,
+      "n_lesions": 11
+    },
+    {
+      "subject": "sub-stroke0027",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0027\\ses-02\\sub-stroke0027_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 139.740731048584,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0028",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0028\\ses-02\\sub-stroke0028_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 14.595985412597656,
+      "n_lesions": 3
+    },
+    {
+      "subject": "sub-stroke0030",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0030\\ses-02\\sub-stroke0030_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 14.136996650695801,
+      "n_lesions": 2
+    },
+    {
+      "subject": "sub-stroke0033",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0033\\ses-02\\sub-stroke0033_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 5.716728973388672,
+      "n_lesions": 21
+    },
+    {
+      "subject": "sub-stroke0036",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0036\\ses-02\\sub-stroke0036_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 6.290386962890625,
+      "n_lesions": 29
+    },
+    {
+      "subject": "sub-stroke0037",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0037\\ses-02\\sub-stroke0037_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 21.742749206542967,
+      "n_lesions": 10
+    },
+    {
+      "subject": "sub-stroke0038",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0038\\ses-02\\sub-stroke0038_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 1.5110969543457031,
+      "n_lesions": 11
+    },
+    {
+      "subject": "sub-stroke0040",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0040\\ses-02\\sub-stroke0040_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 14.919853210449219,
+      "n_lesions": 6
+    },
+    {
+      "subject": "sub-stroke0043",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0043\\ses-02\\sub-stroke0043_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 2.5493930969238283,
+      "n_lesions": 12
+    },
+    {
+      "subject": "sub-stroke0045",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0045\\ses-02\\sub-stroke0045_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 14.449452209472657,
+      "n_lesions": 2
+    },
+    {
+      "subject": "sub-stroke0047",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0047\\ses-02\\sub-stroke0047_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 5.727495574951172,
+      "n_lesions": 3
+    },
+    {
+      "subject": "sub-stroke0048",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0048\\ses-02\\sub-stroke0048_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 1.4137893676757813,
+      "n_lesions": 15
+    },
+    {
+      "subject": "sub-stroke0049",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0049\\ses-02\\sub-stroke0049_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 4.052616119384766,
+      "n_lesions": 21
+    },
+    {
+      "subject": "sub-stroke0052",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0052\\ses-02\\sub-stroke0052_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 31.327782440185548,
+      "n_lesions": 51
+    },
+    {
+      "subject": "sub-stroke0053",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0053\\ses-02\\sub-stroke0053_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 3.5193431854248045,
+      "n_lesions": 1
+    },
+    {
+      "subject": "sub-stroke0054",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0054\\ses-02\\sub-stroke0054_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 10.955353546142579,
+      "n_lesions": 5
+    },
+    {
+      "subject": "sub-stroke0055",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0055\\ses-02\\sub-stroke0055_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 3.273046875,
+      "n_lesions": 12
+    },
+    {
+      "subject": "sub-stroke0057",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0057\\ses-02\\sub-stroke0057_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 0.7920563049316406,
+      "n_lesions": 19
+    },
+    {
+      "subject": "sub-stroke0062",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0062\\ses-02\\sub-stroke0062_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 11.036439514160156,
+      "n_lesions": 13
+    },
+    {
+      "subject": "sub-stroke0066",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0066\\ses-02\\sub-stroke0066_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 95.07428340911865,
+      "n_lesions": 11
+    },
+    {
+      "subject": "sub-stroke0068",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0068\\ses-02\\sub-stroke0068_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 6.845876312255859,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0070",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0070\\ses-02\\sub-stroke0070_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 211.21692657470703,
+      "n_lesions": 10
+    },
+    {
+      "subject": "sub-stroke0071",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0071\\ses-02\\sub-stroke0071_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 7.3283203125,
+      "n_lesions": 3
+    },
+    {
+      "subject": "sub-stroke0073",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0073\\ses-02\\sub-stroke0073_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 16.277313232421875,
+      "n_lesions": 15
+    },
+    {
+      "subject": "sub-stroke0074",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0074\\ses-02\\sub-stroke0074_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 3.0527114868164062,
+      "n_lesions": 37
+    },
+    {
+      "subject": "sub-stroke0075",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0075\\ses-02\\sub-stroke0075_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 2.7061180114746093,
+      "n_lesions": 15
+    },
+    {
+      "subject": "sub-stroke0076",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0076\\ses-02\\sub-stroke0076_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 2.7705224609375,
+      "n_lesions": 6
+    },
+    {
+      "subject": "sub-stroke0077",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0077\\ses-02\\sub-stroke0077_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 5.316500946044922,
+      "n_lesions": 34
+    },
+    {
+      "subject": "sub-stroke0078",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0078\\ses-02\\sub-stroke0078_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 109.70853326416015,
+      "n_lesions": 6
+    },
+    {
+      "subject": "sub-stroke0079",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0079\\ses-02\\sub-stroke0079_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 4.68220873260498,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0080",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0080\\ses-02\\sub-stroke0080_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 134.84293670654296,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0081",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0081\\ses-02\\sub-stroke0081_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 25.18476333618164,
+      "n_lesions": 17
+    },
+    {
+      "subject": "sub-stroke0082",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0082\\ses-02\\sub-stroke0082_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 118.2987075805664,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0083",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0083\\ses-02\\sub-stroke0083_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 10.623944091796876,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0084",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0084\\ses-02\\sub-stroke0084_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 1.3554292678833009,
+      "n_lesions": 7
+    },
+    {
+      "subject": "sub-stroke0085",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0085\\ses-02\\sub-stroke0085_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 8.7415927734375,
+      "n_lesions": 34
+    },
+    {
+      "subject": "sub-stroke0086",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0086\\ses-02\\sub-stroke0086_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 0.3152595520019531,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0087",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0087\\ses-02\\sub-stroke0087_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 3.66602783203125,
+      "n_lesions": 9
+    },
+    {
+      "subject": "sub-stroke0088",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0088\\ses-02\\sub-stroke0088_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 11.703516716003419,
+      "n_lesions": 52
+    },
+    {
+      "subject": "sub-stroke0089",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0089\\ses-02\\sub-stroke0089_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 19.971062469482423,
+      "n_lesions": 10
+    },
+    {
+      "subject": "sub-stroke0090",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0090\\ses-02\\sub-stroke0090_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 45.50335922241211,
+      "n_lesions": 10
+    },
+    {
+      "subject": "sub-stroke0091",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0091\\ses-02\\sub-stroke0091_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 3.3591796875,
+      "n_lesions": 1
+    },
+    {
+      "subject": "sub-stroke0092",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0092\\ses-02\\sub-stroke0092_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 1.4144622802734375,
+      "n_lesions": 18
+    },
+    {
+      "subject": "sub-stroke0093",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0093\\ses-02\\sub-stroke0093_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 19.41527857208252,
+      "n_lesions": 18
+    },
+    {
+      "subject": "sub-stroke0094",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0094\\ses-02\\sub-stroke0094_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 0.1190869140625,
+      "n_lesions": 1
+    },
+    {
+      "subject": "sub-stroke0095",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0095\\ses-02\\sub-stroke0095_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 117.34634358215332,
+      "n_lesions": 34
+    },
+    {
+      "subject": "sub-stroke0096",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0096\\ses-02\\sub-stroke0096_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 76.41582584381104,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0097",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0097\\ses-02\\sub-stroke0097_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 58.04308547973633,
+      "n_lesions": 7
+    },
+    {
+      "subject": "sub-stroke0098",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0098\\ses-02\\sub-stroke0098_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 100.99677886962891,
+      "n_lesions": 18
+    },
+    {
+      "subject": "sub-stroke0099",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0099\\ses-02\\sub-stroke0099_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 1.07545076751709,
+      "n_lesions": 7
+    },
+    {
+      "subject": "sub-stroke0100",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0100\\ses-02\\sub-stroke0100_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 0.523833984375,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0101",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0101\\ses-02\\sub-stroke0101_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 43.012353515625,
+      "n_lesions": 104
+    },
+    {
+      "subject": "sub-stroke0102",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0102\\ses-02\\sub-stroke0102_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 4.189468490600586,
+      "n_lesions": 6
+    },
+    {
+      "subject": "sub-stroke0103",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0103\\ses-02\\sub-stroke0103_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 8.42318344116211,
+      "n_lesions": 15
+    },
+    {
+      "subject": "sub-stroke0104",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0104\\ses-02\\sub-stroke0104_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 14.69165625,
+      "n_lesions": 26
+    },
+    {
+      "subject": "sub-stroke0105",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0105\\ses-02\\sub-stroke0105_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 13.607953102111816,
+      "n_lesions": 6
+    },
+    {
+      "subject": "sub-stroke0106",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0106\\ses-02\\sub-stroke0106_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 3.4957809448242188,
+      "n_lesions": 37
+    },
+    {
+      "subject": "sub-stroke0107",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0107\\ses-02\\sub-stroke0107_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 99.58938217163086,
+      "n_lesions": 18
+    },
+    {
+      "subject": "sub-stroke0108",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0108\\ses-02\\sub-stroke0108_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 8.9295380859375,
+      "n_lesions": 1
+    },
+    {
+      "subject": "sub-stroke0109",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0109\\ses-02\\sub-stroke0109_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 1.2626317749023437,
+      "n_lesions": 2
+    },
+    {
+      "subject": "sub-stroke0110",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0110\\ses-02\\sub-stroke0110_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 9.248174285888672,
+      "n_lesions": 75
+    },
+    {
+      "subject": "sub-stroke0111",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0111\\ses-02\\sub-stroke0111_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 20.895618438720703,
+      "n_lesions": 33
+    },
+    {
+      "subject": "sub-stroke0112",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0112\\ses-02\\sub-stroke0112_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 4.22103214263916,
+      "n_lesions": 3
+    },
+    {
+      "subject": "sub-stroke0113",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0113\\ses-02\\sub-stroke0113_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 33.20352630615234,
+      "n_lesions": 11
+    },
+    {
+      "subject": "sub-stroke0114",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0114\\ses-02\\sub-stroke0114_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 45.846061264038084,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0115",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0115\\ses-02\\sub-stroke0115_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 108.53541870117188,
+      "n_lesions": 9
+    },
+    {
+      "subject": "sub-stroke0116",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0116\\ses-02\\sub-stroke0116_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 38.384953308105466,
+      "n_lesions": 18
+    },
+    {
+      "subject": "sub-stroke0117",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0117\\ses-02\\sub-stroke0117_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 6.305517402648926,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0118",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0118\\ses-02\\sub-stroke0118_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 23.8195414352417,
+      "n_lesions": 19
+    },
+    {
+      "subject": "sub-stroke0119",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0119\\ses-02\\sub-stroke0119_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 0.3209989547729492,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0133",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0133\\ses-02\\sub-stroke0133_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 19.887668189406394,
+      "n_lesions": 23
+    },
+    {
+      "subject": "sub-stroke0134",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0134\\ses-02\\sub-stroke0134_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 8.150127138137817,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0135",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0135\\ses-02\\sub-stroke0135_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 17.535764570236207,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0136",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0136\\ses-02\\sub-stroke0136_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 5.108968575149775,
+      "n_lesions": 5
+    },
+    {
+      "subject": "sub-stroke0137",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0137\\ses-02\\sub-stroke0137_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 150.82031953012944,
+      "n_lesions": 5
+    },
+    {
+      "subject": "sub-stroke0138",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0138\\ses-02\\sub-stroke0138_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 40.0118779528141,
+      "n_lesions": 7
+    },
+    {
+      "subject": "sub-stroke0139",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0139\\ses-02\\sub-stroke0139_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 14.450864922881127,
+      "n_lesions": 1
+    },
+    {
+      "subject": "sub-stroke0140",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0140\\ses-02\\sub-stroke0140_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 44.16837669253349,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0141",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0141\\ses-02\\sub-stroke0141_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 0.0,
+      "n_lesions": 0
+    },
+    {
+      "subject": "sub-stroke0142",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0142\\ses-02\\sub-stroke0142_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 0.344252376973629,
+      "n_lesions": 2
+    },
+    {
+      "subject": "sub-stroke0143",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0143\\ses-02\\sub-stroke0143_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 6.900216304779053,
+      "n_lesions": 3
+    },
+    {
+      "subject": "sub-stroke0144",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0144\\ses-02\\sub-stroke0144_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 13.80544388306141,
+      "n_lesions": 13
+    },
+    {
+      "subject": "sub-stroke0145",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0145\\ses-02\\sub-stroke0145_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 1.1183723376989365,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0146",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0146\\ses-02\\sub-stroke0146_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 9.083714415431023,
+      "n_lesions": 9
+    },
+    {
+      "subject": "sub-stroke0147",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0147\\ses-02\\sub-stroke0147_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 2.6187608246803284,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0148",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0148\\ses-02\\sub-stroke0148_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 10.961305970847606,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0149",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0149\\ses-02\\sub-stroke0149_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 19.256386677265166,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0150",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0150\\ses-02\\sub-stroke0150_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 12.300749923229217,
+      "n_lesions": 6
+    },
+    {
+      "subject": "sub-stroke0151",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0151\\ses-02\\sub-stroke0151_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 1.3918880433440208,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0152",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0152\\ses-02\\sub-stroke0152_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 17.843491902291774,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0153",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0153\\ses-02\\sub-stroke0153_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 181.11732876509427,
+      "n_lesions": 32
+    },
+    {
+      "subject": "sub-stroke0154",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0154\\ses-02\\sub-stroke0154_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 13.792067027062178,
+      "n_lesions": 59
+    },
+    {
+      "subject": "sub-stroke0155",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0155\\ses-02\\sub-stroke0155_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 67.91904336726665,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0156",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0156\\ses-02\\sub-stroke0156_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 36.87788587641716,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0157",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0157\\ses-02\\sub-stroke0157_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 44.48024627685547,
+      "n_lesions": 10
+    },
+    {
+      "subject": "sub-stroke0158",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0158\\ses-02\\sub-stroke0158_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 118.93001708984374,
+      "n_lesions": 15
+    },
+    {
+      "subject": "sub-stroke0159",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0159\\ses-02\\sub-stroke0159_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 0.3180037015378475,
+      "n_lesions": 1
+    },
+    {
+      "subject": "sub-stroke0161",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0161\\ses-02\\sub-stroke0161_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 48.35497095251083,
+      "n_lesions": 18
+    },
+    {
+      "subject": "sub-stroke0162",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0162\\ses-02\\sub-stroke0162_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 0.0,
+      "n_lesions": 0
+    },
+    {
+      "subject": "sub-stroke0163",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0163\\ses-02\\sub-stroke0163_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 13.299938514858484,
+      "n_lesions": 22
+    },
+    {
+      "subject": "sub-stroke0164",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0164\\ses-02\\sub-stroke0164_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 63.13573668479919,
+      "n_lesions": 9
+    },
+    {
+      "subject": "sub-stroke0165",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0165\\ses-02\\sub-stroke0165_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 22.14053134870529,
+      "n_lesions": 5
+    },
+    {
+      "subject": "sub-stroke0166",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0166\\ses-02\\sub-stroke0166_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 37.619529940366746,
+      "n_lesions": 1
+    },
+    {
+      "subject": "sub-stroke0167",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0167\\ses-02\\sub-stroke0167_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 54.97499435022473,
+      "n_lesions": 16
+    },
+    {
+      "subject": "sub-stroke0168",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0168\\ses-02\\sub-stroke0168_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 53.294107817262415,
+      "n_lesions": 3
+    },
+    {
+      "subject": "sub-stroke0169",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0169\\ses-02\\sub-stroke0169_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 12.426141305744649,
+      "n_lesions": 16
+    },
+    {
+      "subject": "sub-stroke0170",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0170\\ses-02\\sub-stroke0170_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 8.59658396446705,
+      "n_lesions": 15
+    },
+    {
+      "subject": "sub-stroke0171",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0171\\ses-02\\sub-stroke0171_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 0.001333210587501526,
+      "n_lesions": 2
+    },
+    {
+      "subject": "sub-stroke0172",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0172\\ses-02\\sub-stroke0172_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 3.8857165625095367,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0173",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0173\\ses-02\\sub-stroke0173_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 3.8123119052648544,
+      "n_lesions": 5
+    },
+    {
+      "subject": "sub-stroke0174",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0174\\ses-02\\sub-stroke0174_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 28.49017196020484,
+      "n_lesions": 6
+    },
+    {
+      "subject": "sub-stroke0175",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0175\\ses-02\\sub-stroke0175_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 5.646840232521296,
+      "n_lesions": 8
+    },
+    {
+      "subject": "sub-stroke0176",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0176\\ses-02\\sub-stroke0176_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 7.384226290881633,
+      "n_lesions": 7
+    },
+    {
+      "subject": "sub-stroke0177",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0177\\ses-02\\sub-stroke0177_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 50.08094723558426,
+      "n_lesions": 51
+    },
+    {
+      "subject": "sub-stroke0178",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0178\\ses-02\\sub-stroke0178_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 38.640316421419385,
+      "n_lesions": 2
+    },
+    {
+      "subject": "sub-stroke0179",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0179\\ses-02\\sub-stroke0179_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 3.078595418035984,
+      "n_lesions": 3
+    },
+    {
+      "subject": "sub-stroke0180",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0180\\ses-02\\sub-stroke0180_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 4.425119525283575,
+      "n_lesions": 5
+    },
+    {
+      "subject": "sub-stroke0181",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0181\\ses-02\\sub-stroke0181_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 129.76400551718473,
+      "n_lesions": 4
+    },
+    {
+      "subject": "sub-stroke0182",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0182\\ses-02\\sub-stroke0182_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 2.525868029296398,
+      "n_lesions": 18
+    },
+    {
+      "subject": "sub-stroke0183",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0183\\ses-02\\sub-stroke0183_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 28.92817611694336,
+      "n_lesions": 11
+    },
+    {
+      "subject": "sub-stroke0184",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0184\\ses-02\\sub-stroke0184_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 3.359852600097656,
+      "n_lesions": 19
+    },
+    {
+      "subject": "sub-stroke0185",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0185\\ses-02\\sub-stroke0185_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 8.910965286254882,
+      "n_lesions": 13
+    },
+    {
+      "subject": "sub-stroke0186",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0186\\ses-02\\sub-stroke0186_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 8.426211547851562,
+      "n_lesions": 5
+    },
+    {
+      "subject": "sub-stroke0187",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0187\\ses-02\\sub-stroke0187_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 98.10145877075195,
+      "n_lesions": 12
+    },
+    {
+      "subject": "sub-stroke0188",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0188\\ses-02\\sub-stroke0188_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 12.0770556640625,
+      "n_lesions": 14
+    },
+    {
+      "subject": "sub-stroke0189",
+      "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\c--Users-Admin-Downloads-Stroke-code\\188a090c-44b0-40cc-958e-98312c694192\\scratchpad\\peek\\train\\derivatives\\sub-stroke0189\\ses-02\\sub-stroke0189_ses-02_space-ncct_lesion-msk.nii.gz",
+      "volume_ml": 20.886197662353517,
+      "n_lesions": 22
+    }
+  ]
+}

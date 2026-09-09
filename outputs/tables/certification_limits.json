@@ -1,0 +1,190 @@
+{
+  "config": {
+    "trials": 100,
+    "alpha_missed": 0.05,
+    "alpha_futile": 0.2,
+    "delta": 0.1,
+    "tau": 70.0
+  },
+  "tau_sweep": [
+    {
+      "tau": 10.0,
+      "n": 149,
+      "mean_n_above_tau": 108.56,
+      "mean_n_below_tau": 40.44,
+      "certified_rate": 0.0,
+      "risk_held_missed": NaN,
+      "risk_held_futile": NaN,
+      "mean_abstain": NaN
+    },
+    {
+      "tau": 20.0,
+      "n": 149,
+      "mean_n_above_tau": 71.24,
+      "mean_n_below_tau": 77.76,
+      "certified_rate": 1.0,
+      "risk_held_missed": 0.99,
+      "risk_held_futile": 0.99,
+      "mean_abstain": 0.45453950000000004
+    },
+    {
+      "tau": 30.0,
+      "n": 149,
+      "mean_n_above_tau": 49.31,
+      "mean_n_below_tau": 99.69,
+      "certified_rate": 1.0,
+      "risk_held_missed": 0.99,
+      "risk_held_futile": 0.98,
+      "mean_abstain": 0.3508795
+    },
+    {
+      "tau": 40.0,
+      "n": 149,
+      "mean_n_above_tau": 35.53,
+      "mean_n_below_tau": 113.47,
+      "certified_rate": 1.0,
+      "risk_held_missed": 0.98,
+      "risk_held_futile": 0.99,
+      "mean_abstain": 0.2850795
+    },
+    {
+      "tau": 50.0,
+      "n": 149,
+      "mean_n_above_tau": 26.44,
+      "mean_n_below_tau": 122.56,
+      "certified_rate": 0.99,
+      "risk_held_missed": 1.0,
+      "risk_held_futile": 0.98989898989899,
+      "mean_abstain": 0.24408686868686869
+    },
+    {
+      "tau": 70.0,
+      "n": 149,
+      "mean_n_above_tau": 16.09,
+      "mean_n_below_tau": 132.91,
+      "certified_rate": 0.72,
+      "risk_held_missed": 0.9861111111111112,
+      "risk_held_futile": 0.9166666666666666,
+      "mean_abstain": 0.15419305555555557
+    },
+    {
+      "tau": 90.0,
+      "n": 149,
+      "mean_n_above_tau": 10.52,
+      "mean_n_below_tau": 138.48,
+      "certified_rate": 0.17,
+      "risk_held_missed": 1.0,
+      "risk_held_futile": 0.9411764705882353,
+      "mean_abstain": 0.09494117647058824
+    },
+    {
+      "tau": 110.0,
+      "n": 149,
+      "mean_n_above_tau": 7.15,
+      "mean_n_below_tau": 141.85,
+      "certified_rate": 0.0,
+      "risk_held_missed": NaN,
+      "risk_held_futile": NaN,
+      "mean_abstain": NaN
+    },
+    {
+      "tau": 130.0,
+      "n": 149,
+      "mean_n_above_tau": 5.03,
+      "mean_n_below_tau": 143.97,
+      "certified_rate": 0.0,
+      "risk_held_missed": NaN,
+      "risk_held_futile": NaN,
+      "mean_abstain": NaN
+    },
+    {
+      "tau": 150.0,
+      "n": 149,
+      "mean_n_above_tau": 3.6,
+      "mean_n_below_tau": 145.4,
+      "certified_rate": 0.0,
+      "risk_held_missed": NaN,
+      "risk_held_futile": NaN,
+      "mean_abstain": NaN
+    }
+  ],
+  "n_sweep": [
+    {
+      "n": 50,
+      "tau": 70.0,
+      "mean_n_above_tau": 5.36,
+      "mean_n_below_tau": 44.64,
+      "certified_rate": 0.0,
+      "risk_held_missed": NaN,
+      "risk_held_futile": NaN,
+      "mean_abstain": NaN
+    },
+    {
+      "n": 100,
+      "tau": 70.0,
+      "mean_n_above_tau": 10.55,
+      "mean_n_below_tau": 89.45,
+      "certified_rate": 0.22,
+      "risk_held_missed": 0.9545454545454546,
+      "risk_held_futile": 0.9545454545454546,
+      "mean_abstain": 0.16384999999999997
+    },
+    {
+      "n": 149,
+      "tau": 70.0,
+      "mean_n_above_tau": 16.09,
+      "mean_n_below_tau": 132.91,
+      "certified_rate": 0.72,
+      "risk_held_missed": 0.9861111111111112,
+      "risk_held_futile": 0.9166666666666666,
+      "mean_abstain": 0.15419305555555557
+    },
+    {
+      "n": 250,
+      "tau": 70.0,
+      "mean_n_above_tau": 26.85,
+      "mean_n_below_tau": 223.15,
+      "certified_rate": 0.99,
+      "risk_held_missed": 0.98989898989899,
+      "risk_held_futile": 0.98989898989899,
+      "mean_abstain": 0.13349040404040402
+    },
+    {
+      "n": 500,
+      "tau": 70.0,
+      "mean_n_above_tau": 53.79,
+      "mean_n_below_tau": 446.21,
+      "certified_rate": 1.0,
+      "risk_held_missed": 0.98,
+      "risk_held_futile": 1.0,
+      "mean_abstain": 0.07363700000000001
+    },
+    {
+      "n": 1000,
+      "tau": 70.0,
+      "mean_n_above_tau": 106.91,
+      "mean_n_below_tau": 893.09,
+      "certified_rate": 1.0,
+      "risk_held_missed": 0.99,
+      "risk_held_futile": 0.98,
+      "mean_abstain": 0.043662000000000006
+    },
+    {
+      "n": 2000,
+      "tau": 70.0,
+      "mean_n_above_tau": 215.06,
+      "mean_n_below_tau": 1784.94,
+      "certified_rate": 1.0,
+      "risk_held_missed": 1.0,
+      "risk_held_futile": 0.98,
+      "mean_abstain": 0.02718
+    }
+  ],
+  "min_group_n": {
+    "0.01": 230,
+    "0.05": 45,
+    "0.1": 22,
+    "0.2": 11,
+    "0.3": 7
+  }
+}
