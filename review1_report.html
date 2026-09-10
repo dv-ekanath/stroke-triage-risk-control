@@ -323,6 +323,14 @@
   table.data-table th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 600; }
   table.data-table td.num { font-family: "IBM Plex Mono", monospace; text-align: right; font-variant-numeric: tabular-nums; }
   .table-wrap { overflow-x: auto; }
+  .mini-table-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 8px;
+  }
+  .mini-table-grid table.data-table { margin: 0; }
+  .mini-table-grid th { background: var(--surface-sunk); }
 
   footer {
     border-top: 1px solid var(--line);
@@ -416,6 +424,54 @@
       <div class="stat-tile"><div class="value">80 / 149</div><div class="label">Complete mRS-shift pairs</div><div class="sub">real constraint on H4</div></div>
     </div>
     <p style="font-size:14.5px;color:var(--ink-soft)">This release ships no <span class="mono">participants.tsv</span> — center labels were recovered directly from a per-subject phenotype field instead, and matched the published descriptor almost exactly (the one gap is a single subject with a genuinely blank field in its own source file).</p>
+
+    <div class="mini-table-grid">
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th colspan="2">Occlusion site &middot; 144 subjects processed</th></tr></thead>
+          <tbody>
+            <tr><td>M1</td><td class="num">71 &middot; 49.3%</td></tr>
+            <tr><td>Low-confidence (&gt;15mm)</td><td class="num">42 &middot; 29.2%</td></tr>
+            <tr><td>ICA</td><td class="num">16 &middot; 11.1%</td></tr>
+            <tr><td>Other</td><td class="num">15 &middot; 10.4%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th colspan="2">mRS outcome &middot; real phenotype data</th></tr></thead>
+          <tbody>
+            <tr><td>Premorbid mRS</td><td class="num">0.84 &plusmn; 1.23</td></tr>
+            <tr><td>3-month mRS</td><td class="num">2.64 &plusmn; 2.17</td></tr>
+            <tr><td>mRS shift</td><td class="num">1.80 &plusmn; 1.90</td></tr>
+            <tr><td>Good outcome (mRS&le;2)</td><td class="num">51.3%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label">Calibration layer · synthetic validation</div>
+    <h2 class="sec-title">Validated before touching real data</h2>
+    <p class="lede">The project's own gate: if the calibration layer can't control risk on synthetic data with a known answer, nothing built on it can be trusted. All four checks pass.</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Check</th><th>Result</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>PIT uniformity</td><td class="num">mean 0.491 &middot; sd 0.290</td><td class="num">0.500 &middot; 0.289</td></tr>
+          <tr><td>Interval coverage, max error (&alpha;&isin;[0.05,0.30])</td><td class="num">1.58 pp</td><td class="num">&lt; 3 pp</td></tr>
+          <tr><td>LTT risk control, within target</td><td class="num">100% of trials</td><td class="num">&ge; 90%</td></tr>
+          <tr><td>Split-conformal width instability</td><td class="num">1.89&times; more variable</td><td class="num">justifies cross-conformal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="stat-row">
+      <div class="stat-tile"><div class="value">n&ge;45</div><div class="label">To certify risk &le; 0.05</div></div>
+      <div class="stat-tile"><div class="value">n&ge;22</div><div class="label">To certify risk &le; 0.10</div></div>
+      <div class="stat-tile"><div class="value">n&ge;11</div><div class="label">To certify risk &le; 0.20</div></div>
+    </div>
+    <p style="font-size:14.5px;color:var(--ink-soft)">Sample-size floor a conditioning group must clear before <i>any</i> rule can be certified there (&delta;=0.10) &mdash; exactly what the real-data &tau;-table above (Section: Real findings) is checked against.</p>
   </section>
 
   <section class="wide" style="max-width:920px;margin-left:auto;margin-right:auto;">
@@ -427,6 +483,7 @@
       <span class="swatch"><i style="background:var(--series-2)"></i>Published leaderboard (Kurtlab)</span>
     </div>
     <div class="metric-grid" id="metricGrid"></div>
+    <p style="font-size:14.5px;color:var(--ink-soft);margin-top:16px">Best validation Dice observed during training: <b class="mono" style="color:var(--ink)">0.226</b> (epoch 110). Loss declined steadily from 0.878 to 0.369 over 200 epochs with no divergence. Total training time: <b class="mono" style="color:var(--ink)">~1.9 hours</b> on an RTX 5060 (8GB) &mdash; a ~15&times; speedup from disk-caching the preprocessing pipeline made the full 200-epoch protocol practical at all.</p>
   </section>
 
   <section>
