@@ -38,6 +38,10 @@ ISLES'24 release (149 subjects), not synthetic data unless noted:
   split-vs-cross-conformal width-instability comparison all pass.
 
 A presentation-ready summary of Review 1 is in [`review1_report.html`](review1_report.html).
+A narrative progress report against the grading rubric is in
+[`REVIEW1_PROGRESS.md`](REVIEW1_PROGRESS.md); every metric value quoted
+anywhere, sourced directly from `outputs/tables/*.json`, is in
+[`REVIEW1_RESULTS.md`](REVIEW1_RESULTS.md).
 
 ## Repository layout
 
