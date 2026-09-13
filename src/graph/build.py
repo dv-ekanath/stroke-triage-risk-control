@@ -113,7 +113,7 @@ def validate_cow(graph: dict) -> list[str]:
 
 
 SUPPORT_STATUSES = {"supported", "pending_phase2", "unverifiable_on_isles24",
-                    "not_supported", "contradicted"}
+                    "not_supported", "inconclusive", "contradicted"}
 
 
 def validate_rules(graph: dict) -> list[str]:

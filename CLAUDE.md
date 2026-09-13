@@ -43,35 +43,37 @@ Git identity for this repo: `dv-ekanath <ekanath.dv2023@vitstudent.ac.in>`
 
 - **Phase 1 — knowledge graph: PASSED** (2026-09-13). Both graphs validate;
   7/7 sources verified; laterality gate 89/94 = 94.7% (pass mark 80%).
-- **Next: Phase 2 — labels & preprocessing.** See the task list below and
-  `PHASE1_REPORT.md` → "Carried to Phase 2".
+- **Phase 2 — in progress, paused for a decision** (2026-09-14). Brain mask,
+  acute core, penumbra, mismatch, HIR: all built and gated
+  (`src/graph/perfusion_volumes.py`). 4 more plausibility constraints tested.
+  **Net: only 1 of 7 plausibility constraints in the graph is supported**
+  (laterality, from Phase 1). See `PHASE2_PROGRESS.md` for the full picture
+  and the decision this leaves open before the atlas/territory work.
 - Phases 3–9: see `PROJECT_PLAN.md` §8. ~6 weeks total from 2026-09-14.
 
-## Phase 2 — what to build
+## Phase 2 — remaining work
 
-1. **Acute core** (relative CBF < 30%), **penumbra** (Tmax > 6 s), mismatch
-   ratio and volume → makes the DAWN / DEFUSE 3 imaging conditions evaluable.
-   Confirm how each trial measured core before claiming equivalence.
-2. **HIR collateral proxy** = volume(Tmax>10s) / volume(Tmax>6s); high HIR =
-   poor collaterals (Olivot 2014). Gate: HIR worse in proximal-occlusion
-   patients than others.
-3. **Location-based plausibility constraints — top priority.** Size-based
-   rules are weak here (every patient was reperfused; the size rule tested in
-   Phase 1 failed, p = 0.66). Build and support-test:
-   - *territory rule*: the occluded vessel's territory should contain the
-     infarct (Liu 2023 arterial territories atlas; needs registration NCCT →
-     atlas space)
-   - *perfusion-overlap rule*: the final infarct should lie inside the
-     admission hypoperfused region (Tmax > 6 s)
-   Aim for ≥ 3 supported constraints; if fewer hold, narrow the JDCR claim and
-   say so. Add checks to `src/graph/constraint_support.py`.
-4. Support-test the two collateral constraints once HIR exists.
-5. **LVO label scheme**: proximal_anterior 87 / other_confident 15 /
+Read `PHASE2_PROGRESS.md` first — it has the constraint-testing results and
+why the plan below changed from the original Phase 2 list.
+
+1. **Re-test the two inconclusive collateral constraints properly** (cheap,
+   no new data): continuous HIR-vs-final-volume correlation across the whole
+   cohort, not a binned good/poor group restricted to proximal occlusions
+   (n=9 there was underpowered, p=0.134 despite the right direction).
+2. **Decide on the territory rule** (Liu 2023 atlas, needs NCCT→atlas
+   registration — the heaviest remaining task) — worth it only if (1) doesn't
+   already recover enough supported constraints, since the closely-related
+   perfusion-overlap rule already failed (median 51% overlap, not a
+   registration bug — likely distal embolization during thrombectomy moving
+   infarcts to a different territory on the same side).
+3. **LVO label scheme**: proximal_anterior 87 / other_confident 15 /
    **unlocalized** 42 / none 4 (rename "distal" → "unlocalized": 11/42 have
    the clot-side MCA/ICA missing from cow-msk and may be upstream clots).
-6. Skull stripping; CTA vessel enhancement (Frangi).
-7. Check whether the 17 MCA-absent subjects are occluded MCAs not visible on CTA.
-8. Before Phase 3: manually look at sub-stroke0049 and sub-stroke0079
+4. Skull stripping is DONE as a side effect of the brain mask
+   (`src/graph/perfusion_volumes.py:brain_mask`, gated at 98.6% plausible
+   ICV). CTA vessel enhancement (Frangi) still to do.
+5. Check whether the 17 MCA-absent subjects are occluded MCAs not visible on CTA.
+6. Before Phase 3: manually look at sub-stroke0049 and sub-stroke0079
    (confident clot on one side, infarct on the other — possible L/R label swap).
 
 ## Rules this project runs on — keep them

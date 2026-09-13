@@ -74,13 +74,15 @@
      "source_head": "derived from H1", "available_on_isles24": true,
      "availability_note": "Side holding the majority of infarct voxels, relative to the vessel-pair midline (src/graph/features.py)."},
     {"id": "acute_core_volume", "type": "continuous", "unit": "mL",
-     "source": "derived from perfusion maps (Phase 2)", "available_on_isles24": "phase2",
-     "availability_note": "The trials' 'core' is tissue already infarcted at admission, measured on perfusion/diffusion imaging. Planned derivation: relative CBF < 30% on the CBF map. The exact method each trial used must be confirmed in Phase 2 before claiming equivalence."},
+     "source": "src/graph/perfusion_volumes.py: relative CBF < 30% of the contralateral hemisphere's median CBF, within a brain mask", "available_on_isles24": true,
+     "availability_note": "Built and run: 123/148 subjects (needs a known occlusion side; excluded, not defaulted, when unlocalized+unknown-side). Brain-mask gate passed (98.6% of ICVs in [1000,1900]mL). The exact method each trial used for 'core' has NOT been individually confirmed to match this derivation -- state it as our own reproduction, not an exact replication, when reporting."},
     {"id": "penumbra_volume", "type": "continuous", "unit": "mL",
-     "source": "derived from Tmax map (Phase 2)", "available_on_isles24": "phase2",
-     "availability_note": "Hypoperfused tissue, Tmax > 6 s (the same threshold HIR's denominator uses)."},
-    {"id": "mismatch_ratio", "type": "continuous", "source": "penumbra_volume / acute_core_volume", "available_on_isles24": "phase2"},
-    {"id": "mismatch_volume", "type": "continuous", "unit": "mL", "source": "penumbra_volume - acute_core_volume", "available_on_isles24": "phase2"},
+     "source": "src/graph/perfusion_volumes.py: Tmax > 6s within the brain mask", "available_on_isles24": true,
+     "availability_note": "Built and run for 148/148 subjects. Matches the RAPID-software convention DEFUSE-3 used ('mismatch ratio' = Tmax>6s volume / core volume, not (Tmax>6s minus core)/core) -- so despite the name, this is total hypoperfusion volume including the core, not core-excluded tissue. Kept the trials' own naming."},
+    {"id": "mismatch_ratio", "type": "continuous", "source": "penumbra_volume / acute_core_volume", "available_on_isles24": true,
+     "availability_note": "123/148 (same subjects as acute_core_volume). Median 2.59 in this cohort, comfortably above DEFUSE-3's >=1.8 threshold -- plausible for an LVO-selected population."},
+    {"id": "mismatch_volume", "type": "continuous", "unit": "mL", "source": "penumbra_volume - acute_core_volume", "available_on_isles24": true,
+     "availability_note": "123/148, same subset."},
     {"id": "aspects", "type": "ordinal", "values": [0,1,2,3,4,5,6,7,8,9,10], "available_on_isles24": false,
      "availability_note": "ASPECTS is a CT region score. Not provided by ISLES'24. The AHA/ASA 2026 rules are written in ASPECTS, so they cannot be evaluated here; the trial rules are written in mL and can."},
     {"id": "nihss", "type": "continuous", "unit": "points", "source": "phenotype 'NIHSS at admission'", "available_on_isles24": true, "availability_note": "146/149 filled"},
@@ -217,8 +219,11 @@
       "clinical_basis": "Olivot 2014: 'Initial infarct growth velocity and total infarct growth were greater among patients with a high HIR' -- i.e. poor collaterals grow larger infarcts; good collaterals, the reverse. This is the cross-task incoherence the deck's Problem Statement names.",
       "clinical_basis_source_ids": ["olivot_2014_hir"],
       "support": {
-        "status": "pending_phase2",
-        "evidence": "Needs the HIR proxy (Phase 2). Volume threshold deliberately NOT set here -- it is chosen from the training-fold distribution, not asserted."
+        "status": "inconclusive",
+        "source_ids": ["isles24_data"],
+        "evidence": "Proximal occlusions only: poor-collateral (HIR bin 2-3, n=9) median final infarct 19.97 mL vs good-collateral (HIR bin 0, n=18) median 11.0 mL -- CORRECT direction, AUC=0.636, but one-sided p=0.134, above the pre-fixed 0.05 mark. outputs/tables/constraint_support.json.",
+        "likely_reason": "Underpowered, not contradicted: n=9 in the poor-collateral group is small once split by both occlusion level and HIR bin. Also stands on two assumptions each already shown fragile in this cohort: HIR failed its own independent validation (collateral_hir_vs_mismatch, wrong-direction correlation), and final_infarct_volume is confounded by universal successful reperfusion (proximal_occlusion_larger_infarct).",
+        "decision": "Excluded from JDCR for now -- right direction, not yet strong enough to trust. Worth re-testing with the full cohort (not just proximal occlusions) or a continuous HIR-vs-volume correlation instead of a binned group test, in a later phase."
       }
     },
     {
@@ -230,8 +235,10 @@
       "clinical_basis": "Mirror of the constraint above; same source.",
       "clinical_basis_source_ids": ["olivot_2014_hir"],
       "support": {
-        "status": "pending_phase2",
-        "evidence": "Needs the HIR proxy (Phase 2). Caveat: every ISLES'24 patient was successfully reperfused, which limits infarct growth -- this constraint may turn out weak here, and that gets reported."
+        "status": "inconclusive",
+        "source_ids": ["isles24_data"],
+        "evidence": "Same underlying test as good_collateral_limits_infarct (mirror constraint) -- see that entry.",
+        "decision": "Excluded from JDCR for the same reasons."
       }
     },
     {
@@ -247,6 +254,35 @@
         "evidence": "Ground truth: proximal median 13.8 mL (n=87) vs distal 13.1 mL (n=42); one-sided Mann-Whitney p=0.66, AUC 0.478. Pass mark (higher median and p<0.05) fixed before running. outputs/tables/constraint_support.json",
         "likely_reason": "All ISLES'24 patients were successfully reperfused, so final infarct SIZE reflects how fast flow returned more than where the clot sat. Partly also label noise: 11/42 'distal' cases have the clot-side MCA/ICA missing from cow-msk and may be upstream clots in an unopacified vessel.",
         "decision": "Excluded from JDCR and the consistency loss. Kept on record as a tested-and-rejected candidate. ICA > MCA (p=0.035, one of two unplanned secondary tests, not significant after correction) is a lead to re-test on training folds in Phase 2."
+      }
+    },
+    {
+      "id": "collateral_hir_vs_mismatch",
+      "statement": "High HIR (poor collaterals) should coincide with a low mismatch ratio (less penumbra survives relative to core when collaterals are worse).",
+      "concepts": ["collateral_proxy", "acute_core_volume", "penumbra_volume"],
+      "strength": "soft",
+      "clinical_basis": "Poor collaterals let the core grow faster even before reperfusion, so more of the at-risk tissue is already core rather than salvageable penumbra.",
+      "support": {
+        "status": "not_supported",
+        "source_ids": ["isles24_data"],
+        "evidence": "Spearman rho=+0.193 (n=123), p=0.033 -- SIGNIFICANT but in the WRONG direction. Pass mark (rho<0 and p<0.05) fixed before running. outputs/tables/constraint_support.json.",
+        "likely_reason": "Not independent as designed: mismatch_ratio's numerator is the full Tmax>6s volume, of which HIR's numerator (Tmax>10s) is a strict subset by construction. Both partly track overall lesion size on the Tmax map, which is a shared confound the check didn't isolate.",
+        "decision": "Excluded from JDCR. Needs a redesigned check in a later phase (e.g. partial correlation controlling for total Tmax>6s volume) before this constraint is usable, not a quick fix."
+      }
+    },
+    {
+      "id": "infarct_inside_admission_penumbra",
+      "statement": "The final infarct should sit mostly inside the admission hypoperfused region (Tmax > 6s) -- these patients were all successfully reperfused, so new tissue death outside the original at-risk zone should be uncommon.",
+      "concepts": ["final_infarct_volume", "penumbra_volume"],
+      "strength": "soft",
+      "clinical_basis": "Ischemia should not appear in tissue that was never perfusion-deficient at admission.",
+      "support": {
+        "status": "not_supported",
+        "source_ids": ["isles24_data"],
+        "evidence": "Median 51.0% of final-infarct voxels inside the Tmax>6s mask (n=137); pass mark >=70% fixed before running. 48.9% of subjects below 50% overlap; worst cases near 0% (sub-stroke0101, 0163, 0170, 0074, 0079). outputs/tables/constraint_support.json.",
+        "ruled_out": "Registration/alignment bug: affines for Tmax and lesion-msk confirmed byte-identical for every checked subject. CTP z-coverage gap: explains 2 of the 5 worst cases (75-84% of the lesion falls outside the perfusion slab) but not the other 3, where the lesion is 99.5-100% within the covered slices yet still near-zero overlap.",
+        "likely_reason": "All ISLES'24 patients underwent successful mechanical thrombectomy. Distal embolization of clot fragments during the procedure is a documented complication and can infarct tissue in a DIFFERENT territory on the same side, not captured by the pre-procedure Tmax map. Reasoned from the pattern (large centroid shifts, 20-70mm, between lesion and Tmax>6 region), not independently confirmed against procedural records -- ISLES'24 does not provide those.",
+        "decision": "Excluded from JDCR at the voxel-overlap level. A coarser, territory-level version of this idea (does the infarct sit in the SAME broad arterial territory, not the exact Tmax>6 footprint) may be more robust to distal embolization and is the next thing to test, not yet built."
       }
     },
     {

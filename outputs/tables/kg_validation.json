@@ -7,7 +7,7 @@
   "rules": {
     "n_concepts": 16,
     "n_eligibility_rules": 7,
-    "n_plausibility_constraints": 5,
+    "n_plausibility_constraints": 7,
     "problems": [],
     "wording_unverified_sources": [
       "aha_asa_2026"
@@ -18,38 +18,28 @@
         "not_evaluable_concepts": [
           "time_window"
         ],
-        "pending_phase2_concepts": [
-          "acute_core_volume",
-          "mismatch_ratio",
-          "mismatch_volume"
-        ]
+        "pending_phase2_concepts": []
       },
       "dawn_group_a": {
         "fully_evaluable": false,
         "not_evaluable_concepts": [
           "time_window"
         ],
-        "pending_phase2_concepts": [
-          "acute_core_volume"
-        ]
+        "pending_phase2_concepts": []
       },
       "dawn_group_b": {
         "fully_evaluable": false,
         "not_evaluable_concepts": [
           "time_window"
         ],
-        "pending_phase2_concepts": [
-          "acute_core_volume"
-        ]
+        "pending_phase2_concepts": []
       },
       "dawn_group_c": {
         "fully_evaluable": false,
         "not_evaluable_concepts": [
           "time_window"
         ],
-        "pending_phase2_concepts": [
-          "acute_core_volume"
-        ]
+        "pending_phase2_concepts": []
       },
       "aha_asa_2026_early_window": {
         "fully_evaluable": false,
@@ -68,18 +58,18 @@
         "pending_phase2_concepts": []
       },
       "large_core_therapeutic_ceiling": {
-        "fully_evaluable": false,
+        "fully_evaluable": true,
         "not_evaluable_concepts": [],
-        "pending_phase2_concepts": [
-          "acute_core_volume"
-        ]
+        "pending_phase2_concepts": []
       }
     },
     "constraint_support": {
       "infarct_side_matches_occlusion_side": "supported",
-      "good_collateral_limits_infarct": "pending_phase2",
-      "poor_collateral_expects_infarct": "pending_phase2",
+      "good_collateral_limits_infarct": "inconclusive",
+      "poor_collateral_expects_infarct": "inconclusive",
       "proximal_occlusion_larger_infarct": "not_supported",
+      "collateral_hir_vs_mismatch": "not_supported",
+      "infarct_inside_admission_penumbra": "not_supported",
       "large_infarct_needs_occlusion": "unverifiable_on_isles24"
     }
   },

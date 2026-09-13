@@ -103,10 +103,132 @@ def unseen_vessel_diagnostic(feats: dict) -> dict:
     return out
 
 
+def check_hir_vs_mismatch(perf_rows: list[dict]) -> dict:
+    """Check 2 -- does HIR behave like a collateral signal, independent of how
+    it was defined?
+
+    Established relationship (not the one HIR is defined from): poor
+    collaterals let the core grow faster even before reperfusion, so a high
+    HIR (poor collaterals) should coincide with a LOW mismatch ratio
+    (penumbra/core) -- less penumbra survives relative to core when
+    collaterals are worse. HIR and mismatch ratio are computed from
+    different combinations of maps (HIR: Tmax alone; mismatch: Tmax and
+    CBF), so this is an independent check, not circular.
+
+    Pass mark, fixed before running: negative Spearman correlation,
+    p < 0.05.
+    """
+    from scipy.stats import spearmanr
+    pairs = [(r["hir"], r["mismatch_ratio"]) for r in perf_rows
+             if r.get("hir") is not None and r.get("mismatch_ratio") is not None]
+    if len(pairs) < 10:
+        return {"testable": False, "reason": f"only {len(pairs)} subjects with both values"}
+    hir, mr = zip(*pairs)
+    rho, p = spearmanr(hir, mr)
+    passed = bool(rho < 0 and p < 0.05)
+    return {"testable": True, "n": len(pairs), "spearman_rho": round(float(rho), 4),
+            "p": float(p), "pass_mark": "rho < 0 and p < 0.05, fixed before running",
+            "passed": passed}
+
+
+def check_perfusion_overlap(root: pathlib.Path, feats: dict) -> dict:
+    """Check 3 -- perfusion-overlap plausibility rule: the final infarct
+    should mostly sit inside the admission hypoperfused region (Tmax > 6s).
+    All patients here were successfully reperfused, so the final infarct is
+    expected to be a SUBSET of the original at-risk tissue, not exceed it.
+
+    No registration needed -- ses-02 derivatives are already delivered in
+    the same '_space-ncct_' grid as ses-01 (checked: identical shape/affine
+    to the Tmax map for every subject tested).
+
+    Pass mark, fixed before running: median fraction of final-infarct
+    voxels lying inside the Tmax>6s mask >= 0.70, over subjects with a
+    non-trivial infarct (>= 1 mL, to avoid tiny masks being dominated by
+    single-voxel boundary noise).
+    """
+    import nibabel as nib
+    GATE = 0.70
+    fracs, skipped = [], []
+    for s in feats["subjects"]:
+        sub = s["subject"]
+        tmax_f = sorted((root / "derivatives" / sub / "ses-01" / "perfusion-maps").glob("*_tmax.nii*"))
+        les_f = sorted((root / "derivatives" / sub / "ses-02").glob("*_lesion-msk.nii*"))
+        if not tmax_f or not les_f:
+            skipped.append((sub, "missing_file")); continue
+        try:
+            tmax = np.asanyarray(nib.load(str(tmax_f[0])).dataobj)
+            les = np.asanyarray(nib.load(str(les_f[0])).dataobj) > 0
+        except Exception as e:
+            skipped.append((sub, f"unreadable: {e}")); continue
+        if tmax.shape != les.shape:
+            skipped.append((sub, "shape_mismatch")); continue
+        tmax = np.nan_to_num(tmax, nan=-30.0, posinf=0.0, neginf=-30.0)
+        n_les = int(les.sum())
+        vox_ml = float(np.prod(nib.load(str(les_f[0])).header.get_zooms()[:3])) / 1000.0
+        if n_les * vox_ml < 1.0:
+            skipped.append((sub, "infarct_too_small")); continue
+        overlap = int((les & (tmax > 6.0)).sum())
+        fracs.append({"subject": sub, "fraction_in_penumbra": round(overlap / n_les, 4)})
+
+    if not fracs:
+        return {"testable": False, "reason": "no usable subjects"}
+    vals = np.array([f["fraction_in_penumbra"] for f in fracs])
+    median = float(np.median(vals))
+    passed = bool(median >= GATE)
+    return {"testable": True, "n": len(fracs), "n_skipped": len(skipped),
+            "median_fraction_in_penumbra": round(median, 4),
+            "mean_fraction_in_penumbra": round(float(vals.mean()), 4),
+            "pct_below_50pct": round(float((vals < 0.5).mean()), 4),
+            "pass_mark": f">= {GATE}, fixed before running", "passed": passed,
+            "worst_5": sorted(fracs, key=lambda d: d["fraction_in_penumbra"])[:5],
+            "skipped": skipped}
+
+
+def check_hir_vs_final_volume(feats: dict, perf_ok: list[dict], vol: dict[str, float]) -> dict:
+    """Check 4 -- does HIR (collateral proxy) predict final infarct SIZE among
+    proximal occlusions, the way the two collateral plausibility constraints
+    assume?
+
+    Rule under test: proximal occlusion + poor collaterals (high HIR) ->
+    larger final infarct than proximal occlusion + good collaterals (low HIR).
+
+    Groups: HIR bin 0 ("good", <=0.25 by src/graph/perfusion_volumes.py's
+    binning) vs bin 2-3 ("poor", >0.5), restricted to proximal_anterior
+    occlusions (src/graph/constraint_support.py:localization_class).
+
+    Pass mark, fixed before running: poor-collateral median > good-collateral
+    median AND one-sided Mann-Whitney p < 0.05 -- identical structure to
+    Check 1, applied to collateral status instead of occlusion level.
+    """
+    hir_by_sub = {r["subject"]: r for r in perf_ok}
+    good, poor = [], []
+    for s in feats["subjects"]:
+        if localization_class(s) != "proximal_anterior":
+            continue
+        p = hir_by_sub.get(s["subject"])
+        v = vol.get(s["subject"])
+        if not p or p.get("hir_bin") is None or v is None:
+            continue
+        if p["hir_bin"] == 0:
+            good.append(v)
+        elif p["hir_bin"] in (2, 3):
+            poor.append(v)
+    good_v, poor_v = np.asarray(good), np.asarray(poor)
+    cmp = compare(poor_v, good_v)
+    passed = bool(cmp.get("testable") and poor_v.size and good_v.size
+                  and float(np.median(poor_v)) > float(np.median(good_v)) and cmp["p_one_sided"] < 0.05)
+    return {"good_collateral": describe(good_v), "poor_collateral": describe(poor_v),
+            "comparison": cmp, "pass_mark": "poor median > good median and p < 0.05, fixed before running",
+            "passed": passed}
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--features", type=pathlib.Path, default=OUT_TAB / "kg_node_features.json")
     ap.add_argument("--audit", type=pathlib.Path, default=OUT_TAB / "data_audit.json")
+    ap.add_argument("--perfusion", type=pathlib.Path, default=OUT_TAB / "perfusion_volumes.json")
+    ap.add_argument("--root", type=pathlib.Path, default=None,
+                     help="ISLES-2024 root; required for the perfusion-overlap check")
     args = ap.parse_args()
 
     feats = json.loads(args.features.read_text(encoding="utf-8"))
@@ -172,6 +294,52 @@ def main():
         else:
             print(f"    {name:<28} not testable -- {r['reason']}")
 
+    payload = json.loads(out.read_text(encoding="utf-8")) if (out := OUT_TAB / "constraint_support.json").exists() else {}
+
+    if args.perfusion.exists():
+        perf = json.loads(args.perfusion.read_text(encoding="utf-8"))
+        perf_ok = [r for r in perf["rows"] if r["status"] == "ok"]
+        print("\nCheck 2 -- HIR vs mismatch ratio (independent collateral-signal check)")
+        hir_check = check_hir_vs_mismatch(perf_ok)
+        if hir_check["testable"]:
+            print(f"  n={hir_check['n']}  Spearman rho={hir_check['spearman_rho']}  p={hir_check['p']:.3g}")
+            print(f"  pass mark: {hir_check['pass_mark']}  -> {'PASS' if hir_check['passed'] else 'FAIL'}")
+        else:
+            print(f"  not testable -- {hir_check['reason']}")
+        payload["hir_vs_mismatch"] = hir_check
+
+        print("\nCheck 4 -- HIR vs final infarct volume, proximal occlusions only "
+              "(the collateral constraints' own claim)")
+        vol = {c["subject"]: float(c["volume_ml"]) for c in audit["cases"]}
+        hir_vol_check = check_hir_vs_final_volume(feats, perf_ok, vol)
+        g, p_ = hir_vol_check["good_collateral"], hir_vol_check["poor_collateral"]
+        if g["n"] and p_["n"]:
+            print(f"  good collateral (HIR bin 0): n={g['n']}  median={g['median']}")
+            print(f"  poor collateral (HIR bin 2-3): n={p_['n']}  median={p_['median']}")
+            c = hir_vol_check["comparison"]
+            if c["testable"]:
+                print(f"  p = {c['p_one_sided']:.3g}, AUC = {c['auc']}")
+            print(f"  pass mark: {hir_vol_check['pass_mark']}  -> "
+                  f"{'PASS' if hir_vol_check['passed'] else 'FAIL'}")
+        else:
+            print(f"  not enough subjects (good n={g['n']}, poor n={p_['n']})")
+        payload["hir_vs_final_volume"] = hir_vol_check
+
+    if args.root is not None:
+        print("\nCheck 3 -- perfusion-overlap plausibility rule "
+              "(final infarct should sit inside admission Tmax>6s region)")
+        overlap_check = check_perfusion_overlap(args.root.expanduser().resolve(), feats)
+        if overlap_check["testable"]:
+            print(f"  n={overlap_check['n']}  median fraction inside penumbra = "
+                  f"{overlap_check['median_fraction_in_penumbra']:.3f}  "
+                  f"({overlap_check['pct_below_50pct']*100:.1f}% of subjects below 50%)")
+            print(f"  pass mark: {overlap_check['pass_mark']}  -> {'PASS' if overlap_check['passed'] else 'FAIL'}")
+            if overlap_check["worst_5"]:
+                print("  worst 5:", overlap_check["worst_5"])
+        else:
+            print(f"  not testable -- {overlap_check['reason']}")
+        payload["perfusion_overlap"] = overlap_check
+
     contamination = unseen_vessel_diagnostic(feats)
     print("\n  diagnostic -- clot-side MCA/ICA missing from cow-msk (possible occluded, "
           "unopacified vessel):")
@@ -181,8 +349,6 @@ def main():
     print("    CTA never showed. Too few to explain the result; a label-quality issue for Phase 2.")
 
     OUT_TAB.mkdir(parents=True, exist_ok=True)
-    out = OUT_TAB / "constraint_support.json"
-    payload = json.loads(out.read_text(encoding="utf-8")) if out.exists() else {}
     payload["occlusion_level_vs_volume"] = {
         "rule": "Proximal (ICA/M1) occlusions come with larger final infarcts than distal occlusions.",
         "pass_mark": f"proximal median > distal median and one-sided Mann-Whitney p < {ALPHA}, fixed before running",

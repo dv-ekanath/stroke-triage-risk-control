@@ -128,5 +128,123 @@
     },
     "likely_reason_for_failure": "Every ISLES'24 patient was successfully reperfused, so final infarct SIZE reflects how fast flow was restored more than where the clot sat. Reasoned, not tested here. Implication: size-based constraints are weak in this cohort; location-based ones (side, territory) are not affected by reperfusion.",
     "note": "Group-level result. A per-patient threshold must be fitted on training folds only."
+  },
+  "hir_vs_mismatch": {
+    "testable": true,
+    "n": 123,
+    "spearman_rho": 0.1927,
+    "p": 0.03269898859815723,
+    "pass_mark": "rho < 0 and p < 0.05, fixed before running",
+    "passed": false
+  },
+  "perfusion_overlap": {
+    "testable": true,
+    "n": 137,
+    "n_skipped": 12,
+    "median_fraction_in_penumbra": 0.5101,
+    "mean_fraction_in_penumbra": 0.4845,
+    "pct_below_50pct": 0.4891,
+    "pass_mark": ">= 0.7, fixed before running",
+    "passed": false,
+    "worst_5": [
+      {
+        "subject": "sub-stroke0101",
+        "fraction_in_penumbra": 0.0078
+      },
+      {
+        "subject": "sub-stroke0163",
+        "fraction_in_penumbra": 0.0115
+      },
+      {
+        "subject": "sub-stroke0170",
+        "fraction_in_penumbra": 0.0344
+      },
+      {
+        "subject": "sub-stroke0074",
+        "fraction_in_penumbra": 0.0409
+      },
+      {
+        "subject": "sub-stroke0079",
+        "fraction_in_penumbra": 0.0589
+      }
+    ],
+    "skipped": [
+      [
+        "sub-stroke0003",
+        "infarct_too_small"
+      ],
+      [
+        "sub-stroke0013",
+        "infarct_too_small"
+      ],
+      [
+        "sub-stroke0057",
+        "infarct_too_small"
+      ],
+      [
+        "sub-stroke0086",
+        "infarct_too_small"
+      ],
+      [
+        "sub-stroke0094",
+        "infarct_too_small"
+      ],
+      [
+        "sub-stroke0100",
+        "infarct_too_small"
+      ],
+      [
+        "sub-stroke0119",
+        "infarct_too_small"
+      ],
+      [
+        "sub-stroke0141",
+        "infarct_too_small"
+      ],
+      [
+        "sub-stroke0142",
+        "infarct_too_small"
+      ],
+      [
+        "sub-stroke0159",
+        "infarct_too_small"
+      ],
+      [
+        "sub-stroke0162",
+        "infarct_too_small"
+      ],
+      [
+        "sub-stroke0171",
+        "infarct_too_small"
+      ]
+    ]
+  },
+  "hir_vs_final_volume": {
+    "good_collateral": {
+      "n": 18,
+      "median": 11.0,
+      "q1": 4.2,
+      "q3": 46.2,
+      "p90": 96.85,
+      "mean": 33.39,
+      "max": 184.39
+    },
+    "poor_collateral": {
+      "n": 9,
+      "median": 19.97,
+      "q1": 16.28,
+      "q3": 98.1,
+      "p90": 110.49,
+      "mean": 52.68,
+      "max": 118.3
+    },
+    "comparison": {
+      "testable": true,
+      "U": 103.0,
+      "p_one_sided": 0.13439774313438896,
+      "auc": 0.636
+    },
+    "pass_mark": "poor median > good median and p < 0.05, fixed before running",
+    "passed": false
   }
 }
