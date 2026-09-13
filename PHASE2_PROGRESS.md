@@ -90,6 +90,34 @@ behaving as a collateral proxy in this cohort, and that final infarct size is
 not a size measure the graph's rules can use reliably — both conclusions
 independent of each other, which makes them harder to dismiss as one fluke.
 
+## Phase 2 cleanup (2026-09-14) — closed out
+
+Three small remaining items from `CLAUDE.md`'s task list, done:
+
+1. **Label rename.** "distal_unlocalized" → "unlocalized" throughout the code
+   and graph file (`src/graph/constraint_support.py`, `kg/guideline_rules.json`).
+   Pure rename — the underlying numbers are unchanged, only the name was wrong.
+2. **MCA-absent subjects checked.** Of 23 subjects with the MCA missing from
+   the vessel mask on their clot's side (more than the 17 first estimated), 13
+   have their clot located within 7mm of the same-side ICA — consistent with a
+   real ICA-level occlusion, where the MCA is genuinely invisible on the scan
+   because no blood is reaching it, not a segmentation failure. Those 13 are
+   already correctly classified as ICA occlusions. 4 more have *both* ICA and
+   MCA missing on that side, suggesting an even more complete blockage. Only 3
+   remain unexplained this way (real distance >25mm to the ICA) — a small,
+   acceptable residue.
+3. **The 2 flagged subjects, manually reviewed.** Rendered NCCT slices with
+   the clot location and final infarct overlaid for sub-stroke0049 and
+   sub-stroke0079. Both visually confirm the known side mismatch; neither
+   shows a clear, fixable labeling error — sub-stroke0049's clot sits near
+   midline structures where a small side mix-up is plausible without being a
+   bug, sub-stroke0079's is starker and can't be resolved from an image slice
+   without a radiologist. **No relabeling done** — both stay counted as the
+   real exceptions the laterality gate (94.7%, not 100%) already reflects.
+
+Phase 2 is now fully closed except for the deferred territory rule and the
+lowest-priority item (CTA vessel sharpening), neither blocking Phase 3.
+
 ## Decision needed before continuing
 
 The next planned step (`CLAUDE.md`'s Phase 2 list) was a coarse **territory

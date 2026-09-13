@@ -58,9 +58,9 @@
   },
 
   "concept_nodes": [
-    {"id": "lvo_localization", "type": "categorical", "values": ["proximal_anterior", "other_confident", "distal_unlocalized", "none"],
+    {"id": "lvo_localization", "type": "categorical", "values": ["proximal_anterior", "other_confident", "unlocalized", "none"],
      "source_head": "H2 LVO detection & localization", "available_on_isles24": true,
-     "availability_note": "Replaces binary LVO yes/no: only 4/149 subjects have an empty lvo-msk, so a binary head would have 4 negatives. Classes from confidence-gated occlusion site: proximal_anterior = confident ICA/MCA (87), other_confident = confident ACA/PCA/BA (15), distal_unlocalized (42), none (4). Final label scheme set in Phase 2."},
+     "availability_note": "Replaces binary LVO yes/no: only 4/149 subjects have an empty lvo-msk, so a binary head would have 4 negatives. Classes from confidence-gated occlusion site: proximal_anterior = confident ICA/MCA (87), other_confident = confident ACA/PCA/BA (15), unlocalized (42), none (4). Final label scheme set in Phase 2."},
     {"id": "lvo_side", "type": "categorical", "values": ["left", "right", "unknown"],
      "source_head": "H2", "available_on_isles24": true,
      "availability_note": "Side of the occluded vessel. Low-confidence cases still carry reliable side: 17/17 low-confidence anterior cases matched the infarct side."},
@@ -245,7 +245,7 @@
       "id": "proximal_occlusion_larger_infarct",
       "statement": "A clot in a large upstream vessel (ICA/M1) should come with a larger final infarct than a distal clot.",
       "concepts": ["lvo_localization", "final_infarct_volume"],
-      "violation": {"lvo_localization": "distal_unlocalized", "final_infarct_volume": {"op": ">", "value": "threshold_from_training_fold"}},
+      "violation": {"lvo_localization": "unlocalized", "final_infarct_volume": {"op": ">", "value": "threshold_from_training_fold"}},
       "strength": "soft",
       "clinical_basis": "An upstream occlusion cuts off a larger arterial territory.",
       "support": {

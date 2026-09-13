@@ -1,7 +1,7 @@
 {
   "occlusion_level_vs_volume": {
-    "rule": "Proximal (ICA/M1) occlusions come with larger final infarcts than distal occlusions.",
-    "pass_mark": "proximal median > distal median and one-sided Mann-Whitney p < 0.05, fixed before running",
+    "rule": "Proximal (ICA/M1) occlusions come with larger final infarcts than unlocalized occlusions.",
+    "pass_mark": "proximal median > unlocalized median and one-sided Mann-Whitney p < 0.05, fixed before running",
     "groups": {
       "proximal_anterior": {
         "n": 87,
@@ -21,7 +21,7 @@
         "mean": 22.26,
         "max": 139.74
       },
-      "distal_unlocalized": {
+      "unlocalized": {
         "n": 42,
         "median": 13.12,
         "q1": 4.68,
@@ -120,7 +120,7 @@
         "vessel_missing": 6,
         "fraction": 0.4
       },
-      "distal_unlocalized": {
+      "unlocalized": {
         "n": 42,
         "vessel_missing": 11,
         "fraction": 0.262

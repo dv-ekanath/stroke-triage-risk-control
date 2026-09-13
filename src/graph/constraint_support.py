@@ -16,7 +16,7 @@ Check 1 -- occlusion level vs infarct volume
   a clot further downstream, so it should come with a larger infarct.
   Groups come from Phase 1's confidence-gated localisation:
     proximal_anterior   confident ICA or MCA match
-    distal_unlocalized  occlusion beyond the segmented circle
+    unlocalized  occlusion beyond the segmented circle
   Pass mark, fixed before the first run: proximal median > distal median AND
   one-sided Mann-Whitney U p < 0.05.
   Effect size reported as AUC = P(random proximal volume > random distal one).
@@ -53,7 +53,7 @@ def localization_class(s: dict) -> str | None:
     if status != "ok":
         return None                      # shape mismatch etc. -- excluded
     if s["occlusion_unlocalized"]:
-        return "distal_unlocalized"
+        return "unlocalized"
     vessel = (s.get("nearest_vessel") or "").split("-")[-1]
     return "proximal_anterior" if vessel in ("ICA", "MCA") else "other_confident"
 
@@ -86,9 +86,9 @@ def unseen_vessel_diagnostic(feats: dict) -> dict:
     out = {}
     for s in feats["subjects"]:
         cls = localization_class(s)
-        if cls not in ("proximal_anterior", "other_confident", "distal_unlocalized"):
+        if cls not in ("proximal_anterior", "other_confident", "unlocalized"):
             continue
-        if cls == "distal_unlocalized":
+        if cls == "unlocalized":
             side = s.get("unlocalized_side") or "unknown"
         else:
             side = {"L": "left", "R": "right"}.get(s["nearest_vessel"].split("-")[0], "unknown")
@@ -241,7 +241,7 @@ def check_hir_vs_final_volume_continuous(feats: dict, perf_ok: list[dict], vol: 
     hir_by_sub = {r["subject"]: r["hir"] for r in perf_ok if r.get("hir") is not None}
     pairs = [(hir_by_sub[s["subject"]], vol[s["subject"]])
              for s in feats["subjects"]
-             if localization_class(s) in ("proximal_anterior", "other_confident", "distal_unlocalized")
+             if localization_class(s) in ("proximal_anterior", "other_confident", "unlocalized")
              and s["subject"] in hir_by_sub and s["subject"] in vol]
     if len(pairs) < 10:
         return {"testable": False, "reason": f"only {len(pairs)} subjects with both values"}
@@ -285,7 +285,7 @@ def main():
     if missing:
         print(f"  !! no audited volume for: {missing}")
     print(f"  {'group':<20} {'n':>4} {'median':>8} {'IQR':>17} {'p90':>8} {'max':>8}")
-    order = ["proximal_anterior", "other_confident", "distal_unlocalized", "none"]
+    order = ["proximal_anterior", "other_confident", "unlocalized", "none"]
     stats = {}
     for k in order:
         d = describe(arr.get(k, np.empty(0)))
@@ -302,12 +302,12 @@ def main():
         if d["n"]:
             print(f"    {v:<4} n={d['n']:>3}  median {d['median']:>6.1f}  IQR {d['q1']:.1f}-{d['q3']:.1f}")
 
-    prox, dist = arr.get("proximal_anterior", np.empty(0)), arr.get("distal_unlocalized", np.empty(0))
+    prox, dist = arr.get("proximal_anterior", np.empty(0)), arr.get("unlocalized", np.empty(0))
     primary = compare(prox, dist)
-    passed = bool(primary.get("testable") and stats["proximal_anterior"]["median"] > stats["distal_unlocalized"]["median"]
+    passed = bool(primary.get("testable") and stats["proximal_anterior"]["median"] > stats["unlocalized"]["median"]
                   and primary["p_one_sided"] < ALPHA)
 
-    print(f"\n  PRIMARY  proximal (ICA/M1) > distal: ", end="")
+    print(f"\n  PRIMARY  proximal (ICA/M1) > unlocalized: ", end="")
     if primary["testable"]:
         print(f"p = {primary['p_one_sided']:.2e}, AUC = {primary['auc']}  "
               f"-> {'PASS' if passed else 'FAIL'} (pass mark: higher median and p < {ALPHA}, fixed before running)")
@@ -386,13 +386,13 @@ def main():
           "unopacified vessel):")
     for k, d in contamination.items():
         print(f"    {k:<20} {d['vessel_missing']:>2}/{d['n']:<3} ({d['fraction']:.0%})")
-    print("    Distal cases with a missing clot-side vessel may be upstream clots in a vessel the")
-    print("    CTA never showed. Too few to explain the result; a label-quality issue for Phase 2.")
+    print("    Unlocalized cases with a missing clot-side vessel may be upstream clots in a vessel")
+    print("    the CTA never showed. Too few to explain the result; a label-quality issue for Phase 2.")
 
     OUT_TAB.mkdir(parents=True, exist_ok=True)
     payload["occlusion_level_vs_volume"] = {
-        "rule": "Proximal (ICA/M1) occlusions come with larger final infarcts than distal occlusions.",
-        "pass_mark": f"proximal median > distal median and one-sided Mann-Whitney p < {ALPHA}, fixed before running",
+        "rule": "Proximal (ICA/M1) occlusions come with larger final infarcts than unlocalized occlusions.",
+        "pass_mark": f"proximal median > unlocalized median and one-sided Mann-Whitney p < {ALPHA}, fixed before running",
         "groups": stats, "by_vessel": vstats,
         "primary": primary, "secondary": secondary, "passed": passed,
         "secondary_note": "ICA > MCA was one of two unplanned secondary tests; at a Bonferroni-corrected 0.025 it does not pass. A lead to re-test on training folds, not a supported rule.",

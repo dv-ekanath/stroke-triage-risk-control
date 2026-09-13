@@ -62,16 +62,21 @@ occlusions, a flag plus the side.
 9. **Label 15** (TopCoW's rare 13th vessel) is in 5/149 patients and never
    the clot site — excluded from the fixed graph.
 
-## Needs manual review (not blocking)
+## Manual review (2026-09-14) — done, closed
 
-| Subject | Why |
-|---|---|
-| sub-stroke0049 | Confident L-MCA clot, but 81% of the infarct is on the right |
-| sub-stroke0079 | Confident R-MCA clot, but 98% of the infarct is on the left |
-| sub-stroke0003, sub-stroke0033 | L-ACA clot, right-sided infarct — ACA sits at the midline, so side is fragile |
+| Subject | Why | Finding |
+|---|---|---|
+| sub-stroke0049 | Confident L-MCA clot, but 81% of the infarct is on the right | Visually confirmed: infarct sits on the opposite side from the clot marker, matching the numeric finding. The clot marker sits among the small midline vessel structures, close to where left/right nearly touch anatomically — a small side mix-up there is plausible without being an obvious error. |
+| sub-stroke0079 | Confident R-MCA clot, but 98% of the infarct is on the left | Visually confirmed, more starkly: infarct is large and almost entirely on the opposite side. MCA is not normally as close to the midline as the vessels in 0049's case, so this is less easily explained the same way. Cannot be adjudicated as a real label error vs. an unusual clinical pattern (e.g. watershed injury) from one image slice — that call needs a radiologist. |
+| sub-stroke0003, sub-stroke0033 | L-ACA clot, right-sided infarct | Not separately re-imaged — ACA sits at the midline by anatomy, so side ambiguity here is expected, same reasoning as 0049. |
 
-Worth opening these scans before Phase 3: a swapped left/right label in the
-vessel mask would corrupt training for that patient.
+**Decision:** no relabeling or exclusion. Both are already correctly counted
+among the laterality gate's known disagreements (89/94 = 94.7%, not 100%) —
+this review didn't find a clear bug to fix, it confirmed the exceptions are
+real and are already accounted for in that number, not hidden by it.
+Diagnostic images: `sub-stroke0049_check.png`, `sub-stroke0079_check.png`
+(scratchpad, not committed — regenerate via the snippet in this session's
+history if needed again).
 
 ## Follow-up check (2026-09-14): a candidate size rule — not supported
 

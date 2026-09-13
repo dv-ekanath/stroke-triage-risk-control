@@ -70,21 +70,28 @@ why the plan below changed from the original Phase 2 list.
    negative.** Continuous, whole-cohort (n=143): rho=0.052, p=0.54. Both
    constraints now `not_supported` in `kg/guideline_rules.json`, not
    `inconclusive`. HIR is not usable as a collateral signal in this cohort.
-2. **Decide on the territory rule** (Liu 2023 atlas, needs NCCT→atlas
-   registration — the heaviest remaining task). No cheap way left to de-risk
-   it first: the closely-related perfusion-overlap rule already failed
-   (median 51% overlap, not a registration bug — likely distal embolization
-   during thrombectomy), and the collateral rescue attempt in (1) also
-   failed. Ask the user before starting this one — real cost, uncertain payoff.
-3. **LVO label scheme**: proximal_anterior 87 / other_confident 15 /
-   **unlocalized** 42 / none 4 (rename "distal" → "unlocalized": 11/42 have
-   the clot-side MCA/ICA missing from cow-msk and may be upstream clots).
+2. **Territory rule DROPPED from the 2-week scope** (see §"Decision made"
+   above) — deferred to after Phase 8, not attempted now.
+3. ~~LVO label scheme~~ **Done.** Renamed "distal_unlocalized" → "unlocalized"
+   throughout (`src/graph/constraint_support.py`, `kg/guideline_rules.json`),
+   values unchanged: proximal_anterior 87 / other_confident 15 /
+   unlocalized 42 / none 4.
 4. Skull stripping is DONE as a side effect of the brain mask
    (`src/graph/perfusion_volumes.py:brain_mask`, gated at 98.6% plausible
-   ICV). CTA vessel enhancement (Frangi) still to do.
-5. Check whether the 17 MCA-absent subjects are occluded MCAs not visible on CTA.
-6. Before Phase 3: manually look at sub-stroke0049 and sub-stroke0079
-   (confident clot on one side, infarct on the other — possible L/R label swap).
+   ICV). CTA vessel enhancement (Frangi) — lowest priority, skip unless
+   Phase 8 finishes early.
+5. ~~Check the MCA-absent subjects~~ **Done.** Of 23 (not 17), 13 have their
+   clot within 7mm of the same-side ICA — a real ICA occlusion explains the
+   invisible MCA, not a segmentation failure; already correctly classified.
+   4 more have both ICA and MCA missing (likely a more complete occlusion).
+   Only 3 remain unexplained. See `PHASE2_PROGRESS.md`.
+6. ~~Manually look at sub-stroke0049 and sub-stroke0079~~ **Done.** Rendered
+   and visually reviewed. Both confirm the known side mismatch; neither shows
+   a clear, fixable label error. No relabeling — both stay as known
+   exceptions within the laterality gate's 94.7%. See `PHASE1_REPORT.md`.
+
+**Phase 2 is now fully closed.** Only the deferred territory rule and the
+skippable vessel-sharpening step remain, neither blocking Phase 3.
 
 ## Rules this project runs on — keep them
 
