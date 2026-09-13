@@ -1,0 +1,75 @@
+{
+  "fold": 0,
+  "n_folds": 3,
+  "config": {
+    "root": "D:\\ISLES-2024\\train",
+    "audit_json": "outputs\\tables\\data_audit.json",
+    "fold": 0,
+    "n_folds": 3,
+    "epochs": 1,
+    "patch_size": [
+      128,
+      128,
+      64
+    ],
+    "batch_size": 2,
+    "lr": 0.0001,
+    "val_interval": 1,
+    "num_workers": 4,
+    "cache_dir": null,
+    "amp": true,
+    "seed": 0,
+    "max_val_subjects": 3,
+    "warm_start": "outputs\\checkpoints\\segresnet_fold0_best.pt",
+    "lambda_seg": 1.0,
+    "lambda_lvo": 0.3,
+    "lambda_col": 0.2
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "seg": 0.449339006628309,
+      "lvo": 1.4548804942442446,
+      "col": 1.4599217006138392,
+      "seconds": 150.6047592163086,
+      "n_nonfinite": 0,
+      "val_dice": 0.07762809963447885,
+      "val_lvo_acc": 0.3333333333333333,
+      "val_collateral_acc": 0.6666666666666666
+    }
+  ],
+  "best_val_dice": 0.07762809963447885,
+  "final_segmentation": {
+    "per_subject": [
+      {
+        "dice": 0.22047979713723265,
+        "abs_volume_diff_ml": 158.135,
+        "lesion_f1": 0.15384615384615385,
+        "abs_lesion_count_diff": 7,
+        "subject": "sub-stroke0002"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 24.38,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 3,
+        "subject": "sub-stroke0003"
+      },
+      {
+        "dice": 0.012404501766203894,
+        "abs_volume_diff_ml": 7.2620000000000005,
+        "lesion_f1": 0.18181818181818182,
+        "abs_lesion_count_diff": 13,
+        "subject": "sub-stroke0008"
+      }
+    ],
+    "mean": {
+      "dice": 0.07762809963447885,
+      "abs_volume_diff_ml": 63.25899999999999,
+      "lesion_f1": 0.11188811188811189,
+      "abs_lesion_count_diff": 7.666666666666667
+    }
+  },
+  "final_lvo_accuracy": 0.3333333333333333,
+  "final_collateral_accuracy": 0.6666666666666666
+}

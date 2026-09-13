@@ -21,3 +21,10 @@ monai>=1.6
 SimpleITK>=2.5
 torchio>=1.2
 tensorboard>=2.18
+
+# Needed only for Phase 3+ (KG-XAI): the GNN encoder over the vascular graph.
+# Smoke-tested 2026-09-15: pure `pip install torch_geometric` (2.8.0.post1)
+# works directly against torch 2.11.0+cu128 on the RTX 5060 (Blackwell) --
+# GATConv/GCNConv forward+backward confirmed on GPU with the real 12-node
+# graph, no torch-scatter/torch-sparse compiled extensions needed.
+torch_geometric>=2.8

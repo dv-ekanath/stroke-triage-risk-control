@@ -93,6 +93,20 @@ why the plan below changed from the original Phase 2 list.
 **Phase 2 is now fully closed.** Only the deferred territory rule and the
 skippable vessel-sharpening step remain, neither blocking Phase 3.
 
+## Phase 3 — in progress (2026-09-15)
+
+1. ~~Install PyTorch Geometric, smoke-test on GPU~~ **Done, passed cleanly.**
+   `pip install torch_geometric` (2.8.0.post1) works directly against
+   torch 2.11.0+cu128 on the RTX 5060 — no torch-scatter/torch-sparse compiled
+   extensions needed (the Blackwell compatibility risk flagged in the plan
+   did not materialize). GATConv/GCNConv forward+backward confirmed on GPU
+   using the real 12-node vascular graph. Added to `requirements.txt`.
+2. **Next:** extend `src/model/` with two new heads (LVO localization,
+   4-class; collateral proxy, HIR-based) branching off the existing shared
+   decoder in `src/model/train_baseline.py` / `dataset.py`. No graph yet —
+   that's Phases 4–5. Gate: both heads beat their trivial baseline; Dice
+   stays at or above 0.215.
+
 ## Rules this project runs on — keep them
 
 These are what made the work defensible. Don't relax them.
