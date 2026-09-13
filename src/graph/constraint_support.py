@@ -222,6 +222,37 @@ def check_hir_vs_final_volume(feats: dict, perf_ok: list[dict], vol: dict[str, f
             "passed": passed}
 
 
+def check_hir_vs_final_volume_continuous(feats: dict, perf_ok: list[dict], vol: dict[str, float]) -> dict:
+    """Check 5 -- re-test of the two collateral plausibility constraints,
+    fixing Check 4's underpowering: continuous Spearman correlation across
+    ALL occlusion-positive patients (proximal_anterior + other_confident +
+    unlocalized), not a binned good-vs-poor group restricted to proximal
+    occlusions only (n=9 there). "none" (no occlusion, n=4) is excluded --
+    collateral status is not a meaningful concept without an occlusion to
+    have collaterals around.
+
+    Unlike Check 2 (HIR vs mismatch_ratio), this pairing has no shared-term
+    confound: final_infarct_volume comes from the independent follow-up scan
+    (ses-02 lesion-msk), not from any Tmax-derived quantity.
+
+    Pass mark, fixed before running: Spearman rho > 0 and p < 0.05.
+    """
+    from scipy.stats import spearmanr
+    hir_by_sub = {r["subject"]: r["hir"] for r in perf_ok if r.get("hir") is not None}
+    pairs = [(hir_by_sub[s["subject"]], vol[s["subject"]])
+             for s in feats["subjects"]
+             if localization_class(s) in ("proximal_anterior", "other_confident", "distal_unlocalized")
+             and s["subject"] in hir_by_sub and s["subject"] in vol]
+    if len(pairs) < 10:
+        return {"testable": False, "reason": f"only {len(pairs)} subjects with both values"}
+    hir, v = zip(*pairs)
+    rho, p = spearmanr(hir, v)
+    passed = bool(rho > 0 and p < 0.05)
+    return {"testable": True, "n": len(pairs), "spearman_rho": round(float(rho), 4),
+            "p": float(p), "pass_mark": "rho > 0 and p < 0.05, fixed before running",
+            "passed": passed}
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--features", type=pathlib.Path, default=OUT_TAB / "kg_node_features.json")
@@ -324,6 +355,16 @@ def main():
         else:
             print(f"  not enough subjects (good n={g['n']}, poor n={p_['n']})")
         payload["hir_vs_final_volume"] = hir_vol_check
+
+        print("\nCheck 5 -- HIR vs final infarct volume, CONTINUOUS, all occlusion-positive "
+              "patients (re-test of Check 4, fixing the underpowering)")
+        cont_check = check_hir_vs_final_volume_continuous(feats, perf_ok, vol)
+        if cont_check["testable"]:
+            print(f"  n={cont_check['n']}  Spearman rho={cont_check['spearman_rho']}  p={cont_check['p']:.3g}")
+            print(f"  pass mark: {cont_check['pass_mark']}  -> {'PASS' if cont_check['passed'] else 'FAIL'}")
+        else:
+            print(f"  not testable -- {cont_check['reason']}")
+        payload["hir_vs_final_volume_continuous"] = cont_check
 
     if args.root is not None:
         print("\nCheck 3 -- perfusion-overlap plausibility rule "

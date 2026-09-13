@@ -65,8 +65,8 @@
     },
     "constraint_support": {
       "infarct_side_matches_occlusion_side": "supported",
-      "good_collateral_limits_infarct": "inconclusive",
-      "poor_collateral_expects_infarct": "inconclusive",
+      "good_collateral_limits_infarct": "not_supported",
+      "poor_collateral_expects_infarct": "not_supported",
       "proximal_occlusion_larger_infarct": "not_supported",
       "collateral_hir_vs_mismatch": "not_supported",
       "infarct_inside_admission_penumbra": "not_supported",

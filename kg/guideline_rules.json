@@ -219,11 +219,11 @@
       "clinical_basis": "Olivot 2014: 'Initial infarct growth velocity and total infarct growth were greater among patients with a high HIR' -- i.e. poor collaterals grow larger infarcts; good collaterals, the reverse. This is the cross-task incoherence the deck's Problem Statement names.",
       "clinical_basis_source_ids": ["olivot_2014_hir"],
       "support": {
-        "status": "inconclusive",
+        "status": "not_supported",
         "source_ids": ["isles24_data"],
-        "evidence": "Proximal occlusions only: poor-collateral (HIR bin 2-3, n=9) median final infarct 19.97 mL vs good-collateral (HIR bin 0, n=18) median 11.0 mL -- CORRECT direction, AUC=0.636, but one-sided p=0.134, above the pre-fixed 0.05 mark. outputs/tables/constraint_support.json.",
-        "likely_reason": "Underpowered, not contradicted: n=9 in the poor-collateral group is small once split by both occlusion level and HIR bin. Also stands on two assumptions each already shown fragile in this cohort: HIR failed its own independent validation (collateral_hir_vs_mismatch, wrong-direction correlation), and final_infarct_volume is confounded by universal successful reperfusion (proximal_occlusion_larger_infarct).",
-        "decision": "Excluded from JDCR for now -- right direction, not yet strong enough to trust. Worth re-testing with the full cohort (not just proximal occlusions) or a continuous HIR-vs-volume correlation instead of a binned group test, in a later phase."
+        "evidence": "Two tests. (a) Proximal occlusions only, binned: poor-collateral (HIR bin 2-3, n=9) median 19.97 mL vs good-collateral (HIR bin 0, n=18) median 11.0 mL, right direction but p=0.134. (b) RE-TEST, properly powered: continuous Spearman correlation, HIR vs final infarct volume, ALL occlusion-positive patients (n=143, not just proximal): rho=0.052, p=0.54 -- essentially no relationship. outputs/tables/constraint_support.json.",
+        "likely_reason": "The properly-powered test (b) does not merely fail to reach significance, it finds a near-zero effect size -- test (a)'s 'right direction' reading does not replicate and was most likely small-sample noise, not a real signal a bigger sample would confirm. Consistent with HIR's own validation already failing (collateral_hir_vs_mismatch) and with final_infarct_volume being confounded by universal successful reperfusion (proximal_occlusion_larger_infarct): three independent tests now agree that neither HIR nor final infarct size behaves as this constraint (or the collateral-grading task generally) assumes in this all-reperfused cohort.",
+        "decision": "Excluded from JDCR. Not worth re-testing again without a different collateral proxy or a different outcome than final infarct size -- both ingredients of this constraint have now failed independently."
       }
     },
     {
@@ -235,7 +235,7 @@
       "clinical_basis": "Mirror of the constraint above; same source.",
       "clinical_basis_source_ids": ["olivot_2014_hir"],
       "support": {
-        "status": "inconclusive",
+        "status": "not_supported",
         "source_ids": ["isles24_data"],
         "evidence": "Same underlying test as good_collateral_limits_infarct (mirror constraint) -- see that entry.",
         "decision": "Excluded from JDCR for the same reasons."

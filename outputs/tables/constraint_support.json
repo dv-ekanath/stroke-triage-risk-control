@@ -246,5 +246,13 @@
     },
     "pass_mark": "poor median > good median and p < 0.05, fixed before running",
     "passed": false
+  },
+  "hir_vs_final_volume_continuous": {
+    "testable": true,
+    "n": 143,
+    "spearman_rho": 0.0517,
+    "p": 0.539994324129462,
+    "pass_mark": "rho > 0 and p < 0.05, fixed before running",
+    "passed": false
   }
 }

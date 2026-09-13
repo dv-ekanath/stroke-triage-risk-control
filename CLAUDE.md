@@ -45,10 +45,14 @@ Git identity for this repo: `dv-ekanath <ekanath.dv2023@vitstudent.ac.in>`
   7/7 sources verified; laterality gate 89/94 = 94.7% (pass mark 80%).
 - **Phase 2 — in progress, paused for a decision** (2026-09-14). Brain mask,
   acute core, penumbra, mismatch, HIR: all built and gated
-  (`src/graph/perfusion_volumes.py`). 4 more plausibility constraints tested.
-  **Net: only 1 of 7 plausibility constraints in the graph is supported**
-  (laterality, from Phase 1). See `PHASE2_PROGRESS.md` for the full picture
-  and the decision this leaves open before the atlas/territory work.
+  (`src/graph/perfusion_volumes.py`). 5 more plausibility constraints tested,
+  including a continuous whole-cohort re-test of the two collateral
+  constraints (n=143, rho=0.052, p=0.54 — decisively negative, not just
+  underpowered). **Net: 1 of 7 plausibility constraints supported** (laterality,
+  from Phase 1), 5 rejected, 1 untestable. See `PHASE2_PROGRESS.md` for the
+  full picture and the decision this leaves open before the atlas/territory
+  work (the collateral proxy, HIR, is now settled as not usable in this
+  cohort by three independent tests -- that's closed, not still open).
 - Phases 3–9: see `PROJECT_PLAN.md` §8. ~6 weeks total from 2026-09-14.
 
 ## Phase 2 — remaining work
@@ -56,16 +60,16 @@ Git identity for this repo: `dv-ekanath <ekanath.dv2023@vitstudent.ac.in>`
 Read `PHASE2_PROGRESS.md` first — it has the constraint-testing results and
 why the plan below changed from the original Phase 2 list.
 
-1. **Re-test the two inconclusive collateral constraints properly** (cheap,
-   no new data): continuous HIR-vs-final-volume correlation across the whole
-   cohort, not a binned good/poor group restricted to proximal occlusions
-   (n=9 there was underpowered, p=0.134 despite the right direction).
+1. ~~Re-test the two collateral constraints properly~~ **Done — settled
+   negative.** Continuous, whole-cohort (n=143): rho=0.052, p=0.54. Both
+   constraints now `not_supported` in `kg/guideline_rules.json`, not
+   `inconclusive`. HIR is not usable as a collateral signal in this cohort.
 2. **Decide on the territory rule** (Liu 2023 atlas, needs NCCT→atlas
-   registration — the heaviest remaining task) — worth it only if (1) doesn't
-   already recover enough supported constraints, since the closely-related
-   perfusion-overlap rule already failed (median 51% overlap, not a
-   registration bug — likely distal embolization during thrombectomy moving
-   infarcts to a different territory on the same side).
+   registration — the heaviest remaining task). No cheap way left to de-risk
+   it first: the closely-related perfusion-overlap rule already failed
+   (median 51% overlap, not a registration bug — likely distal embolization
+   during thrombectomy), and the collateral rescue attempt in (1) also
+   failed. Ask the user before starting this one — real cost, uncertain payoff.
 3. **LVO label scheme**: proximal_anterior 87 / other_confident 15 /
    **unlocalized** 42 / none 4 (rename "distal" → "unlocalized": 11/42 have
    the clot-side MCA/ICA missing from cow-msk and may be upstream clots).

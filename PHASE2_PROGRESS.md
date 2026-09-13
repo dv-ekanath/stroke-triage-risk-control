@@ -31,9 +31,12 @@ mismatch, HIR — `outputs/tables/perfusion_volumes.json`), 4 new checks in
 | Proximal (ICA/M1) clot → bigger infarct | **Rejected** | p=0.66, no difference |
 | High HIR → low mismatch ratio | **Rejected** | Significant, but backwards (rho=+0.19). Also found: the check wasn't as independent as intended — both quantities share a term |
 | Infarct inside admission Tmax>6s region | **Rejected** | Median only 51% overlap; 49% of subjects below half; some near 0%. Not a registration bug (affines confirmed byte-identical) — see below |
-| Poor collateral (HIR) → bigger infarct, proximal only | **Inconclusive** | Right direction (19.97 vs 11.0 mL), but n=9 in the small group, p=0.134 |
-| Poor collateral → non-trivial infarct (mirror) | **Inconclusive** | Same underlying test |
+| Poor collateral (HIR) → bigger infarct, proximal only, binned | **Rejected** | Right direction (19.97 vs 11.0 mL) but p=0.134, n=9 |
+| **Re-test: same, continuous, ALL occlusion-positive patients** | **Rejected** | n=143, rho=0.052, p=0.54 — essentially no relationship. Doesn't just miss significance, finds a near-zero effect. The n=9 "right direction" result does not replicate. |
+| Poor collateral → non-trivial infarct (mirror) | **Rejected** | Same underlying test |
 | Large infarct needs a clot | **Untestable** | Only 4 patients have no clot |
+
+**Current count: 1 supported, 5 rejected, 1 untestable, of 7.**
 
 ## The perfusion-overlap failure — why it's not a bug
 
@@ -69,6 +72,24 @@ eligibility rule gained. JDCR today would mostly measure the laterality
 check. That is real, but it's a single, comparatively simple relationship —
 worth saying plainly before it's presented as a bigger result than it is.
 
+## Update, same day: the cheap re-test is done, and it didn't help
+
+Ran option 2 below first, since it was cheap. **It came back negative, not
+inconclusive.** The continuous, whole-cohort version (n=143, rho=0.052,
+p=0.54) found essentially no relationship between HIR and final infarct
+volume — this isn't a sample-size problem the n=9 test had; a real effect of
+any real size would have shown up in 143 patients. The earlier "right
+direction" reading from the small binned test doesn't replicate and was most
+likely noise. Both collateral constraints are now recorded `not_supported`
+in `kg/guideline_rules.json`, not `inconclusive`.
+
+**Count now: 1 of 7 supported, 5 rejected, 1 untestable.** Three independent
+tests (this one, `collateral_hir_vs_mismatch`, and the fact that HIR itself
+never validated against an independent signal) now agree that HIR is not
+behaving as a collateral proxy in this cohort, and that final infarct size is
+not a size measure the graph's rules can use reliably — both conclusions
+independent of each other, which makes them harder to dismiss as one fluke.
+
 ## Decision needed before continuing
 
 The next planned step (`CLAUDE.md`'s Phase 2 list) was a coarse **territory
@@ -77,26 +98,31 @@ territories (MCA/ACA/PCA regions) instead of exact Tmax>6s pixels, on the
 reasoning that distal embolization usually stays inside the same broad
 territory even when it changes the exact location. That reasoning still
 holds, but it is now a real bet, not a safe next step — the overlap check
-was expected to be one of the sturdier tests, and it wasn't. The territory
-rule also needs atlas registration (Liu 2023), the heaviest single task in
-Phase 2.
+was expected to be one of the sturdier tests, and it wasn't, and the cheap
+rescue attempt for the collateral constraints just failed too. The territory
+rule needs atlas registration (Liu 2023), the heaviest single task in
+Phase 2, for a graph that currently has exactly one working rule to add to.
 
-Three ways to go from here, not mutually exclusive:
+Two ways forward, not mutually exclusive:
 
 1. **Build the territory rule anyway.** It might hold where exact overlap
    didn't — coarser tests are more forgiving of small location shifts. Real
-   cost: the atlas registration work, with no guarantee it passes either.
-2. **Re-test the two inconclusive collateral constraints properly first** —
-   continuous HIR-vs-volume correlation across the whole cohort instead of a
-   binned, occlusion-level-restricted comparison. Cheap (no new data needed,
-   just a better statistical test) and might turn "inconclusive" into
-   "supported" without touching the atlas.
-3. **Accept a narrower JDCR** built mainly on the laterality constraint, and
+   cost: the atlas registration work, with no cheap way left to de-risk it
+   first, and no guarantee it passes either.
+2. **Accept a narrower JDCR** built mainly on the laterality constraint, and
    put more of the project's weight on the GNN and cross-attention pieces
    (Phases 3–6) rather than on having many plausibility constraints. Report
    the testing process itself — 7 candidate rules formalized from the
-   literature, rigorously tested against real data, only 1–3 surviving — as
-   an honest finding about post-thrombectomy cohorts, not a shortfall.
+   literature, rigorously tested against real data, only 1 surviving — as an
+   honest finding about post-thrombectomy cohorts, not a shortfall. This is
+   also a defensible, presentable result on its own: it says something real
+   about why collateral grading and infarct-size prediction are hard in a
+   uniformly-successfully-treated population, which is itself worth a
+   paragraph in the write-up.
 
-My recommendation: do (2) now, since it's cheap and already scoped, then
-decide on (1) vs (3) with that result in hand.
+My honest read: the collateral proxy (HIR) is not going to work as a
+plausibility signal in this cohort no matter how it's re-tested, and that's
+settled now, not still open. The open question is only whether the
+territory rule is worth the atlas-registration cost given everything else
+built on final-infarct location or size has failed. I'd want a clearer sense
+of the project's time budget before recommending either way.
