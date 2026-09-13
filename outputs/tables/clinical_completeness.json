@@ -1,0 +1,219 @@
+{
+  "root": "D:\\ISLES-2024\\train",
+  "n_subjects": 149,
+  "baseline": {
+    "Age": {
+      "filled": 149,
+      "total": 149,
+      "fraction": 1.0
+    },
+    "Alert to door": {
+      "filled": 0,
+      "total": 149,
+      "fraction": 0.0
+    },
+    "Anticoagulation": {
+      "filled": 147,
+      "total": 149,
+      "fraction": 0.987
+    },
+    "Atrial fibrillation": {
+      "filled": 148,
+      "total": 149,
+      "fraction": 0.993
+    },
+    "CRP": {
+      "filled": 92,
+      "total": 149,
+      "fraction": 0.617
+    },
+    "Center": {
+      "filled": 148,
+      "total": 149,
+      "fraction": 0.993
+    },
+    "Diabetes": {
+      "filled": 147,
+      "total": 149,
+      "fraction": 0.987
+    },
+    "Door to first series": {
+      "filled": 0,
+      "total": 149,
+      "fraction": 0.0
+    },
+    "Door to groin": {
+      "filled": 0,
+      "total": 149,
+      "fraction": 0.0
+    },
+    "Door to imaging": {
+      "filled": 0,
+      "total": 149,
+      "fraction": 0.0
+    },
+    "Door to recanalization": {
+      "filled": 0,
+      "total": 149,
+      "fraction": 0.0
+    },
+    "Glucose": {
+      "filled": 133,
+      "total": 149,
+      "fraction": 0.893
+    },
+    "Hyperlipidemia": {
+      "filled": 146,
+      "total": 149,
+      "fraction": 0.98
+    },
+    "Hypertension": {
+      "filled": 149,
+      "total": 149,
+      "fraction": 1.0
+    },
+    "INR": {
+      "filled": 91,
+      "total": 149,
+      "fraction": 0.611
+    },
+    "In-House": {
+      "filled": 147,
+      "total": 149,
+      "fraction": 0.987
+    },
+    "Leucocytes": {
+      "filled": 92,
+      "total": 149,
+      "fraction": 0.617
+    },
+    "Lipid lowering drugs": {
+      "filled": 145,
+      "total": 149,
+      "fraction": 0.973
+    },
+    "NIHSS at admission": {
+      "filled": 146,
+      "total": 149,
+      "fraction": 0.98
+    },
+    "Onset to door": {
+      "filled": 0,
+      "total": 149,
+      "fraction": 0.0
+    },
+    "PAIs": {
+      "filled": 146,
+      "total": 149,
+      "fraction": 0.98
+    },
+    "Referral": {
+      "filled": 147,
+      "total": 149,
+      "fraction": 0.987
+    },
+    "Sex": {
+      "filled": 148,
+      "total": 149,
+      "fraction": 0.993
+    },
+    "Time of intervention": {
+      "filled": 0,
+      "total": 149,
+      "fraction": 0.0
+    },
+    "Wake-up": {
+      "filled": 148,
+      "total": 149,
+      "fraction": 0.993
+    },
+    "mRS at admission": {
+      "filled": 100,
+      "total": 149,
+      "fraction": 0.671
+    },
+    "mRS premorbid": {
+      "filled": 90,
+      "total": 149,
+      "fraction": 0.604
+    }
+  },
+  "outcome": {
+    "NIHSS 24h": {
+      "filled": 82,
+      "total": 149,
+      "fraction": 0.55
+    },
+    "NIHSS discharge": {
+      "filled": 90,
+      "total": 149,
+      "fraction": 0.604
+    },
+    "TICI postinterventional": {
+      "filled": 100,
+      "total": 149,
+      "fraction": 0.671
+    },
+    "mRS 24h": {
+      "filled": 85,
+      "total": 149,
+      "fraction": 0.57
+    },
+    "mRS 3 months": {
+      "filled": 129,
+      "total": 149,
+      "fraction": 0.866
+    },
+    "mRS discharge": {
+      "filled": 94,
+      "total": 149,
+      "fraction": 0.631
+    }
+  },
+  "empty_baseline_columns": [
+    "Alert to door",
+    "Door to first series",
+    "Door to groin",
+    "Door to imaging",
+    "Door to recanalization",
+    "Onset to door",
+    "Time of intervention"
+  ],
+  "graph_concepts": {
+    "age": {
+      "column": "Age",
+      "filled": 149,
+      "total": 149,
+      "fraction": 1.0,
+      "evaluable_on_isles24": true
+    },
+    "nihss": {
+      "column": "NIHSS at admission",
+      "filled": 146,
+      "total": 149,
+      "fraction": 0.98,
+      "evaluable_on_isles24": true
+    },
+    "mrs_premorbid": {
+      "column": "mRS premorbid",
+      "filled": 90,
+      "total": 149,
+      "fraction": 0.604,
+      "evaluable_on_isles24": true
+    },
+    "wake_up": {
+      "column": "Wake-up",
+      "filled": 148,
+      "total": 149,
+      "fraction": 0.993,
+      "evaluable_on_isles24": true
+    },
+    "time_window": {
+      "column": "Onset to door",
+      "filled": 0,
+      "total": 149,
+      "fraction": 0.0,
+      "evaluable_on_isles24": false
+    }
+  }
+}

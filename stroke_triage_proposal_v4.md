@@ -1,5 +1,10 @@
 # Risk-Controlled Threshold Triage for Ischemic Stroke: A Distribution-Free Guarantee on the Decision, Not the Volume
 
+> **Review 1 direction — superseded.** After Review 1 the project returned to
+> the knowledge-graph plan (KG-XAI). The current plan of record is
+> [`PROJECT_PLAN.md`](PROJECT_PLAN.md). The conformal layer described here
+> survives only as an optional component of the Rule Evaluator.
+
 ### Where conformal coverage guarantees fail the decision they are meant to support, and how Learn-then-Test fixes it at the guideline threshold
 
 **Author:** Rohan Julius Preetan A

@@ -1,5 +1,9 @@
 # Plan: Restructure the stroke triage proposal (v3 → v4)
 
+> **Review 1 direction — superseded.** This plan dropped the knowledge graph;
+> faculty feedback at Review 1 reversed that. The current plan of record is
+> [`PROJECT_PLAN.md`](PROJECT_PLAN.md).
+
 ## Context
 
 `stroke_triage_proposal_v3.md` is a well-verified proposal whose novelty is too weak to

@@ -1,99 +1,160 @@
-# Risk-Controlled Threshold Triage for Ischemic Stroke
+# KG-XAI — Knowledge-Graph-Guided Multi-Task Learning for Stroke Triage
 
-A distribution-free guarantee on the thrombectomy-eligibility *decision* — not on
-the volume estimate feeding it. Extends Luan et al., [*Unified multimodal
-learning for stroke triage*](https://doi.org/10.1038/s41746-025-02255-0),
-npj Digital Medicine 9:441 (2026).
+Ekanath DV (23MIA1023) · Rohan Julius Preetan (23MIA1160)
 
-The base paper's safety mechanism is a hand-set rejection threshold (τ = 0.15),
-called "excellent calibration" at ECE = 0.130 and validated on 30 patients. This
-project replaces it with a Learn-then-Test certified decision rule carrying a
-finite-sample guarantee on two clinically asymmetric risks — denying treatment
-to a patient who would benefit, vs. futile reperfusion.
+A stroke-triage model that answers three questions from a patient's CT
+scans — *is there a large-vessel occlusion, how good are the collateral
+vessels, where is the infarct* — and, unlike the base paper, makes sure the
+three answers **make clinical sense together**. A graph neural network
+reasons over the patient's own Circle-of-Willis vessel network, guideline
+knowledge is injected into the model while it decides, and a consistency loss
+penalises incoherent combinations. We measure this with a new metric, the
+**Joint-Decision Consistency Rate (JDCR)**, and every prediction comes with a
+traceable explanation — no LLM involved.
 
-**Full write-up:** [`stroke_triage_proposal_v4.md`](stroke_triage_proposal_v4.md) ·
-prior-art differentiation: [`prior_art_table.md`](prior_art_table.md) ·
-review-by-review plan: [`stroke_triage_v4_plan.md`](stroke_triage_v4_plan.md)
+**Base paper:** Luan T. et al., [*Unified multimodal learning for stroke
+triage: joint detection, scoring, and segmentation of acute ischemic
+stroke*](https://doi.org/10.1038/s41746-025-02255-0), npj Digital Medicine
+9:441 (2026). Its three task heads are scored independently, so nothing
+checks cross-task coherence — that is our entry point.
+
+**Plan of record:** [`PROJECT_PLAN.md`](PROJECT_PLAN.md) — architecture,
+novelty, dataset, knowledge graph, 9 phases with pass/fail gates.
+
+---
 
 ## Status
 
-Review 1 (problem framing, literature positioning, novelty statement, methodology
-design) is complete — see [`stroke_triage_v4_plan.md`](stroke_triage_v4_plan.md)
-§3 for the full checklist. Highlights, all run against the real downloaded
-ISLES'24 release (149 subjects), not synthetic data unless noted:
+| Phase | What | State |
+|---|---|---|
+| Review 1 | Data pipeline, audits, baseline segmentation, calibration layer | ✅ Done — see *Review 1 record* below |
+| **1** | **Knowledge graph** — both layers, verified sources, per-patient vessel features | ✅ **Passed** — [`PHASE1_REPORT.md`](PHASE1_REPORT.md) |
+| 2 | Labels & preprocessing — LVO localization, HIR collateral proxy, core/penumbra, location constraints | Next |
+| 3 | B0 — base paper's architecture reimplemented (no graph) | |
+| 4–6 | GNN, guideline injection (B1), consistency loss (B2) | |
+| 7–9 | Rule evaluator + JDCR + rationale, full evaluation, write-up | |
 
-- **Center-label recovery**: 99/49 split, matching the published descriptor
-  (100/49) — recovered from a per-subject phenotype field, since this release
-  ships no `participants.tsv`.
-- **Data audit**: real volume distribution (31.7 ± 45.1 mL) and τ-certifiability
-  table; τ=110mL clears the Learn-then-Test sample-size floor by a margin of one
-  case, updating an earlier synthetic-only estimate that had called it infeasible.
-- **Occlusion-site derivation**: nearest-CoW-distance method (direct mask
-  intersection mostly fails on real data), geometrically verified, 71/144
-  confident matches.
-- **Baseline segmentation** (`src/model/`): 6-channel SegResNet, 200 epochs,
-  real leaderboard-comparable Dice/AVD/lesion-F1/ALD (`outputs/tables/baseline_fold0.json`).
-- **Calibration layer** (`src/conformal/`): validated on synthetic data — PIT
-  uniformity, coverage across α, LTT risk control at 100% within-target, and the
-  split-vs-cross-conformal width-instability comparison all pass.
+**Phase 1 headlines** (all measured on the real ISLES'24 data):
 
-A presentation-ready summary of Review 1 is in [`review1_report.html`](review1_report.html).
-A narrative progress report against the grading rubric is in
-[`REVIEW1_PROGRESS.md`](REVIEW1_PROGRESS.md); every metric value quoted
-anywhere, sourced directly from `outputs/tables/*.json`, is in
-[`REVIEW1_RESULTS.md`](REVIEW1_RESULTS.md).
+- The vessel graph lines up with reality: confident clot locations match the
+  side of the follow-up infarct in **89/94 (94.7%)** cases (pass mark 80%,
+  fixed before running).
+- All **7 sources verified** against PubMed, ClinicalTrials.gov or arXiv.
+- ISLES'24 has **no timing data** (all 7 timing columns empty, 149/149) and
+  no ASPECTS, so no eligibility rule is fully evaluable — JDCR rests on the
+  plausibility constraints instead.
+- Of the plausibility constraints, **1 is supported** (infarct side matches
+  clot side), 1 was **tested and rejected** (upstream clots → bigger infarcts:
+  p = 0.66), 2 await Phase 2, 1 is untestable. Size-based rules are weak in
+  this all-reperfused cohort; **location-based rules** are the Phase 2
+  priority.
+
+## How improvement over the base paper is shown
+
+The base paper's reported numbers aren't directly comparable (different
+label definition, extra datasets, a 7-center split the public ISLES'24
+release doesn't have — it has 2). So we reimplement its architecture and
+compare on identical data, splits and seeds:
+
+| Model | What it is |
+|---|---|
+| **B0** | Base paper's architecture on ISLES'24, no knowledge graph |
+| **B1** | B0 + GNN over the vessel graph + guideline cross-attention |
+| **B2** | B1 + consistency loss + rule evaluator + rationale (full KG-XAI) |
+
+The claim is **B2 vs. B0**.
+
+## The knowledge graph
+
+Nothing to download — no knowledge graph exists for ISLES'24. It's authored
+from verified sources ([`KNOWLEDGE_GRAPH_SOURCES.md`](KNOWLEDGE_GRAPH_SOURCES.md)):
+
+| Layer | File | Content | Sources |
+|---|---|---|---|
+| 1 — Vessel graph | [`kg/cow_topology.json`](kg/cow_topology.json) | Circle of Willis: 12 vessels, 12 connections. The GNN runs on this. | TopCoW (arXiv:2312.17670), Alastruey 2007, Liu 2023 atlas |
+| 2 — Guideline graph | [`kg/guideline_rules.json`](kg/guideline_rules.json) | 16 concepts, 7 eligibility rules, 5 plausibility constraints | DAWN, DEFUSE 3 (trial registries), AHA/ASA 2026, Kim 2026, Olivot 2014 |
+
+## Dataset
+
+**ISLES'24** public training release — 149 patients, 2 centers (99 / 49),
+NCCT, CTA, CT perfusion maps, vessel masks, follow-up infarct masks, clinical
+data. **Not included in this repo** (~100 GB); download it separately and pass
+its path with `--root`. See [`guide.md`](guide.md) for the expected layout.
 
 ## Repository layout
 
 ```
-src/conformal/     conformal predictive system, the triage decision rule, Learn-then-Test
-src/data/          ISLES'24 audit, center-label recovery, occlusion-site + mRS-shift derivation
-src/eval/          all four ISLES'24 metrics + decision metrics, with baselines
-src/experiments/   synthetic cohort simulator, calibration validation, certification-limits sweeps
-src/model/         baseline segmentation: dataset pipeline (MONAI) + SegResNet training loop
-outputs/           figures/ and tables/ (JSON) written by the scripts above
+kg/                knowledge graph: vessel graph + guideline graph (JSON)
+src/graph/         graph validation, per-patient vessel features, constraint support checks
+src/data/          ISLES'24 audits: volumes, centers, occlusion site, mRS, clinical completeness
+src/model/         data pipeline (MONAI) + baseline segmentation training
+src/eval/          the four ISLES'24 metrics + decision metrics
+src/conformal/     calibration layer (Review 1) — optional component of the rule evaluator
+src/experiments/   synthetic calibration validation (Review 1)
+outputs/tables/    every number quoted anywhere, as JSON
 ```
 
-## Setup
-
-The dataset itself is **not** in this repo — see [`guide.md`](guide.md) for the
-expected ISLES'24 directory layout. Everything below assumes it's downloaded
-separately and passed via `--root`.
-
-**Calibration + data-audit track** (no GPU, no dataset needed for calibration):
-
-```bash
-pip install -r requirements.txt
-python -m src.experiments.validate_calibration --trials 300 --tau 70
-python -m src.experiments.certification_limits --trials 100
-python -m src.data.audit --root /path/to/ISLES-2024/train
-python -m src.data.center_labels --root /path/to/ISLES-2024/train
-python -m src.data.occlusion_site --root /path/to/ISLES-2024/train
-python -m src.data.mrs_shift --root /path/to/ISLES-2024/train
-```
-
-**Model-training track** (needs a CUDA GPU — developed against an RTX 5060 /
-Blackwell, which needs a cu128+ PyTorch build):
+## Running it
 
 ```bash
 python -m venv .venv
-.venv/Scripts/activate            # .venv/bin/activate on Linux/macOS
+.venv/Scripts/activate                  # .venv/bin/activate on Linux/macOS
 pip install -r requirements.txt
-pip install torch --index-url https://download.pytorch.org/whl/cu128
-python -c "import torch; print(torch.cuda.is_available())"   # confirm before training
+pip install torch --index-url https://download.pytorch.org/whl/cu128   # GPU track only
+```
 
+**Phase 1 — knowledge graph** (no GPU):
+
+```bash
+python -m src.graph.build                                   # validate both graphs + provenance
+python -m src.data.clinical_audit  --root /path/to/ISLES-2024/train
+python -m src.graph.features       --root /path/to/ISLES-2024/train   # vessel features + laterality gate
+python -m src.graph.constraint_support                      # test plausibility rules on ground truth
+```
+
+**Data audits** (Review 1, still used):
+
+```bash
+python -m src.data.audit          --root /path/to/ISLES-2024/train
+python -m src.data.center_labels  --root /path/to/ISLES-2024/train
+python -m src.data.occlusion_site --root /path/to/ISLES-2024/train
+python -m src.data.mrs_shift      --root /path/to/ISLES-2024/train
+```
+
+**Baseline segmentation** (CUDA GPU; developed on an RTX 5060, which needs a
+cu128+ PyTorch build):
+
+```bash
 python -m src.model.train_baseline --root /path/to/ISLES-2024/train \
     --fold 0 --epochs 200 --val-interval 10 \
     --cache-dir /path/to/cache_1mm --num-workers 4
 ```
 
-`--cache-dir` matters: it switches to MONAI's `PersistentDataset`, caching the
-resample/normalize pipeline to disk so only the first epoch pays the full
-preprocessing cost (measured ~15x speedup on repeat epochs). Clear the cache
-directory if you change `src/model/dataset.py`'s transforms.
+`--cache-dir` caches preprocessing to disk (~15× faster repeat epochs). Clear
+it if you change the transforms in `src/model/dataset.py`. PyTorch Geometric
+is added in Phase 3.
 
-## Reference
+## Review 1 record
 
-Riedel E.O. et al. The ISLES'24 Dataset: A Multimodal Stroke Imaging Dataset
-with Hyperacute CT, Acute Postinterventional MRI, and 3-month Clinical Outcomes.
-*Radiology: Artificial Intelligence* 8(3) (2026). DOI 10.1148/ryai.250603.
+Review 1 took a different direction — a statistically certified decision
+threshold (conformal prediction + Learn-then-Test). Faculty feedback: the
+threshold alone wasn't enough novelty, and the knowledge-graph plan should
+return. Those documents are kept as the record, each marked superseded:
+[`stroke_triage_proposal_v4.md`](stroke_triage_proposal_v4.md),
+[`stroke_triage_v4_plan.md`](stroke_triage_v4_plan.md),
+[`prior_art_table.md`](prior_art_table.md),
+[`REVIEW1_PROGRESS.md`](REVIEW1_PROGRESS.md),
+[`REVIEW1_RESULTS.md`](REVIEW1_RESULTS.md),
+[`review1_report.html`](review1_report.html),
+[`guide.md`](guide.md),
+[`KG_XAI_BUILD_PLAN.md`](KG_XAI_BUILD_PLAN.md).
+
+Its data work carries straight into KG-XAI — the baseline segmentation
+(6-channel SegResNet, Dice 0.215, lesion-F1 0.278 vs. leaderboard 0.144) and
+the occlusion-site derivation are the foundation of Phases 1–3.
+
+## References
+
+1. Luan T. et al. Unified multimodal learning for stroke triage. *npj Digit. Med.* 9:441 (2026). — base paper
+2. Riedel E.O. et al. The ISLES'24 Dataset. *Radiology: Artificial Intelligence* 8(3) (2026). DOI 10.1148/ryai.250603.
+3. Full verified reference list: [`PROJECT_PLAN.md`](PROJECT_PLAN.md) §12 and [`KNOWLEDGE_GRAPH_SOURCES.md`](KNOWLEDGE_GRAPH_SOURCES.md).

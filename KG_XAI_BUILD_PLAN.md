@@ -1,5 +1,9 @@
 # KG-XAI Build Plan — Knowledge-Graph-Guided Multi-Task Learning for Stroke Triage
 
+> **Superseded by [`PROJECT_PLAN.md`](PROJECT_PLAN.md)** (2026-09-13), which
+> follows the Review 1 deck's architecture and has the current 9-phase plan.
+> Kept for the record.
+
 Restores the original project direction (per faculty feedback on Review 1:
 the certified-threshold work read as insufficiently novel on its own, and the
 original knowledge-graph plan should not have been dropped). Nothing built

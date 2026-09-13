@@ -1,0 +1,77 @@
+{
+  "name": "circle_of_willis_topology",
+  "description": "Anatomical graph of the Circle of Willis. Fixed structure, identical across patients (anatomical variants appear as absent nodes, not different edges). Node ids match the TopCoW label integers already verified against this project's real cow-msk data in src/data/occlusion_site.py.",
+  "provenance": "See KNOWLEDGE_GRAPH_SOURCES.md. Structure: standard neurovascular anatomy, as published in TopCoW and in 1D hemodynamic network models of the CoW, which define this adjacency explicitly because their flow simulations depend on it.",
+  "verified_on": "2026-09-13",
+  "sources": {
+    "topcow": {
+      "citation": "Yang K et al. The TopCoW Challenge -- Topology-Aware Circle of Willis Segmentation for CT and MR Angiography. arXiv:2312.17670 (2023).",
+      "verified": true,
+      "verified_how": "arXiv abstract page. Defines 13 vessel components; this graph uses the 12 that form the standard circle (see variant_labels_excluded)."
+    },
+    "alastruey_2007": {
+      "citation": "Alastruey J et al. Modelling the circle of Willis to assess the effects of anatomical variations and occlusions on cerebral flows. J Biomech. 2007;40(8):1794-805. doi:10.1016/j.jbiomech.2006.07.008",
+      "pmid": "17045276",
+      "verified": true,
+      "verified_how": "NCBI E-utilities (PubMed record)."
+    },
+    "liu_2023_territories": {
+      "citation": "Liu CF et al. Digital 3D Brain MRI Arterial Territories Atlas. Sci Data. 2023;10(1):74. doi:10.1038/s41597-022-01923-0",
+      "pmid": "36739282",
+      "verified": true,
+      "verified_how": "NCBI E-utilities. Provides ACA / MCA / PCA / vertebro-basilar territories in two hierarchical levels; MRI-based. Used in Phase 2 (version 2 of the territory perfusion features) -- needs registration from NCCT space to the atlas."
+    }
+  },
+  "variant_labels_excluded": {
+    "15": "TopCoW 3rd-A2 (a variant vessel). Present in 5/149 subjects (sub-stroke0077, 0109, 0137, 0138, 0152), 19-129 voxels each, and never the nearest vessel to an occlusion. Not part of the standard circle, so kept out of the fixed topology."
+  },
+  "measured_on_isles24": {
+    "vessel_present_of_149": {"BA": 147, "R-PCA": 147, "L-PCA": 147, "R-ICA": 146, "R-MCA": 132, "L-ICA": 142, "L-MCA": 132, "R-Pcom": 54, "L-Pcom": 44, "Acom": 71, "R-ACA": 148, "L-ACA": 147},
+    "note_on_presence": "The communicating arteries (Acom, Pcom) -- the collateral pathways -- are often absent or unsegmented; an incomplete circle is anatomically common. segment_present = 0 on those nodes tells the GNN a collateral route is missing, which is clinically meaningful rather than noise. MCA is absent in 17 subjects, plausibly because an occluded MCA carries no contrast on CTA and is not segmented -- to confirm in Phase 2.",
+    "laterality_validation": "Confident anterior-circulation occlusions match the side of the follow-up infarct in 89/94 (94.7%); PCA 6/6; low-confidence anterior 17/17. Pass mark 80%, fixed before running. Source: outputs/tables/kg_node_features.json."
+  },
+  "directed": false,
+  "nodes": [
+    {"id": "BA",     "topcow_label": 1,  "name": "Basilar artery",                        "side": "midline", "territory": "posterior"},
+    {"id": "R-PCA",  "topcow_label": 2,  "name": "Right posterior cerebral artery",       "side": "right",   "territory": "posterior"},
+    {"id": "L-PCA",  "topcow_label": 3,  "name": "Left posterior cerebral artery",        "side": "left",    "territory": "posterior"},
+    {"id": "R-ICA",  "topcow_label": 4,  "name": "Right internal carotid artery",         "side": "right",   "territory": "anterior"},
+    {"id": "R-MCA",  "topcow_label": 5,  "name": "Right middle cerebral artery",          "side": "right",   "territory": "anterior"},
+    {"id": "L-ICA",  "topcow_label": 6,  "name": "Left internal carotid artery",          "side": "left",    "territory": "anterior"},
+    {"id": "L-MCA",  "topcow_label": 7,  "name": "Left middle cerebral artery",           "side": "left",    "territory": "anterior"},
+    {"id": "R-Pcom", "topcow_label": 8,  "name": "Right posterior communicating artery",  "side": "right",   "territory": "collateral"},
+    {"id": "L-Pcom", "topcow_label": 9,  "name": "Left posterior communicating artery",   "side": "left",    "territory": "collateral"},
+    {"id": "Acom",   "topcow_label": 10, "name": "Anterior communicating artery",         "side": "midline", "territory": "collateral"},
+    {"id": "R-ACA",  "topcow_label": 11, "name": "Right anterior cerebral artery",        "side": "right",   "territory": "anterior"},
+    {"id": "L-ACA",  "topcow_label": 12, "name": "Left anterior cerebral artery",         "side": "left",    "territory": "anterior"}
+  ],
+  "edges": [
+    {"source": "BA",     "target": "R-PCA",  "type": "supplies",   "note": "basilar bifurcation"},
+    {"source": "BA",     "target": "L-PCA",  "type": "supplies",   "note": "basilar bifurcation"},
+    {"source": "R-PCA",  "target": "R-Pcom", "type": "collateral", "note": "posterior communicating pathway"},
+    {"source": "R-Pcom", "target": "R-ICA",  "type": "collateral", "note": "posterior communicating pathway"},
+    {"source": "L-PCA",  "target": "L-Pcom", "type": "collateral", "note": "posterior communicating pathway"},
+    {"source": "L-Pcom", "target": "L-ICA",  "type": "collateral", "note": "posterior communicating pathway"},
+    {"source": "R-ICA",  "target": "R-MCA",  "type": "supplies",   "note": "carotid terminus bifurcation"},
+    {"source": "R-ICA",  "target": "R-ACA",  "type": "supplies",   "note": "carotid terminus bifurcation"},
+    {"source": "L-ICA",  "target": "L-MCA",  "type": "supplies",   "note": "carotid terminus bifurcation"},
+    {"source": "L-ICA",  "target": "L-ACA",  "type": "supplies",   "note": "carotid terminus bifurcation"},
+    {"source": "R-ACA",  "target": "Acom",   "type": "collateral", "note": "anterior communicating pathway"},
+    {"source": "L-ACA",  "target": "Acom",   "type": "collateral", "note": "anterior communicating pathway"}
+  ],
+  "node_features_per_patient": {
+    "occluded": "1 ONLY if src/data/occlusion_site.py returned a CONFIDENT match (nearest-vessel distance <= 15mm) at this segment, else 0. Confidence gating is mandatory, not optional -- see occluded_gating_warning.",
+    "segment_present": "0 if this TopCoW label is absent from the subject's cow-msk (anatomical variant or unsegmented), else 1",
+    "hypoperfusion": "territory-level severity from the Tmax/CBF maps (see src/data/hir_proxy.py, Phase 2)"
+  },
+
+  "graph_level_features_per_patient": {
+    "occlusion_unlocalized": "1 when the subject has an LVO whose nearest vessel exceeded the confidence threshold -- i.e. a distal (M2/M3+) occlusion beyond the extent of the CoW segmentation. The occlusion is real; its location is simply not on this graph. Represent it here rather than forcing it onto a node.",
+    "unlocalized_side": "For unlocalized occlusions: left/right from the NAME of the nearest lateral vessel, 'unknown' when it is midline (BA). Justified by data: 17/17 low-confidence anterior cases matched the infarct side."
+  },
+
+  "leakage_rule": "Node and graph features may use ONLY admission (ses-01) data: cow-msk, lvo-msk, perfusion maps, admission clinical fields. They must NEVER be derived from lesion-msk or any ses-02 / follow-up data -- that is the segmentation target, and using it as an input leaks the answer. lesion-msk is used solely to VALIDATE features (the laterality gate), never to compute them.",
+
+  "occluded_gating_warning": "Measured on the real cohort: of 20 subjects whose nearest vessel was BA, 19 were low-confidence with a median distance of 39.4mm (max 53mm). BA sits centrally, so it becomes the default 'nearest' vessel for occlusions far from every labelled segment. Populating node features without gating on confidence would have injected 19 fabricated basilar occlusions into the GNN's input. With gating applied, the confident-only distribution is 70% MCA / 16% ICA / 1% BA -- a textbook LVO distribution, which is the signal that the derivation itself is sound.",
+  "why_this_matters": "Edges typed 'collateral' (Acom, L/R-Pcom) are the physical pathways blood reroutes through when a proximal vessel is occluded. Message passing along exactly these edges is a model of the real mechanism, not an analogy -- which is what makes a GNN over this graph defensible rather than decorative."
+}

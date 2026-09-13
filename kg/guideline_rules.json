@@ -1,0 +1,265 @@
+{
+  "name": "clinical_guideline_graph",
+  "version": 2,
+  "description": "Layer 2 of the KG-XAI knowledge graph: the formalized decision chain (deck Objective 1). Concept nodes are the quantities the model outputs or the dataset provides; eligibility rules come from trial and guideline criteria; plausibility constraints encode which JOINT outputs are clinically coherent -- those drive the consistency loss and JDCR (deck Problem Statement).",
+  "verified_on": "2026-09-13",
+
+  "sources": {
+    "dawn": {
+      "citation": "Nogueira RG et al. Thrombectomy 6 to 24 Hours after Stroke with a Mismatch between Deficit and Infarct. N Engl J Med. 2018;378(1):11-21. doi:10.1056/NEJMoa1706442",
+      "pmid": "29129157", "registry": "NCT02142283",
+      "verified": true,
+      "verified_how": "Citation via NCBI E-utilities (PubMed record). Criteria via ClinicalTrials.gov API v2 eligibility module for NCT02142283.",
+      "wording_verified": true
+    },
+    "defuse3": {
+      "citation": "Albers GW et al. Thrombectomy for Stroke at 6 to 16 Hours with Selection by Perfusion Imaging. N Engl J Med. 2018;378(8):708-718. doi:10.1056/NEJMoa1713973",
+      "pmid": "29364767", "registry": "NCT02586415",
+      "verified": true,
+      "verified_how": "Citation via NCBI E-utilities (PubMed record). Criteria via ClinicalTrials.gov API v2 eligibility module for NCT02586415.",
+      "wording_verified": true
+    },
+    "aha_asa_2026": {
+      "citation": "Prabhakaran S et al. 2026 Guideline for the Early Management of Patients With Acute Ischemic Stroke: A Guideline From the American Heart Association/American Stroke Association. Stroke. 2026;57(8):e316-e436. doi:10.1161/STR.0000000000000513",
+      "pmid": "41582814",
+      "verified": true,
+      "verified_how": "Citation via NCBI E-utilities (PubMed record).",
+      "wording_verified": false,
+      "wording_note": "Full text is blocked to automated access (HTTP 403). The recommendation wording below comes from secondary summaries returned by web search, not from the guideline itself. Confirm against the full text before quoting it anywhere."
+    },
+    "kim_2026_large_core": {
+      "citation": "Kim H et al. Defining the Therapeutic Ceiling of Endovascular Thrombectomy in Large-Core Stroke: Beyond the Limits of ASPECTS. Stroke. 2026;57(9):2677-2686. doi:10.1161/STROKEAHA.126.055374",
+      "pmid": "42403349",
+      "verified": true,
+      "verified_how": "Citation and abstract via NCBI E-utilities.",
+      "wording_verified": true,
+      "caveat": "Observational registry with target-trial emulation, n=552 -- evidence, not a guideline recommendation. Core measured by diffusion-weighted MRI volumetry."
+    },
+    "olivot_2014_hir": {
+      "citation": "Olivot JM et al. Hypoperfusion intensity ratio predicts infarct progression and functional outcome in the DEFUSE 2 Cohort. Stroke. 2014;45(4):1018-23. doi:10.1161/STROKEAHA.113.003857",
+      "pmid": "24595591",
+      "verified": true,
+      "verified_how": "Citation and abstract via NCBI E-utilities.",
+      "wording_verified": true
+    },
+    "luan_2026_base_paper": {
+      "citation": "Luan T et al. Unified multimodal learning for stroke triage: joint detection, scoring, and segmentation of acute ischemic stroke. npj Digit Med. 2026;9:441. doi:10.1038/s41746-025-02255-0",
+      "verified": true,
+      "verified_how": "Cited on the Review 1 deck with DOI; the decision chain (LVO -> collateral -> core -> decision) is the deck's own Objective 1.",
+      "wording_verified": false,
+      "wording_note": "Full text not re-read in this session."
+    },
+    "isles24_data": {
+      "citation": "This project's own measurements on the ISLES'24 public training release (outputs/tables/kg_node_features.json, clinical_completeness.json).",
+      "verified": true,
+      "verified_how": "Computed from the data.",
+      "wording_verified": true
+    }
+  },
+
+  "concept_nodes": [
+    {"id": "lvo_localization", "type": "categorical", "values": ["proximal_anterior", "other_confident", "distal_unlocalized", "none"],
+     "source_head": "H2 LVO detection & localization", "available_on_isles24": true,
+     "availability_note": "Replaces binary LVO yes/no: only 4/149 subjects have an empty lvo-msk, so a binary head would have 4 negatives. Classes from confidence-gated occlusion site: proximal_anterior = confident ICA/MCA (87), other_confident = confident ACA/PCA/BA (15), distal_unlocalized (42), none (4). Final label scheme set in Phase 2."},
+    {"id": "lvo_side", "type": "categorical", "values": ["left", "right", "unknown"],
+     "source_head": "H2", "available_on_isles24": true,
+     "availability_note": "Side of the occluded vessel. Low-confidence cases still carry reliable side: 17/17 low-confidence anterior cases matched the infarct side."},
+    {"id": "collateral_proxy", "type": "ordinal", "values": ["L0_poor", "L1", "L2", "L3_good"],
+     "source_head": "H3 collateral grading (HIR proxy)", "available_on_isles24": true, "source_ids": ["olivot_2014_hir"],
+     "availability_note": "ISLES'24 ships no collateral grade. Proxy = HIR = volume(Tmax>10s) / volume(Tmax>6s). HIGH HIR = POOR collaterals (Olivot 2014: 'A high HIR predicted poor collaterals with an area under the curve of 0.73'). Built in Phase 2; always reported as a proxy."},
+    {"id": "final_infarct_volume", "type": "continuous", "unit": "mL",
+     "source_head": "H1 segmentation", "available_on_isles24": true,
+     "availability_note": "What H1 predicts and what ISLES'24 labels (lesion-msk, follow-up DWI day 2-9). NOT the same quantity as the trials' admission core."},
+    {"id": "infarct_side", "type": "categorical", "values": ["left", "right", "bilateral"],
+     "source_head": "derived from H1", "available_on_isles24": true,
+     "availability_note": "Side holding the majority of infarct voxels, relative to the vessel-pair midline (src/graph/features.py)."},
+    {"id": "acute_core_volume", "type": "continuous", "unit": "mL",
+     "source": "derived from perfusion maps (Phase 2)", "available_on_isles24": "phase2",
+     "availability_note": "The trials' 'core' is tissue already infarcted at admission, measured on perfusion/diffusion imaging. Planned derivation: relative CBF < 30% on the CBF map. The exact method each trial used must be confirmed in Phase 2 before claiming equivalence."},
+    {"id": "penumbra_volume", "type": "continuous", "unit": "mL",
+     "source": "derived from Tmax map (Phase 2)", "available_on_isles24": "phase2",
+     "availability_note": "Hypoperfused tissue, Tmax > 6 s (the same threshold HIR's denominator uses)."},
+    {"id": "mismatch_ratio", "type": "continuous", "source": "penumbra_volume / acute_core_volume", "available_on_isles24": "phase2"},
+    {"id": "mismatch_volume", "type": "continuous", "unit": "mL", "source": "penumbra_volume - acute_core_volume", "available_on_isles24": "phase2"},
+    {"id": "aspects", "type": "ordinal", "values": [0,1,2,3,4,5,6,7,8,9,10], "available_on_isles24": false,
+     "availability_note": "ASPECTS is a CT region score. Not provided by ISLES'24. The AHA/ASA 2026 rules are written in ASPECTS, so they cannot be evaluated here; the trial rules are written in mL and can."},
+    {"id": "nihss", "type": "continuous", "unit": "points", "source": "phenotype 'NIHSS at admission'", "available_on_isles24": true, "availability_note": "146/149 filled"},
+    {"id": "age", "type": "continuous", "unit": "years", "source": "phenotype 'Age'", "available_on_isles24": true, "availability_note": "149/149 filled"},
+    {"id": "mrs_premorbid", "type": "ordinal", "values": [0,1,2,3,4,5], "source": "phenotype 'mRS premorbid'", "available_on_isles24": true, "availability_note": "90/149 filled -- rules needing it are indeterminate for the other 59"},
+    {"id": "wake_up", "type": "categorical", "values": [0, 1], "source": "phenotype 'Wake-up'", "available_on_isles24": true, "availability_note": "148/149 filled. Says onset time is unknown; does not give the time window."},
+    {"id": "time_window", "type": "categorical", "values": ["0-6h", "6-16h", "16-24h", "unknown"], "available_on_isles24": false,
+     "availability_note": "Every timing column in the release (Onset to door, Alert to door, Door to imaging, Door to groin, Door to first series, Door to recanalization, Time of intervention) is empty for all 149 subjects. No time-window condition can be evaluated."},
+    {"id": "eligibility", "type": "categorical", "values": ["eligible", "ineligible", "indeterminate", "negligible_benefit"], "source_head": "derived -- the decision being checked"}
+  ],
+
+  "eligibility_rules": [
+    {
+      "id": "defuse3",
+      "source_ids": ["defuse3"],
+      "conditions": [
+        {"concept": "age",               "op": ">=", "value": 18, "quote": "Age 18-90 years"},
+        {"concept": "age",               "op": "<=", "value": 90, "quote": "Age 18-90 years"},
+        {"concept": "nihss",             "op": ">=", "value": 6,  "quote": "Baseline NIHSSS is ≥ 6 and remains ≥6 immediately prior to randomization"},
+        {"concept": "mrs_premorbid",     "op": "<=", "value": 2,  "quote": "modified Rankin Scale less than or equal to 2 prior to qualifying stroke"},
+        {"concept": "lvo_localization",  "op": "in", "value": ["proximal_anterior"], "quote": "ICA or MCA-M1 occlusion"},
+        {"concept": "time_window",       "op": "in", "value": ["6-16h"], "quote": "Endovascular treatment can be initiated (femoral puncture) between 6 and 16 hours"},
+        {"concept": "acute_core_volume", "op": "<",  "value": 70, "unit": "mL", "quote": "ischemic core volume is < 70 ml"},
+        {"concept": "mismatch_ratio",    "op": ">=", "value": 1.8, "quote": "mismatch ratio is >/= 1.8"},
+        {"concept": "mismatch_volume",   "op": ">=", "value": 15, "unit": "mL", "quote": "mismatch volume* is >/= 15 ml"}
+      ],
+      "implies": {"concept": "eligibility", "value": "eligible"}
+    },
+    {
+      "id": "dawn_group_a",
+      "source_ids": ["dawn"],
+      "conditions": [
+        {"concept": "age",               "op": ">=", "value": 80, "quote": "0-<21 cc core infarct and NIHSS ≥ 10 (and age ≥ 80 years old)"},
+        {"concept": "nihss",             "op": ">=", "value": 10, "quote": "0-<21 cc core infarct and NIHSS ≥ 10 (and age ≥ 80 years old)"},
+        {"concept": "acute_core_volume", "op": "<",  "value": 21, "unit": "mL", "quote": "0-<21 cc core infarct"},
+        {"concept": "mrs_premorbid",     "op": "<=", "value": 1,  "quote": "No significant pre-stroke disability (pre-stroke mRS must be 0 or 1)"},
+        {"concept": "lvo_localization",  "op": "in", "value": ["proximal_anterior"], "quote": "Occlusion of the intracranial ICA and/or MCA-M1 as evidenced by MRA or CTA"},
+        {"concept": "time_window",       "op": "in", "value": ["6-16h", "16-24h"], "quote": "6 to 24 hours after time last known well"}
+      ],
+      "implies": {"concept": "eligibility", "value": "eligible"}
+    },
+    {
+      "id": "dawn_group_b",
+      "source_ids": ["dawn"],
+      "conditions": [
+        {"concept": "age",               "op": ">=", "value": 18, "quote": "Age ≥18"},
+        {"concept": "age",               "op": "<",  "value": 80, "quote": "0-<31 cc core infarct and NIHSS ≥ 10 (and age < 80 years old)"},
+        {"concept": "nihss",             "op": ">=", "value": 10, "quote": "0-<31 cc core infarct and NIHSS ≥ 10 (and age < 80 years old)"},
+        {"concept": "acute_core_volume", "op": "<",  "value": 31, "unit": "mL", "quote": "0-<31 cc core infarct"},
+        {"concept": "mrs_premorbid",     "op": "<=", "value": 1,  "quote": "pre-stroke mRS must be 0 or 1"},
+        {"concept": "lvo_localization",  "op": "in", "value": ["proximal_anterior"], "quote": "Occlusion of the intracranial ICA and/or MCA-M1"},
+        {"concept": "time_window",       "op": "in", "value": ["6-16h", "16-24h"], "quote": "6 to 24 hours after time last known well"}
+      ],
+      "implies": {"concept": "eligibility", "value": "eligible"}
+    },
+    {
+      "id": "dawn_group_c",
+      "source_ids": ["dawn"],
+      "conditions": [
+        {"concept": "age",               "op": ">=", "value": 18, "quote": "Age ≥18"},
+        {"concept": "age",               "op": "<",  "value": 80, "quote": "31 cc to <51 cc core infarct and NIHSS ≥ 20 (and age < 80 years old)"},
+        {"concept": "nihss",             "op": ">=", "value": 20, "quote": "31 cc to <51 cc core infarct and NIHSS ≥ 20"},
+        {"concept": "acute_core_volume", "op": ">=", "value": 31, "unit": "mL", "quote": "31 cc to <51 cc core infarct"},
+        {"concept": "acute_core_volume", "op": "<",  "value": 51, "unit": "mL", "quote": "31 cc to <51 cc core infarct"},
+        {"concept": "mrs_premorbid",     "op": "<=", "value": 1,  "quote": "pre-stroke mRS must be 0 or 1"},
+        {"concept": "lvo_localization",  "op": "in", "value": ["proximal_anterior"], "quote": "Occlusion of the intracranial ICA and/or MCA-M1"},
+        {"concept": "time_window",       "op": "in", "value": ["6-16h", "16-24h"], "quote": "6 to 24 hours after time last known well"}
+      ],
+      "implies": {"concept": "eligibility", "value": "eligible"}
+    },
+    {
+      "id": "aha_asa_2026_early_window",
+      "source_ids": ["aha_asa_2026"],
+      "conditions": [
+        {"concept": "lvo_localization", "op": "in", "value": ["proximal_anterior"]},
+        {"concept": "time_window",      "op": "in", "value": ["0-6h"]},
+        {"concept": "nihss",            "op": ">=", "value": 6},
+        {"concept": "mrs_premorbid",    "op": "<=", "value": 1},
+        {"concept": "aspects",          "op": ">=", "value": 3},
+        {"concept": "aspects",          "op": "<=", "value": 10}
+      ],
+      "implies": {"concept": "eligibility", "value": "eligible"},
+      "note": "Wording NOT verified against the guideline text (see sources.aha_asa_2026.wording_note). Not evaluable on ISLES'24 in any case: needs ASPECTS and time window."
+    },
+    {
+      "id": "aha_asa_2026_late_window_large_core",
+      "source_ids": ["aha_asa_2026"],
+      "conditions": [
+        {"concept": "lvo_localization", "op": "in", "value": ["proximal_anterior"]},
+        {"concept": "time_window",      "op": "in", "value": ["6-16h", "16-24h"]},
+        {"concept": "age",              "op": "<",  "value": 80},
+        {"concept": "nihss",            "op": ">=", "value": 6},
+        {"concept": "mrs_premorbid",    "op": "<=", "value": 1},
+        {"concept": "aspects",          "op": ">=", "value": 3},
+        {"concept": "aspects",          "op": "<=", "value": 5}
+      ],
+      "implies": {"concept": "eligibility", "value": "eligible"},
+      "note": "Wording NOT verified against the guideline text; the secondary summaries also mention 'without significant mass effect', which has no concept here. Not evaluable on ISLES'24: needs ASPECTS and time window."
+    },
+    {
+      "id": "large_core_therapeutic_ceiling",
+      "source_ids": ["kim_2026_large_core"],
+      "conditions": [
+        {"concept": "acute_core_volume", "op": ">=", "value": 110, "unit": "mL",
+         "quote": "with benefits disappearing in extensive infarctions exceeding 110 mL, establishing ≥110 mL as a therapeutic ceiling where thrombectomy benefit becomes negligible"}
+      ],
+      "implies": {"concept": "eligibility", "value": "negligible_benefit"},
+      "note": "Observational evidence, not a guideline rule. The same study reports benefit in the 50-110 mL range, so large core alone is not an exclusion."
+    }
+  ],
+
+  "plausibility_constraints": [
+    {
+      "id": "infarct_side_matches_occlusion_side",
+      "statement": "The infarct should be on the same side as the occluded vessel.",
+      "concepts": ["lvo_side", "infarct_side"],
+      "violation": {"lvo_side": "left", "infarct_side": "right", "or": {"lvo_side": "right", "infarct_side": "left"}},
+      "strength": "soft",
+      "clinical_basis": "Arterial occlusion causes ischemia in the territory the artery supplies, which is ipsilateral for the ICA, MCA, ACA and PCA.",
+      "support": {
+        "status": "supported",
+        "source_ids": ["isles24_data"],
+        "evidence": "Ground truth, confident anterior-circulation cases: 89/94 (94.7%) same side. Confident PCA: 6/6. Low-confidence anterior: 17/17.",
+        "ground_truth_violation_rate": 0.053,
+        "why_soft": "Real data violates it 5.3% of the time (2 near-midline ACA cases, 1 bilateral infarct, 2 unexplained -- flagged for review). A hard constraint would penalise the model for matching the ground truth."
+      }
+    },
+    {
+      "id": "good_collateral_limits_infarct",
+      "statement": "With a proximal occlusion, good collaterals should not co-occur with a very large final infarct.",
+      "concepts": ["collateral_proxy", "lvo_localization", "final_infarct_volume"],
+      "violation": {"collateral_proxy": "L3_good", "lvo_localization": "proximal_anterior", "final_infarct_volume": {"op": ">", "value": "threshold_from_training_fold"}},
+      "strength": "soft",
+      "clinical_basis": "Olivot 2014: 'Initial infarct growth velocity and total infarct growth were greater among patients with a high HIR' -- i.e. poor collaterals grow larger infarcts; good collaterals, the reverse. This is the cross-task incoherence the deck's Problem Statement names.",
+      "clinical_basis_source_ids": ["olivot_2014_hir"],
+      "support": {
+        "status": "pending_phase2",
+        "evidence": "Needs the HIR proxy (Phase 2). Volume threshold deliberately NOT set here -- it is chosen from the training-fold distribution, not asserted."
+      }
+    },
+    {
+      "id": "poor_collateral_expects_infarct",
+      "statement": "With a proximal occlusion, poor collaterals should not co-occur with a near-zero final infarct.",
+      "concepts": ["collateral_proxy", "lvo_localization", "final_infarct_volume"],
+      "violation": {"collateral_proxy": "L0_poor", "lvo_localization": "proximal_anterior", "final_infarct_volume": {"op": "<", "value": "threshold_from_training_fold"}},
+      "strength": "soft",
+      "clinical_basis": "Mirror of the constraint above; same source.",
+      "clinical_basis_source_ids": ["olivot_2014_hir"],
+      "support": {
+        "status": "pending_phase2",
+        "evidence": "Needs the HIR proxy (Phase 2). Caveat: every ISLES'24 patient was successfully reperfused, which limits infarct growth -- this constraint may turn out weak here, and that gets reported."
+      }
+    },
+    {
+      "id": "proximal_occlusion_larger_infarct",
+      "statement": "A clot in a large upstream vessel (ICA/M1) should come with a larger final infarct than a distal clot.",
+      "concepts": ["lvo_localization", "final_infarct_volume"],
+      "violation": {"lvo_localization": "distal_unlocalized", "final_infarct_volume": {"op": ">", "value": "threshold_from_training_fold"}},
+      "strength": "soft",
+      "clinical_basis": "An upstream occlusion cuts off a larger arterial territory.",
+      "support": {
+        "status": "not_supported",
+        "source_ids": ["isles24_data"],
+        "evidence": "Ground truth: proximal median 13.8 mL (n=87) vs distal 13.1 mL (n=42); one-sided Mann-Whitney p=0.66, AUC 0.478. Pass mark (higher median and p<0.05) fixed before running. outputs/tables/constraint_support.json",
+        "likely_reason": "All ISLES'24 patients were successfully reperfused, so final infarct SIZE reflects how fast flow returned more than where the clot sat. Partly also label noise: 11/42 'distal' cases have the clot-side MCA/ICA missing from cow-msk and may be upstream clots in an unopacified vessel.",
+        "decision": "Excluded from JDCR and the consistency loss. Kept on record as a tested-and-rejected candidate. ICA > MCA (p=0.035, one of two unplanned secondary tests, not significant after correction) is a lead to re-test on training folds in Phase 2."
+      }
+    },
+    {
+      "id": "large_infarct_needs_occlusion",
+      "statement": "A very large final infarct should not co-occur with 'no occlusion'.",
+      "concepts": ["lvo_localization", "final_infarct_volume"],
+      "violation": {"lvo_localization": "none", "final_infarct_volume": {"op": ">", "value": "threshold_from_training_fold"}},
+      "strength": "soft",
+      "clinical_basis": "Large territorial infarcts are driven by large-vessel occlusion.",
+      "support": {
+        "status": "unverifiable_on_isles24",
+        "evidence": "Only 4/149 subjects have no annotated occlusion -- too few to check the relation. Excluded from JDCR and the consistency loss by default; kept so the graph is complete if more data is added."
+      }
+    }
+  ]
+}

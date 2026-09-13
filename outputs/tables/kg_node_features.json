@@ -1,0 +1,6050 @@
+{
+  "node_order": [
+    "BA",
+    "R-PCA",
+    "L-PCA",
+    "R-ICA",
+    "R-MCA",
+    "L-ICA",
+    "L-MCA",
+    "R-Pcom",
+    "L-Pcom",
+    "Acom",
+    "R-ACA",
+    "L-ACA"
+  ],
+  "labels_seen": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    15
+  ],
+  "labels_outside_graph": [
+    15
+  ],
+  "laterality_gate": {
+    "gate": 0.8,
+    "confident_anterior": {
+      "n": 94,
+      "agree": 89,
+      "rate": 0.9468,
+      "ambiguous_bilateral": 4
+    },
+    "confident_posterior_pca": {
+      "n": 6,
+      "agree": 6,
+      "rate": 1.0,
+      "ambiguous_bilateral": 0
+    },
+    "low_confidence_anterior": {
+      "n": 17,
+      "agree": 17,
+      "rate": 1.0,
+      "ambiguous_bilateral": 2
+    },
+    "disagreements": [
+      {
+        "subject": "sub-stroke0003",
+        "vessel": "L-ACA",
+        "lesion_right_fraction": 0.788
+      },
+      {
+        "subject": "sub-stroke0033",
+        "vessel": "L-ACA",
+        "lesion_right_fraction": 0.8279
+      },
+      {
+        "subject": "sub-stroke0049",
+        "vessel": "L-MCA",
+        "lesion_right_fraction": 0.8093
+      },
+      {
+        "subject": "sub-stroke0079",
+        "vessel": "R-MCA",
+        "lesion_right_fraction": 0.016
+      },
+      {
+        "subject": "sub-stroke0170",
+        "vessel": "R-MCA",
+        "lesion_right_fraction": 0.4411
+      }
+    ],
+    "passed": true
+  },
+  "subjects": [
+    {
+      "subject": "sub-stroke0001",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0002",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0003",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ACA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "subject": "sub-stroke0004",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0005",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0006",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0007",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0008",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0009",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ACA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "subject": "sub-stroke0010",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0011",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0012",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0013",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0014",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0015",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-PCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0016",
+      "occlusion_status": "shape_mismatch",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": null,
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0017",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "right",
+      "nearest_vessel": "R-PCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0019",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0020",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0021",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0022",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-PCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0025",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0026",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0027",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-PCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0028",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0030",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0033",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ACA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "subject": "sub-stroke0036",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0037",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0038",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0040",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0043",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0045",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0047",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0048",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0049",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0052",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0053",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0054",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0055",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0057",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0062",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0066",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0068",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0070",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0071",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0073",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0074",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0075",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0076",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0077",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-PCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0078",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0079",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0080",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0081",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-PCA",
+      "confident": true,
+      "occluded": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0082",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0083",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0084",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0085",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "right",
+      "nearest_vessel": "R-ACA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0086",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0087",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ACA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "subject": "sub-stroke0088",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-ACA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0089",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0090",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0091",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0092",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0093",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0094",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0095",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0096",
+      "occlusion_status": "ok",
+      "segment_present": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0097",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0098",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0099",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0100",
+      "occlusion_status": "empty_lvo_mask",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": null,
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0101",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0102",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0103",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-ACA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0104",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0105",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "BA",
+      "confident": true,
+      "occluded": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0106",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-ACA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0107",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0108",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0109",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0110",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0111",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0112",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0113",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ACA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "subject": "sub-stroke0114",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-PCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0115",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0116",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0117",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-PCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0118",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0119",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0133",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0134",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "right",
+      "nearest_vessel": "R-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0135",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-ACA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0136",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0137",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0138",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0139",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0140",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0141",
+      "occlusion_status": "empty_lvo_mask",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": null,
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0142",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0143",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0144",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0145",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0146",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0147",
+      "occlusion_status": "empty_lvo_mask",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": null,
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0148",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0149",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "right",
+      "nearest_vessel": "R-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0150",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0151",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0152",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0153",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "right",
+      "nearest_vessel": "R-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0154",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0155",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0156",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "right",
+      "nearest_vessel": "R-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0157",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-PCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0158",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0159",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0161",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0162",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0163",
+      "occlusion_status": "empty_lvo_mask",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": null,
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0164",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0165",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0166",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "unknown",
+      "nearest_vessel": "BA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0167",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0168",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0169",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "right",
+      "nearest_vessel": "R-PCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0170",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0171",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0172",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0173",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0174",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0175",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0176",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0177",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0178",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0179",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-ICA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0180",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0181",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "right",
+      "nearest_vessel": "R-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0182",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0183",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0184",
+      "occlusion_status": "ok",
+      "segment_present": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "left",
+      "nearest_vessel": "L-ICA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0185",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-PCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0186",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-PCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0187",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "R-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0188",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 1,
+      "unlocalized_side": "right",
+      "nearest_vessel": "R-MCA",
+      "confident": false,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "subject": "sub-stroke0189",
+      "occlusion_status": "ok",
+      "segment_present": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "occlusion_unlocalized": 0,
+      "unlocalized_side": null,
+      "nearest_vessel": "L-MCA",
+      "confident": true,
+      "occluded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "validation_only_do_not_use_as_features": {
+    "note": "Derived from lesion-msk (the segmentation target). For the laterality gate only.",
+    "per_subject": {
+      "sub-stroke0001": {
+        "lesion_right_fraction": 0.1588,
+        "midline_x": -4.38
+      },
+      "sub-stroke0002": {
+        "lesion_right_fraction": 0.9295,
+        "midline_x": -7.511
+      },
+      "sub-stroke0003": {
+        "lesion_right_fraction": 0.788,
+        "midline_x": -18.286
+      },
+      "sub-stroke0004": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -9.996
+      },
+      "sub-stroke0005": {
+        "lesion_right_fraction": 0.0116,
+        "midline_x": 2.234
+      },
+      "sub-stroke0006": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -7.016
+      },
+      "sub-stroke0007": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -19.847
+      },
+      "sub-stroke0008": {
+        "lesion_right_fraction": 0.9989,
+        "midline_x": -8.677
+      },
+      "sub-stroke0009": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -33.832
+      },
+      "sub-stroke0010": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -1.84
+      },
+      "sub-stroke0011": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -17.455
+      },
+      "sub-stroke0012": {
+        "lesion_right_fraction": 0.1548,
+        "midline_x": 22.655
+      },
+      "sub-stroke0013": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 2.782
+      },
+      "sub-stroke0014": {
+        "lesion_right_fraction": 0.9959,
+        "midline_x": -16.542
+      },
+      "sub-stroke0015": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 35.583
+      },
+      "sub-stroke0016": {
+        "lesion_right_fraction": 0.9892,
+        "midline_x": -17.41
+      },
+      "sub-stroke0017": {
+        "lesion_right_fraction": 0.9808,
+        "midline_x": 2.308
+      },
+      "sub-stroke0019": {
+        "lesion_right_fraction": 0.0038,
+        "midline_x": 3.253
+      },
+      "sub-stroke0020": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -7.851
+      },
+      "sub-stroke0021": {
+        "lesion_right_fraction": 0.4036,
+        "midline_x": -12.502
+      },
+      "sub-stroke0022": {
+        "lesion_right_fraction": 0.0114,
+        "midline_x": 2.947
+      },
+      "sub-stroke0025": {
+        "lesion_right_fraction": 0.9889,
+        "midline_x": -4.474
+      },
+      "sub-stroke0026": {
+        "lesion_right_fraction": 0.0019,
+        "midline_x": 44.246
+      },
+      "sub-stroke0027": {
+        "lesion_right_fraction": 0.0058,
+        "midline_x": -5.261
+      },
+      "sub-stroke0028": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 32.47
+      },
+      "sub-stroke0030": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 8.857
+      },
+      "sub-stroke0033": {
+        "lesion_right_fraction": 0.8279,
+        "midline_x": -11.069
+      },
+      "sub-stroke0036": {
+        "lesion_right_fraction": 0.9293,
+        "midline_x": -26.067
+      },
+      "sub-stroke0037": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 25.74
+      },
+      "sub-stroke0038": {
+        "lesion_right_fraction": 0.1098,
+        "midline_x": -0.069
+      },
+      "sub-stroke0040": {
+        "lesion_right_fraction": 0.9686,
+        "midline_x": 9.908
+      },
+      "sub-stroke0043": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 7.175
+      },
+      "sub-stroke0045": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -3.267
+      },
+      "sub-stroke0047": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -5.187
+      },
+      "sub-stroke0048": {
+        "lesion_right_fraction": 0.4234,
+        "midline_x": 3.036
+      },
+      "sub-stroke0049": {
+        "lesion_right_fraction": 0.8093,
+        "midline_x": 15.168
+      },
+      "sub-stroke0052": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -16.499
+      },
+      "sub-stroke0053": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -9.33
+      },
+      "sub-stroke0054": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -0.964
+      },
+      "sub-stroke0055": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -18.541
+      },
+      "sub-stroke0057": {
+        "lesion_right_fraction": 0.0518,
+        "midline_x": -7.959
+      },
+      "sub-stroke0062": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -38.115
+      },
+      "sub-stroke0066": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 9.489
+      },
+      "sub-stroke0068": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 1.899
+      },
+      "sub-stroke0070": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -4.696
+      },
+      "sub-stroke0071": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -5.977
+      },
+      "sub-stroke0073": {
+        "lesion_right_fraction": 0.0229,
+        "midline_x": -0.259
+      },
+      "sub-stroke0074": {
+        "lesion_right_fraction": 0.0144,
+        "midline_x": -0.549
+      },
+      "sub-stroke0075": {
+        "lesion_right_fraction": 0.904,
+        "midline_x": -1.919
+      },
+      "sub-stroke0076": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -37.681
+      },
+      "sub-stroke0077": {
+        "lesion_right_fraction": 0.0591,
+        "midline_x": 8.75
+      },
+      "sub-stroke0078": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -31.213
+      },
+      "sub-stroke0079": {
+        "lesion_right_fraction": 0.016,
+        "midline_x": 7.943
+      },
+      "sub-stroke0080": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 1.769
+      },
+      "sub-stroke0081": {
+        "lesion_right_fraction": 0.8924,
+        "midline_x": -3.5
+      },
+      "sub-stroke0082": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -2.963
+      },
+      "sub-stroke0083": {
+        "lesion_right_fraction": 0.0297,
+        "midline_x": -27.422
+      },
+      "sub-stroke0084": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 23.747
+      },
+      "sub-stroke0085": {
+        "lesion_right_fraction": 0.826,
+        "midline_x": -24.346
+      },
+      "sub-stroke0086": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 15.62
+      },
+      "sub-stroke0087": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 4.196
+      },
+      "sub-stroke0088": {
+        "lesion_right_fraction": 0.8543,
+        "midline_x": -12.318
+      },
+      "sub-stroke0089": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 14.627
+      },
+      "sub-stroke0090": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -14.41
+      },
+      "sub-stroke0091": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -17.404
+      },
+      "sub-stroke0092": {
+        "lesion_right_fraction": 0.0121,
+        "midline_x": 0.78
+      },
+      "sub-stroke0093": {
+        "lesion_right_fraction": 0.9982,
+        "midline_x": -5.97
+      },
+      "sub-stroke0094": {
+        "lesion_right_fraction": 0.6414,
+        "midline_x": -12.622
+      },
+      "sub-stroke0095": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 0.447
+      },
+      "sub-stroke0096": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -16.322
+      },
+      "sub-stroke0097": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -6.488
+      },
+      "sub-stroke0098": {
+        "lesion_right_fraction": 0.0001,
+        "midline_x": 13.356
+      },
+      "sub-stroke0099": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -9.373
+      },
+      "sub-stroke0100": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -1.51
+      },
+      "sub-stroke0101": {
+        "lesion_right_fraction": 0.4724,
+        "midline_x": -10.45
+      },
+      "sub-stroke0102": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 1.489
+      },
+      "sub-stroke0103": {
+        "lesion_right_fraction": 0.4173,
+        "midline_x": -13.564
+      },
+      "sub-stroke0104": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -6.823
+      },
+      "sub-stroke0105": {
+        "lesion_right_fraction": 0.4038,
+        "midline_x": 4.222
+      },
+      "sub-stroke0106": {
+        "lesion_right_fraction": 0.9826,
+        "midline_x": -6.975
+      },
+      "sub-stroke0107": {
+        "lesion_right_fraction": 0.0005,
+        "midline_x": 2.198
+      },
+      "sub-stroke0108": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 22.815
+      },
+      "sub-stroke0109": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 19.334
+      },
+      "sub-stroke0110": {
+        "lesion_right_fraction": 0.6641,
+        "midline_x": -5.746
+      },
+      "sub-stroke0111": {
+        "lesion_right_fraction": 0.0319,
+        "midline_x": -13.899
+      },
+      "sub-stroke0112": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 11.263
+      },
+      "sub-stroke0113": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -2.652
+      },
+      "sub-stroke0114": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 8.946
+      },
+      "sub-stroke0115": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -2.807
+      },
+      "sub-stroke0116": {
+        "lesion_right_fraction": 0.0027,
+        "midline_x": -1.374
+      },
+      "sub-stroke0117": {
+        "lesion_right_fraction": 0.0008,
+        "midline_x": -1.906
+      },
+      "sub-stroke0118": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 9.738
+      },
+      "sub-stroke0119": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -2.477
+      },
+      "sub-stroke0133": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 1.291
+      },
+      "sub-stroke0134": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 12.385
+      },
+      "sub-stroke0135": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 7.506
+      },
+      "sub-stroke0136": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -1.984
+      },
+      "sub-stroke0137": {
+        "lesion_right_fraction": 0.9983,
+        "midline_x": 5.758
+      },
+      "sub-stroke0138": {
+        "lesion_right_fraction": 0.0105,
+        "midline_x": 1.933
+      },
+      "sub-stroke0139": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 6.887
+      },
+      "sub-stroke0140": {
+        "lesion_right_fraction": 0.3242,
+        "midline_x": 3.65
+      },
+      "sub-stroke0141": {
+        "lesion_right_fraction": null,
+        "midline_x": -6.489
+      },
+      "sub-stroke0142": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -2.874
+      },
+      "sub-stroke0143": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 4.739
+      },
+      "sub-stroke0144": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -1.946
+      },
+      "sub-stroke0145": {
+        "lesion_right_fraction": 0.8224,
+        "midline_x": -11.869
+      },
+      "sub-stroke0146": {
+        "lesion_right_fraction": 0.3175,
+        "midline_x": -13.471
+      },
+      "sub-stroke0147": {
+        "lesion_right_fraction": 0.0643,
+        "midline_x": 16.383
+      },
+      "sub-stroke0148": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 7.243
+      },
+      "sub-stroke0149": {
+        "lesion_right_fraction": 0.938,
+        "midline_x": -7.223
+      },
+      "sub-stroke0150": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 0.649
+      },
+      "sub-stroke0151": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 1.957
+      },
+      "sub-stroke0152": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -6.842
+      },
+      "sub-stroke0153": {
+        "lesion_right_fraction": 0.9351,
+        "midline_x": 10.815
+      },
+      "sub-stroke0154": {
+        "lesion_right_fraction": 0.0379,
+        "midline_x": -18.539
+      },
+      "sub-stroke0155": {
+        "lesion_right_fraction": 0.9281,
+        "midline_x": 26.311
+      },
+      "sub-stroke0156": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -0.449
+      },
+      "sub-stroke0157": {
+        "lesion_right_fraction": 0.0206,
+        "midline_x": 12.536
+      },
+      "sub-stroke0158": {
+        "lesion_right_fraction": 0.9988,
+        "midline_x": 19.428
+      },
+      "sub-stroke0159": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 5.046
+      },
+      "sub-stroke0161": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 21.025
+      },
+      "sub-stroke0162": {
+        "lesion_right_fraction": null,
+        "midline_x": 6.751
+      },
+      "sub-stroke0163": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -0.326
+      },
+      "sub-stroke0164": {
+        "lesion_right_fraction": 0.999,
+        "midline_x": 23.452
+      },
+      "sub-stroke0165": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 0.975
+      },
+      "sub-stroke0166": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 2.502
+      },
+      "sub-stroke0167": {
+        "lesion_right_fraction": 0.9972,
+        "midline_x": -9.774
+      },
+      "sub-stroke0168": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 7.065
+      },
+      "sub-stroke0169": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 8.967
+      },
+      "sub-stroke0170": {
+        "lesion_right_fraction": 0.4411,
+        "midline_x": -7.519
+      },
+      "sub-stroke0171": {
+        "lesion_right_fraction": 0.6667,
+        "midline_x": -23.255
+      },
+      "sub-stroke0172": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 15.499
+      },
+      "sub-stroke0173": {
+        "lesion_right_fraction": 0.9879,
+        "midline_x": 6.033
+      },
+      "sub-stroke0174": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": 5.183
+      },
+      "sub-stroke0175": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -2.415
+      },
+      "sub-stroke0176": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -0.808
+      },
+      "sub-stroke0177": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 10.997
+      },
+      "sub-stroke0178": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -3.525
+      },
+      "sub-stroke0179": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 1.606
+      },
+      "sub-stroke0180": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 1.56
+      },
+      "sub-stroke0181": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -6.226
+      },
+      "sub-stroke0182": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 9.484
+      },
+      "sub-stroke0183": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": -10.312
+      },
+      "sub-stroke0184": {
+        "lesion_right_fraction": 0.1535,
+        "midline_x": 5.415
+      },
+      "sub-stroke0185": {
+        "lesion_right_fraction": 0.0018,
+        "midline_x": 5.715
+      },
+      "sub-stroke0186": {
+        "lesion_right_fraction": 0.2574,
+        "midline_x": 8.419
+      },
+      "sub-stroke0187": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -12.454
+      },
+      "sub-stroke0188": {
+        "lesion_right_fraction": 1.0,
+        "midline_x": -0.397
+      },
+      "sub-stroke0189": {
+        "lesion_right_fraction": 0.0,
+        "midline_x": 11.124
+      }
+    }
+  }
+}

@@ -1,5 +1,9 @@
 # Review 1 — execution guide
 
+> **Review 1 record.** The commands below still work, but the project's
+> direction has moved to KG-XAI — see [`README.md`](README.md) and
+> [`PROJECT_PLAN.md`](PROJECT_PLAN.md).
+
 Everything here runs on **Python 3.12 with numpy + scipy + matplotlib**, which you
 already have. The imaging track additionally needs `nibabel`.
 
