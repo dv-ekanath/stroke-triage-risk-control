@@ -79,7 +79,22 @@ from verified sources ([`KNOWLEDGE_GRAPH_SOURCES.md`](KNOWLEDGE_GRAPH_SOURCES.md
 **ISLES'24** public training release — 149 patients, 2 centers (99 / 49),
 NCCT, CTA, CT perfusion maps, vessel masks, follow-up infarct masks, clinical
 data. **Not included in this repo** (~100 GB); download it separately and pass
-its path with `--root`. See [`guide.md`](guide.md) for the expected layout.
+its path with `--root`. The release's actual layout (checked against the
+archive, not assumed):
+
+```
+train/
+├── raw_data/sub-strokeXXXX/ses-01/      *_ncct.nii.gz, *_cta.nii.gz, *_ctp.nii.gz, perfusion-maps/
+├── derivatives/sub-strokeXXXX/
+│   ├── ses-01/                          *_space-ncct_{cta,ctp,cow-msk,lvo-msk}.nii.gz, perfusion-maps/{cbf,cbv,mtt,tmax}
+│   └── ses-02/                          *_space-ncct_{dwi,adc,lesion-msk}.nii.gz   (follow-up = the target)
+└── phenotype/sub-strokeXXXX/
+    ├── ses-01/*_demographic_baseline.csv   (center, age, NIHSS, premorbid mRS, ...)
+    └── ses-02/*_outcome.csv                (mRS 3 months, TICI, ...)
+```
+
+No `participants.tsv` and no JSON sidecars; the timing columns in the
+baseline CSV are empty for every patient.
 
 ## Repository layout
 
@@ -139,15 +154,11 @@ is added in Phase 3.
 Review 1 took a different direction — a statistically certified decision
 threshold (conformal prediction + Learn-then-Test). Faculty feedback: the
 threshold alone wasn't enough novelty, and the knowledge-graph plan should
-return. Those documents are kept as the record, each marked superseded:
-[`stroke_triage_proposal_v4.md`](stroke_triage_proposal_v4.md),
-[`stroke_triage_v4_plan.md`](stroke_triage_v4_plan.md),
-[`prior_art_table.md`](prior_art_table.md),
-[`REVIEW1_PROGRESS.md`](REVIEW1_PROGRESS.md),
-[`REVIEW1_RESULTS.md`](REVIEW1_RESULTS.md),
-[`review1_report.html`](review1_report.html),
-[`guide.md`](guide.md),
-[`KG_XAI_BUILD_PLAN.md`](KG_XAI_BUILD_PLAN.md).
+return. The Review 1 documents (proposals v3/v4, the v4 plan, the prior-art
+table, the progress and results write-ups, the run guide) were removed from
+the working tree to avoid confusion. They remain in git history — restore
+any of them with `git checkout 011a3ae -- <file>`. The Review 1 summary page
+is still here as [`review1_report.html`](review1_report.html).
 
 Its data work carries straight into KG-XAI — the baseline segmentation
 (6-channel SegResNet, Dice 0.215, lesion-F1 0.278 vs. leaderboard 0.144) and

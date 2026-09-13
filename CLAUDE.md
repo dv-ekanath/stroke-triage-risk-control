@@ -1,0 +1,126 @@
+# CLAUDE.md — KG-XAI project context
+
+Read this first. Then `PROJECT_PLAN.md` (plan of record) and
+`PHASE1_REPORT.md` (latest results and what's carried forward).
+
+## What this project is
+
+KG-XAI: Knowledge-Graph-Guided Multi-Task Learning for Stroke Triage.
+Course project (Healthcare Analytics) — Ekanath DV (23MIA1023), Rohan Julius
+Preetan (23MIA1160). Base paper: Luan et al., npj Digit Med 9:441 (2026).
+
+A multi-task model (LVO detection & localization, collateral grading,
+infarct segmentation) whose outputs are made clinically consistent with each
+other by: a GNN over the patient's Circle-of-Willis vessel graph, guideline
+knowledge injected into the decoder by cross-attention, and a consistency
+loss. New metric: JDCR (Joint-Decision Consistency Rate). Improvement is
+shown as B2 (full KG-XAI) vs B0 (base paper architecture reimplemented, no
+graph) on identical data, splits and seeds — never against the base paper's
+reported numbers (different labels, extra datasets, a 7-center split the
+public data doesn't have).
+
+History: Review 1 used a conformal-threshold approach; faculty said the
+threshold wasn't enough novelty and to return to the knowledge graph and use
+a GNN. Old Review 1 docs are in git history (commit 011a3ae), not the tree.
+
+## Where things are (Windows machine)
+
+| What | Where |
+|---|---|
+| Repo | `C:\Users\Admin\Downloads\Stroke-code\Stroke-code` → github.com/dv-ekanath/stroke-triage-risk-control |
+| Python env | `.venv\` (gitignored). torch 2.11.0+cu128, MONAI 1.6, nibabel, SimpleITK, TorchIO. PyTorch Geometric NOT yet installed (Phase 3). Run as `./.venv/Scripts/python.exe -m src....` |
+| GPU | RTX 5060, 8 GB, Blackwell — needs cu128+ wheels |
+| Dataset (not in repo) | `D:\ISLES-2024\train` (extracted from `E:\Nosql\train.7z`) |
+| Preprocessing cache | `D:\ISLES-2024\cache_1mm` — clear it if `src/model/dataset.py` transforms change |
+| Knowledge graph | `kg/cow_topology.json` (Layer 1), `kg/guideline_rules.json` (Layer 2) |
+| Every reported number | `outputs/tables/*.json` |
+| Baseline checkpoint | `outputs/checkpoints/segresnet_fold0_best.pt` (gitignored) |
+
+Git identity for this repo: `dv-ekanath <ekanath.dv2023@vitstudent.ac.in>`
+(set locally). Pushing works through the Windows credential manager.
+
+## Status
+
+- **Phase 1 — knowledge graph: PASSED** (2026-09-13). Both graphs validate;
+  7/7 sources verified; laterality gate 89/94 = 94.7% (pass mark 80%).
+- **Next: Phase 2 — labels & preprocessing.** See the task list below and
+  `PHASE1_REPORT.md` → "Carried to Phase 2".
+- Phases 3–9: see `PROJECT_PLAN.md` §8. ~6 weeks total from 2026-09-14.
+
+## Phase 2 — what to build
+
+1. **Acute core** (relative CBF < 30%), **penumbra** (Tmax > 6 s), mismatch
+   ratio and volume → makes the DAWN / DEFUSE 3 imaging conditions evaluable.
+   Confirm how each trial measured core before claiming equivalence.
+2. **HIR collateral proxy** = volume(Tmax>10s) / volume(Tmax>6s); high HIR =
+   poor collaterals (Olivot 2014). Gate: HIR worse in proximal-occlusion
+   patients than others.
+3. **Location-based plausibility constraints — top priority.** Size-based
+   rules are weak here (every patient was reperfused; the size rule tested in
+   Phase 1 failed, p = 0.66). Build and support-test:
+   - *territory rule*: the occluded vessel's territory should contain the
+     infarct (Liu 2023 arterial territories atlas; needs registration NCCT →
+     atlas space)
+   - *perfusion-overlap rule*: the final infarct should lie inside the
+     admission hypoperfused region (Tmax > 6 s)
+   Aim for ≥ 3 supported constraints; if fewer hold, narrow the JDCR claim and
+   say so. Add checks to `src/graph/constraint_support.py`.
+4. Support-test the two collateral constraints once HIR exists.
+5. **LVO label scheme**: proximal_anterior 87 / other_confident 15 /
+   **unlocalized** 42 / none 4 (rename "distal" → "unlocalized": 11/42 have
+   the clot-side MCA/ICA missing from cow-msk and may be upstream clots).
+6. Skull stripping; CTA vessel enhancement (Frangi).
+7. Check whether the 17 MCA-absent subjects are occluded MCAs not visible on CTA.
+8. Before Phase 3: manually look at sub-stroke0049 and sub-stroke0079
+   (confident clot on one side, infarct on the other — possible L/R label swap).
+
+## Rules this project runs on — keep them
+
+These are what made the work defensible. Don't relax them.
+
+- **Every phase ends with a gate. Fix the pass mark BEFORE running.** A failed
+  gate blocks the next phase. Don't rescue a failed test by changing groups or
+  thresholds afterwards — record it as failed (see
+  `proximal_occlusion_larger_infarct` in `kg/guideline_rules.json`).
+- **Leakage:** model inputs and graph features use admission (ses-01) data
+  only. Never derive a feature from `lesion-msk` or any ses-02 file — that is
+  the target. `lesion-msk` may only *validate*.
+- **Citations:** verify against primary records — PubMed via NCBI E-utilities
+  (`eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=...`),
+  ClinicalTrials.gov API v2, arXiv. Never cite a threshold from memory. The
+  AHA/ASA 2026 guideline's recommendation *wording* is still unverified (full
+  text blocked).
+- **No invented thresholds.** Anything data-driven is fitted on training folds
+  only.
+- **Occlusion confidence gating (≤ 15 mm).** BA is a default sink — 19/20
+  "basilar" matches are low-confidence artifacts.
+- **Every number in a document traces to an `outputs/tables/*.json` file.**
+- Validate on a small/controlled case before trusting the full pipeline.
+
+## Dataset facts and gotchas (all measured)
+
+- 149 subjects, **2 centers** (99 / 49; sub-stroke0075 blank). Not 7.
+- **No timing data** (all 7 timing columns empty) and **no ASPECTS** → no
+  eligibility rule is fully evaluable; report per-criterion, "time window not
+  recorded".
+- **No collateral grade** in the release → HIR proxy, always called a proxy.
+- Only **4** LVO-negative subjects → binary LVO head is not viable.
+- Target is **final infarct** (day 2–9 DWI), not admission core/penumbra.
+- sub-stroke0043: truncated CBF in the source release (excluded by integrity
+  check). sub-stroke0016: cow/lvo mask shape mismatch. sub-stroke0142's
+  lesion mask is `.nii`, not `.nii.gz`.
+- Phenotype CSVs use the literal string `"nan"` for some missing values.
+- MTT/CBF/CBV have extreme artifact values — clipped before normalization
+  (they caused 29% NaN batches).
+- TopCoW label 15 (3rd-A2 variant): 5/149 subjects, never the clot site —
+  excluded from the graph.
+- Raw 4D CTP has 44–60 frames per subject → use the derived perfusion maps.
+
+## Working with the user
+
+- Explain in simple, plain terms; they often ask for simpler wording.
+- When they ask for a plan or an explanation, don't start building.
+- Confirm before long GPU runs, big installs, or deleting files.
+- Commit only when asked. Ask whether commits should carry a Claude
+  co-author line (the first commit was re-titled "your clean commit message",
+  which suggests it was removed — unconfirmed).

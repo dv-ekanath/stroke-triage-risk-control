@@ -3,9 +3,10 @@
 **Knowledge-Graph-Guided Multi-Task Learning for Stroke Triage**
 Ekanath DV (23MIA1023) · Rohan Julius Preetan (23MIA1160)
 
-This is the single plan of record after Review 1. It supersedes
-`KG_XAI_BUILD_PLAN.md` and the conformal-threshold direction in
-`stroke_triage_proposal_v4.md` / `stroke_triage_v4_plan.md`. It follows the
+This is the single plan of record after Review 1. It supersedes the earlier
+KG build plan and the conformal-threshold direction of Review 1 (those
+documents were removed from the working tree; they remain in git history at
+commit `011a3ae`). It follows the
 system architecture and methodology on the original Review 1 deck (slides 8
 and 10), corrected wherever the real dataset turned out to differ from what
 the deck assumed.
