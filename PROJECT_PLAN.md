@@ -309,14 +309,17 @@ same role.
 
 ### 3 · Multimodal encoder & fusion
 NCCT encoder, CTA encoder, CTP encoder → cross-modal attention fusion →
-shared decoder, **as drawn on the deck**.
-- Encoders: three lightweight 3D CNN encoders (SegResNet-style — the backbone
-  already proven on this data). Swin-UNETR (the base paper's backbone) is the
-  alternative; the 8 GB GPU decides — test memory in Phase 3.
-- Fusion: attention across modality tokens at the bottleneck, where the
-  feature map is small and attention is cheap.
-- Shared decoder: upsampling decoder with skip connections from all three
-  encoders.
+shared decoder, as drawn on the deck. **Revised (2026-09-14, ~2 weeks left):**
+rather than building three new encoders and a fusion stage from nothing, B0
+**extends the Review 1 baseline** (`src/model/train_baseline.py`) — the same
+6-channel SegResNet trunk (NCCT+CTA+CBF+CBV+MTT+Tmax as channels, not
+separate encoders), already trained, already at Dice 0.215. Two new heads
+(§4) branch off its existing shared decoder. This is a disclosed
+simplification from the deck's three-encoder diagram, not a hidden one —
+say so on the slide. Reason: three full 3D encoders plus a fusion stage is
+real, multi-day engineering that a 2-week budget can't spend on the part
+that isn't the actual novelty. Revisit the literal 3-encoder design only if
+time remains after Phase 8.
 
 ### 4 · Task heads
 LVO detection & localization · Collateral grading (HIR proxy, 0–L3) ·
@@ -375,68 +378,81 @@ L = λ_seg·(Dice + CE)            segmentation
 | Per-patient consistency score | Output box 5 | New |
 | Concept-attention alignment | Do GAT / cross-attention weights concentrate on the clinically relevant vessel (e.g. the occluded one)? | New |
 
-**Protocol:** 5-fold cross-validation stratified by infarct volume, 3 seeds,
-mean ± SD. Leave-one-center-out (deck methodology step 1) — with only 2
-centers this is two runs (99→49 and 49→99), reported as a robustness check,
-not a generalisation claim. Results stratified by failure mode (deck step 7):
-confident vs. unlocalized occlusion, small vs. large infarct, center.
+**Protocol (revised 2026-09-14):** 3-fold cross-validation stratified by
+infarct volume, **3 seeds per fold — 9 runs each** for B0 and B2 (the pair
+the improvement claim rests on). B1 gets a lighter check: 1 fold × 3 seeds,
+used only for the ablation question below, not as a headline number.
+Leave-one-center-out (deck methodology step 1) — with only 2 centers this is
+two runs (99→49 and 49→99), reported as a robustness check, not a
+generalisation claim, run once time allows. Results stratified by failure
+mode (deck step 7): confident vs. unlocalized occlusion, small vs. large
+infarct, center.
 
-**Ablations** (each reported whether or not it flatters the model):
+**Ablations** (each reported whether or not it flatters the model; run on
+fold 0 only unless noted):
 
 | Ablation | Question it answers |
 |---|---|
-| B0 vs. B1 vs. B2 | What the graph adds, and how much comes from injection vs. the loss |
-| Vascular graph only / guideline graph only / both | Which layer does the work |
-| GAT vs. GCN | Whether attention matters |
+| B0 vs. B1 vs. B2 (fold 0, 3 seeds) | What the graph adds, and how much comes from injection vs. the loss |
 | With vs. without confidence gating | Size of the basilar-artifact effect |
-| Hemisphere features vs. territory atlas | Whether finer node features help |
+| GAT vs. GCN, hemisphere-vs-territory features | **Dropped from the 2-week scope** — stretch goals only if Phase 8 finishes early |
 
 ---
 
 ## 8. Phases — build, test, then move on
 
-Each phase ends with a **gate**. A phase that fails its gate blocks the next
-one — the same rule that caught the corrupted file, the NaN losses and the
-basilar artifact in Review 1.
+**Revised 2026-09-14: ~2 weeks available, not 6.** Two scope cuts made this
+fit — see §3 (B0 extends the Review 1 trunk instead of 3 new encoders) and
+§7 (3 folds × 3 seeds, not 5 × 3). The territory/atlas constraint originally
+planned inside Phase 2 is **dropped from this window**: three related
+location/size tests already failed for the same underlying reason (every
+patient here was successfully reperfused — see `PHASE2_PROGRESS.md`), so a
+fourth attempt needing the heaviest remaining setup (registration to the
+Liu 2023 atlas) is deferred to "if time remains after Phase 8," not treated
+as required.
+
+Each phase still ends with a **gate**, fixed before running. A phase that
+fails its gate blocks the next one — the same rule that caught the corrupted
+file, the NaN losses and the basilar artifact earlier in this project.
 
 | # | Phase | Build | Gate (must pass to move on) |
 |---|---|---|---|
-| **1** | **Knowledge graph** | Finalize Layer 1 and Layer 2; verify every rule against its paper; audit `Onset to door` completeness; confidence-gated node features | Validator passes; every rule has a checked citation; confident cases land on the anatomically correct vessel |
-| **2** | **Labels & preprocessing** | LVO localization labels; HIR collateral proxy; core/penumbra volumes from perfusion; skull stripping; CTA vessel enhancement | Class distributions reported; HIR is worse in proximal-occlusion patients than others; derived volumes in plausible ranges |
-| **3** | **B0 — base paper reimplemented** | 3 encoders + cross-modal attention fusion + shared decoder + 3 heads, no KG; install PyTorch Geometric | Fits in 8 GB; each head beats its trivial baseline; Dice not below the Review 1 baseline (0.215) |
-| **4** | **GNN standalone** | GAT over the vascular graph, trained alone to predict localization / collateral proxy from node features | Beats the same features in a plain classifier — otherwise the graph structure adds nothing yet |
-| **5** | **B1 — guideline injection** | Cross-attention of graph embeddings into the decoder | Same fold/seed as B0: no head gets worse; at least one improves |
-| **6** | **B2 — consistency loss** | Differentiable constraint penalties; tune λ_cons | JDCR rises vs. B1 without a real drop in task metrics |
-| **7** | **Rule Evaluator, JDCR, rationale** | Post-hoc rule check, per-patient consistency score, template rationale; (optional) certified volume decision from `src/conformal/` | Rationales manually correct for 10 real patients across confident and unlocalized cases |
-| **8** | **Full evaluation** | 5-fold × 3 seeds for B0 and B2, leave-one-center-out, ablations, ECE | Every number traces to an `outputs/tables/*.json` file |
-| **9** | **Write-up** | Updated deck, report, results document | Deck corrections in §11 applied |
+| **1** | **Knowledge graph** | ✅ Done | Passed — `PHASE1_REPORT.md` |
+| **2** | **Labels & perfusion features** | ✅ Mostly done (brain mask, core, penumbra, HIR, constraint testing). Remaining: finalize the LVO label scheme, manually check sub-stroke0049/0079. **Territory rule dropped from scope.** | Done items already gated — `PHASE2_PROGRESS.md`. Remaining items: no new gate, just cleanup |
+| **3** | **PyTorch Geometric + B0** | Install PyTorch Geometric first, smoke-test on the GPU alone (new territory — de-risk before building on it). Then extend the Review 1 trunk with two new heads (LVO localization, collateral proxy), no graph yet | PyG forward pass runs on GPU; both new heads beat their trivial baseline; Dice stays at or above 0.215 |
+| **4** | **GNN standalone** | GAT over the 12-node vascular graph, trained alone to predict localization / collateral proxy from node features | Beats the same features in a plain classifier — otherwise the graph structure adds nothing yet |
+| **5** | **B1 — guideline injection** | Cross-attention of graph embeddings into the shared decoder | Fold 0, 3 seeds vs. B0: no head gets worse; at least one improves |
+| **6** | **B2 — consistency loss** | Differentiable penalty for the 1 supported constraint (+ the large-core eligibility rule in the Rule Evaluator, not the loss); tune λ_cons | JDCR rises vs. B1 without a real drop in task metrics |
+| **7** | **Rule Evaluator, JDCR, rationale** | Post-hoc rule check, per-patient consistency score, template rationale; large-core-ceiling eligibility check; (optional) the certified volume decision from `src/conformal/` inside the Rule Evaluator | Rationales manually correct for 10 real patients, confident and unlocalized cases both |
+| **8** | **Full evaluation** | **3 folds × 3 seeds (9 runs) for B0 and B2**; B1 ablation on fold 0 × 3 seeds; ECE | Every number traces to an `outputs/tables/*.json` file |
+| **9** | **Write-up** | Updated deck, report, results document, including the "1 of 7 rules survived" finding as a stated result | Deck corrections in §11 applied |
 
-### Timeline (the deck's Gantt ends late October; ~6 weeks remain)
+### Timeline — 2 weeks (2026-09-14 to 2026-09-28)
 
-| Week | Dates (2026) | Phases |
+Phase 8's 9-runs-per-model evaluation is GPU time, not working time — start
+it the moment B0/B2 exist and let it run unattended (overnight, during Phase
+7/9 work) rather than waiting for a dedicated block.
+
+| Day(s) | Phase(s) | Note |
 |---|---|---|
-| 1 | Sep 14 – Sep 20 | 1, 2 |
-| 2 | Sep 21 – Sep 27 | 3 |
-| 3 | Sep 28 – Oct 4 | 4, 5 |
-| 4 | Oct 5 – Oct 11 | 6, 7 |
-| 5 | Oct 12 – Oct 18 | 8 |
-| 6 | Oct 19 – Oct 25 | 9 |
+| 1 | 3 (start) | Install PyG, smoke-test on GPU immediately — the one genuinely new tool, test it before anything depends on it. Close out Phase 2 leftovers same day. |
+| 2–4 | 3 (finish) | Two new heads on the existing trunk; confirm gate |
+| 5–7 | 4, 5 | GNN standalone, then cross-attention injection (B1) |
+| 8–9 | 6, 7 | Consistency loss (B2), Rule Evaluator, JDCR, rationale |
+| 10–11 | **8 (launch early, let it run)** | Kick off B0's 9 runs as soon as Phase 3 is solid — don't wait for Phase 7 to finish. B2's 9 runs follow once Phase 6 is solid. Both can run in the background through days 10–13. |
+| 12–14 | 8 (finish) + 9 | Collect results once background runs finish; write up while the last runs complete if needed |
 
-Shift to the actual Review 2 / Review 3 dates once known.
+### Compute budget
 
----
+One 200-epoch run of the (now-reused) single-trunk model took ~1.9 h in
+Review 1; two extra lightweight heads shouldn't add much. GNN + cross-attention
+(B1/B2) adds modest overhead — estimate ~2–2.5 h/run.
 
-## 9. Compute budget
-
-One 200-epoch run of the single-trunk baseline took ~1.9 h. Three encoders
-will be slower — estimate 2.5–3 h per run.
-
-- **Development (Phases 3–6):** fold 0, seed 0 only — about 6–10 runs.
-- **Final (Phase 8):** B0 and B2 on 5 folds × 3 seeds = 30 runs ≈ 75–90 GPU
-  hours; ablations on fold 0 only.
-
-That is several days of continuous GPU time — schedule overnight runs from
-Week 4. Running every ablation on the full 5 × 3 protocol does not fit.
+- **Development (Phases 3–6):** fold 0, seed 0 only — 6–10 runs, interactive.
+- **Final (Phase 8):** B0 9 runs (~18–20 h) + B2 9 runs (~20–22 h) + B1
+  ablation 3 runs (~6–7 h) ≈ **45–50 GPU-hours total.** Under 2 days of
+  continuous background compute — feasible within the 2-week window if
+  started on day 10 as scheduled, not left to the last days.
 
 ---
 
@@ -448,7 +464,7 @@ Week 4. Running every ablation on the full 5 × 3 protocol does not fit.
 | LVO negatives almost absent | Localization framing (§4); state why binary AUC can't be reproduced |
 | Collateral proxy is not ground truth | Label it a proxy everywhere; cite the HIR literature |
 | Time-window data absent (confirmed: 0/149) | Time conditions kept for fidelity but marked non-evaluable; eligibility reported as "criteria met, time window not recorded"; JDCR built on plausibility constraints |
-| **JDCR rests on few constraints** — after Phase 1 only 1 of 4 is supported (laterality), 2 await Phase 2, 1 is unverifiable | Phase 2 adds a **territory constraint** (occluded vessel's territory vs. infarct location, using the Liu 2023 atlas) and support-checks the collateral constraints. If fewer than 3 hold, say so and narrow the JDCR claim. |
+| **JDCR rests on 1 of 7 constraints** (laterality) — 5 rejected, 1 untestable, after full Phase 2 testing including a properly-powered re-test | **Accepted, not mitigated further within the 2-week window.** Reported as a real finding (7 literature-derived rules tested against real data, most false in an all-reperfused cohort), not hidden. The territory rule might have recovered more but needs atlas registration with no cheap way to de-risk it first; deferred, not attempted, given the time budget. |
 | Guideline thresholds misremembered | Done — verified against registries and PubMed in Phase 1 (AHA/ASA wording excepted) |
 | 3-encoder model exceeds 8 GB | Smaller filters, smaller patches, gradient checkpointing; fall back to a shared-trunk variant and disclose it |
 | Small cohort (149, 2 centers) | Cross-validation with seeds; per-fold results shown; no generalization claims |

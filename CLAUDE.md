@@ -43,17 +43,23 @@ Git identity for this repo: `dv-ekanath <ekanath.dv2023@vitstudent.ac.in>`
 
 - **Phase 1 — knowledge graph: PASSED** (2026-09-13). Both graphs validate;
   7/7 sources verified; laterality gate 89/94 = 94.7% (pass mark 80%).
-- **Phase 2 — in progress, paused for a decision** (2026-09-14). Brain mask,
-  acute core, penumbra, mismatch, HIR: all built and gated
-  (`src/graph/perfusion_volumes.py`). 5 more plausibility constraints tested,
-  including a continuous whole-cohort re-test of the two collateral
-  constraints (n=143, rho=0.052, p=0.54 — decisively negative, not just
-  underpowered). **Net: 1 of 7 plausibility constraints supported** (laterality,
-  from Phase 1), 5 rejected, 1 untestable. See `PHASE2_PROGRESS.md` for the
-  full picture and the decision this leaves open before the atlas/territory
-  work (the collateral proxy, HIR, is now settled as not usable in this
-  cohort by three independent tests -- that's closed, not still open).
-- Phases 3–9: see `PROJECT_PLAN.md` §8. ~6 weeks total from 2026-09-14.
+- **Phase 2 — mostly done** (2026-09-14). Brain mask, acute core, penumbra,
+  mismatch, HIR: all built and gated (`src/graph/perfusion_volumes.py`). 5
+  more plausibility constraints tested, including a continuous whole-cohort
+  re-test of the two collateral constraints (n=143, rho=0.052, p=0.54 —
+  decisively negative, not just underpowered). **Net: 1 of 7 plausibility
+  constraints supported** (laterality, from Phase 1), 5 rejected, 1
+  untestable. See `PHASE2_PROGRESS.md` for the full picture.
+- **Decision made (2026-09-14): ~2 weeks available, not 6. Territory/atlas
+  rule DROPPED from scope** (deferred to "if time remains after Phase 8," not
+  required) — three related location/size tests already failed for the same
+  reason (universal successful reperfusion), and it needs the heaviest
+  remaining setup (atlas registration) with no cheap way to de-risk it first.
+  B0 also simplified: extends the Review 1 trunk instead of building 3 new
+  encoders. Evaluation protocol: **3 folds × 3 seeds** (9 runs) for B0 and
+  B2, not 5×3. Full revised phase table, gates and day-by-day schedule:
+  `PROJECT_PLAN.md` §8. Compute for the final evaluation: ~45–50 GPU-hours,
+  start it as soon as B0/B2 exist (day 10 of 14), run unattended.
 
 ## Phase 2 — remaining work
 
