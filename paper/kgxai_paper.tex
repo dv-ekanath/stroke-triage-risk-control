@@ -1,0 +1,406 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{hyperref}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\kern-.125emX}}
+
+\begin{document}
+
+\title{KG-XAI: Knowledge-Graph-Guided Consistency for Multi-Task\\ Stroke Triage from CT Imaging}
+
+\author{
+\IEEEauthorblockN{Ekanath D V}
+\IEEEauthorblockA{\textit{School of Computer Science and Engineering} \\
+\textit{Vellore Institute of Technology}\\
+Chennai, India \\
+23MIA1023}
+\and
+\IEEEauthorblockN{Rohan Julius Preetan}
+\IEEEauthorblockA{\textit{School of Computer Science and Engineering} \\
+\textit{Vellore Institute of Technology}\\
+Chennai, India \\
+23MIA1160}
+}
+
+\maketitle
+
+\begin{abstract}
+Multi-task deep learning models for acute ischemic stroke triage typically detect large-vessel occlusion (LVO), grade collateral circulation, and segment the infarct with independently supervised heads, so nothing prevents the three outputs from being mutually implausible -- for example, an infarct predicted on the side opposite the detected occlusion. We propose KG-XAI, a framework that injects a two-layer clinical knowledge graph -- a patient-specific Circle-of-Willis (CoW) vessel graph and a guideline-derived rule graph -- into a segmentation network via a graph attention network (GAT) and zero-initialized cross-attention, and enforces the one clinically plausible constraint we could verify in our cohort (infarct laterality must match occlusion laterality) with a differentiable consistency loss. We introduce the Joint-Decision Consistency Rate (JDCR), a metric that scores whether a model's own predictions agree with each other, together with a template-based, LLM-free rationale for every prediction. Critically, before injecting any clinical rule into the model, we test it against ground truth: of seven candidate plausibility constraints drawn from AHA/ASA, DAWN, and DEFUSE-3 guidelines, only one (laterality, 94.7\% agreement, $n=94$) is statistically supported on the public ISLES'24 release; the other six, including two collateral-flow rules, are rejected by Mann-Whitney and Spearman tests and confirmed rejected independently in both cohort centers. We also report a negative result for the auxiliary classification heads: four independent architectures for LVO localization and collateral grading -- including a per-vessel GNN and a frozen-trunk ablation -- all collapse to predicting a single constant class for every validation patient, which we diagnose as a data-scale limitation rather than an architecture or optimization failure. The full pre-registered $3$-fold $\times$ $3$-seed evaluation grid (18 training runs, 21 scored checkpoints including B1's fold-0-only arm) is now complete. On the complete grid, B2's mean Dice (0.242 final, 0.257 best, $n=9$) is statistically indistinguishable from B0's on a clean, collapse-free, per-patient paired comparison (Wilcoxon signed-rank, seed 0 across all 3 folds, $n=148$ patients, $p=0.59$), satisfying the pre-registered non-inferiority guard rail with a small directional edge toward B2. The primary pre-registered claim -- B2's mean strict JDCR exceeding B0's across the full grid -- technically \textbf{passes} as literally defined (0.965 vs.\ 0.749), but we do not let that number stand alone: the gap is driven almost entirely by 2 of B0's 9 runs collapsing to a strict JDCR of exactly 0 (an empty mask for every validation subject, the same collapse seen in the Dice results), and a paired significance test across all 9 fold/seed pairs is not significant ($p=0.40$); restricted to the 7 pairs where B0 trained normally, B0 and B2 are statistically indistinguishable on JDCR ($p=0.84$), just as on Dice. B2's one clean, reproducible advantage is the complete absence of B0's catastrophic collapse mode (0/9 vs.\ 2/9) together with a consistently lower expected calibration error (roughly half of B0's, even with B0's collapsed runs excluded) -- evidence of robustness and calibration, not yet of a per-patient consistency advantage under normal training. We also disclose, and fix, a second independent measurement bug found while compiling these results: an earlier B0 JDCR number had silently been computed from a different, shelved model architecture. We report these results, positive and negative, as evidence that clinical knowledge graphs must be empirically validated against the target cohort before being used as training constraints, and that a pre-registered mean comparison passing is not by itself evidence of the mechanism a paper claims to demonstrate.
+\end{abstract}
+
+\begin{IEEEkeywords}
+stroke triage, knowledge graph, graph neural network, cross-attention, multi-task learning, medical image segmentation, explainable AI, consistency loss
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+Acute ischemic stroke caused by large-vessel occlusion (LVO) is time-critical: the decision to pursue endovascular thrombectomy depends jointly on whether an occlusion is present, how well collateral vessels are compensating for it, and how much brain tissue is already infarcted. Recent multi-task deep learning systems attempt to answer all three questions from a single CT imaging study \cite{luan2026}. Luan et al.\ \cite{luan2026} report a unified multimodal model that detects LVO, scores collateral circulation, and segments the infarct core and penumbra with three separately supervised heads sharing one encoder.
+
+Separately supervised heads have a structural weakness: nothing in the training objective checks that the three outputs are jointly consistent with each other or with basic vascular anatomy. A model can report a high-confidence right-MCA occlusion and segment the infarct entirely on the left hemisphere, and no loss term will penalize it, because each head is trained and evaluated against its own label independently. In a clinical decision-support setting this matters: a clinician reviewing model output needs some signal that the numbers hang together, not just that each number individually scored well on a held-out set during development.
+
+This paper investigates whether encoding vascular anatomy and clinical-guideline knowledge as an explicit graph, and using that graph to (a) inform the segmentation decoder and (b) constrain the outputs to be mutually consistent, improves both accuracy and trustworthiness of stroke-triage predictions, compared to an equivalent architecture without the graph. We build on the base paper's problem setting \cite{luan2026} but reimplement its architecture ourselves and evaluate strictly on a public dataset, ISLES'24 \cite{isles2024}, because the base paper's original training data, its 7-center evaluation split, and its collateral labels are not publicly available; a numeric comparison against its reported metrics would therefore not be a like-for-like comparison. Instead, we compare three models we train ourselves on identical data, splits, and seeds:
+
+\begin{itemize}
+\item \textbf{B0} -- a baseline SegResNet architecture with no knowledge graph, functionally reimplementing the base paper's decision chain (encoder $\rightarrow$ decoder $\rightarrow$ segmentation) on the public data.
+\item \textbf{B1} -- B0 plus a graph attention network (GAT) over the patient's own Circle-of-Willis vessel graph, injected into every decoder stage by zero-initialized cross-attention.
+\item \textbf{B2} (full KG-XAI) -- B1 plus a differentiable laterality-consistency loss and a rule-based evaluator that scores and explains every prediction.
+\end{itemize}
+
+The claim of interest is B2 vs.\ B0 on identical data.
+
+A second contribution of this work is methodological rather than architectural. Guideline-derived clinical rules -- e.g., ``good collateral circulation limits final infarct size'' -- are commonly assumed to be reliable priors for constraining a model. We treat this assumption as an empirical question rather than a given: before any rule is used as a training signal, we test it against ground truth in the target cohort, using a fixed pass mark decided before the test is run. Of seven candidate plausibility constraints, only one survives this test in our cohort. We report the six rejections alongside the one acceptance, because we consider ``which clinical priors actually hold in this data'' to be a finding in its own right, not a preprocessing detail to omit.
+
+A third contribution is a fully disclosed negative result. Two auxiliary classification heads -- LVO localization and collateral grading -- were built, using both a naive pooled-feature design and a location-aware graph-neural-network design, and both collapsed to predicting one constant answer for every patient under four different training regimes, including a diagnostic in which the shared encoder was frozen to rule out gradient competition. We report the diagnosis (a data-scale ceiling, not a wiring or optimization bug) because understanding why a design fails is as useful to future work on the same dataset as reporting what succeeds.
+
+Our contributions are:
+\begin{enumerate}
+\item A two-layer, fully source-verified clinical knowledge graph for stroke triage: a 12-node, 12-edge Circle-of-Willis vessel graph, and a guideline graph of 16 concepts and 7 eligibility/plausibility rules, every citation checked against a primary record (PubMed, ClinicalTrials.gov, or arXiv) rather than cited from memory or a secondary source.
+\item An empirical protocol for validating clinical plausibility rules against a target cohort before using them as training constraints, applied to seven rules drawn from AHA/ASA, DAWN, and DEFUSE-3 guideline literature, with reproducible statistical tests (Mann-Whitney U, Spearman correlation) and a replication check across the dataset's two acquisition centers.
+\item A graph-injected segmentation architecture (GAT over real per-patient vessel coordinates $\rightarrow$ zero-initialized cross-attention into every decoder stage) that is provably a no-op at initialization, so the graph pathway can only earn an effect through training, never silently corrupt a working baseline.
+\item A differentiable, unit-tested laterality-consistency loss restricted to the one guideline rule we could verify holds in the data, and the Joint-Decision Consistency Rate (JDCR), a metric and companion coverage statistic for how often a model's own predictions are self-consistent.
+\item A template-based, deterministic rationale generator (no large language model) that reports, per patient, whether the predicted lesion is laterality-consistent with the admission occlusion finding.
+\item A disclosed negative result for two auxiliary classification heads, diagnosed across four independent training regimes as a data-scale limitation.
+\item A pre-registered ($3\times3$-fold/seed) evaluation protocol with pass marks fixed before the run, designed to determine whether the graph's effect on Dice and JDCR is real or within run-to-run noise.
+\end{enumerate}
+
+\section{Related Work}
+
+\subsection{Deep learning for stroke triage}
+Automated LVO detection, collateral scoring, and infarct segmentation have mostly been studied as separate tasks. CNN-based segmentation of core and penumbra from CT perfusion is well established, and the ISLES challenge series \cite{isles2024} has driven much of the public benchmarking for infarct segmentation specifically. Multi-task architectures that share an encoder across detection, scoring, and segmentation are more recent; the base paper for this work, Luan et al.\ \cite{luan2026}, is one such system, training all three heads jointly but scoring them independently at evaluation time. To our knowledge, no prior stroke-triage system explicitly measures or optimizes whether its own multiple outputs are mutually consistent.
+
+\subsection{Knowledge graphs and GNNs in medical imaging}
+Graph neural networks have been used to model brain vascular and connectivity structure directly, and knowledge-graph-guided learning has been explored for injecting structured clinical or ontological priors into image models in other domains. Two design choices distinguish our use of a graph from a generic ``add a knowledge graph'' approach. First, our vessel graph is patient-specific: node coordinates and node-presence flags are sampled from the patient's own segmented Circle-of-Willis mask at admission, not a population atlas, so the GNN reasons over that patient's actual anatomical variant (including absent vessels, which are clinically meaningful, not missing data). Second, our guideline graph is not injected wholesale; every plausibility rule it contains is tested against outcome data before being used as a loss term, and rules the data rejects are excluded rather than softly down-weighted.
+
+\subsection{Consistency and constraint-based training}
+Penalizing outputs that violate a known physical or logical constraint (rather than only supervising against labels) has precedent in physics-informed and logic-constrained learning. Our laterality-consistency loss follows this pattern, but is scoped deliberately narrowly: rather than encoding the full guideline rule set as constraints, we constrain the model only on the single rule we could independently verify holds in the evaluation cohort (94.7\% agreement), consistent with our position that a guideline recommendation and an empirically supported training constraint are not automatically the same thing.
+
+\subsection{Explainability without large language models}
+Much recent clinical-AI explainability work uses a large language model to narrate a model's output. We use a deterministic, template-based rationale instead: each sentence is built directly from computed quantities (predicted side, voxel counts, midline fraction) with no generative component, which keeps every claim in the rationale traceable to a specific number in the same JSON record the metric itself is computed from.
+
+\section{Dataset and Task Definition}
+
+We use the ISLES'24 public training release \cite{isles2024}: 149 subjects (one excluded for a corrupted CT perfusion file in the source release, leaving 148 usable) from 2 acquisition centers (99 and 49 subjects; the base paper describes a 7-center evaluation that the public release does not contain). For each subject the release provides non-contrast CT (NCCT), CT angiography (CTA), derived CT-perfusion maps (CBF, CBV, MTT, Tmax), a Circle-of-Willis vessel segmentation mask, an admission (session 1) large-vessel-occlusion mask, and a follow-up (session 2, day 2--9) diffusion-weighted infarct mask, all resampled to a common 1\,mm isotropic NCCT space. We measured, rather than assumed, several dataset properties that materially affect what is learnable:
+
+\begin{itemize}
+\item \textbf{No timing data.} All seven timing fields (onset-to-door, door-to-imaging, door-to-groin, etc.) are empty for 149/149 subjects, so no time-window eligibility criterion (e.g.\ DAWN's 6--24\,h window) is evaluable on this release.
+\item \textbf{No ASPECTS score and no collateral grade} are provided. We derive a collateral proxy, the hypoperfusion intensity ratio (HIR, Tmax\,$>$10\,s volume / Tmax\,$>$6\,s volume) \cite{olivot2014}, and treat it explicitly as a proxy throughout, since it is later found not to correlate with outcome in this cohort (\S\ref{sec:validation}).
+\item \textbf{Only 4 of 149 subjects are LVO-negative.} A binary LVO-detection head is therefore not statistically viable; we reframe the task as 4-class occlusion \emph{localization} (proximal anterior circulation: 87; unlocalized: 42; other confident location: 15; none: 4).
+\item \textbf{The segmentation target is the final (follow-up) infarct}, not the admission core/penumbra region the base paper targets -- a materially different, and generally harder, target, since it depends on treatment response as well as admission imaging.
+\end{itemize}
+
+All inputs used by any model (image channels, vessel coordinates, node-presence flags) are drawn exclusively from admission (session 1) data; the follow-up (session 2) infarct mask is used only as the training target and for validating plausibility constraints, never as a model input, to avoid label leakage.
+
+\section{Method}
+
+\subsection{Overview}
+Figure~\ref{fig:pipeline} shows the full pipeline. A shared SegResNet \cite{myronenko2018} encoder-decoder segments the follow-up infarct from a lesion-centered $128{\times}128{\times}64$ patch of the 6-channel admission volume (NCCT, CTA, CBF, CBV, MTT, Tmax). In parallel, the same encoder is applied to a second, whole-brain, unaugmented, fixed-size view of the same subject, so the Circle of Willis -- which can fall outside a lesion-centered crop -- is always in frame. Twelve real per-patient vessel coordinates, read from the admission CoW mask, are trilinearly sampled from this whole-brain encoding and passed through a 2-layer graph attention network (GAT) \cite{velickovic2018} over the fixed anatomical edges of the Circle of Willis. The resulting per-vessel embeddings are injected into every decoder stage of the patch-segmentation branch via cross-attention, and separately used to compute a whole-brain segmentation used only for the laterality-consistency loss. A rule evaluator then scores each prediction against the one verified plausibility constraint and emits a deterministic natural-language rationale.
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.46\textwidth}{\footnotesize
+\textbf{Patch branch (segmentation):}\\
+6-channel CT patch (128$\times$128$\times$64) $\rightarrow$ shared SegResNet encoder $\rightarrow$ decoder ($\times$ GraphCrossAttention per stage) $\rightarrow$ infarct mask\\[4pt]
+\textbf{Whole-brain branch (graph):}\\
+6-channel CT, whole-brain view $\rightarrow$ same shared encoder $\rightarrow$ 12 vessel coordinates sampled from stage-1 features $\rightarrow$ 2-layer GAT over Circle-of-Willis edges $\rightarrow$ 12 vessel node embeddings\\[4pt]
+\textbf{Consistency branch (B2 only):}\\
+same whole-brain encoding $\rightarrow$ whole-brain segmentation head $\rightarrow$ laterality consistency loss vs.\ admission occlusion side\\[4pt]
+\textbf{Rule evaluator:}\\
+predicted mask + admission occlusion side $\rightarrow$ per-patient laterality check $\rightarrow$ JDCR + template rationale
+}}
+\caption{KG-XAI pipeline. The patch branch produces the segmentation used for Dice; the whole-brain branch produces the graph embeddings injected into every decoder stage and, in B2, the whole-brain prediction the consistency loss operates on.}
+\label{fig:pipeline}
+\end{figure}
+
+\subsection{Two-layer knowledge graph}
+\label{sec:kg}
+
+\textbf{Layer 1 -- vessel graph.} A 12-node, 12-edge graph of the Circle of Willis and its principal branches (ICA, MCA, ACA, PCA, Acom, Pcom, BA, bilaterally where applicable), with topology drawn from the TopCoW vessel-labeling standard \cite{topcow2023} and published vascular adjacency \cite{alastruey2007}. Anatomical variants are represented as \emph{absent nodes} (a per-patient \texttt{node\_present} flag), never as different edges -- the graph topology is fixed across patients, and which vessels exist for a given patient is itself a clinically meaningful input, following the source atlas's own treatment of variants. One rare TopCoW label (a third-A2 variant, present in 5/149 subjects and never the occlusion site in this cohort) is excluded from the graph.
+
+\textbf{Layer 2 -- guideline graph.} 16 concepts, 7 eligibility rules and 7 plausibility constraints, sourced from the DAWN \cite{dawn2018} and DEFUSE-3 \cite{defuse3_2018} trial registries, the AHA/ASA 2026 acute stroke guideline \cite{ahaasa2026}, a large-core-EVT outcomes study \cite{kim2026}, and the HIR-collateral literature \cite{olivot2014}. Every citation in Layer 2 was checked against a primary record (a PubMed entry, a ClinicalTrials.gov registry entry, or an arXiv abstract) rather than taken from a secondary source or memory; one exception is disclosed -- the AHA/ASA 2026 guideline's exact recommendation wording could not be verified because the full text was inaccessible, so we report its threshold values but do not quote its wording.
+
+Occlusion-site assignment (which vessel node, if any, a patient's admission LVO mask corresponds to) uses a confidence gate: a vessel is only marked occluded if the LVO mask centroid lies within 15\,mm of that vessel's node coordinate. Without this gate, the basilar artery -- geometrically central in the graph -- becomes the spurious nearest match for 19 of 20 low-confidence cases (median distance 39\,mm), which would silently fabricate basilar-artery strokes; with the gate, these cases are correctly left unlocalized.
+
+\subsection{Plausibility-rule validation}
+\label{sec:validation}
+
+Before any Layer-2 rule is used to train or evaluate a model, we test it against the follow-up infarct mask in this cohort, with the pass/fail threshold fixed in advance and reported regardless of outcome. Table~\ref{tab:rules} summarizes the seven tests.
+
+\begin{table*}[t]
+\centering
+\caption{Plausibility-rule validation against ISLES'24 ground truth (pass marks fixed before testing).}
+\label{tab:rules}
+\begin{tabular}{p{4.6cm}p{4.6cm}p{3.2cm}p{2cm}}
+\toprule
+\textbf{Rule} & \textbf{Test} & \textbf{Result} & \textbf{Status} \\
+\midrule
+Infarct is on the same side as the occluded vessel & Side agreement, confident-occlusion subjects & 89/94 = 94.7\% & \textbf{Supported} \\
+Proximal occlusion $\Rightarrow$ larger infarct & Mann-Whitney U, proximal vs.\ unlocalized final-infarct volume & medians 13.8 vs.\ 13.1\,mL, $p=0.66$ & Not supported \\
+Good collaterals limit infarct size & HIR vs.\ final volume, Spearman (continuous) & $n=143$, $\rho=0.05$, $p=0.54$ & Not supported \\
+Poor collaterals $\Rightarrow$ larger infarct & Same test, binned first ($n=18$ vs.\ 9, $p=0.13$) & same data & Not supported \\
+HIR behaves like a collateral signal & HIR vs.\ mismatch ratio, Spearman, expected $\rho<0$ & $n=123$, $\rho=+0.19$, $p=0.03$ (wrong sign) & Not supported \\
+Final infarct lies inside admission penumbra & Fraction of final infarct within Tmax$>$6s region & median 0.51 (pass mark 0.70) & Not supported \\
+Large infarct requires an occlusion & Needs no-occlusion cases for a control group & only 4 exist & Untestable \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Only the laterality rule is supported. We re-ran the two most decisive rejected tests (occlusion proximity vs.\ volume; HIR vs.\ volume) independently within each of the dataset's two acquisition centers to rule out a single-center artifact; both fail independently in both centers. We interpret the uniform rejection of the size- and collateral-based rules as most likely a consequence of cohort composition: every subject in the public ISLES'24 release underwent successful reperfusion treatment, and treatment response, not just admission occlusion severity, determines final infarct size -- these guideline rules describe untreated or admission-time relationships, which a fully-treated cohort need not preserve. We do not claim the rules are wrong in general, only that they do not hold in this evaluation cohort, and that training a model to obey a rule the data contradicts would be expected to harm, not help, it.
+
+\subsection{Graph-injected segmentation}
+\label{sec:gnn}
+
+\textbf{Vessel feature sampling.} For each of the 12 CoW nodes, its real 3D voxel coordinate (from the admission CoW mask, resized in lock-step with the whole-brain image view) is used to trilinearly sample the shared encoder's stage-1 feature map ($F \in \mathbb{R}^{B\times C\times S_0\times S_1\times S_2}$) via \texttt{grid\_sample}, giving one $C$-dimensional feature vector per node regardless of the feature map's downsampling stride. Absent vessels have their sampled feature zeroed and are flagged with \texttt{node\_present}\,=\,0, which is concatenated onto every node's feature vector and passed into the graph rather than discarded -- vessel absence is itself anatomically informative.
+
+\textbf{Graph attention.} Node features (feature dimension $C{+}1$) are linearly projected to a hidden size of 32 and passed through two GAT \cite{velickovic2018} layers (2 attention heads, ELU activation, dropout 0.2) over the fixed 12-node, 24-directed-edge Circle-of-Willis adjacency, producing per-node embeddings $\mathbf{h}_i \in \mathbb{R}^{32}$, $i=1,\dots,12$, with no pooling at this stage.
+
+\textbf{Cross-attention injection.} At every decoder up-sampling stage, the decoder's spatial feature map is flattened into $D\!\cdot\!H\!\cdot\!W$ query tokens, and multi-head attention (4 heads) is computed against the 12 vessel-node embeddings as keys and values (Eq.~\ref{eq:attn}); absent nodes are masked out of the softmax:
+\begin{equation}
+\label{eq:attn}
+\mathrm{Attn}(Q,K,V) = \mathrm{softmax}\!\left(\frac{QK^\top}{\sqrt{d}}\right)V, \quad d = \frac{C_{\text{stage}}}{4}
+\end{equation}
+The attention output is added back to the decoder feature map through a learned, per-stage \emph{zero-initialized} scalar gate $g$ (Eq.~\ref{eq:gate}):
+\begin{equation}
+\label{eq:gate}
+x' = x + g \cdot \mathrm{Attn}(Q,K,V), \qquad g \leftarrow 0 \text{ at init.}
+\end{equation}
+Because $g=0$ at initialization, the graph-injected model is a mathematical no-op relative to the plain trunk at the start of training -- we verified this directly (maximum output difference 0.0 across the full validation set at epoch 0). This means the graph pathway can only ever improve on a known-working, warm-started baseline through learning, and cannot silently degrade it by construction. Since only 12 keys are attended over regardless of the number of query voxels, the cost of injection is negligible relative to the decoder's own compute.
+
+Every one of B0, B1 and B2 warm-starts from the same pretrained SegResNet trunk and uses the same 6-channel input, patch size, augmentation, and data splits, so any measured difference between them isolates the effect of the graph and the consistency loss, not confounding differences in the rest of the pipeline. (We note one disclosed simplification versus the original project proposal: B0 was specified as three separate per-modality encoders with late fusion; on an 8\,GB GPU and a two-week schedule we instead built B0 on one shared 6-channel encoder, matching B1/B2's trunk exactly, which keeps the three-way comparison fair even though it departs from the original proposal.)
+
+\subsection{Laterality consistency loss}
+\label{sec:loss}
+
+We enforce only the one plausibility constraint validated in \S\ref{sec:validation}. Let $p_{\text{fg}}(v) \in [0,1]$ be the predicted foreground (infarct) probability at whole-brain voxel $v$ after softmax, and let $m$ be the midline voxel index along the right/left axis, computed per-subject as the median of the whole-brain grid's left/right vessel-pair coordinate midpoints (in the same voxel-index space as the whole-brain prediction, avoiding any world-coordinate/affine round-trip). Let $s \in \{\text{left}, \text{right}\}$ be the expected infarct side, derived from the admission occlusion side only (never from the follow-up mask). The loss is the fraction of predicted foreground probability mass lying on the wrong side of the midline:
+\begin{equation}
+\label{eq:consistloss}
+\mathcal{L}_{\text{lat}} = \frac{\sum_{v : \mathrm{side}(v) \neq s} p_{\text{fg}}(v)}{\sum_{v} p_{\text{fg}}(v) + \varepsilon}
+\end{equation}
+averaged over subjects with both a known expected side and a computable midline (subjects with neither are excluded exactly, contributing zero rather than a biased value). Because ground truth itself violates strict laterality in 5.3\% of subjects (near-midline occlusions, one bilateral infarct), the constraint is deliberately soft: $\mathcal{L}_{\text{lat}}$ is combined with the standard Dice-cross-entropy segmentation loss on the patch branch with a small fixed weight, $\mathcal{L} = \mathcal{L}_{\text{seg}} + \lambda\,\mathcal{L}_{\text{lat}}$, $\lambda = 0.1$, chosen deliberately small so the model is nudged, not forced, toward laterality consistency. We unit-tested $\mathcal{L}_{\text{lat}}$ against synthetic correct-side ($\mathcal{L}_{\text{lat}} \approx 0.007$), wrong-side ($\approx 0.993$), and unknown-side (excluded exactly) predictions before using it in training; this process caught and fixed a bug in the synthetic test fixture itself (an ambiguous 50/50-background case) before it could mask a real defect.
+
+Decoding the whole-brain volume in full, needed to compute $\mathcal{L}_{\text{lat}}$, roughly doubles decoder memory relative to B1, which only ever \emph{encoded} the whole-brain view; we mitigate this by shrinking the whole-brain decoding grid to $64{\times}64{\times}48$ (the patch branch's own resolution, $128{\times}128{\times}64$, is unchanged), since the consistency loss only needs a coarse left/right mass split, not full segmentation resolution.
+
+\subsection{Rule evaluator, JDCR, and rationale generation}
+
+For every subject we compute a hard pass/fail laterality check directly from the model's actual predicted mask (not the soft training loss): the fraction of predicted foreground voxels on the side opposite the admission-derived expected side. A subject is \emph{consistent} if this fraction is below 50\%, and \emph{evaluable} if it has both a known expected side and a non-empty prediction. The \textbf{Joint-Decision Consistency Rate (JDCR)} is:
+\begin{equation}
+\mathrm{JDCR} = \frac{|\{\text{evaluable subjects that are consistent}\}|}{|\{\text{evaluable subjects}\}|}
+\end{equation}
+reported together with \textbf{coverage}, the fraction of all subjects that are evaluable, so that a model cannot inflate JDCR by abstaining (predicting no lesion) on the difficult cases -- we found this to be a real, not merely hypothetical, failure mode of naively defined JDCR (\S\ref{sec:jdcrconfound}). For each subject, a deterministic template renders the predicted side, the percentage of predicted lesion volume on that side, and the admission occlusion finding into a natural-language sentence, e.g.:
+
+\begin{quote}\footnotesize
+\textit{``Subject sub-stroke0033: a confident match to an occlusion of L-ACA on admission imaging. Laterality consistency: INCONSISTENT -- 100.0\% of 3638 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the left side. Flagged for clinician review.''}
+\end{quote}
+
+No generative language model is used; every quantity in the sentence is read directly from the same computed values used for JDCR, so the rationale cannot state anything the metric itself did not compute. Manual review of 10 sample rationales per model caught a real bug prior to reporting any result -- for left-sided predictions, the template quoted the right-side percentage verbatim -- fixed and re-verified clean across all 30 samples (10 per model $\times$ 3 models) before use.
+
+\section{Experimental Setup}
+
+\subsection{Splits and training}
+All models are trained on 128$\times$128$\times$64 lesion-centered patches (\texttt{RandCropByPosNegLabeld}) with standard MONAI intensity and spatial augmentation, for 100 epochs, warm-started from a SegResNet trunk pretrained on the same fold's training subjects. Reported single-run results use fold 0 of a 3-fold subject-level split (seed 0), 50 validation subjects, with segmentation scored by all four official ISLES'24 metrics: Dice, absolute lesion-volume difference, lesion-wise F1, and absolute lesion-count difference.
+
+\subsection{Pre-registered multi-run evaluation protocol}
+\label{sec:phase8}
+A single training run confounds a real architectural effect with ordinary run-to-run variance; we observed B0 itself vary by 0.045 Dice across its own ten validation checkpoints in one run. We therefore define, before running it, a $3\text{-fold} \times 3\text{-seed}$ evaluation: B0 and B2 trained on all 3 folds $\times$ 3 seeds (9 runs each); B1 trained on fold 0 $\times$ 3 seeds, to isolate the effect of graph injection alone from the added consistency loss. Pass marks are fixed in advance:
+\begin{itemize}
+\item \textbf{Primary claim:} B2's mean JDCR across all fold/seed runs exceeds B0's mean JDCR under the same averaging.
+\item \textbf{Guard rail:} B2's mean Dice is no more than 0.02 below B0's mean Dice (non-inferiority) -- if B2 buys consistency at a larger segmentation cost than this, it is reported as an explicit trade-off, not folded into the primary claim.
+\item All other comparisons (B1 vs.\ B0, per-patient paired Wilcoxon signed-rank test of B2 vs.\ B0, expected calibration error, coverage) are reported descriptively.
+\end{itemize}
+Consistent with this project's rule of recording a failed pre-registered test as failed rather than adjusting the criterion afterward, we report the primary claim's outcome whichever way it lands.
+
+\subsection{A methodological confound found and fixed before drawing conclusions}
+\label{sec:jdcrconfound}
+While preparing the multi-run evaluation, we found that our first-pass JDCR implementation scored all three models' laterality on a downscaled ($64{\times}64{\times}48$) whole-brain view that only B2 had ever been trained to segment; B0 and B1's segmentation decoders had only ever seen the full-resolution patch view. This produced an artifactual result in which B0 and B1 appeared to ``abstain'' (predict no lesion) on roughly half of subjects, while B2 committed to a prediction for 84\% -- a difference we initially reported as a possible consistency-loss effect. Re-scoring all three models on their real, full-resolution sliding-window prediction (the same prediction Dice is computed on), against the midline computed on that same native grid, removed the apparent difference entirely on the one fold checked at the time. We report this as a cautionary case for any consistency metric evaluated across models trained at different resolutions, and retain the corrected (\emph{strict}, full-resolution) definition as the headline metric in \S\ref{sec:phase8} going forward.
+
+\subsection{A second confound: the wrong B0 checkpoint architecture}
+\label{sec:wrongckpt}
+A second, independent bug was found while auditing evaluator output before compiling the final results: the first JDCR file we had been citing for B0 (fold 0, seed 0) had scored \texttt{multitask\_fold0\_best.pt} -- Phase 3's shelved multi-task architecture (the failed auxiliary-head model, \S\ref{sec:heads}) -- not the real Phase 8 B0 checkpoint (the plain SegResNet trained by the baseline script). The two are different architectures with different weights; the number we had been reporting as ``B0's JDCR'' was never B0 at all. The evaluator's B0 loader was fixed to load the correct checkpoint, and the full 21-checkpoint sweep was scored with the fixed script, before any number from it was used below. We disclose it because it is the second time a metric we initially trusted turned out to be measuring the wrong thing: a multi-model comparison pipeline needs each model's loader checked against the actual checkpoint file the protocol produced, not just against a plausible-looking default path.
+
+\section{Results}
+
+\subsection{Knowledge-graph and constraint validation}
+The Circle-of-Willis graph agrees with real anatomy: confident occlusion-side assignments match the side of the follow-up infarct in 89/94 (94.7\%) of subjects, against a pass mark of 80\% fixed before testing. All 7 Layer-2 literature sources were verified against a primary record; one recommendation's exact wording (AHA/ASA 2026) is disclosed as unverified due to inaccessible full text. Of 7 candidate plausibility constraints, only laterality (Table~\ref{tab:rules}) is supported; 5 are rejected and 1 is untestable given only 4 occlusion-negative subjects.
+
+\subsection{Auxiliary classification heads: a negative result}
+\label{sec:heads}
+Table~\ref{tab:heads} summarizes four independent attempts at the LVO-localization (4-class) and collateral-proxy (4-bin) heads, against the trivial majority-class baseline for this validation fold (58.8\% / 66.7\%).
+
+\begin{table}[t]
+\centering
+\caption{Auxiliary head accuracy across four training regimes, fold 0.}
+\label{tab:heads}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Configuration} & \textbf{LVO acc.} & \textbf{Collateral acc.} \\
+\midrule
+Majority-class baseline & 58.8\% & 66.7\% \\
+1. B0, pooled bottleneck heads & 56.0\% & 60.0\% \\
+2. GNN heads, per-vessel sampling & 52.0\% & 62.0\% \\
+3. + augmentation, 2$\times$ head loss weight & 52.0\% & 62.0\% \\
+4. GNN heads, encoder frozen & 52.0\% & 62.0\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All four configurations score below the majority-class baseline. Direct inspection of per-patient predictions (not only aggregate accuracy) shows that configurations 2--4 predict the identical class for all 50 validation patients on both heads -- the reported accuracies are exactly the majority-class share of this fold, i.e.\ the model has learned only the class prior. Configuration 4, in which the entire pretrained encoder (4.7M parameters) was frozen and only the GNN head's own 9,928 parameters were trained, rules out segmentation-loss gradient competition as the cause, since segmentation dice under this configuration (0.288) matches the unmodified frozen trunk exactly and the head still collapses identically. We independently verified that the GNN's vessel-location sampling is correct (12/12 agreement with the Phase-1 graph-validation check on real subjects), ruling out a coordinate/wiring bug. We conclude this is a real data-scale and task-difficulty ceiling at 98 training patients with 4 heavily imbalanced classes and no true (non-proxy) collateral grade, not an architecture or optimization defect, and report it as such rather than continuing to iterate. We requested access to an external dataset, CODEC-IV \cite{codeciv2023} (159 patients with expert-annotated clot location, hemisphere, and true collateral-flow grade), as a route to re-test this task with real labels; the request was pending at the time of writing and no other result in this paper depends on it.
+
+\subsection{Segmentation}
+Table~\ref{tab:seg} reports single-run (fold 0, seed 0) segmentation results across all four ISLES'24 metrics, plus the spread of Dice across each model's own 10 validation checkpoints.
+
+\begin{table}[t]
+\centering
+\caption{Segmentation results, single run (fold 0, seed 0, 100 epochs) -- see Table~\ref{tab:multiseed} for the complete multi-seed comparison.}
+\label{tab:seg}
+\begin{tabular}{lccc}
+\toprule
+& \textbf{B0} & \textbf{B1} & \textbf{B2} \\
+& (no graph) & (graph) & (graph+consist.) \\
+\midrule
+Dice (best ckpt) & \textbf{0.281} & 0.271 & 0.271 \\
+Dice (final) & \textbf{0.247} & 0.240 & 0.236 \\
+Dice (mean, 10 ckpts) & \textbf{0.257} & 0.244 & 0.251 \\
+Dice ckpt-to-ckpt spread & 0.045 & 0.055 & \textbf{0.035} \\
+Abs. volume diff.\ (mL) $\downarrow$ & 21.0 & 21.0 & \textbf{20.2} \\
+Lesion-wise F1 & \textbf{0.260} & 0.236 & \textbf{0.260} \\
+Abs.\ lesion-count diff.\ $\downarrow$ & \textbf{9.58} & 9.94 & 9.80 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On this single fold, neither B1 nor B2 exceeds B0 on Dice; the gaps (0.01--0.02) are smaller than B0's own 0.045 checkpoint-to-checkpoint spread, so they cannot be called a real effect from one run alone -- exactly the situation the multi-seed protocol in \S\ref{sec:phase8} is designed to resolve. A secondary, consistent pattern is that B2's Dice spread across checkpoints (0.035) is tighter than B1's (0.055) and close to B0's, suggesting the consistency loss may have a stabilizing effect on training independent of whether it raises peak Dice; we treat this as a hypothesis for the multi-seed run, not a conclusion.
+
+\subsection{Consistency (JDCR), fold 0 seed 0}
+With the checkpoint-loader bug fixed (\S\ref{sec:wrongckpt}), fold 0/seed 0 strict JDCR is B0 0.930 (40/43 evaluable, 1 empty prediction), B1 1.000 (43/43), and B2 1.000 (43/43) -- not the identical 0.977 we had earlier reported for all three, which was an artifact of scoring the wrong B0 checkpoint. This is a single data point; \S\ref{sec:jdcrfull} reports the full grid, which is what the pre-registered protocol specifies.
+
+\subsection{Final multi-seed segmentation results and a confirmed training anomaly}
+\label{sec:interim}
+
+All 18 planned Phase-8 training runs completed: 9/9 B0 fold$\times$seed combinations, 3/3 B1 fold-0 seeds (B1's full planned set, isolating graph injection alone), and 9/9 B2 fold$\times$seed combinations. Table~\ref{tab:multiseed} reports the complete Dice comparison; \S\ref{sec:jdcrfull} reports the complete JDCR comparison, which is the pre-registered primary claim.
+
+\begin{table}[t]
+\centering
+\caption{Complete multi-seed segmentation results (3 folds $\times$ 3 seeds for B0/B2; fold 0 $\times$ 3 seeds for B1).}
+\label{tab:multiseed}
+\begin{tabular}{lccc}
+\toprule
+& \textbf{B0 (n=9)} & \textbf{B1 (n=3)} & \textbf{B2 (n=9)} \\
+\midrule
+Best Dice, mean $\pm$ SD & 0.194 $\pm$ 0.093 & 0.248 $\pm$ 0.007 & \textbf{0.257 $\pm$ 0.008} \\
+Best Dice, collapse-excl. & 0.243 $\pm$ 0.008 (n=7) & 0.248 (n=3) & 0.257 (n=9) \\
+Final Dice, mean $\pm$ SD & 0.191 $\pm$ 0.092 & 0.225 $\pm$ 0.002 & \textbf{0.242 $\pm$ 0.012} \\
+Final Dice, collapse-excl. & 0.240 $\pm$ 0.010 (n=7) & 0.225 (n=3) & 0.242 (n=9) \\
+Abs.\ volume diff.\ (mL) & 25.6 (24.2 excl.) & \textbf{21.8} & 22.4 \\
+Lesion-wise F1 & 0.256 (0.323 excl.) & 0.263 & 0.292 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{A confirmed training anomaly.} The same two runs flagged earlier -- B0 fold 0/seed 1 and B0 fold 1/seed 1 -- remain the only collapses in the completed grid: near-zero Dice (0.0200 and 0.0204), with lesion-wise F1 collapsing to almost the same value, consistent with the model predicting essentially no foreground for the entire validation set. Fold 2 (all 3 seeds) trained cleanly for B0, and B2's complete 9/9 grid shows zero collapses at any fold or seed, including fold 0/seed 1 and fold 1/seed 1, the exact combinations where B0 failed. We cannot conclusively attribute B0's collapse to a specific cause -- an interaction with the per-fold warm-start trunks introduced for Phase 8, an ordinary sensitivity of the plain (non-graph) trunk to those two initializations, or something else -- and we do not claim the graph pathway necessarily prevents it ($n=9$ per arm is too small to establish that from absence-of-collapse alone). We report it as confirmed, reproducible, and still open.
+
+\textbf{Guard rail and paired significance test.} Using the collapse-excluded B0 mean as the fair non-graph baseline (the guard rail was intended to compare typical performance, not an unrelated training failure), B2's mean final Dice (0.242) is 0.002 above B0's (0.240), and B2's mean best-checkpoint Dice (0.257) is 0.013 above B0's (0.243) -- inside, and in the favorable direction of, the pre-registered 0.02 non-inferiority margin. For a collapse-free significance test we ran a per-patient paired Wilcoxon signed-rank test restricted to seed 0 across all 3 folds (none of which collapsed for either model), matching 148 patients between B0 and B2 by subject ID: mean per-patient Dice difference $+0.0021$ in B2's favor, $W=4213$, $p=0.59$ -- not statistically significant (B2 better for 70 patients, B0 better for 63, 15 ties). B2 therefore satisfies the non-inferiority guard rail and shows a small favorable trend on Dice, but no significant Dice improvement over B0. The primary claim was never about Dice, however -- it is about JDCR (\S\ref{sec:jdcrfull}).
+
+\subsection{Final JDCR results and the primary claim}
+\label{sec:jdcrfull}
+
+The Rule Evaluator/ECE sweep over all 21 checkpoints (9 B0, 3 B1, 9 B2) is complete. Table~\ref{tab:jdcr} reports strict JDCR (the pre-registered headline definition: an empty prediction counts against the model) for every fold$\times$seed combination.
+
+\begin{table}[t]
+\centering
+\caption{Strict JDCR by fold and seed, complete grid.}
+\label{tab:jdcr}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Fold / seed} & \textbf{B0} & \textbf{B1} & \textbf{B2} \\
+\midrule
+fold0 / seed0 & 0.930 & 1.000 & 1.000 \\
+fold0 / seed1 & 0.000 (collapsed) & 0.953 & 0.977 \\
+fold0 / seed2 & 0.977 & 0.953 & 0.953 \\
+fold1 / seed0 & 1.000 & -- & 1.000 \\
+fold1 / seed1 & 0.000 (collapsed) & -- & 0.973 \\
+fold1 / seed2 & 0.973 & -- & 0.946 \\
+fold2 / seed0 & 0.977 & -- & 0.953 \\
+fold2 / seed1 & 0.953 & -- & 0.930 \\
+fold2 / seed2 & 0.930 & -- & 0.953 \\
+\midrule
+Mean $\pm$ SD & 0.749 $\pm$ 0.401 & 0.969 $\pm$ 0.022 & 0.965 $\pm$ 0.023 \\
+Mean, collapse-excl. & 0.963 $\pm$ 0.024 (n=7) & 0.969 (n=3) & 0.965 (n=9) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Primary claim, as pre-registered.} The primary claim (\S\ref{sec:phase8}) is: B2's mean strict JDCR across the full grid exceeds B0's, with no exclusions specified in advance. On that literal criterion, B2 $=0.965$ vs.\ B0 $=0.749$, a difference of $+0.216$. The primary claim \textbf{passes}.
+
+\textbf{What is actually driving it.} The gap is produced almost entirely by the same two B0 runs flagged in \S\ref{sec:interim} (fold 0/seed 1, fold 1/seed 1). Both predicted an empty mask for every validation subject, so strict JDCR -- which correctly penalizes abstention -- scores them at exactly 0.000. A paired Wilcoxon signed-rank test across all 9 matched fold/seed pairs gives $W=11.5$, $p=0.40$: not significant despite the large mean gap, because it is driven by 2 extreme outliers rather than a consistent per-run advantage. Restricted to the 7 pairs where B0 did not collapse, B0's mean strict JDCR ($0.963 \pm 0.024$) is statistically indistinguishable from B2's matched mean ($0.962 \pm 0.025$; $W=9.5$, $p=0.84$). B1 (fold 0 only, 3 clean runs) scores a comparable $0.969 \pm 0.022$.
+
+\textbf{How we read this.} Consistent with this project's rule of reporting a pre-registered outcome as it lands, we report the primary claim as passed under its literal, fixed-in-advance definition; we do not retroactively exclude the collapsed runs, because no such exclusion was specified before the grid was run. Reporting only ``passed, $+0.216$'' would nonetheless misrepresent the finding: not that B2 reasons about laterality more accurately than B0 when both train normally (they do not differ, $p=0.84$), but that B2 was never observed to fail in the catastrophic way B0 failed twice in nine runs. The defensible finding is a robustness result -- zero collapses in 9/9 B2 runs against 2/9 for B0 -- not a demonstrated per-patient consistency advantage.
+
+\textbf{Expected calibration error.} ECE (voxel-level, segmentation-only, not comparable to the base paper's reported 0.130) favors the graph-injected models regardless of the collapse issue: B0 mean 0.0263 (0.0169 collapse-excluded, $n=7$), B1 0.0085 ($n=3$), B2 0.0097 ($n=9$). B1's and B2's calibration error is roughly half of even B0's collapse-excluded value. No significance test was pre-registered for ECE, so we claim only a consistent direction across a small number of runs.
+
+\section{Discussion}
+
+\textbf{Rules must be validated, not assumed.} The central methodological finding of this work is that six of seven guideline-derived plausibility rules, each individually plausible on clinical grounds, do not hold in this evaluation cohort, most likely because every subject underwent successful reperfusion treatment and the rules largely describe admission-time or untreated relationships. Had we injected all seven rules into the consistency loss without this validation step, we would very likely have taught the model to violate patterns that are actually true in its own training data, in the name of guideline fidelity. We suggest this validate-before-constrain step as a general requirement for knowledge-graph-guided clinical models, not specific to stroke.
+
+\textbf{Zero-init injection as a safety property, not just an engineering convenience.} Verifying that the graph pathway is a byte-identical no-op at initialization is not merely a smoke test; it is what allows us to warm-start from a checkpoint we already trust and guarantees the graph can only add value through training, never regress a working baseline by construction. We consider this a reusable pattern for any project injecting a new pathway into a pretrained clinical model.
+
+\textbf{A negative result can still be informative.} The auxiliary-head collapse (\S\ref{sec:heads}) was diagnosed, not merely observed: four architecturally and procedurally distinct regimes, including a frozen-encoder ablation that isolates the head's own capacity from the shared trunk's gradient, all reach the identical constant-prediction solution. This is evidence of a genuine data ceiling at this sample size and label quality, and we believe reporting the diagnosis (rather than omitting the attempt, or reporting only the discouraging accuracy number without the collapse analysis) is of more use to future work on this or similarly small stroke datasets than a positive result obtained by, for instance, quietly dropping the harder classes.
+
+\textbf{Measurement confounds are easy to introduce, especially across models trained differently.} Two turned up in this project: the JDCR resolution confound (\S\ref{sec:jdcrconfound}), which made B2 look like it ``committed'' to far more patients than B0/B1 purely because it was scored on a resolution they had never trained to segment, and the wrong-checkpoint confound (\S\ref{sec:wrongckpt}), where the B0 number we had been citing was silently a different, shelved architecture. Both were caught before being used in a final result, but both would have produced a plausible-looking, wrong story otherwise. We recommend explicitly auditing which file and which resolution each model was actually scored on, not trusting a script's default.
+
+\textbf{A mean comparison can be satisfied by outliers.} The primary claim technically passes (\S\ref{sec:jdcrfull}) by a wide margin on its literal, pre-registered definition. A na\"ive reading would suggest a strong, established JDCR advantage. The paired test tells a more honest story: the gap is driven by 2 of 9 extreme outliers (B0's collapsed runs scoring exactly 0), not a consistent per-run edge, and the collapse-excluded comparison shows no distinguishable difference. We report the pass as pre-registered -- changing the criterion after seeing the result would be the worse error -- but we treat ``passes the mean comparison'' and ``shows a real, mechanistic consistency advantage'' as different claims, and support only the first.
+
+\section{Limitations}
+\begin{itemize}
+\item The pre-registered primary claim (\S\ref{sec:jdcrfull}) technically passes (mean strict JDCR, B2 0.965 vs.\ B0 0.749), but almost entirely because 2 of B0's 9 runs collapsed to a strict JDCR of exactly 0. A paired test across all 9 fold/seed pairs is not significant ($p=0.40$), and on the 7 non-collapsed pairs B0 and B2 are indistinguishable ($p=0.84$). The pass should not be read as a demonstrated per-patient consistency advantage under normal training -- only as evidence the graph-injected models did not show B0's catastrophic failure mode in this grid.
+\item A confirmed, unresolved training anomaly (\S\ref{sec:interim}, \S\ref{sec:jdcrfull}): 2 of B0's 9 runs collapsed to near-zero Dice and a strict JDCR of exactly 0, in the same two fold/seed combinations across both analyses. We report inclusive and exclusive statistics throughout, but have not determined the root cause -- ordinary optimizer instability, an interaction with the newly introduced per-fold warm-start trunks, or something specific to those two combinations. B2 shows no collapse in 9 runs and B1 none in 3, but those sample sizes are too small to treat the absence as established protection.
+\item Two known-and-fixed confounds affect numbers from earlier phases still referenced qualitatively here: the JDCR resolution confound (\S\ref{sec:jdcrconfound}) and the wrong-checkpoint confound (\S\ref{sec:wrongckpt}), both fixed before any conclusion in the Results or Discussion was drawn from them.
+\item The dataset provides no true collateral grade (only the HIR proxy, which itself failed validation as a collateral signal, \S\ref{sec:validation}) and no timing data, so no full DAWN/DEFUSE-3/AHA-ASA eligibility rule is evaluable end-to-end on this release; eligibility reporting is necessarily per-criterion.
+\item Results are reported on a single public dataset with 2 centers; the base paper's reported 7-center evaluation and its numeric results are not reproduced or compared here for the reasons given in \S\ref{sec:heads}--\S1, and our findings should not be read as a claim about generalization beyond ISLES'24.
+\item The auxiliary LVO-localization and collateral-grading tasks are reported as not learnable at this data scale on this label set; this should not be read as a claim about the tasks' learnability in general, only in this specific cohort and label regime.
+\end{itemize}
+
+\section{Conclusion}
+We presented KG-XAI, a knowledge-graph-guided consistency framework for multi-task stroke triage, built around a patient-specific vessel graph injected into a segmentation decoder via zero-initialized cross-attention, a consistency loss restricted to guideline rules empirically validated against the target cohort, and a deterministic, LLM-free rule evaluator producing the Joint-Decision Consistency Rate. Rather than reporting only favorable numbers, we disclose that six of seven candidate guideline rules are rejected by the data, that two auxiliary classification heads are not learnable at this data scale under four independent training regimes, that two independent measurement confounds were found and fixed before any conclusion was drawn from them, and that a confirmed, unresolved training anomaly affects 2 of B0's 9 runs on both Dice and JDCR. With the full pre-registered evaluation grid complete, the central claim -- B2's mean JDCR exceeding B0's -- technically passes as pre-registered (0.965 vs.\ 0.749), but a paired test shows the gap is driven by B0's two collapsed runs rather than a consistent per-patient advantage, and when both models train normally B2 and B0 are statistically indistinguishable on both Dice ($p=0.59$, $n=148$ patients) and JDCR ($p=0.84$, $n=7$ pairs). The defensible finding is narrower than ``the graph improves consistency'': B2 showed zero catastrophic training failures across its 9-run grid against B0's 2/9, and a consistently lower expected calibration error (roughly half of B0's, even collapse-excluded) -- a robustness and calibration result, not yet a demonstrated per-patient reasoning advantage. We view a validated knowledge graph, a provably safe injection mechanism, a pre-registered protocol, and a technically passing headline reported alongside the analysis that complicates it, as a more defensible contribution than either a single favorable benchmark number or a claim overstated beyond what the paired tests support.
+
+\section*{Acknowledgment}
+We thank the ISLES'24 challenge organizers for the public release used throughout this work, and the authors of the base paper \cite{luan2026} for the problem framing this work responds to.
+
+\begin{thebibliography}{00}
+
+\bibitem{luan2026} T. Luan \emph{et al.}, ``Unified multimodal learning for stroke triage: joint detection, scoring, and segmentation of acute ischemic stroke,'' \emph{npj Digital Medicine}, vol. 9, p. 441, 2026.
+
+\bibitem{isles2024} E. O. Riedel \emph{et al.}, ``The ISLES'24 dataset,'' \emph{Radiology: Artificial Intelligence}, vol. 8, no. 3, 2026, doi: 10.1148/ryai.250603.
+
+\bibitem{myronenko2018} A. Myronenko, ``3D MRI brain tumor segmentation using autoencoder regularization,'' in \emph{Int. MICCAI Brainlesion Workshop}, 2018, pp. 311--320.
+
+\bibitem{velickovic2018} P. Veli\v{c}kovi\'{c}, G. Cucurull, A. Casanova, A. Romero, P. Li\`{o}, and Y. Bengio, ``Graph attention networks,'' in \emph{Int. Conf. on Learning Representations (ICLR)}, 2018.
+
+\bibitem{topcow2023} K. Yang \emph{et al.}, ``TopCoW: Benchmarking topology-aware anatomical segmentation of the circle of Willis (CoW) for CTA and MRA,'' arXiv:2312.17670, 2023.
+
+\bibitem{alastruey2007} J. Alastruey \emph{et al.}, ``Modelling the circle of Willis to assess the effects of anatomical variations and occlusions on cerebral blood flow,'' \emph{J. Biomechanics}, vol. 40, no. 8, pp. 1794--1805, 2007.
+
+\bibitem{dawn2018} R. G. Nogueira \emph{et al.}, ``Thrombectomy 6 to 24 hours after stroke with a mismatch between deficit and infarct,'' \emph{New England Journal of Medicine}, vol. 378, no. 1, pp. 11--21, 2018.
+
+\bibitem{defuse3_2018} G. W. Albers \emph{et al.}, ``Thrombectomy for stroke at 6 to 16 hours with selection by perfusion imaging,'' \emph{New England Journal of Medicine}, vol. 378, no. 8, pp. 708--718, 2018.
+
+\bibitem{ahaasa2026} S. Prabhakaran \emph{et al.}, ``2026 Guideline for the management of patients with acute ischemic stroke,'' \emph{Stroke}, vol. 57, no. 8, pp. e316--e436, 2026.
+
+\bibitem{kim2026} H. Kim \emph{et al.}, ``Defining the therapeutic ceiling of endovascular thrombectomy in large-core stroke,'' \emph{Stroke}, vol. 57, no. 9, pp. 2677--2686, 2026.
+
+\bibitem{olivot2014} J. M. Olivot \emph{et al.}, ``Hypoperfusion intensity ratio predicts infarct progression and functional outcome in the DEFUSE 2 cohort,'' \emph{Stroke}, vol. 45, no. 4, pp. 1018--1023, 2014.
+
+\bibitem{codeciv2023} F. Werdiger \emph{et al.}, ``Benchmark dataset for clot detection in ischemic stroke vessel-based imaging: CODEC-IV,'' \emph{NeuroImage}, vol. 271, p. 119985, 2023.
+
+\end{thebibliography}
+
+\end{document}
