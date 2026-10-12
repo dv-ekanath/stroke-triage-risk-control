@@ -254,5 +254,94 @@
     "p": 0.539994324129462,
     "pass_mark": "rho > 0 and p < 0.05, fixed before running",
     "passed": false
+  },
+  "structural_collateral_reserve": {
+    "n": 144,
+    "has_reserve": {
+      "n": 102,
+      "median": 13.7,
+      "q1": 5.16,
+      "q3": 43.88,
+      "p90": 116.58,
+      "mean": 36.65,
+      "max": 222.13
+    },
+    "no_reserve": {
+      "n": 42,
+      "median": 8.75,
+      "q1": 3.36,
+      "q3": 34.17,
+      "p90": 62.32,
+      "mean": 22.58,
+      "max": 134.84
+    },
+    "binary_comparison": {
+      "testable": true,
+      "U": 1783.0,
+      "p_one_sided": 0.9429564386739153,
+      "auc": 0.416
+    },
+    "binary_pass_mark": "no-reserve median > has-reserve median and p < 0.05",
+    "binary_passed": false,
+    "continuous_spearman_rho": 0.0904,
+    "continuous_p": 0.281295284182973,
+    "continuous_pass_mark": "rho < 0 and p < 0.05",
+    "continuous_passed": false
+  },
+  "ica_rescue_route_exploratory": {
+    "n": 16,
+    "routed": {
+      "n": 12,
+      "median": 41.45,
+      "q1": 11.96,
+      "q3": 101.83,
+      "p90": 116.47,
+      "mean": 55.23,
+      "max": 150.82
+    },
+    "not_routed": {
+      "n": 4,
+      "median": 17.4,
+      "q1": 11.96,
+      "q3": 28.66,
+      "p90": 44.45,
+      "mean": 23.22,
+      "max": 54.97
+    },
+    "comparison": {
+      "testable": true,
+      "U": 17.0,
+      "p_one_sided": 0.8104395604395604,
+      "auc": 0.354
+    },
+    "note": "exploratory -- n too small for a confirmatory pass/fail gate"
+  },
+  "structural_collateral_reserve_vs_nihss": {
+    "has_reserve": {
+      "n": 99,
+      "median": 12.0,
+      "q1": 6.5,
+      "q3": 17.0,
+      "p90": 20.0,
+      "mean": 12.0,
+      "max": 24.0
+    },
+    "no_reserve": {
+      "n": 42,
+      "median": 11.0,
+      "q1": 5.0,
+      "q3": 17.0,
+      "p90": 18.0,
+      "mean": 10.93,
+      "max": 24.0
+    },
+    "comparison": {
+      "testable": true,
+      "U": 1877.5,
+      "p_one_sided": 0.8191068009127551,
+      "auc": 0.452
+    },
+    "pass_mark": "no-reserve median > has-reserve median and p < 0.05",
+    "passed": false
   }
 }

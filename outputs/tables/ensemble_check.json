@@ -1,0 +1,832 @@
+{
+  "results": {
+    "0": {
+      "fold": 0,
+      "collapsed_seed": 1,
+      "per_subject": [
+        {
+          "subject": "sub-stroke0002",
+          "dice_seed0": 0.13155564550813367,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.2469903314397502,
+          "dice_ensemble3": 0.13752184665286613,
+          "dice_ensemble_healthy_only": 0.17876496627215155
+        },
+        {
+          "subject": "sub-stroke0003",
+          "dice_seed0": 0.0,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.0
+        },
+        {
+          "subject": "sub-stroke0008",
+          "dice_seed0": 0.015299699816016268,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.07786775613433525,
+          "dice_ensemble3": 0.020442219440967878,
+          "dice_ensemble_healthy_only": 0.021353947418774635
+        },
+        {
+          "subject": "sub-stroke0011",
+          "dice_seed0": 0.388629544692307,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.38812447078746826,
+          "dice_ensemble3": 0.38002931048434224,
+          "dice_ensemble_healthy_only": 0.4007403742813763
+        },
+        {
+          "subject": "sub-stroke0026",
+          "dice_seed0": 0.0,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.0
+        },
+        {
+          "subject": "sub-stroke0030",
+          "dice_seed0": 0.31232934257508926,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.33695698151516434,
+          "dice_ensemble3": 0.28593693178866436,
+          "dice_ensemble_healthy_only": 0.3158727803333828
+        },
+        {
+          "subject": "sub-stroke0033",
+          "dice_seed0": 0.004114823160576075,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.002182054079556512,
+          "dice_ensemble3": 0.00204865556978233,
+          "dice_ensemble_healthy_only": 0.002730206006453214
+        },
+        {
+          "subject": "sub-stroke0037",
+          "dice_seed0": 0.4588676884579293,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.5362158250604916,
+          "dice_ensemble3": 0.4968500014651156,
+          "dice_ensemble_healthy_only": 0.5215145353629719
+        },
+        {
+          "subject": "sub-stroke0040",
+          "dice_seed0": 0.610770279481936,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.5603442539316372,
+          "dice_ensemble3": 0.5923905705721924,
+          "dice_ensemble_healthy_only": 0.5977201968464397
+        },
+        {
+          "subject": "sub-stroke0047",
+          "dice_seed0": 0.5120935765265662,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.34066380955360215,
+          "dice_ensemble3": 0.4784718820962643,
+          "dice_ensemble_healthy_only": 0.44334289225727164
+        },
+        {
+          "subject": "sub-stroke0048",
+          "dice_seed0": 0.0030434537564109788,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0012855723718810262,
+          "dice_ensemble3": 0.00205742074254185,
+          "dice_ensemble_healthy_only": 0.0018927704398633914
+        },
+        {
+          "subject": "sub-stroke0049",
+          "dice_seed0": 0.010897485794348875,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.01709634883826672,
+          "dice_ensemble3": 0.01784011984202642,
+          "dice_ensemble_healthy_only": 0.01751334492892701
+        },
+        {
+          "subject": "sub-stroke0052",
+          "dice_seed0": 0.6699209324770778,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.7166649146255387,
+          "dice_ensemble3": 0.7055223506674779,
+          "dice_ensemble_healthy_only": 0.7177039993207098
+        },
+        {
+          "subject": "sub-stroke0066",
+          "dice_seed0": 0.00016204664917913243,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.035654064156999773,
+          "dice_ensemble3": 0.004558631990252511,
+          "dice_ensemble_healthy_only": 0.011375160747331333
+        },
+        {
+          "subject": "sub-stroke0071",
+          "dice_seed0": 0.4306559199555309,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.33283574902489527,
+          "dice_ensemble3": 0.41041964401714953,
+          "dice_ensemble_healthy_only": 0.39475800446760984
+        },
+        {
+          "subject": "sub-stroke0076",
+          "dice_seed0": 0.3475733063700708,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.1920023379280113,
+          "dice_ensemble3": 0.2602091359383599,
+          "dice_ensemble_healthy_only": 0.28446756734077366
+        },
+        {
+          "subject": "sub-stroke0077",
+          "dice_seed0": 0.1993064978139605,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.22886932740791385,
+          "dice_ensemble3": 0.309258043335522,
+          "dice_ensemble_healthy_only": 0.27855563743551953
+        },
+        {
+          "subject": "sub-stroke0084",
+          "dice_seed0": 0.17501988862370724,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.13216033866913612,
+          "dice_ensemble3": 0.1828358208955224,
+          "dice_ensemble_healthy_only": 0.16350690572188384
+        },
+        {
+          "subject": "sub-stroke0085",
+          "dice_seed0": 0.0,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.11528259538869619,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.009246009906439185
+        },
+        {
+          "subject": "sub-stroke0086",
+          "dice_seed0": 0.0,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.0
+        },
+        {
+          "subject": "sub-stroke0093",
+          "dice_seed0": 0.15746954198970617,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.1085179914616792,
+          "dice_ensemble3": 0.14191607760565497,
+          "dice_ensemble_healthy_only": 0.13940146186732866
+        },
+        {
+          "subject": "sub-stroke0095",
+          "dice_seed0": 0.5192568232955935,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.5912203513182706,
+          "dice_ensemble3": 0.5241271370093908,
+          "dice_ensemble_healthy_only": 0.5487880563079653
+        },
+        {
+          "subject": "sub-stroke0102",
+          "dice_seed0": 0.10037799244015119,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.18853618514117582,
+          "dice_ensemble3": 0.0913852266570345,
+          "dice_ensemble_healthy_only": 0.1698389458272328
+        },
+        {
+          "subject": "sub-stroke0107",
+          "dice_seed0": 0.19456036594212175,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.36103069500051327,
+          "dice_ensemble3": 0.25072296124927707,
+          "dice_ensemble_healthy_only": 0.27016800481577324
+        },
+        {
+          "subject": "sub-stroke0108",
+          "dice_seed0": 0.399617133285475,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.3040200480317427,
+          "dice_ensemble3": 0.3836988326144008,
+          "dice_ensemble_healthy_only": 0.3670713749895813
+        },
+        {
+          "subject": "sub-stroke0110",
+          "dice_seed0": 0.00017820547090795688,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.00020225514486524752,
+          "dice_ensemble3": 0.00020462152326108246,
+          "dice_ensemble_healthy_only": 0.0002043631533234558
+        },
+        {
+          "subject": "sub-stroke0114",
+          "dice_seed0": 0.07412935323383085,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.02303209324604822,
+          "dice_ensemble3": 0.022373829399550828,
+          "dice_ensemble_healthy_only": 0.035428881423832076
+        },
+        {
+          "subject": "sub-stroke0117",
+          "dice_seed0": 0.02754303599374022,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.035529789920789805,
+          "dice_ensemble3": 0.06995273463875759,
+          "dice_ensemble_healthy_only": 0.08983050847457627
+        },
+        {
+          "subject": "sub-stroke0135",
+          "dice_seed0": 0.48618309899487416,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.4702366589327146,
+          "dice_ensemble3": 0.4923702950152594,
+          "dice_ensemble_healthy_only": 0.49636532640560577
+        },
+        {
+          "subject": "sub-stroke0136",
+          "dice_seed0": 0.3183765501691094,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.3530926558708463,
+          "dice_ensemble3": 0.37249451353328455,
+          "dice_ensemble_healthy_only": 0.3611056910569106
+        },
+        {
+          "subject": "sub-stroke0138",
+          "dice_seed0": 0.45943307416059415,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.44179122707910284,
+          "dice_ensemble3": 0.43214917653463997,
+          "dice_ensemble_healthy_only": 0.4593165243460832
+        },
+        {
+          "subject": "sub-stroke0142",
+          "dice_seed0": 0.0,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.0
+        },
+        {
+          "subject": "sub-stroke0143",
+          "dice_seed0": 0.3558386792876049,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.2508311092381889,
+          "dice_ensemble3": 0.339554009172861,
+          "dice_ensemble_healthy_only": 0.3129289047488334
+        },
+        {
+          "subject": "sub-stroke0144",
+          "dice_seed0": 0.24652608483666505,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.29459160566643844,
+          "dice_ensemble3": 0.39061177942096165,
+          "dice_ensemble_healthy_only": 0.3253376866162879
+        },
+        {
+          "subject": "sub-stroke0147",
+          "dice_seed0": 0.0,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.0
+        },
+        {
+          "subject": "sub-stroke0149",
+          "dice_seed0": 0.2853605105248119,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.23308927095580104,
+          "dice_ensemble3": 0.27465758975605803,
+          "dice_ensemble_healthy_only": 0.26312373810210554
+        },
+        {
+          "subject": "sub-stroke0155",
+          "dice_seed0": 0.43354887188309504,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.567244963525721,
+          "dice_ensemble3": 0.44588619281942765,
+          "dice_ensemble_healthy_only": 0.48200249388075556
+        },
+        {
+          "subject": "sub-stroke0157",
+          "dice_seed0": 0.2999364399692236,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.23964684155936147,
+          "dice_ensemble3": 0.2505767012687428,
+          "dice_ensemble_healthy_only": 0.27067168806812164
+        },
+        {
+          "subject": "sub-stroke0158",
+          "dice_seed0": 0.4482710113049261,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.4646113488182559,
+          "dice_ensemble3": 0.3975099688078174,
+          "dice_ensemble_healthy_only": 0.45070512943955526
+        },
+        {
+          "subject": "sub-stroke0162",
+          "dice_seed0": 0.0,
+          "dice_seed1": 1.0,
+          "dice_seed2": 0.0,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.0
+        },
+        {
+          "subject": "sub-stroke0165",
+          "dice_seed0": 0.4609168255413596,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.5006756381541195,
+          "dice_ensemble3": 0.48257344968244953,
+          "dice_ensemble_healthy_only": 0.517268539513569
+        },
+        {
+          "subject": "sub-stroke0168",
+          "dice_seed0": 0.6654191080978822,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.7045341219759624,
+          "dice_ensemble3": 0.6752739214502747,
+          "dice_ensemble_healthy_only": 0.6925792341339881
+        },
+        {
+          "subject": "sub-stroke0169",
+          "dice_seed0": 0.19021665076985966,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.1477165439292169,
+          "dice_ensemble3": 0.17675805516441648,
+          "dice_ensemble_healthy_only": 0.17356582899846143
+        },
+        {
+          "subject": "sub-stroke0172",
+          "dice_seed0": 0.006071929005137786,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.06337662337662338,
+          "dice_ensemble3": 0.0001857700167193015,
+          "dice_ensemble_healthy_only": 0.01128537050867148
+        },
+        {
+          "subject": "sub-stroke0178",
+          "dice_seed0": 0.6547929224188217,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.6517941481731991,
+          "dice_ensemble3": 0.6691585747369276,
+          "dice_ensemble_healthy_only": 0.6574996246434113
+        },
+        {
+          "subject": "sub-stroke0180",
+          "dice_seed0": 0.018604317063534822,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.01984090701289202,
+          "dice_ensemble3": 0.020640522005459752,
+          "dice_ensemble_healthy_only": 0.019499263622974963
+        },
+        {
+          "subject": "sub-stroke0184",
+          "dice_seed0": 0.051373046049852135,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.004804942226289898
+        },
+        {
+          "subject": "sub-stroke0185",
+          "dice_seed0": 0.0,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.00024261539394674592,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.0
+        },
+        {
+          "subject": "sub-stroke0186",
+          "dice_seed0": 0.31675853172276297,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.38728037614451866,
+          "dice_ensemble3": 0.34534848019649983,
+          "dice_ensemble_healthy_only": 0.36553214478660184
+        },
+        {
+          "subject": "sub-stroke0187",
+          "dice_seed0": 0.5910293014749418,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.6352245725876557,
+          "dice_ensemble3": 0.5648828906319332,
+          "dice_ensemble_healthy_only": 0.6261421927580253
+        }
+      ],
+      "mean": {
+        "dice_seed0": 0.2406405907317085,
+        "dice_seed1": 0.02,
+        "dice_seed2": 0.2459821473714599,
+        "dice_ensemble3": 0.24202811792820217,
+        "dice_ensemble_healthy_only": 0.2494305043960749
+      }
+    },
+    "1": {
+      "fold": 1,
+      "collapsed_seed": 1,
+      "per_subject": [
+        {
+          "subject": "sub-stroke0001",
+          "dice_seed0": 0.1725822629177856,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.23574317262689146,
+          "dice_ensemble3": 0.24228485602309263,
+          "dice_ensemble_healthy_only": 0.2189106936719488
+        },
+        {
+          "subject": "sub-stroke0005",
+          "dice_seed0": 0.38897836285974374,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.35624634969069213,
+          "dice_ensemble3": 0.32347194388777556,
+          "dice_ensemble_healthy_only": 0.36125461692854005
+        },
+        {
+          "subject": "sub-stroke0006",
+          "dice_seed0": 0.3732939874585024,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.3510463085095005,
+          "dice_ensemble3": 0.3111793852317053,
+          "dice_ensemble_healthy_only": 0.36013029499689775
+        },
+        {
+          "subject": "sub-stroke0009",
+          "dice_seed0": 0.16915314213319937,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.20789892660880283,
+          "dice_ensemble3": 0.20065663383497492,
+          "dice_ensemble_healthy_only": 0.1942751560846955
+        },
+        {
+          "subject": "sub-stroke0010",
+          "dice_seed0": 0.06364715860899067,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.09089530740656508,
+          "dice_ensemble3": 0.08304721030042918,
+          "dice_ensemble_healthy_only": 0.09010967295721767
+        },
+        {
+          "subject": "sub-stroke0012",
+          "dice_seed0": 0.23979730834196045,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.32779477910821747,
+          "dice_ensemble3": 0.3088075389633925,
+          "dice_ensemble_healthy_only": 0.301822821728035
+        },
+        {
+          "subject": "sub-stroke0015",
+          "dice_seed0": 0.11494099606640443,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.12928471987056478,
+          "dice_ensemble3": 0.1595701011307236,
+          "dice_ensemble_healthy_only": 0.15065420560747664
+        },
+        {
+          "subject": "sub-stroke0019",
+          "dice_seed0": 0.02897759694345895,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.03588416340235031,
+          "dice_ensemble3": 0.037163702690378476,
+          "dice_ensemble_healthy_only": 0.03333333333333333
+        },
+        {
+          "subject": "sub-stroke0020",
+          "dice_seed0": 0.017064017064017063,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.02577698649223981,
+          "dice_ensemble3": 0.02343994982753214,
+          "dice_ensemble_healthy_only": 0.022567596338088143
+        },
+        {
+          "subject": "sub-stroke0027",
+          "dice_seed0": 0.549508977464315,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.5269043534702582,
+          "dice_ensemble3": 0.5094313273202703,
+          "dice_ensemble_healthy_only": 0.534935834019703
+        },
+        {
+          "subject": "sub-stroke0036",
+          "dice_seed0": 0.07430255880386556,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.09584072436525376,
+          "dice_ensemble3": 0.09229538523073846,
+          "dice_ensemble_healthy_only": 0.09176126784309317
+        },
+        {
+          "subject": "sub-stroke0045",
+          "dice_seed0": 0.10199598633183272,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.04850295142592988,
+          "dice_ensemble3": 0.05552425665101721,
+          "dice_ensemble_healthy_only": 0.08454396504642273
+        },
+        {
+          "subject": "sub-stroke0057",
+          "dice_seed0": 0.003928976199471099,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.003478902564372875,
+          "dice_ensemble3": 0.00528530879906039,
+          "dice_ensemble_healthy_only": 0.005105355982548965
+        },
+        {
+          "subject": "sub-stroke0062",
+          "dice_seed0": 0.2142224631788199,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.3352764631190119,
+          "dice_ensemble3": 0.29361491298693254,
+          "dice_ensemble_healthy_only": 0.3104730653541154
+        },
+        {
+          "subject": "sub-stroke0070",
+          "dice_seed0": 0.4954814327965823,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.5173097081797585,
+          "dice_ensemble3": 0.40548823368297937,
+          "dice_ensemble_healthy_only": 0.48853016436923696
+        },
+        {
+          "subject": "sub-stroke0075",
+          "dice_seed0": 0.03514624252775406,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.04816488482310151,
+          "dice_ensemble3": 0.04163355614764954,
+          "dice_ensemble_healthy_only": 0.04110443911300947
+        },
+        {
+          "subject": "sub-stroke0078",
+          "dice_seed0": 0.5325452895615258,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.5168633415649113,
+          "dice_ensemble3": 0.5128337211574329,
+          "dice_ensemble_healthy_only": 0.5243361167531784
+        },
+        {
+          "subject": "sub-stroke0080",
+          "dice_seed0": 0.6443923052585745,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.6485096582824897,
+          "dice_ensemble3": 0.6118556665730741,
+          "dice_ensemble_healthy_only": 0.6468176035375057
+        },
+        {
+          "subject": "sub-stroke0081",
+          "dice_seed0": 0.2688873588844082,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.26251107828655834,
+          "dice_ensemble3": 0.2883301326425796,
+          "dice_ensemble_healthy_only": 0.2775399925097641
+        },
+        {
+          "subject": "sub-stroke0083",
+          "dice_seed0": 0.3049051199427139,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.3426713780918728,
+          "dice_ensemble3": 0.33668130822818454,
+          "dice_ensemble_healthy_only": 0.32636202028652095
+        },
+        {
+          "subject": "sub-stroke0088",
+          "dice_seed0": 0.17692798563021436,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.19640875330810165,
+          "dice_ensemble3": 0.1920183749641114,
+          "dice_ensemble_healthy_only": 0.1914035182096939
+        },
+        {
+          "subject": "sub-stroke0089",
+          "dice_seed0": 0.24031379818275103,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.19149361465852305,
+          "dice_ensemble3": 0.21353301317795936,
+          "dice_ensemble_healthy_only": 0.2305566688463729
+        },
+        {
+          "subject": "sub-stroke0090",
+          "dice_seed0": 0.2806069031804061,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.2562104896862374,
+          "dice_ensemble3": 0.26423471882640587,
+          "dice_ensemble_healthy_only": 0.2684880835752021
+        },
+        {
+          "subject": "sub-stroke0091",
+          "dice_seed0": 0.05661249599943103,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.05807342240108566,
+          "dice_ensemble3": 0.05605036855036855,
+          "dice_ensemble_healthy_only": 0.06097560975609756
+        },
+        {
+          "subject": "sub-stroke0094",
+          "dice_seed0": 0.0,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.0
+        },
+        {
+          "subject": "sub-stroke0097",
+          "dice_seed0": 0.09247402522715946,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0,
+          "dice_ensemble3": 0.008060995838547275,
+          "dice_ensemble_healthy_only": 0.011634411007942724
+        },
+        {
+          "subject": "sub-stroke0098",
+          "dice_seed0": 0.3160017078609042,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.21515677187168267,
+          "dice_ensemble3": 0.23064247584064265,
+          "dice_ensemble_healthy_only": 0.25494742700068296
+        },
+        {
+          "subject": "sub-stroke0099",
+          "dice_seed0": 0.0,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0001948747929455325,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.0
+        },
+        {
+          "subject": "sub-stroke0100",
+          "dice_seed0": 0.0,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.0
+        },
+        {
+          "subject": "sub-stroke0104",
+          "dice_seed0": 0.21218074656188604,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.23684879968937864,
+          "dice_ensemble3": 0.2338231057332181,
+          "dice_ensemble_healthy_only": 0.22988654949505438
+        },
+        {
+          "subject": "sub-stroke0106",
+          "dice_seed0": 0.008936170212765958,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.0
+        },
+        {
+          "subject": "sub-stroke0111",
+          "dice_seed0": 0.10311665812222674,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.12187627529586864,
+          "dice_ensemble3": 0.11595391760661078,
+          "dice_ensemble_healthy_only": 0.11573509905207648
+        },
+        {
+          "subject": "sub-stroke0112",
+          "dice_seed0": 0.2928294832420884,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.3534756149824291,
+          "dice_ensemble3": 0.34417663913703017,
+          "dice_ensemble_healthy_only": 0.33604293268092494
+        },
+        {
+          "subject": "sub-stroke0113",
+          "dice_seed0": 0.61159361745102,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.5473407364114553,
+          "dice_ensemble3": 0.5433300209025803,
+          "dice_ensemble_healthy_only": 0.5716836165396755
+        },
+        {
+          "subject": "sub-stroke0118",
+          "dice_seed0": 0.13423489322224402,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.026818900548288397,
+          "dice_ensemble3": 0.04856522341851116,
+          "dice_ensemble_healthy_only": 0.07980617296955651
+        },
+        {
+          "subject": "sub-stroke0133",
+          "dice_seed0": 0.021831593349394725,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.08263380365541466,
+          "dice_ensemble3": 0.03120018219084491,
+          "dice_ensemble_healthy_only": 0.03153798894122466
+        },
+        {
+          "subject": "sub-stroke0137",
+          "dice_seed0": 0.5830093892683564,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.5564018861080885,
+          "dice_ensemble3": 0.5062834840586519,
+          "dice_ensemble_healthy_only": 0.5737478698200258
+        },
+        {
+          "subject": "sub-stroke0141",
+          "dice_seed0": 0.0,
+          "dice_seed1": 1.0,
+          "dice_seed2": 0.0,
+          "dice_ensemble3": 0.0,
+          "dice_ensemble_healthy_only": 0.0
+        },
+        {
+          "subject": "sub-stroke0148",
+          "dice_seed0": 0.39386699572054923,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.4655257366225405,
+          "dice_ensemble3": 0.45628926614089027,
+          "dice_ensemble_healthy_only": 0.456319960529156
+        },
+        {
+          "subject": "sub-stroke0150",
+          "dice_seed0": 0.19454420417207915,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.12549989692846836,
+          "dice_ensemble3": 0.12860110177910233,
+          "dice_ensemble_healthy_only": 0.1528019069936568
+        },
+        {
+          "subject": "sub-stroke0151",
+          "dice_seed0": 0.027537900594895415,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.03473057586132445,
+          "dice_ensemble3": 0.02740720573554769,
+          "dice_ensemble_healthy_only": 0.0345105628124496
+        },
+        {
+          "subject": "sub-stroke0154",
+          "dice_seed0": 0.1654724419210076,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.18344024580885127,
+          "dice_ensemble3": 0.1662025241452865,
+          "dice_ensemble_healthy_only": 0.1779205138498595
+        },
+        {
+          "subject": "sub-stroke0156",
+          "dice_seed0": 0.7550686676024949,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.7789686552072801,
+          "dice_ensemble3": 0.7413366146273936,
+          "dice_ensemble_healthy_only": 0.7696208434121179
+        },
+        {
+          "subject": "sub-stroke0161",
+          "dice_seed0": 0.6208129826875146,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.603036581637852,
+          "dice_ensemble3": 0.6070446510409847,
+          "dice_ensemble_healthy_only": 0.6155547700762801
+        },
+        {
+          "subject": "sub-stroke0163",
+          "dice_seed0": 0.26324184588306476,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.29020556227327693,
+          "dice_ensemble3": 0.2595860001153203,
+          "dice_ensemble_healthy_only": 0.29117598729254535
+        },
+        {
+          "subject": "sub-stroke0173",
+          "dice_seed0": 0.17033008726444923,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.18208062686874935,
+          "dice_ensemble3": 0.19382690669877536,
+          "dice_ensemble_healthy_only": 0.18064954406500666
+        },
+        {
+          "subject": "sub-stroke0177",
+          "dice_seed0": 0.5031189354033823,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.5170543265368751,
+          "dice_ensemble3": 0.504759584754338,
+          "dice_ensemble_healthy_only": 0.5099339509730041
+        },
+        {
+          "subject": "sub-stroke0182",
+          "dice_seed0": 0.013732423320450621,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.0004936138705497624,
+          "dice_ensemble3": 0.001578340314453955,
+          "dice_ensemble_healthy_only": 0.002748269118968342
+        },
+        {
+          "subject": "sub-stroke0183",
+          "dice_seed0": 0.5505890012410735,
+          "dice_seed1": 0.0,
+          "dice_seed2": 0.47238324675650584,
+          "dice_ensemble3": 0.4765454954842261,
+          "dice_ensemble_healthy_only": 0.5226907440673159
+        }
+      ],
+      "mean": {
+        "dice_seed0": 0.23638237748297422,
+        "dice_seed1": 0.02040816326530612,
+        "dice_seed2": 0.23679504427900236,
+        "dice_ensemble3": 0.22844174168146378,
+        "dice_ensemble_healthy_only": 0.2394885962764535
+      }
+    }
+  },
+  "verdicts": {
+    "fold0": {
+      "gap_vs_healthy_only": 0.0074,
+      "passed": true
+    },
+    "fold1": {
+      "gap_vs_healthy_only": 0.011,
+      "passed": true
+    }
+  }
+}

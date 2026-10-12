@@ -1,0 +1,1238 @@
+{
+  "fold": 0,
+  "n_folds": 3,
+  "config": {
+    "root": "D:\\ISLES-2024\\train",
+    "audit_json": "outputs\\tables\\data_audit.json",
+    "fold": 0,
+    "n_folds": 3,
+    "epochs": 100,
+    "patch_size": [
+      128,
+      128,
+      64
+    ],
+    "batch_size": 2,
+    "lr": 0.0001,
+    "val_interval": 10,
+    "num_workers": 0,
+    "cache_dir": "D:\\ISLES-2024\\cache_1mm_nihss",
+    "amp": true,
+    "seed": 2,
+    "nihss_weight": 1.0,
+    "warm_start": "outputs\\checkpoints\\segresnet_3fold_fold0_best.pt"
+  },
+  "nihss_train_mean": 12.25263157894737,
+  "nihss_train_std": 6.093945953593498,
+  "n_train_labeled": 95,
+  "n_val_labeled": 50,
+  "history": [
+    {
+      "epoch": 1,
+      "seg": 0.5054835318302622,
+      "nihss_z_mse": 1.7229931676874355,
+      "seconds": 40.28908705711365
+    },
+    {
+      "epoch": 2,
+      "seg": 0.5265294879066701,
+      "nihss_z_mse": 1.1618476869172847,
+      "seconds": 35.796555280685425
+    },
+    {
+      "epoch": 3,
+      "seg": 0.5137920945274587,
+      "nihss_z_mse": 0.9636191553816351,
+      "seconds": 35.96380662918091
+    },
+    {
+      "epoch": 4,
+      "seg": 0.5086334505859686,
+      "nihss_z_mse": 0.9769166251074295,
+      "seconds": 35.13096022605896
+    },
+    {
+      "epoch": 5,
+      "seg": 0.5103762539065614,
+      "nihss_z_mse": 0.9425764806112464,
+      "seconds": 35.75343871116638
+    },
+    {
+      "epoch": 6,
+      "seg": 0.5026515053243054,
+      "nihss_z_mse": 0.9565778052700418,
+      "seconds": 36.21594738960266
+    },
+    {
+      "epoch": 7,
+      "seg": 0.5108309631444969,
+      "nihss_z_mse": 0.887833660430446,
+      "seconds": 36.97650337219238
+    },
+    {
+      "epoch": 8,
+      "seg": 0.5175257428568236,
+      "nihss_z_mse": 0.93349685679589,
+      "seconds": 35.970234870910645
+    },
+    {
+      "epoch": 9,
+      "seg": 0.4994071679455893,
+      "nihss_z_mse": 0.8681183104707423,
+      "seconds": 35.04871225357056
+    },
+    {
+      "epoch": 10,
+      "seg": 0.5035946916560737,
+      "nihss_z_mse": 0.8475014531642807,
+      "seconds": 36.02048850059509,
+      "val_dice": 0.22074906954755988,
+      "nihss_n": 50,
+      "nihss_rho": 0.5722271333689035,
+      "nihss_p": 1.4145563924235119e-05,
+      "nihss_mae": 4.565052978671269,
+      "nihss_pred_std": 2.417960562670129,
+      "nihss_true_std": 6.051908789795166
+    },
+    {
+      "epoch": 11,
+      "seg": 0.5042174081413113,
+      "nihss_z_mse": 0.9925283013025716,
+      "seconds": 37.007875204086304
+    },
+    {
+      "epoch": 12,
+      "seg": 0.5086855182842333,
+      "nihss_z_mse": 0.9136351026376063,
+      "seconds": 36.24007558822632
+    },
+    {
+      "epoch": 13,
+      "seg": 0.5096412185503512,
+      "nihss_z_mse": 0.8566850320417054,
+      "seconds": 36.540759325027466
+    },
+    {
+      "epoch": 14,
+      "seg": 0.49415480786440324,
+      "nihss_z_mse": 1.0324808076898357,
+      "seconds": 36.55902433395386
+    },
+    {
+      "epoch": 15,
+      "seg": 0.49477868299094996,
+      "nihss_z_mse": 0.9007316736732515,
+      "seconds": 36.16805553436279
+    },
+    {
+      "epoch": 16,
+      "seg": 0.4895132664515048,
+      "nihss_z_mse": 0.8126923685551298,
+      "seconds": 36.82442855834961
+    },
+    {
+      "epoch": 17,
+      "seg": 0.5002372039824116,
+      "nihss_z_mse": 0.85148341444378,
+      "seconds": 36.2945020198822
+    },
+    {
+      "epoch": 18,
+      "seg": 0.5008795431682042,
+      "nihss_z_mse": 0.8735208521996226,
+      "seconds": 36.865222215652466
+    },
+    {
+      "epoch": 19,
+      "seg": 0.5019682901246207,
+      "nihss_z_mse": 0.6812596509651262,
+      "seconds": 36.41269302368164
+    },
+    {
+      "epoch": 20,
+      "seg": 0.4930524801721378,
+      "nihss_z_mse": 0.8781856256632172,
+      "seconds": 37.55925798416138,
+      "val_dice": 0.2225614175789461,
+      "nihss_n": 50,
+      "nihss_rho": 0.5263092924979067,
+      "nihss_p": 8.644840685886887e-05,
+      "nihss_mae": 5.283764625536213,
+      "nihss_pred_std": 1.332428757156178,
+      "nihss_true_std": 6.051908789795166
+    },
+    {
+      "epoch": 21,
+      "seg": 0.494790996823992,
+      "nihss_z_mse": 0.7965468868342399,
+      "seconds": 37.69012212753296
+    },
+    {
+      "epoch": 22,
+      "seg": 0.5011117476589826,
+      "nihss_z_mse": 0.8222617872667556,
+      "seconds": 35.709842920303345
+    },
+    {
+      "epoch": 23,
+      "seg": 0.49374749709148796,
+      "nihss_z_mse": 0.8674921875971616,
+      "seconds": 35.3193359375
+    },
+    {
+      "epoch": 24,
+      "seg": 0.5015246898544078,
+      "nihss_z_mse": 0.8451201357327554,
+      "seconds": 36.375418186187744
+    },
+    {
+      "epoch": 25,
+      "seg": 0.49259480590723,
+      "nihss_z_mse": 0.7717179771968905,
+      "seconds": 36.22103238105774
+    },
+    {
+      "epoch": 26,
+      "seg": 0.4933045001662507,
+      "nihss_z_mse": 0.7842052572083716,
+      "seconds": 37.08097290992737
+    },
+    {
+      "epoch": 27,
+      "seg": 0.49777556803761697,
+      "nihss_z_mse": 0.7582467122915753,
+      "seconds": 37.018564224243164
+    },
+    {
+      "epoch": 28,
+      "seg": 0.5083705880204026,
+      "nihss_z_mse": 0.8284922821485267,
+      "seconds": 36.610337018966675
+    },
+    {
+      "epoch": 29,
+      "seg": 0.4926214607394471,
+      "nihss_z_mse": 0.7331866172275373,
+      "seconds": 35.60014224052429
+    },
+    {
+      "epoch": 30,
+      "seg": 0.48886781383533867,
+      "nihss_z_mse": 0.8601086689539406,
+      "seconds": 36.31066823005676,
+      "val_dice": 0.22506500240947264,
+      "nihss_n": 50,
+      "nihss_rho": 0.5408407796376368,
+      "nihss_p": 5.01530273442083e-05,
+      "nihss_mae": 5.380212849717504,
+      "nihss_pred_std": 1.8252115575995642,
+      "nihss_true_std": 6.051908789795166
+    },
+    {
+      "epoch": 31,
+      "seg": 0.48836130207898665,
+      "nihss_z_mse": 0.7160839448108015,
+      "seconds": 37.69510865211487
+    },
+    {
+      "epoch": 32,
+      "seg": 0.48894226915982303,
+      "nihss_z_mse": 0.6906196616913135,
+      "seconds": 36.541624546051025
+    },
+    {
+      "epoch": 33,
+      "seg": 0.4869762251571733,
+      "nihss_z_mse": 0.6967515029317263,
+      "seconds": 36.93018651008606
+    },
+    {
+      "epoch": 34,
+      "seg": 0.4836524280966545,
+      "nihss_z_mse": 0.7679568795411258,
+      "seconds": 36.23077201843262
+    },
+    {
+      "epoch": 35,
+      "seg": 0.5005074112999196,
+      "nihss_z_mse": 0.7748360382202937,
+      "seconds": 36.743863582611084
+    },
+    {
+      "epoch": 36,
+      "seg": 0.4836842539359112,
+      "nihss_z_mse": 0.7471159050355152,
+      "seconds": 35.49453926086426
+    },
+    {
+      "epoch": 37,
+      "seg": 0.48444293652262005,
+      "nihss_z_mse": 0.670660521454957,
+      "seconds": 36.486095666885376
+    },
+    {
+      "epoch": 38,
+      "seg": 0.4906780129792739,
+      "nihss_z_mse": 0.6223260148981353,
+      "seconds": 35.71538734436035
+    },
+    {
+      "epoch": 39,
+      "seg": 0.492508376739463,
+      "nihss_z_mse": 0.8289344826028967,
+      "seconds": 36.432565450668335
+    },
+    {
+      "epoch": 40,
+      "seg": 0.4758458593670203,
+      "nihss_z_mse": 0.7147618894541294,
+      "seconds": 36.04764771461487,
+      "val_dice": 0.240891094014028,
+      "nihss_n": 50,
+      "nihss_rho": 0.5654664613004263,
+      "nihss_p": 1.8783182706929443e-05,
+      "nihss_mae": 5.585594396330534,
+      "nihss_pred_std": 2.6314424213366356,
+      "nihss_true_std": 6.051908789795166
+    },
+    {
+      "epoch": 41,
+      "seg": 0.49305811828496504,
+      "nihss_z_mse": 0.7787229195142127,
+      "seconds": 36.79560375213623
+    },
+    {
+      "epoch": 42,
+      "seg": 0.49209845552639087,
+      "nihss_z_mse": 0.737553083813008,
+      "seconds": 36.362492084503174
+    },
+    {
+      "epoch": 43,
+      "seg": 0.4830280463306271,
+      "nihss_z_mse": 0.6580706138391884,
+      "seconds": 36.81306290626526
+    },
+    {
+      "epoch": 44,
+      "seg": 0.48870641905434276,
+      "nihss_z_mse": 0.7336408688724801,
+      "seconds": 36.214317321777344
+    },
+    {
+      "epoch": 45,
+      "seg": 0.4871642705129117,
+      "nihss_z_mse": 0.6696533399577044,
+      "seconds": 36.522663593292236
+    },
+    {
+      "epoch": 46,
+      "seg": 0.4832443716574688,
+      "nihss_z_mse": 0.6606496471664584,
+      "seconds": 36.88980269432068
+    },
+    {
+      "epoch": 47,
+      "seg": 0.4836247204517832,
+      "nihss_z_mse": 0.7450268933815616,
+      "seconds": 37.564290046691895
+    },
+    {
+      "epoch": 48,
+      "seg": 0.48965452459393716,
+      "nihss_z_mse": 0.6584989210704759,
+      "seconds": 35.743550539016724
+    },
+    {
+      "epoch": 49,
+      "seg": 0.4898405403506999,
+      "nihss_z_mse": 0.6974819224631909,
+      "seconds": 36.39979362487793
+    },
+    {
+      "epoch": 50,
+      "seg": 0.48897078390024146,
+      "nihss_z_mse": 0.7545841763708361,
+      "seconds": 35.493257999420166,
+      "val_dice": 0.24287814479118844,
+      "nihss_n": 50,
+      "nihss_rho": 0.5753410322177246,
+      "nihss_p": 1.2387349330739364e-05,
+      "nihss_mae": 5.0588486094611405,
+      "nihss_pred_std": 2.5576367990304085,
+      "nihss_true_std": 6.051908789795166
+    },
+    {
+      "epoch": 51,
+      "seg": 0.4802085124716467,
+      "nihss_z_mse": 0.6511395533322072,
+      "seconds": 38.37340998649597
+    },
+    {
+      "epoch": 52,
+      "seg": 0.4779281670949897,
+      "nihss_z_mse": 0.646784275036253,
+      "seconds": 36.698668241500854
+    },
+    {
+      "epoch": 53,
+      "seg": 0.48137395175135866,
+      "nihss_z_mse": 0.6258140714050328,
+      "seconds": 36.889827251434326
+    },
+    {
+      "epoch": 54,
+      "seg": 0.4797059857115454,
+      "nihss_z_mse": 0.6863383315123466,
+      "seconds": 37.071593046188354
+    },
+    {
+      "epoch": 55,
+      "seg": 0.487536297160752,
+      "nihss_z_mse": 0.6760772901530169,
+      "seconds": 36.567326068878174
+    },
+    {
+      "epoch": 56,
+      "seg": 0.4895020838902921,
+      "nihss_z_mse": 0.7003585961124651,
+      "seconds": 35.97053003311157
+    },
+    {
+      "epoch": 57,
+      "seg": 0.4755408386794888,
+      "nihss_z_mse": 0.6384196307282058,
+      "seconds": 36.24906253814697
+    },
+    {
+      "epoch": 58,
+      "seg": 0.4814854586610989,
+      "nihss_z_mse": 0.7868277063327176,
+      "seconds": 36.792346715927124
+    },
+    {
+      "epoch": 59,
+      "seg": 0.4755017161369324,
+      "nihss_z_mse": 0.7150904888629305,
+      "seconds": 36.23605179786682
+    },
+    {
+      "epoch": 60,
+      "seg": 0.4734886233903924,
+      "nihss_z_mse": 0.6817143424224033,
+      "seconds": 37.08539414405823,
+      "val_dice": 0.21500177226875639,
+      "nihss_n": 50,
+      "nihss_rho": 0.5950692101226561,
+      "nihss_p": 5.1723364125809985e-06,
+      "nihss_mae": 4.67296833739874,
+      "nihss_pred_std": 2.472216498342559,
+      "nihss_true_std": 6.051908789795166
+    },
+    {
+      "epoch": 61,
+      "seg": 0.4789586644999835,
+      "nihss_z_mse": 0.6548260764351913,
+      "seconds": 37.0003936290741
+    },
+    {
+      "epoch": 62,
+      "seg": 0.48552102154614973,
+      "nihss_z_mse": 0.5928085080037514,
+      "seconds": 35.77817463874817
+    },
+    {
+      "epoch": 63,
+      "seg": 0.48057830820278247,
+      "nihss_z_mse": 0.5848616356486265,
+      "seconds": 36.35651350021362
+    },
+    {
+      "epoch": 64,
+      "seg": 0.4761720615990308,
+      "nihss_z_mse": 0.6326583689268754,
+      "seconds": 36.83197212219238
+    },
+    {
+      "epoch": 65,
+      "seg": 0.472374220283664,
+      "nihss_z_mse": 0.6492205748847705,
+      "seconds": 37.441141843795776
+    },
+    {
+      "epoch": 66,
+      "seg": 0.48821620247801956,
+      "nihss_z_mse": 0.6631494084449143,
+      "seconds": 37.775118350982666
+    },
+    {
+      "epoch": 67,
+      "seg": 0.48058362213932737,
+      "nihss_z_mse": 0.6969650501993542,
+      "seconds": 35.56785702705383
+    },
+    {
+      "epoch": 68,
+      "seg": 0.4757419417099077,
+      "nihss_z_mse": 0.6422647411782979,
+      "seconds": 37.08676052093506
+    },
+    {
+      "epoch": 69,
+      "seg": 0.4704398135749661,
+      "nihss_z_mse": 0.6256767997176064,
+      "seconds": 36.51443839073181
+    },
+    {
+      "epoch": 70,
+      "seg": 0.46719529190841985,
+      "nihss_z_mse": 0.6431720134593091,
+      "seconds": 36.18313670158386,
+      "val_dice": 0.23289091974199874,
+      "nihss_n": 50,
+      "nihss_rho": 0.5780356126144958,
+      "nihss_p": 1.1031161636821173e-05,
+      "nihss_mae": 4.692587952210256,
+      "nihss_pred_std": 2.7388748557326656,
+      "nihss_true_std": 6.051908789795166
+    },
+    {
+      "epoch": 71,
+      "seg": 0.46696155107751186,
+      "nihss_z_mse": 0.606762633868018,
+      "seconds": 37.329044342041016
+    },
+    {
+      "epoch": 72,
+      "seg": 0.46295298362264825,
+      "nihss_z_mse": 0.5348916511830627,
+      "seconds": 37.00308275222778
+    },
+    {
+      "epoch": 73,
+      "seg": 0.471564882872056,
+      "nihss_z_mse": 0.6578131989784994,
+      "seconds": 37.42282557487488
+    },
+    {
+      "epoch": 74,
+      "seg": 0.4710913598537445,
+      "nihss_z_mse": 0.5597399925927118,
+      "seconds": 36.84315538406372
+    },
+    {
+      "epoch": 75,
+      "seg": 0.4732780809305152,
+      "nihss_z_mse": 0.5472561629983236,
+      "seconds": 36.645163774490356
+    },
+    {
+      "epoch": 76,
+      "seg": 0.4745783793682955,
+      "nihss_z_mse": 0.5450784500061098,
+      "seconds": 36.63699555397034
+    },
+    {
+      "epoch": 77,
+      "seg": 0.47746404518886487,
+      "nihss_z_mse": 0.5654239390634609,
+      "seconds": 36.065125703811646
+    },
+    {
+      "epoch": 78,
+      "seg": 0.46973158023795303,
+      "nihss_z_mse": 0.585735286617392,
+      "seconds": 36.73213982582092
+    },
+    {
+      "epoch": 79,
+      "seg": 0.46037202586933057,
+      "nihss_z_mse": 0.5866270310967705,
+      "seconds": 35.61589860916138
+    },
+    {
+      "epoch": 80,
+      "seg": 0.46293075960509633,
+      "nihss_z_mse": 0.5804276709653893,
+      "seconds": 37.99280881881714,
+      "val_dice": 0.23456004946467762,
+      "nihss_n": 50,
+      "nihss_rho": 0.5855900612268718,
+      "nihss_p": 7.925612600043216e-06,
+      "nihss_mae": 4.680190800012534,
+      "nihss_pred_std": 2.8085113904794246,
+      "nihss_true_std": 6.051908789795166
+    },
+    {
+      "epoch": 81,
+      "seg": 0.46834493291621304,
+      "nihss_z_mse": 0.5752269106403906,
+      "seconds": 37.927847385406494
+    },
+    {
+      "epoch": 82,
+      "seg": 0.4775474217473244,
+      "nihss_z_mse": 0.5366102145338545,
+      "seconds": 35.630064487457275
+    },
+    {
+      "epoch": 83,
+      "seg": 0.4658256471157074,
+      "nihss_z_mse": 0.5696198340429335,
+      "seconds": 37.43362879753113
+    },
+    {
+      "epoch": 84,
+      "seg": 0.4686391353607178,
+      "nihss_z_mse": 0.5323245615831443,
+      "seconds": 35.45372986793518
+    },
+    {
+      "epoch": 85,
+      "seg": 0.4662574262035136,
+      "nihss_z_mse": 0.6042876947405083,
+      "seconds": 36.59686517715454
+    },
+    {
+      "epoch": 86,
+      "seg": 0.46494247232164654,
+      "nihss_z_mse": 0.5916022445141736,
+      "seconds": 35.853564500808716
+    },
+    {
+      "epoch": 87,
+      "seg": 0.46537523549430226,
+      "nihss_z_mse": 0.5751351498979695,
+      "seconds": 36.77541518211365
+    },
+    {
+      "epoch": 88,
+      "seg": 0.45878648818755635,
+      "nihss_z_mse": 0.5835429201358739,
+      "seconds": 36.64221501350403
+    },
+    {
+      "epoch": 89,
+      "seg": 0.4598589004302511,
+      "nihss_z_mse": 0.5399388431022609,
+      "seconds": 35.679662466049194
+    },
+    {
+      "epoch": 90,
+      "seg": 0.4652078431479785,
+      "nihss_z_mse": 0.4841376152269694,
+      "seconds": 37.08105230331421,
+      "val_dice": 0.2253203967480334,
+      "nihss_n": 50,
+      "nihss_rho": 0.5893432267795174,
+      "nihss_p": 6.704211330685648e-06,
+      "nihss_mae": 4.625596504771022,
+      "nihss_pred_std": 3.100821555103939,
+      "nihss_true_std": 6.051908789795166
+    },
+    {
+      "epoch": 91,
+      "seg": 0.46128611783592066,
+      "nihss_z_mse": 0.5880860377255143,
+      "seconds": 37.593828439712524
+    },
+    {
+      "epoch": 92,
+      "seg": 0.46297458300785144,
+      "nihss_z_mse": 0.610048630559931,
+      "seconds": 36.26045560836792
+    },
+    {
+      "epoch": 93,
+      "seg": 0.47364442080867536,
+      "nihss_z_mse": 0.5797378990837202,
+      "seconds": 37.57333850860596
+    },
+    {
+      "epoch": 94,
+      "seg": 0.4693623568330492,
+      "nihss_z_mse": 0.48627035499417354,
+      "seconds": 35.57672095298767
+    },
+    {
+      "epoch": 95,
+      "seg": 0.454512888679699,
+      "nihss_z_mse": 0.529211624382938,
+      "seconds": 36.41072225570679
+    },
+    {
+      "epoch": 96,
+      "seg": 0.4622763091204118,
+      "nihss_z_mse": 0.5660045327504679,
+      "seconds": 36.88749837875366
+    },
+    {
+      "epoch": 97,
+      "seg": 0.46843345007117915,
+      "nihss_z_mse": 0.6282412294222384,
+      "seconds": 37.4427444934845
+    },
+    {
+      "epoch": 98,
+      "seg": 0.46388899732609185,
+      "nihss_z_mse": 0.5145027841992524,
+      "seconds": 37.5834903717041
+    },
+    {
+      "epoch": 99,
+      "seg": 0.45965953749053334,
+      "nihss_z_mse": 0.5184832540701847,
+      "seconds": 35.848047494888306
+    },
+    {
+      "epoch": 100,
+      "seg": 0.4716052248769877,
+      "nihss_z_mse": 0.47359958138763525,
+      "seconds": 34.16708421707153,
+      "val_dice": 0.224781534595326,
+      "nihss_n": 50,
+      "nihss_rho": 0.5899588604666534,
+      "nihss_p": 6.5213591343583315e-06,
+      "nihss_mae": 4.633177672581026,
+      "nihss_pred_std": 3.078077501085113,
+      "nihss_true_std": 6.051908789795166
+    }
+  ],
+  "best_val_dice": 0.24287814479118844,
+  "final_segmentation": {
+    "per_subject": [
+      {
+        "dice": 0.1288964415248434,
+        "abs_volume_diff_ml": 170.797,
+        "lesion_f1": 0.15384615384615385,
+        "abs_lesion_count_diff": 10,
+        "subject": "sub-stroke0002"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 29.574,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0003"
+      },
+      {
+        "dice": 0.029881891406869497,
+        "abs_volume_diff_ml": 7.647,
+        "lesion_f1": 0.2727272727272727,
+        "abs_lesion_count_diff": 12,
+        "subject": "sub-stroke0008"
+      },
+      {
+        "dice": 0.3486928754844273,
+        "abs_volume_diff_ml": 50.915,
+        "lesion_f1": 0.27906976744186046,
+        "abs_lesion_count_diff": 14,
+        "subject": "sub-stroke0011"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 16.832,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 9,
+        "subject": "sub-stroke0026"
+      },
+      {
+        "dice": 0.3769581508735497,
+        "abs_volume_diff_ml": 6.1370000000000005,
+        "lesion_f1": 0.6666666666666666,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0030"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 6.583,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 18,
+        "subject": "sub-stroke0033"
+      },
+      {
+        "dice": 0.399568234387047,
+        "abs_volume_diff_ml": 11.015,
+        "lesion_f1": 0.3636363636363636,
+        "abs_lesion_count_diff": 8,
+        "subject": "sub-stroke0037"
+      },
+      {
+        "dice": 0.5819763958002241,
+        "abs_volume_diff_ml": 8.143,
+        "lesion_f1": 0.5,
+        "abs_lesion_count_diff": 2,
+        "subject": "sub-stroke0040"
+      },
+      {
+        "dice": 0.47866333425900215,
+        "abs_volume_diff_ml": 10.274000000000001,
+        "lesion_f1": 0.4,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0047"
+      },
+      {
+        "dice": 0.0012396053922834563,
+        "abs_volume_diff_ml": 16.645,
+        "lesion_f1": 0.09999999999999999,
+        "abs_lesion_count_diff": 16,
+        "subject": "sub-stroke0048"
+      },
+      {
+        "dice": 0.017196904557179708,
+        "abs_volume_diff_ml": 8.174,
+        "lesion_f1": 0.16666666666666669,
+        "abs_lesion_count_diff": 18,
+        "subject": "sub-stroke0049"
+      },
+      {
+        "dice": 0.5316158785059734,
+        "abs_volume_diff_ml": 12.277000000000001,
+        "lesion_f1": 0.06666666666666667,
+        "abs_lesion_count_diff": 57,
+        "subject": "sub-stroke0052"
+      },
+      {
+        "dice": 0.020801272451224425,
+        "abs_volume_diff_ml": 93.123,
+        "lesion_f1": 0.13333333333333333,
+        "abs_lesion_count_diff": 9,
+        "subject": "sub-stroke0066"
+      },
+      {
+        "dice": 0.3818583645623138,
+        "abs_volume_diff_ml": 6.15,
+        "lesion_f1": 0.8,
+        "abs_lesion_count_diff": 2,
+        "subject": "sub-stroke0071"
+      },
+      {
+        "dice": 0.14848571157315105,
+        "abs_volume_diff_ml": 5.037,
+        "lesion_f1": 0.4,
+        "abs_lesion_count_diff": 4,
+        "subject": "sub-stroke0076"
+      },
+      {
+        "dice": 0.3044235924932976,
+        "abs_volume_diff_ml": 4.274,
+        "lesion_f1": 0.19672131147540986,
+        "abs_lesion_count_diff": 22,
+        "subject": "sub-stroke0077"
+      },
+      {
+        "dice": 0.14681440443213298,
+        "abs_volume_diff_ml": 9.6,
+        "lesion_f1": 0.30769230769230765,
+        "abs_lesion_count_diff": 4,
+        "subject": "sub-stroke0084"
+      },
+      {
+        "dice": 0.00026131835108120466,
+        "abs_volume_diff_ml": 2.063,
+        "lesion_f1": 0.048780487804878044,
+        "abs_lesion_count_diff": 37,
+        "subject": "sub-stroke0085"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 34.942,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 3,
+        "subject": "sub-stroke0086"
+      },
+      {
+        "dice": 0.12152938837717846,
+        "abs_volume_diff_ml": 8.97,
+        "lesion_f1": 0.2608695652173913,
+        "abs_lesion_count_diff": 17,
+        "subject": "sub-stroke0093"
+      },
+      {
+        "dice": 0.5019762125931188,
+        "abs_volume_diff_ml": 69.301,
+        "lesion_f1": 0.125,
+        "abs_lesion_count_diff": 29,
+        "subject": "sub-stroke0095"
+      },
+      {
+        "dice": 0.20009057971014493,
+        "abs_volume_diff_ml": 13.57,
+        "lesion_f1": 0.4210526315789474,
+        "abs_lesion_count_diff": 4,
+        "subject": "sub-stroke0102"
+      },
+      {
+        "dice": 0.2747533227503346,
+        "abs_volume_diff_ml": 70.57000000000001,
+        "lesion_f1": 0.11764705882352941,
+        "abs_lesion_count_diff": 15,
+        "subject": "sub-stroke0107"
+      },
+      {
+        "dice": 0.273174939793681,
+        "abs_volume_diff_ml": 10.197000000000001,
+        "lesion_f1": 0.5,
+        "abs_lesion_count_diff": 2,
+        "subject": "sub-stroke0108"
+      },
+      {
+        "dice": 0.0002679959264619178,
+        "abs_volume_diff_ml": 56.35,
+        "lesion_f1": 0.17777777777777776,
+        "abs_lesion_count_diff": 40,
+        "subject": "sub-stroke0110"
+      },
+      {
+        "dice": 0.0005506607929515419,
+        "abs_volume_diff_ml": 40.646,
+        "lesion_f1": 0.22222222222222224,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0114"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 3.629,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0117"
+      },
+      {
+        "dice": 0.4713138034569504,
+        "abs_volume_diff_ml": 2.337,
+        "lesion_f1": 0.5454545454545454,
+        "abs_lesion_count_diff": 7,
+        "subject": "sub-stroke0135"
+      },
+      {
+        "dice": 0.0003703360799925933,
+        "abs_volume_diff_ml": 0.609,
+        "lesion_f1": 0.25,
+        "abs_lesion_count_diff": 2,
+        "subject": "sub-stroke0136"
+      },
+      {
+        "dice": 0.40452693337779677,
+        "abs_volume_diff_ml": 15.895,
+        "lesion_f1": 0.42857142857142855,
+        "abs_lesion_count_diff": 6,
+        "subject": "sub-stroke0138"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 2.458,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 9,
+        "subject": "sub-stroke0142"
+      },
+      {
+        "dice": 0.36409185803757826,
+        "abs_volume_diff_ml": 7.531000000000001,
+        "lesion_f1": 0.5,
+        "abs_lesion_count_diff": 0,
+        "subject": "sub-stroke0143"
+      },
+      {
+        "dice": 0.24691201621587383,
+        "abs_volume_diff_ml": 19.713,
+        "lesion_f1": 0.3157894736842105,
+        "abs_lesion_count_diff": 5,
+        "subject": "sub-stroke0144"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 1.345,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 3,
+        "subject": "sub-stroke0147"
+      },
+      {
+        "dice": 0.2445347104570227,
+        "abs_volume_diff_ml": 10.755,
+        "lesion_f1": 0.5333333333333333,
+        "abs_lesion_count_diff": 6,
+        "subject": "sub-stroke0149"
+      },
+      {
+        "dice": 0.3760825163398693,
+        "abs_volume_diff_ml": 38.104,
+        "lesion_f1": 0.4,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0155"
+      },
+      {
+        "dice": 0.34087439278278975,
+        "abs_volume_diff_ml": 16.87,
+        "lesion_f1": 0.14285714285714288,
+        "abs_lesion_count_diff": 6,
+        "subject": "sub-stroke0157"
+      },
+      {
+        "dice": 0.4541798735786726,
+        "abs_volume_diff_ml": 73.925,
+        "lesion_f1": 0.08955223880597014,
+        "abs_lesion_count_diff": 17,
+        "subject": "sub-stroke0158"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 16.431,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 2,
+        "subject": "sub-stroke0162"
+      },
+      {
+        "dice": 0.42802038460455555,
+        "abs_volume_diff_ml": 8.579,
+        "lesion_f1": 0.29629629629629634,
+        "abs_lesion_count_diff": 2,
+        "subject": "sub-stroke0165"
+      },
+      {
+        "dice": 0.7103465971893258,
+        "abs_volume_diff_ml": 5.192,
+        "lesion_f1": 0.8,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0168"
+      },
+      {
+        "dice": 0.1757136962148779,
+        "abs_volume_diff_ml": 1.649,
+        "lesion_f1": 0.29629629629629634,
+        "abs_lesion_count_diff": 12,
+        "subject": "sub-stroke0169"
+      },
+      {
+        "dice": 0.09991659716430358,
+        "abs_volume_diff_ml": 4.166,
+        "lesion_f1": 0.22222222222222224,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0172"
+      },
+      {
+        "dice": 0.6006303014047675,
+        "abs_volume_diff_ml": 17.81,
+        "lesion_f1": 0.6666666666666666,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0178"
+      },
+      {
+        "dice": 0.06465459423205902,
+        "abs_volume_diff_ml": 13.277000000000001,
+        "lesion_f1": 0.7499999999999999,
+        "abs_lesion_count_diff": 3,
+        "subject": "sub-stroke0180"
+      },
+      {
+        "dice": 0.0321734568980591,
+        "abs_volume_diff_ml": 16.088,
+        "lesion_f1": 0.23529411764705882,
+        "abs_lesion_count_diff": 10,
+        "subject": "sub-stroke0184"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 2.686,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 8,
+        "subject": "sub-stroke0185"
+      },
+      {
+        "dice": 0.3761472541960347,
+        "abs_volume_diff_ml": 2.845,
+        "lesion_f1": 0.4,
+        "abs_lesion_count_diff": 4,
+        "subject": "sub-stroke0186"
+      },
+      {
+        "dice": 0.5789099315372989,
+        "abs_volume_diff_ml": 36.53,
+        "lesion_f1": 0.2,
+        "abs_lesion_count_diff": 8,
+        "subject": "sub-stroke0187"
+      }
+    ],
+    "mean": {
+      "dice": 0.224781534595326,
+      "abs_volume_diff_ml": 21.9646,
+      "lesion_f1": 0.2750542003082524,
+      "abs_lesion_count_diff": 9.42
+    }
+  },
+  "final_nihss": {
+    "n": 50,
+    "rho": 0.5899588604666534,
+    "p": 6.5213591343583315e-06,
+    "mae": 4.633177672581026,
+    "pred_std": 3.078077501085113,
+    "true_std": 6.051908789795166,
+    "pred": [
+      13.790995865084009,
+      16.400561588375755,
+      10.950824276849149,
+      12.390902111677374,
+      10.287274497722514,
+      11.293757514716166,
+      10.186105473102309,
+      12.100785055781198,
+      12.19539855077298,
+      11.307147532680604,
+      10.078985329386798,
+      9.895988417206134,
+      11.441791602211905,
+      6.9025755122671395,
+      11.578295396460492,
+      11.298964743924559,
+      9.48536119963001,
+      11.449974390967952,
+      9.152098530292864,
+      16.805237686856575,
+      9.226487518984191,
+      14.44859452511534,
+      8.042214819018268,
+      11.903189304569862,
+      10.537221499725371,
+      16.89748003283382,
+      8.27728402328286,
+      13.23159067012523,
+      9.474946741213223,
+      5.289822237439173,
+      11.750133960337456,
+      5.057728592722233,
+      10.183129913554655,
+      6.158685625353871,
+      5.093435307294071,
+      10.55507485701129,
+      12.10710811981996,
+      9.1372207325546,
+      13.107361059010715,
+      9.98823076318338,
+      5.759960645968359,
+      14.534885751997278,
+      6.009907647971217,
+      9.226487518984191,
+      11.100346144118715,
+      9.320217644735264,
+      6.935306667291324,
+      9.039027267482048,
+      9.846891684669858,
+      19.62606813803169
+    ],
+    "true": [
+      8.0,
+      21.0,
+      7.0,
+      9.0,
+      8.0,
+      13.0,
+      16.0,
+      14.0,
+      17.0,
+      18.0,
+      4.0,
+      1.0,
+      14.0,
+      4.0,
+      12.0,
+      9.0,
+      17.0,
+      5.0,
+      5.0,
+      16.0,
+      6.0,
+      17.0,
+      5.0,
+      13.0,
+      12.0,
+      11.0,
+      16.0,
+      8.0,
+      15.0,
+      2.0,
+      6.0,
+      0.0,
+      19.0,
+      4.0,
+      2.0,
+      8.0,
+      18.0,
+      3.0,
+      20.0,
+      17.0,
+      1.0,
+      21.0,
+      9.0,
+      3.0,
+      8.0,
+      5.0,
+      3.0,
+      14.0,
+      2.0,
+      8.0
+    ],
+    "subjects": [
+      "sub-stroke0002",
+      "sub-stroke0003",
+      "sub-stroke0008",
+      "sub-stroke0011",
+      "sub-stroke0026",
+      "sub-stroke0030",
+      "sub-stroke0033",
+      "sub-stroke0037",
+      "sub-stroke0040",
+      "sub-stroke0047",
+      "sub-stroke0048",
+      "sub-stroke0049",
+      "sub-stroke0052",
+      "sub-stroke0066",
+      "sub-stroke0071",
+      "sub-stroke0076",
+      "sub-stroke0077",
+      "sub-stroke0084",
+      "sub-stroke0085",
+      "sub-stroke0086",
+      "sub-stroke0093",
+      "sub-stroke0095",
+      "sub-stroke0102",
+      "sub-stroke0107",
+      "sub-stroke0108",
+      "sub-stroke0110",
+      "sub-stroke0114",
+      "sub-stroke0117",
+      "sub-stroke0135",
+      "sub-stroke0136",
+      "sub-stroke0138",
+      "sub-stroke0142",
+      "sub-stroke0143",
+      "sub-stroke0144",
+      "sub-stroke0147",
+      "sub-stroke0149",
+      "sub-stroke0155",
+      "sub-stroke0157",
+      "sub-stroke0158",
+      "sub-stroke0162",
+      "sub-stroke0165",
+      "sub-stroke0168",
+      "sub-stroke0169",
+      "sub-stroke0172",
+      "sub-stroke0178",
+      "sub-stroke0180",
+      "sub-stroke0184",
+      "sub-stroke0185",
+      "sub-stroke0186",
+      "sub-stroke0187"
+    ]
+  },
+  "pass_marks": {
+    "primary_rho_positive_p05": {
+      "passed": true,
+      "rho": 0.5899588604666534,
+      "p": 6.5213591343583315e-06
+    },
+    "anticollapse_std_ratio": {
+      "passed": true,
+      "pred_std": 3.078077501085113,
+      "true_std": 6.051908789795166
+    }
+  }
+}

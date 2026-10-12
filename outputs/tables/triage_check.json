@@ -1,0 +1,92 @@
+{
+  "rule": "Flag a prediction (ground-truth-free, inference-time only) if laterality is inconsistent, predicted volume < 1mL, or ECE > the 75th percentile across all scored subjects. Does the flagged group actually have worse Dice?",
+  "correction_2026_10_11": "ECE is NOT ground-truth-free (expected_calibration_error takes the true label) -- only computable here because this is a validation set with known outcomes. The deployment-realistic version below excludes it.",
+  "clean_ground_truth_free_only": {
+    "n_flagged": 141,
+    "n_unflagged": 897,
+    "flagged_median_dice": 0.0,
+    "unflagged_median_dice": 0.1995,
+    "p": 1.3662665618230789e-50,
+    "auc": 0.888,
+    "passed": true,
+    "per_model_type": {
+      "b0": {
+        "n_flagged": 118,
+        "median_flagged": 0.0,
+        "n_unflagged": 326,
+        "median_unflagged": 0.2119,
+        "p": 6.89262044505128e-42
+      },
+      "b1": {
+        "n_flagged": 7,
+        "median_flagged": 0.0,
+        "n_unflagged": 143,
+        "median_unflagged": 0.1639,
+        "p": 0.005532247174858934
+      },
+      "b2": {
+        "n_flagged": 16,
+        "median_flagged": 0.0001,
+        "n_unflagged": 428,
+        "median_unflagged": 0.2081,
+        "p": 1.5005762509368671e-05
+      }
+    }
+  },
+  "thresholds_fixed_before_dice_join": {
+    "near_zero_voxels": 1000,
+    "ece_p75_cutoff": 0.0199
+  },
+  "n_pairs": 1038,
+  "n_flagged": 301,
+  "n_unflagged": 737,
+  "flagged_median_dice": 0.0029,
+  "unflagged_median_dice": 0.2188,
+  "mannwhitney_p": 1.3328438984693024e-32,
+  "auc": 0.732413889477409,
+  "pass_mark": "unflagged median > flagged median and p<0.05, fixed before running",
+  "passed": true,
+  "per_criterion": {
+    "flag_inconsistent": {
+      "n_flagged": 26,
+      "median_flagged": 0.0045,
+      "median_rest": 0.1567,
+      "p": 5.534481484968925e-05
+    },
+    "flag_near_zero": {
+      "n_flagged": 115,
+      "median_flagged": 0.0,
+      "median_rest": 0.1902,
+      "p": 5.079221701500923e-47
+    },
+    "flag_high_ece": {
+      "n_flagged": 260,
+      "median_flagged": 0.0063,
+      "median_rest": 0.2005,
+      "p": 7.134617027535558e-23
+    }
+  },
+  "per_model_type": {
+    "b0": {
+      "n_flagged": 230,
+      "median_flagged": 0.0,
+      "n_unflagged": 214,
+      "median_unflagged": 0.2574,
+      "p": 3.352839702573979e-28
+    },
+    "b1": {
+      "n_flagged": 15,
+      "median_flagged": 0.0501,
+      "n_unflagged": 135,
+      "median_unflagged": 0.1855,
+      "p": 0.0022128983076224293
+    },
+    "b2": {
+      "n_flagged": 56,
+      "median_flagged": 0.0989,
+      "n_unflagged": 388,
+      "median_unflagged": 0.2116,
+      "p": 0.01032044140412434
+    }
+  }
+}

@@ -296,6 +296,20 @@
         "status": "unverifiable_on_isles24",
         "evidence": "Only 4/149 subjects have no annotated occlusion -- too few to check the relation. Excluded from JDCR and the consistency loss by default; kept so the graph is complete if more data is added."
       }
+    },
+    {
+      "id": "structural_collateral_reserve",
+      "statement": "A patient whose own Circle-of-Willis has an intact communicating-artery route (Acom-mediated ACA cross-fill, or a Pcom-mediated posterior-to-anterior route) should have a smaller final infarct, and a lower admission NIHSS, than a patient with no such route.",
+      "concepts": ["final_infarct_volume", "nihss"],
+      "strength": "soft",
+      "clinical_basis": "Unlike collateral_proxy (HIR, a Tmax-derived perfusion signal), this is a pure graph-topology measure computed from kg/cow_topology.json's edges and each patient's real segment_present mask -- no occlusion label, no learned component, so it cannot fail the way the GNN heads did. Designed specifically to test whether a graph-structural signal succeeds where the perfusion-based collateral proxy (good_collateral_limits_infarct / poor_collateral_expects_infarct, both not_supported below) failed.",
+      "support": {
+        "status": "not_supported",
+        "source_ids": ["isles24_data"],
+        "evidence": "Three independent tests, all pre-registered, all null, one in the wrong direction: (1) binary reserve vs final volume, n=144, p=0.94, wrong direction (reserve group's median volume was HIGHER: 13.7 vs 8.75 mL); (2) continuous route-count vs final volume, n=144, rho=0.090, p=0.28; (3) reserve vs admission NIHSS -- chosen specifically because NIHSS is pre-treatment and so not confounded by this cohort's universal successful reperfusion (Check 1's finding) -- n=141, p=0.82. outputs/tables/constraint_support.json (checks 6/8). A fourth, exploratory, ICA-occlusion-only formulation (n=16, the only site this graph's edges model a collateral route for at all) also showed no effect (outputs/tables/constraint_support.json check 7) but is too small to be conclusive either way.",
+        "likely_reason": "The communicating arteries this measure depends on are small and unreliably segmented even when physiologically present: Acom appears in only 71/149 (48%) of this cohort's cow-msk segmentations, R-Pcom in 54/149 (36%), L-Pcom in 44/149 (30%) (kg/cow_topology.json's own measured_on_isles24 stats). 'segment_present=0' on these nodes is therefore at least as much a measure of CTA segmentation sensitivity for a small vessel as it is a measure of true anatomical absence, which makes 'reserve=0' a noisy category rather than a clean physiological one. Combined with Checks 2/4/5 (the perfusion-based HIR proxy, also not_supported), this is the second independent collateral operationalization to fail in this cohort -- on two different outcome variables (volume and admission NIHSS) in one case specifically chosen to dodge the reperfusion confound. Treat 'does collateral status predict outcome in this cohort' as settled negative, not underpowered, barring a more reliable vessel-presence label than cow-msk segmentation currently gives.",
+        "decision": "Excluded from JDCR and the consistency loss, like the HIR-based collateral constraints. Not pursued further as a model-input feature -- a fourth null result on the same underlying question (after occlusion-level-vs-size, HIR-vs-mismatch, HIR-vs-size) is reported honestly rather than re-tested a fifth way."
+      }
     }
   ]
 }

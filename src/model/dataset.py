@@ -50,6 +50,28 @@ PERFUSION_CLIP = {
                             # value seen in every spot-checked subject to 0
 }
 
+# Tighter, clinically-motivated clips (2026-10-11), tried after reading the
+# ISLES'24 challenge winner's own account of what won it (arXiv:2505.18424,
+# "How We Won the ISLES'24 Challenge by Preprocessing"): they report ~10
+# validation-Dice points from custom, clinically-meaningful windowing
+# starting from literature anchors (CBF<30%, CBV<2.0 mL/100g, MTT~12s,
+# Tmax>6s), then empirically refined -- exact final numbers not published.
+# PERFUSION_CLIP above was set only to kill extreme artifact outliers (a
+# real NaN-loss bug, see the comment below), not to express a clinically
+# meaningful core/penumbra window, which is the gap this closes partway.
+# CBF and Tmax are left unchanged here: their literature anchors are
+# RELATIVE/threshold quantities (percent of normal tissue; a hypoperfusion
+# onset marker), not a simple absolute clip, and guessing wrong there could
+# hurt rather than help. CBV and MTT are tightened toward the literature
+# anchors above (not copied exactly -- the paper doesn't publish its final
+# values either).
+TIGHT_PERFUSION_CLIP = {
+    "cbf": (0.0, 200.0),
+    "cbv": (0.0, 3.0),
+    "mtt": (0.0, 15.0),
+    "tmax": (0.0, 30.0),
+}
+
 _INTEGRITY_CACHE = pathlib.Path("outputs/tables/dataset_integrity_cache.json")
 
 
@@ -220,7 +242,52 @@ def _sanitize_nonfinite(x):
     return np.nan_to_num(x, nan=0.0, posinf=0.0, neginf=0.0)
 
 
-def build_transforms(patch_size: tuple[int, int, int], train: bool):
+def _brain_mask(ncct: np.ndarray):
+    """Simple HU-threshold + largest-connected-component brain mask.
+    Duplicated from src/graph/perfusion_volumes.py:brain_mask (not
+    imported -- src/model stays independent of src/graph for one small
+    function, same reason src/model/labels.py duplicates its LVO logic).
+    Already validated there at 98.6% plausible intracranial volume.
+    Simpler than the ISLES'24 challenge winner's SynthStrip (a deep
+    model, arXiv:2505.18424) -- real, but a weaker skull-strip than
+    theirs, disclosed as such."""
+    from scipy import ndimage
+    soft = (ncct > 0) & (ncct < 100)
+    soft = ndimage.binary_opening(soft, structure=np.ones((3, 3, 1)))
+    lbl, n = ndimage.label(soft)
+    if n == 0:
+        return soft
+    sizes = ndimage.sum(soft, lbl, range(1, n + 1))
+    mask = lbl == (int(np.argmax(sizes)) + 1)
+    for z in range(mask.shape[2]):
+        mask[:, :, z] = ndimage.binary_fill_holes(mask[:, :, z])
+    return mask
+
+
+class _SkullStripd:
+    """Zero out non-brain voxels across every modality channel, using a
+    mask computed from the (already 1mm-resampled) NCCT channel. Mirrors
+    the ISLES'24 challenge winner's step 1: skull-strip on NCCT, apply
+    that mask to every co-registered scan (arXiv:2505.18424). Runs AFTER
+    Spacingd (so the mask is computed at the same 1mm grid every channel
+    is on) and BEFORE the perfusion clip / normalization steps."""
+
+    def __init__(self, mod_keys, ncct_key: str = "ncct"):
+        self.mod_keys = mod_keys
+        self.ncct_key = ncct_key
+
+    def __call__(self, data):
+        import torch
+        d = dict(data)
+        ncct = np.asarray(d[self.ncct_key][0])
+        mask = torch.as_tensor(_brain_mask(ncct))
+        for k in self.mod_keys:
+            d[k] = d[k] * mask[None]
+        return d
+
+
+def build_transforms(patch_size: tuple[int, int, int], train: bool,
+                      skull_strip: bool = False, perfusion_clip: dict | None = None):
     from monai.transforms import (
         Compose, LoadImaged, Orientationd, Spacingd, NormalizeIntensityd,
         CropForegroundd, SpatialPadd, RandCropByPosNegLabeld,
@@ -230,6 +297,7 @@ def build_transforms(patch_size: tuple[int, int, int], train: bool):
 
     mod_keys = list(MODALITIES)
     all_keys = mod_keys + ["label"]
+    clip = perfusion_clip if perfusion_clip is not None else PERFUSION_CLIP
 
     common = [
         # each modality loaded and resampled under its OWN key first -- see
@@ -240,9 +308,10 @@ def build_transforms(patch_size: tuple[int, int, int], train: bool):
         Orientationd(keys=all_keys, axcodes="RAS"),
         Spacingd(keys=all_keys, pixdim=(1.0, 1.0, 1.0),
                   mode=(*["bilinear"] * len(mod_keys), "nearest")),
+        *([_SkullStripd(mod_keys)] if skull_strip else []),
         *[ScaleIntensityRanged(keys=[k], a_min=lo, a_max=hi, b_min=lo, b_max=hi,
                                 clip=True)
-          for k, (lo, hi) in PERFUSION_CLIP.items()],
+          for k, (lo, hi) in clip.items()],
         NormalizeIntensityd(keys=mod_keys, nonzero=True, channel_wise=True),
         CropForegroundd(keys=all_keys, source_key=mod_keys[0], allow_smaller=True),
         SpatialPadd(keys=all_keys, spatial_size=patch_size),
@@ -256,6 +325,17 @@ def build_transforms(patch_size: tuple[int, int, int], train: bool):
                 spatial_size=patch_size, pos=2, neg=1, num_samples=1,
                 image_key="image", image_threshold=0,
             ),
+            # RandCropByPosNegLabeld attaches foreground_start_coord/
+            # foreground_end_coord metadata that's a Tensor for a normal
+            # (foreground) crop but a plain numpy.ndarray when it falls back
+            # to an all-background crop (a subject with zero lesion voxels,
+            # the "Num foregrounds 0" warning) -- EnsureTyped below never
+            # covered these two keys, so a batch pairing one of each type
+            # crashes collation. Found 2026-09-17 (Phase 8 fold-2 prep):
+            # reproducible, not a worker race or a per-item transform bug
+            # (confirmed via an isolated single-item check across 3 passes).
+            # Unused downstream -- just drop them instead of typing them.
+            DeleteItemsd(keys=["foreground_start_coord", "foreground_end_coord"]),
             RandFlipd(keys=["image", "label"], prob=0.5, spatial_axis=0),
             RandRotate90d(keys=["image", "label"], prob=0.2, max_k=3),
         ]
@@ -263,8 +343,239 @@ def build_transforms(patch_size: tuple[int, int, int], train: bool):
     return Compose(common)
 
 
+def attach_cow_msk(root: pathlib.Path, cases: dict[str, dict]) -> dict[str, dict]:
+    """Adds a "cow_msk" path to each case dict that has one (ses-01 CoW
+    segmentation, same file src/graph/features.py already reads for Phase 1).
+    NOT required for a subject to appear in `cases` -- only Phase 4+'s GNN
+    branch needs it; segmentation and the H2/H3 heads' loss are already
+    masked out per-sample for subjects without a usable graph (see
+    src/model/labels.py). Subjects missing it are simply left without the
+    key -- callers that require it (build_transforms_gnn's dataset builder)
+    filter those out explicitly, so the drop is visible and counted rather
+    than silently defaulting to a zero mask."""
+    root = pathlib.Path(root)
+    deriv = root / "derivatives"
+    out = {}
+    n_missing = 0
+    for sub, item in cases.items():
+        hits = sorted((deriv / sub).glob("ses-01/*cow-msk.nii*"))
+        item = dict(item)
+        if hits:
+            item["cow_msk"] = str(hits[0])
+        else:
+            n_missing += 1
+        out[sub] = item
+    if n_missing:
+        print(f"  [dataset] {n_missing} subject(s) have no cow-msk file -- "
+              f"excluded from the GNN branch only, still usable elsewhere")
+    return out
+
+
+class ExtractVesselCoordsd:
+    """Turns a resized CoW label map into per-node (voxel-grid) coordinates
+    for the GNN branch: `node_coords` [n_nodes, 3] (row/col/depth index into
+    the SAME grid the whole-brain image tensor uses -- so
+    src/model/gnn_head.py's grid_sample call can use it directly with no
+    further rescaling) and `node_present` [n_nodes] (0/1).
+
+    A plain callable, not a MapTransform subclass -- Compose only needs
+    __call__, and this keeps it trivially picklable for Windows'
+    spawn-based DataLoader workers (see _sanitize_nonfinite's docstring for
+    why module-level/simple-attribute objects matter here).
+
+    Coordinates are computed fresh from the already-transformed tensor at
+    every call rather than precomputed once and cached -- cheap (12 argwhere
+    + mean calls over a small label volume) and guarantees they can never
+    drift out of sync with whatever Resized/CropForegroundd actually did for
+    that subject.
+
+    Also emits `midline_voxel_x` (scalar, or NaN if no L/R pair is present):
+    Phase 6's laterality consistency loss needs the midline's location in
+    THIS SAME wb-grid voxel-index space (axis 0, the R/L axis after
+    Orientationd's RAS canonicalisation) -- computed the same way as
+    src/graph/features.py:midline_x (median of L/R vessel-pair midpoints),
+    but directly in voxel indices here instead of world mm, since that's
+    the space the whole-brain segmentation prediction lives in too. No
+    affine/world-coordinate round-trip needed -- see train_graph_seg's
+    module docstring for why that matters (the patch branch's random crop
+    makes world<->voxel tracking fragile; the wb branch's fixed, unaugmented
+    grid does not have that problem).
+    """
+
+    PAIRS = ("ICA", "MCA", "ACA", "PCA", "Pcom")  # same as src/graph/features.py
+
+    def __init__(self, key: str, node_ids: list[str], topcow_labels: list[int],
+                 out_prefix: str = ""):
+        """out_prefix: instantiate this TWICE in one pipeline (once on the
+        wb-grid cow_msk, once on a native-resolution copy -- see Phase 8's
+        fix in build_transforms_gnn / CLAUDE.md KNOWN ISSUES #2) by giving
+        the second instance a prefix, e.g. "native_", so its outputs land
+        in `native_node_coords` / `native_midline_voxel_x` instead of
+        colliding with the wb-grid ones."""
+        self.key = key
+        self.node_ids = node_ids
+        self.topcow_labels = topcow_labels
+        self.out_prefix = out_prefix
+
+    def __call__(self, data):
+        import numpy as np
+        d = dict(data)
+        cow = d[self.key]
+        arr = cow[0]  # drop channel dim -> [S0, S1, S2]
+        arr = arr.detach().cpu().numpy() if hasattr(arr, "detach") else np.asarray(arr)
+        arr = np.rint(arr)  # Resized(mode="nearest") shouldn't blur labels, but guard anyway
+
+        n = len(self.topcow_labels)
+        coords = np.zeros((n, 3), dtype=np.float32)
+        present = np.zeros((n,), dtype=np.float32)
+        for i, label in enumerate(self.topcow_labels):
+            idx = np.argwhere(arr == label)
+            if idx.size:
+                coords[i] = idx.mean(axis=0)
+                present[i] = 1.0
+        d[f"{self.out_prefix}node_coords"] = coords
+        d[f"{self.out_prefix}node_present"] = present
+
+        node_idx = {v: i for i, v in enumerate(self.node_ids)}
+        mids = []
+        for vessel in self.PAIRS:
+            li, ri = node_idx.get(f"L-{vessel}"), node_idx.get(f"R-{vessel}")
+            if li is None or ri is None or not (present[li] and present[ri]):
+                continue
+            mids.append((coords[li, 0] + coords[ri, 0]) / 2.0)
+        d[f"{self.out_prefix}midline_voxel_x"] = np.float32(np.median(mids)) if mids else np.float32(np.nan)
+        del d[self.key]
+        return d
+
+
+def build_transforms_gnn(patch_size: tuple[int, int, int], wb_size: tuple[int, int, int],
+                          train: bool, topcow_labels: list[int], node_ids: list[str] | None = None,
+                          native_midline: bool = False):
+    """Same segmentation patch pipeline as build_transforms, PLUS a second,
+    unaugmented "whole-brain" view for the GNN branch (Phase 4/5):
+
+      image_wb   the full head (post CropForegroundd, i.e. background
+                 already stripped, same crop box as the patch branch since
+                 it's forked from the identical tensor) squashed to a fixed
+                 size -- so the Circle of Willis is always in-frame, unlike
+                 the patch branch's lesion-centered random crop, which the
+                 real Phase 3 run showed can miss it entirely.
+      node_coords / node_present   from `cow_msk`, resized in lockstep with
+                 image_wb (same Resized call, same interpolation grid) so a
+                 coordinate sampled from image_wb's feature map lands on the
+                 right vessel.
+
+    image_wb/node_coords deliberately see NO random crop/flip/rotate/any
+    SPATIAL augmentation -- see ExtractVesselCoordsd's docstring; moving
+    voxels would require transforming the coordinates too, which isn't
+    implemented, so it's left out rather than silently wrong.
+
+    INTENSITY-only augmentation (train only) is applied to image_wb, since
+    it doesn't move anything and so can't desync node_coords: gaussian
+    noise, contrast, and small scale/shift of intensity. Motivation: the
+    real B1 run (2026-09-15) found the LVO/collateral heads converging to a
+    near-constant prediction (collateral_acc identical at all 10 validation
+    checkpoints despite falling training loss) -- classic small-n
+    overfitting-to-a-shortcut behaviour with 98 training subjects across a
+    4-way, badly-imbalanced label. This doesn't add subjects, but it forces
+    the model to not key off exact noise/contrast patterns specific to
+    individual scans, which is the cheapest available lever without new
+    data (see PROJECT_PLAN.md's discussion of why a compatible new dataset
+    is not reachable in this project's timeline).
+
+    native_midline=True adds `native_midline_voxel_x` (+ native_node_coords/
+    native_node_present, unused by Phase 8's fix but computed for free):
+    the SAME midline computation as `midline_voxel_x`, but on the "image"/
+    "label" grid's OWN native resolution (post CropForegroundd+SpatialPadd,
+    no Resized) instead of the wb branch's downscaled grid. Phase 8 fix
+    (CLAUDE.md KNOWN ISSUES #2): the Rule Evaluator was scoring laterality
+    on a 64x64x48 view only B2 was ever trained to segment, which likely
+    explains B0/B1's high "predicted nothing" rate more than the
+    consistency loss did. Off by default (extra cow_msk copy carried
+    through SpatialPadd) -- only the evaluation scripts need it, not
+    B0/B1/B2 training itself.
+    """
+    from monai.transforms import (
+        Compose, LoadImaged, Orientationd, Spacingd, NormalizeIntensityd,
+        CropForegroundd, SpatialPadd, RandCropByPosNegLabeld,
+        RandFlipd, RandRotate90d, EnsureTyped, ConcatItemsd, DeleteItemsd,
+        CopyItemsd, Resized, Lambdad, ScaleIntensityRanged,
+        RandGaussianNoised, RandAdjustContrastd, RandScaleIntensityd, RandShiftIntensityd,
+    )
+
+    if node_ids is None:
+        from src.model.gnn_head import node_order
+        node_ids = node_order()
+
+    mod_keys = list(MODALITIES)
+    wb_keys = [f"{k}_wb" for k in mod_keys]
+    all_keys = mod_keys + ["label", "cow_msk"]
+
+    common = [
+        LoadImaged(keys=all_keys, ensure_channel_first=True, image_only=True),
+        Lambdad(keys=mod_keys, func=_sanitize_nonfinite),
+        Orientationd(keys=all_keys, axcodes="RAS"),
+        Spacingd(keys=all_keys, pixdim=(1.0, 1.0, 1.0),
+                  mode=(*["bilinear"] * len(mod_keys), "nearest", "nearest")),
+        *[ScaleIntensityRanged(keys=[k], a_min=lo, a_max=hi, b_min=lo, b_max=hi,
+                                clip=True)
+          for k, (lo, hi) in PERFUSION_CLIP.items()],
+        NormalizeIntensityd(keys=mod_keys, nonzero=True, channel_wise=True),
+        CropForegroundd(keys=all_keys, source_key=mod_keys[0], allow_smaller=True),
+
+        # Phase 8 fix: a SEPARATE cow_msk copy that stays at native
+        # resolution all the way through SpatialPadd, so its midline lines
+        # up with sliding-window inference's own output grid -- see this
+        # function's docstring ("native_midline").
+        *([CopyItemsd(keys=["cow_msk"], names=["cow_msk_native"])] if native_midline else []),
+
+        # fork the whole-brain branch BEFORE the patch branch pads/crops
+        CopyItemsd(keys=mod_keys, names=wb_keys),
+        ConcatItemsd(keys=wb_keys, name="image_wb"),
+        DeleteItemsd(keys=wb_keys),
+        Resized(keys=["image_wb", "cow_msk"], spatial_size=wb_size,
+                mode=("trilinear", "nearest"), align_corners=(False, None)),
+        ExtractVesselCoordsd(key="cow_msk", node_ids=node_ids, topcow_labels=topcow_labels),
+        # intensity-only, train-only augmentation for the wb branch -- see
+        # this function's docstring for why (cheap lever against the small-n
+        # overfitting-to-a-shortcut pattern seen in the real B1 run, without
+        # touching geometry/node_coords).
+        *([
+            RandGaussianNoised(keys=["image_wb"], prob=0.3, mean=0.0, std=0.05),
+            RandAdjustContrastd(keys=["image_wb"], prob=0.3, gamma=(0.8, 1.25)),
+            RandScaleIntensityd(keys=["image_wb"], prob=0.3, factors=0.1),
+            RandShiftIntensityd(keys=["image_wb"], prob=0.3, offsets=0.1),
+        ] if train else []),
+
+        # patch branch continues as build_transforms
+        SpatialPadd(keys=mod_keys + ["label"] + (["cow_msk_native"] if native_midline else []),
+                    spatial_size=patch_size),
+        *([ExtractVesselCoordsd(key="cow_msk_native", node_ids=node_ids,
+                                 topcow_labels=topcow_labels, out_prefix="native_")]
+          if native_midline else []),
+        ConcatItemsd(keys=mod_keys, name="image"),
+        DeleteItemsd(keys=mod_keys),
+    ]
+    if train:
+        common += [
+            RandCropByPosNegLabeld(
+                keys=["image", "label"], label_key="label",
+                spatial_size=patch_size, pos=2, neg=1, num_samples=1,
+                image_key="image", image_threshold=0,
+            ),
+            # see the matching comment in build_transforms -- same fix,
+            # same root cause (Phase 8 fold-2 prep, 2026-09-17).
+            DeleteItemsd(keys=["foreground_start_coord", "foreground_end_coord"]),
+            RandFlipd(keys=["image", "label"], prob=0.5, spatial_axis=0),
+            RandRotate90d(keys=["image", "label"], prob=0.2, max_k=3),
+        ]
+    common.append(EnsureTyped(keys=["image", "label", "image_wb"]))
+    return Compose(common)
+
+
 def make_datasets(root, audit_json, fold: int, n_folds: int, patch_size, seed: int = 0,
-                   cache_dir: pathlib.Path | None = None):
+                   cache_dir: pathlib.Path | None = None,
+                   skull_strip: bool = False, perfusion_clip: dict | None = None):
     """Returns (train_ds, val_ds, val_subjects) for one fold.
 
     With cache_dir set, uses MONAI's PersistentDataset: it auto-detects the
@@ -297,11 +608,17 @@ def make_datasets(root, audit_json, fold: int, n_folds: int, patch_size, seed: i
         cache_dir = pathlib.Path(cache_dir)
         (cache_dir / "train").mkdir(parents=True, exist_ok=True)
         (cache_dir / "val").mkdir(parents=True, exist_ok=True)
-        train_ds = PersistentDataset(train_items, transform=build_transforms(patch_size, train=True),
+        train_ds = PersistentDataset(train_items,
+                                      transform=build_transforms(patch_size, train=True,
+                                                                  skull_strip=skull_strip, perfusion_clip=perfusion_clip),
                                       cache_dir=str(cache_dir / "train"))
-        val_ds = PersistentDataset(val_items, transform=build_transforms(patch_size, train=False),
+        val_ds = PersistentDataset(val_items,
+                                    transform=build_transforms(patch_size, train=False,
+                                                                skull_strip=skull_strip, perfusion_clip=perfusion_clip),
                                     cache_dir=str(cache_dir / "val"))
     else:
-        train_ds = Dataset(train_items, transform=build_transforms(patch_size, train=True))
-        val_ds = Dataset(val_items, transform=build_transforms(patch_size, train=False))
+        train_ds = Dataset(train_items, transform=build_transforms(patch_size, train=True,
+                                                                     skull_strip=skull_strip, perfusion_clip=perfusion_clip))
+        val_ds = Dataset(val_items, transform=build_transforms(patch_size, train=False,
+                                                                 skull_strip=skull_strip, perfusion_clip=perfusion_clip))
     return train_ds, val_ds, val_ids

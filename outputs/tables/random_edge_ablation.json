@@ -1,0 +1,69 @@
+{
+  "ablation": "real CoW anatomy vs. random same-size graph (12 nodes, 12 edges), B1 (graph injection only, no consistency loss), fold 0, seeds 0-2",
+  "motivation": "Tests whether the SPECIFIC anatomical structure matters, or whether any graph of the same size would do -- the objection a sharp reviewer would raise about B1/B2's existing real-vs-no-graph comparison.",
+  "pre_registered": "Descriptive comparison only (n=3 vs n=3 cannot support a real p<0.05 gate) -- reported honestly either way, not gated pass/fail. Documented in conversation before running.",
+  "rows": [
+    {
+      "seed": 0,
+      "real_final_dice": 0.22699961223643794,
+      "real_jdcr_strict": 1.0,
+      "real_final_gates": [
+        -0.0029,
+        -0.013,
+        0.0176
+      ],
+      "random_final_dice": 0.2254003824612236,
+      "random_jdcr_strict": 0.9767,
+      "random_final_gates": [
+        -0.0028,
+        -0.0044,
+        0.0166
+      ]
+    },
+    {
+      "seed": 1,
+      "real_final_dice": 0.22573626306313635,
+      "real_jdcr_strict": 0.9535,
+      "real_final_gates": [
+        0.0056,
+        0.0089,
+        0.0196
+      ],
+      "random_final_dice": 0.22620132835921503,
+      "random_jdcr_strict": 1.0,
+      "random_final_gates": [
+        0.0006,
+        -0.0024,
+        0.0111
+      ]
+    },
+    {
+      "seed": 2,
+      "real_final_dice": 0.22132450444285823,
+      "real_jdcr_strict": 0.9535,
+      "real_final_gates": [
+        -0.0014,
+        0.0016,
+        -0.0031
+      ],
+      "random_final_dice": 0.22738026332886074,
+      "random_jdcr_strict": 0.9535,
+      "random_final_gates": [
+        -0.0013,
+        0.0022,
+        -0.0067
+      ]
+    }
+  ],
+  "summary": {
+    "real_dice_mean": 0.2247,
+    "real_dice_sd": 0.0024,
+    "random_dice_mean": 0.2263,
+    "random_dice_sd": 0.0008,
+    "real_jdcr_mean": 0.969,
+    "random_jdcr_mean": 0.9767
+  },
+  "finding": "No measurable difference. Random-edge mean Dice (0.2263) is marginally HIGHER than real-anatomy mean Dice (0.2247); random-edge mean JDCR (0.9767) is marginally higher than real (0.9690). Both differences are well within seed-to-seed noise (SD ~0.001-0.002) and in any case not testable at n=3. The specific anatomical structure does not measurably help over an arbitrary graph of the same size, in this setup.",
+  "supporting_diagnostic": "Cross-attention gate magnitudes (saved per checkpoint in training history) are tiny in BOTH arms, same order of magnitude: real B1's final gates were [-0.0029, -0.013, 0.0176]; random B1's were comparably small in every seed. The gate barely opens in either case, which is consistent with -- and likely explains -- why swapping the anatomy for a random graph makes almost no difference: very little information is flowing through the graph pathway regardless of what it's connected to.",
+  "implication": "Strengthens the case that the bottleneck is HOW MUCH/WHAT information reaches the decoder via this pathway, not WHICH nodes it's wired to. Further graph-structure tweaks (edge design, different anatomical graphs) are unlikely to help; a pathway carrying genuinely new information (e.g. TopCoW/TopBrain-grounded vessel features, CLAUDE.md 2026-10) is the more promising remaining lever."
+}

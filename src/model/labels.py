@@ -85,6 +85,33 @@ def load_auxiliary_labels(
     return out
 
 
+def load_nihss_labels(root: pathlib.Path) -> dict[str, float]:
+    """NIHSS at admission, per subject -- 146/149 (98%) populated, real,
+    not derived from any mask the model could leak against (see
+    kg/guideline_rules.json's 'nihss' concept and
+    src/graph/constraint_support.py's load_nihss, duplicated here rather
+    than imported for the same reason the LVO logic above is duplicated:
+    keep src/model independent of src/graph for one small loader).
+    Used by src/model/train_seg_nihss.py -- idea 3 (2026-10-11): does
+    multi-task learning work on this architecture when given a real
+    label, unlike the LVO/collateral heads' circular/sparse ones?"""
+    import csv
+    out = {}
+    for csv_path in sorted(pathlib.Path(root).glob("phenotype/*/ses-01/*_baseline.csv")):
+        sub = csv_path.parent.parent.name
+        with open(csv_path, newline="", encoding="utf-8") as fh:
+            rows = list(csv.DictReader(fh))
+        if not rows:
+            continue
+        v = (rows[0].get("NIHSS at admission") or "").strip()
+        if v:
+            try:
+                out[sub] = float(v)
+            except ValueError:
+                pass
+    return out
+
+
 def class_weights(labels: dict[str, dict]) -> list[float]:
     """Inverse-frequency weights for the LVO cross-entropy loss -- the
     classes are badly imbalanced (4 'none' vs 87 'proximal_anterior')."""

@@ -253,6 +253,173 @@ def check_hir_vs_final_volume_continuous(feats: dict, perf_ok: list[dict], vol: 
             "passed": passed}
 
 
+def _present(s: dict, idx: dict, node: str) -> bool:
+    return s["segment_present"][idx[node]] == 1
+
+
+def collateral_route_count(s: dict, idx: dict) -> int:
+    """How many of the 3 communicating-artery routes this patient's own CoW
+    anatomy has intact, independent of where (or whether) they have an
+    occlusion: Acom-mediated ACA cross-fill, right Pcom-mediated
+    posterior-to-anterior fill, left Pcom-mediated posterior-to-anterior
+    fill. 0-3. Pure graph connectivity on kg/cow_topology.json's edges,
+    masked by this patient's real segment_present -- no occlusion label,
+    no learned feature, cannot collapse the way the GNN heads did."""
+    acom = _present(s, idx, "Acom") and _present(s, idx, "L-ACA") and _present(s, idx, "R-ACA")
+    r_pcom = _present(s, idx, "BA") and _present(s, idx, "R-PCA") and _present(s, idx, "R-Pcom")
+    l_pcom = _present(s, idx, "BA") and _present(s, idx, "L-PCA") and _present(s, idx, "L-Pcom")
+    return int(acom) + int(r_pcom) + int(l_pcom)
+
+
+def ica_rescue_route(s: dict, idx: dict) -> int | None:
+    """For a confident ICA occlusion only: is there a structural route that
+    could still perfuse that ICA's downstream (MCA+ACA) territory -- same-
+    side Pcom retrograde fill, or Acom cross-fill from the other ACA? Not
+    defined (returns None) for any other occlusion site: this topology has
+    no edge terminating at MCA itself, so an MCA occlusion (70% of confident
+    cases) has no CoW-level collateral route to test, period -- that's the
+    real anatomy (MCA's collateral source is leptomeningeal, outside this
+    graph's resolution), not a gap in the code."""
+    vessel = s.get("nearest_vessel")
+    if vessel not in ("L-ICA", "R-ICA"):
+        return None
+    side, other = vessel[0], ("R" if vessel[0] == "L" else "L")
+    pcom_route = (_present(s, idx, "BA") and _present(s, idx, f"{side}-PCA")
+                  and _present(s, idx, f"{side}-Pcom"))
+    acom_route = (_present(s, idx, "Acom") and _present(s, idx, f"{side}-ACA")
+                  and _present(s, idx, f"{other}-ACA"))
+    return int(pcom_route or acom_route)
+
+
+def check_structural_collateral_reserve(feats: dict, vol: dict[str, float]) -> dict:
+    """Check 6 -- structural collateral reserve vs final infarct volume.
+
+    A DIFFERENT construct from Checks 2/4/5: those used HIR, a Tmax-derived
+    perfusion proxy, and it failed (Check 5: rho=0.052, p=0.54). This is a
+    pure graph-topology measure -- does the patient's own CoW have an intact
+    communicating-artery route at all -- computed with no occlusion label
+    and no learned component, so it cannot fail the way the GNN heads did.
+    Same occlusion-positive cohort as Check 5 (proximal_anterior +
+    other_confident + unlocalized; "none" excluded -- collateral status is
+    not meaningful without an occlusion to have collaterals around).
+
+    Pass mark, fixed before running:
+      primary (binary): no-reserve median volume > has-reserve median
+      volume, one-sided Mann-Whitney p < 0.05.
+      secondary (continuous): Spearman rho(route_count, volume) < 0, p < 0.05.
+    """
+    from scipy.stats import spearmanr
+    idx = {v: i for i, v in enumerate(feats["node_order"])}
+    has_reserve, no_reserve, counts, vols = [], [], [], []
+    for s in feats["subjects"]:
+        if localization_class(s) not in ("proximal_anterior", "other_confident", "unlocalized"):
+            continue
+        v = vol.get(s["subject"])
+        if v is None:
+            continue
+        n = collateral_route_count(s, idx)
+        (has_reserve if n > 0 else no_reserve).append(v)
+        counts.append(n); vols.append(v)
+    has_v, no_v = np.asarray(has_reserve), np.asarray(no_reserve)
+    cmp = compare(no_v, has_v)
+    passed_binary = bool(cmp.get("testable") and has_v.size and no_v.size
+                          and float(np.median(no_v)) > float(np.median(has_v)) and cmp["p_one_sided"] < 0.05)
+    rho = p = None
+    passed_cont = False
+    if len(vols) >= 10:
+        rho, p = spearmanr(counts, vols)
+        passed_cont = bool(rho < 0 and p < 0.05)
+    return {
+        "n": len(vols), "has_reserve": describe(has_v), "no_reserve": describe(no_v),
+        "binary_comparison": cmp, "binary_pass_mark": "no-reserve median > has-reserve median and p < 0.05",
+        "binary_passed": passed_binary,
+        "continuous_spearman_rho": round(float(rho), 4) if rho is not None else None,
+        "continuous_p": float(p) if p is not None else None,
+        "continuous_pass_mark": "rho < 0 and p < 0.05", "continuous_passed": passed_cont,
+    }
+
+
+def check_ica_rescue_route(feats: dict, vol: dict[str, float]) -> dict:
+    """Check 7 -- EXPLORATORY. ICA-occlusion-specific rescue route vs final
+    infarct volume. Restricted to confident L-ICA/R-ICA occlusions only
+    (~16/102 confident cases, by this cohort's own vessel distribution) --
+    the one occlusion site where this graph's edges actually model a
+    collateral path to the affected territory. Flagged exploratory because
+    n is small enough (like Check 4's rejected n=9 test) that a null result
+    here is inconclusive, not evidence against the idea; reported honestly
+    either way, not gated as pass/fail.
+    """
+    idx = {v: i for i, v in enumerate(feats["node_order"])}
+    routed, not_routed = [], []
+    for s in feats["subjects"]:
+        if not s.get("confident"):
+            continue
+        r = ica_rescue_route(s, idx)
+        if r is None:
+            continue
+        v = vol.get(s["subject"])
+        if v is None:
+            continue
+        (routed if r else not_routed).append(v)
+    routed_v, not_routed_v = np.asarray(routed), np.asarray(not_routed)
+    cmp = compare(not_routed_v, routed_v)
+    return {"n": routed_v.size + not_routed_v.size, "routed": describe(routed_v),
+            "not_routed": describe(not_routed_v), "comparison": cmp,
+            "note": "exploratory -- n too small for a confirmatory pass/fail gate"}
+
+
+def load_nihss(root: pathlib.Path) -> dict[str, float]:
+    """NIHSS at admission, per subject -- pre-treatment, so (unlike final
+    infarct volume) not flattened by this cohort's universal successful
+    reperfusion. 146/149 filled per kg/guideline_rules.json's own concept
+    catalogue."""
+    import csv
+    out = {}
+    for csv_path in sorted(root.glob("phenotype/*/ses-01/*_baseline.csv")):
+        sub = csv_path.parent.parent.name
+        with open(csv_path, newline="", encoding="utf-8") as fh:
+            rows = list(csv.DictReader(fh))
+        if not rows:
+            continue
+        v = (rows[0].get("NIHSS at admission") or "").strip()
+        if v:
+            try:
+                out[sub] = float(v)
+            except ValueError:
+                pass
+    return out
+
+
+def check_structural_collateral_reserve_vs_nihss(feats: dict, nihss: dict[str, float]) -> dict:
+    """Check 8 -- structural collateral reserve vs NIHSS AT ADMISSION, not
+    final infarct volume. Motivated directly by Check 6 coming up null:
+    final volume is pre-treatment-blind to collateral status in this cohort
+    because every patient was successfully reperfused (Check 1's finding) --
+    NIHSS at admission is measured BEFORE treatment, so it is not subject to
+    that confound. Same cohort restriction as Check 6.
+
+    Pass mark, fixed before running: no-reserve median NIHSS > has-reserve
+    median NIHSS, one-sided Mann-Whitney p < 0.05.
+    """
+    idx = {v: i for i, v in enumerate(feats["node_order"])}
+    has_reserve, no_reserve = [], []
+    for s in feats["subjects"]:
+        if localization_class(s) not in ("proximal_anterior", "other_confident", "unlocalized"):
+            continue
+        v = nihss.get(s["subject"])
+        if v is None:
+            continue
+        n = collateral_route_count(s, idx)
+        (has_reserve if n > 0 else no_reserve).append(v)
+    has_v, no_v = np.asarray(has_reserve), np.asarray(no_reserve)
+    cmp = compare(no_v, has_v)
+    passed = bool(cmp.get("testable") and has_v.size and no_v.size
+                  and float(np.median(no_v)) > float(np.median(has_v)) and cmp["p_one_sided"] < 0.05)
+    return {"has_reserve": describe(has_v), "no_reserve": describe(no_v),
+            "comparison": cmp, "pass_mark": "no-reserve median > has-reserve median and p < 0.05",
+            "passed": passed}
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--features", type=pathlib.Path, default=OUT_TAB / "kg_node_features.json")
@@ -380,6 +547,55 @@ def main():
         else:
             print(f"  not testable -- {overlap_check['reason']}")
         payload["perfusion_overlap"] = overlap_check
+
+    print("\nCheck 6 -- structural collateral reserve (pure CoW graph topology, "
+          "no occlusion label, no learned component) vs final infarct volume")
+    reserve_check = check_structural_collateral_reserve(feats, vol)
+    hr, nr = reserve_check["has_reserve"], reserve_check["no_reserve"]
+    if hr["n"] and nr["n"]:
+        print(f"  has reserve: n={hr['n']}  median={hr['median']}   "
+              f"no reserve: n={nr['n']}  median={nr['median']}")
+        c = reserve_check["binary_comparison"]
+        if c["testable"]:
+            print(f"  p = {c['p_one_sided']:.3g}, AUC = {c['auc']}")
+        print(f"  binary pass mark: {reserve_check['binary_pass_mark']} -> "
+              f"{'PASS' if reserve_check['binary_passed'] else 'FAIL'}")
+    if reserve_check["continuous_spearman_rho"] is not None:
+        print(f"  continuous: n={reserve_check['n']}  rho={reserve_check['continuous_spearman_rho']}  "
+              f"p={reserve_check['continuous_p']:.3g}  pass mark: {reserve_check['continuous_pass_mark']} -> "
+              f"{'PASS' if reserve_check['continuous_passed'] else 'FAIL'}")
+    payload["structural_collateral_reserve"] = reserve_check
+
+    print("\nCheck 7 -- EXPLORATORY: ICA-occlusion-specific rescue route vs final "
+          "infarct volume (n is small; not gated pass/fail)")
+    ica_check = check_ica_rescue_route(feats, vol)
+    rt, nrt = ica_check["routed"], ica_check["not_routed"]
+    print(f"  routed: n={rt['n']}  median={rt.get('median')}   "
+          f"not routed: n={nrt['n']}  median={nrt.get('median')}")
+    if ica_check["comparison"].get("testable"):
+        c = ica_check["comparison"]
+        print(f"  p = {c['p_one_sided']:.3g}, AUC = {c['auc']}  (exploratory, not gated)")
+    else:
+        print(f"  not testable -- {ica_check['comparison'].get('reason')}")
+    payload["ica_rescue_route_exploratory"] = ica_check
+
+    if args.root is not None:
+        print("\nCheck 8 -- structural collateral reserve vs NIHSS at admission "
+              "(pre-treatment, not confounded by universal reperfusion)")
+        nihss = load_nihss(args.root.expanduser().resolve())
+        nihss_check = check_structural_collateral_reserve_vs_nihss(feats, nihss)
+        hr8, nr8 = nihss_check["has_reserve"], nihss_check["no_reserve"]
+        if hr8["n"] and nr8["n"]:
+            print(f"  has reserve: n={hr8['n']}  median={hr8['median']}   "
+                  f"no reserve: n={nr8['n']}  median={nr8['median']}")
+            c = nihss_check["comparison"]
+            if c["testable"]:
+                print(f"  p = {c['p_one_sided']:.3g}, AUC = {c['auc']}")
+            print(f"  pass mark: {nihss_check['pass_mark']} -> "
+                  f"{'PASS' if nihss_check['passed'] else 'FAIL'}")
+        else:
+            print(f"  not enough subjects (has={hr8['n']}, no={nr8['n']})")
+        payload["structural_collateral_reserve_vs_nihss"] = nihss_check
 
     contamination = unseen_vessel_diagnostic(feats)
     print("\n  diagnostic -- clot-side MCA/ICA missing from cow-msk (possible occluded, "

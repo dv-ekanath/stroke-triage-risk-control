@@ -104,9 +104,16 @@ def main():
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--max-val-subjects", type=int, default=None,
                      help="cap validation-fold size for a fast smoke test")
+    ap.add_argument("--skull-strip", action="store_true",
+                     help="zero out non-brain voxels (motivated by the ISLES'24 challenge "
+                          "winner's preprocessing, arXiv:2505.18424) -- off by default, "
+                          "unchanged behavior for every existing call site")
+    ap.add_argument("--tight-perfusion-clip", action="store_true",
+                     help="use TIGHT_PERFUSION_CLIP (CBV/MTT tightened toward literature "
+                          "core/penumbra thresholds) instead of the default artifact-only clip")
     args = ap.parse_args()
 
-    from src.model.dataset import make_datasets
+    from src.model.dataset import make_datasets, TIGHT_PERFUSION_CLIP
     from monai.losses import DiceCELoss
     from src.eval.metrics import isles24_metrics
 
@@ -120,25 +127,47 @@ def main():
 
     print(f"\nbuilding fold {args.fold}/{args.n_folds} "
           f"(patch={tuple(args.patch_size)})")
+    # fold split is ALWAYS seed=0, fixed -- args.seed is for training
+    # randomness (weight init, batch order) only. StratifiedKFold's
+    # random_state came from this same `seed` param, so varying --seed for
+    # Phase 8's seed-variance runs would have silently reshuffled WHICH
+    # subjects are in which fold too, confounding fold-split variance with
+    # training-seed variance (found and fixed 2026-09-17, before launching
+    # the real Phase 8 run).
     train_ds, val_ds, val_ids = make_datasets(
         args.root, args.audit_json, args.fold, args.n_folds,
-        tuple(args.patch_size), seed=args.seed, cache_dir=args.cache_dir,
+        tuple(args.patch_size), seed=0, cache_dir=args.cache_dir,
+        skull_strip=args.skull_strip,
+        perfusion_clip=(TIGHT_PERFUSION_CLIP if args.tight_perfusion_clip else None),
     )
+    if args.skull_strip or args.tight_perfusion_clip:
+        print(f"  recipe: skull_strip={args.skull_strip}  tight_perfusion_clip={args.tight_perfusion_clip}")
     if args.max_val_subjects:
         val_ids = val_ids[: args.max_val_subjects]
         val_ds.data = val_ds.data[: args.max_val_subjects]
     print(f"  train: {len(train_ds)} subjects   val: {len(val_ds)} subjects")
 
-    from monai.data import list_data_collate
+    from monai.data import pad_list_data_collate
     # RandCropByPosNegLabeld (used by the train transforms) always returns a
-    # list of cropped samples per item, even at num_samples=1 -- needs MONAI's
-    # collate to flatten that into a normal batch instead of nesting lists.
+    # list of cropped samples per item, even at num_samples=1 -- needs a
+    # collate that flattens that into a normal batch instead of nesting
+    # lists. list_data_collate did this but wasn't enough on its own: the
+    # Phase 8 3-fold baseline retrain (2026-09-17) hit
+    # `TypeError: expected Tensor ... but got numpy.ndarray` on fold 2's
+    # very first batch, reproducibly, with num_workers=0 (rules out a
+    # worker race) and on a subject set whose items passed an isolated,
+    # uncached single-item transform check cleanly 3x over (rules out a
+    # transform bug) -- pointing at PersistentDataset's on-disk cache
+    # write/read round-trip occasionally deserializing a MetaTensor as a
+    # plain ndarray on a subject's first-ever cache write. pad_list_data_
+    # collate (MONAI's own suggested fix for this exact error) tolerates
+    # the mixed types instead of requiring the root cause to be fixed.
     train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True,
                                num_workers=args.num_workers, pin_memory=True,
-                               collate_fn=list_data_collate)
+                               collate_fn=pad_list_data_collate)
     val_loader = DataLoader(val_ds, batch_size=1, shuffle=False,
                              num_workers=args.num_workers, pin_memory=True,
-                             collate_fn=list_data_collate)
+                             collate_fn=pad_list_data_collate)
 
     model = build_model(in_channels=6, device=device)
     loss_fn = DiceCELoss(to_onehot_y=True, softmax=True)
@@ -196,9 +225,23 @@ def main():
 
             if mean_dice > best_dice:
                 best_dice = mean_dice
-                torch.save(model.state_dict(),
-                           OUT_CKPT / f"segresnet_fold{args.fold}_best.pt")
-                print(f"  new best, checkpoint saved")
+                # n_folds in the name -- Phase 8 (2026-09-16) needs a fresh
+                # per-fold trunk under the 3-fold split, WITHOUT overwriting
+                # the original 5-fold checkpoint every earlier phase warm-
+                # started from (see CLAUDE.md's "KNOWN ISSUES" #1: reusing
+                # that 5-fold checkpoint put 20/50 val subjects in its own
+                # training set)
+                # seed 0 keeps the un-suffixed name (matches the already-
+                # trained fold trunks B1/B2 warm-start from, see PHASE8_PLAN.md);
+                # seeds 1+ get their own name so B0's extra seeds (Phase 8)
+                # don't collide with that trunk or each other
+                seed_suffix = "" if args.seed == 0 else f"_seed{args.seed}"
+                recipe_tag = ("_skullstrip" if args.skull_strip else "") + \
+                             ("_tightclip" if args.tight_perfusion_clip else "")
+                ckpt_name = (f"segresnet_fold{args.fold}_best.pt" if args.n_folds == 5
+                             else f"segresnet_{args.n_folds}fold_fold{args.fold}{seed_suffix}{recipe_tag}_best.pt")
+                torch.save(model.state_dict(), OUT_CKPT / ckpt_name)
+                print(f"  new best, checkpoint saved ({ckpt_name})")
 
     # final full evaluation with all four ISLES'24 metrics
     print("\nfinal evaluation, all four ISLES'24 metrics:")
@@ -230,7 +273,12 @@ def main():
         "final_per_subject": per_subject,
         "final_mean": agg,
     }
-    out_path = OUT_TAB / f"baseline_fold{args.fold}.json"
+    seed_suffix = "" if args.seed == 0 else f"_seed{args.seed}"
+    recipe_tag = ("_skullstrip" if args.skull_strip else "") + \
+                 ("_tightclip" if args.tight_perfusion_clip else "")
+    out_name = (f"baseline_fold{args.fold}.json" if args.n_folds == 5
+                else f"baseline_{args.n_folds}fold_fold{args.fold}{seed_suffix}{recipe_tag}.json")
+    out_path = OUT_TAB / out_name
     out_path.write_text(json.dumps(payload, indent=2))
     print(f"\nwrote {out_path}")
 
