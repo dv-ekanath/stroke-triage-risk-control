@@ -1,0 +1,844 @@
+{
+  "model_type": "b1",
+  "checkpoint": "outputs\\checkpoints\\graph_seg_fold0_seed2_best.pt",
+  "fold": 0,
+  "patch_size": [
+    128,
+    128,
+    64
+  ],
+  "wb_size": [
+    64,
+    64,
+    48
+  ],
+  "jdcr_strict": {
+    "n_total": 50,
+    "n_unknown_side": 7,
+    "n_known_side": 43,
+    "n_empty_prediction": 0,
+    "n_evaluated": 43,
+    "n_consistent": 41,
+    "coverage": 1.0,
+    "jdcr": 0.9535,
+    "definition": "strict (abstaining counts against the model)"
+  },
+  "jdcr_lenient": {
+    "n_total": 50,
+    "n_unknown_side": 7,
+    "n_known_side": 43,
+    "n_empty_prediction": 0,
+    "n_evaluated": 43,
+    "n_consistent": 41,
+    "coverage": 1.0,
+    "jdcr": 0.9535,
+    "definition": "lenient (abstaining excluded from denominator -- read with coverage)"
+  },
+  "ece_mean": 0.0075780000000000005,
+  "ece_std": 0.006897950130292332,
+  "ece_n_subjects": 50,
+  "ece_note": "voxel-level, segmentation-only -- NOT the base paper's 0.130, see docstring",
+  "rows": [
+    {
+      "subject": "sub-stroke0002",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 14482
+      },
+      "rationale": "Subject sub-stroke0002: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 14482 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0386,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0003",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 20447
+      },
+      "rationale": "Subject sub-stroke0003: a confident match to an occlusion of L-ACA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 20447 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0096,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0008",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 3945
+      },
+      "rationale": "Subject sub-stroke0008: a low-confidence match to an occlusion of BA on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.0023,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0011",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 45326
+      },
+      "rationale": "Subject sub-stroke0011: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 45326 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0131,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0026",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.2726,
+        "n_predicted_voxels": 1702
+      },
+      "rationale": "Subject sub-stroke0026: a confident match to an occlusion of L-ICA on admission imaging. Laterality consistency: CONSISTENT -- 72.7% of 1702 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0052,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0030",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 7121
+      },
+      "rationale": "Subject sub-stroke0030: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 7121 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0008,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0033",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": false,
+        "right_fraction": 0.7104,
+        "n_predicted_voxels": 10023
+      },
+      "rationale": "Subject sub-stroke0033: a confident match to an occlusion of L-ACA on admission imaging. Laterality consistency: INCONSISTENT -- 71.0% of 10023 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the left side. Flagged for clinician review: predicted infarct laterality does not match the side the occlusion evidence points to.",
+      "ece": 0.0036,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0037",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 11068
+      },
+      "rationale": "Subject sub-stroke0037: a confident match to an occlusion of R-ICA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 11068 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0016,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0040",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 0.9967,
+        "n_predicted_voxels": 25996
+      },
+      "rationale": "Subject sub-stroke0040: a confident match to an occlusion of R-ICA on admission imaging. Laterality consistency: CONSISTENT -- 99.7% of 25996 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0054,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0047",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 10996
+      },
+      "rationale": "Subject sub-stroke0047: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 10996 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0037,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0048",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 20990
+      },
+      "rationale": "Subject sub-stroke0048: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 20990 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0082,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0049",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 7551
+      },
+      "rationale": "Subject sub-stroke0049: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 7551 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0037,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0052",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0004,
+        "n_predicted_voxels": 22309
+      },
+      "rationale": "Subject sub-stroke0052: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 22309 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.001,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0066",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 5579
+      },
+      "rationale": "Subject sub-stroke0066: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 5579 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.023,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0071",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 24041
+      },
+      "rationale": "Subject sub-stroke0071: a confident match to an occlusion of R-ICA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 24041 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0074,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0076",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 10769
+      },
+      "rationale": "Subject sub-stroke0076: a low-confidence match to an occlusion of BA on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.0047,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0077",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 2693
+      },
+      "rationale": "Subject sub-stroke0077: a low-confidence match to an occlusion of L-PCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 2693 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0025,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0084",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 0.8972,
+        "n_predicted_voxels": 9075
+      },
+      "rationale": "Subject sub-stroke0084: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: CONSISTENT -- 89.7% of 9075 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0043,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0085",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": false,
+        "right_fraction": 0.3952,
+        "n_predicted_voxels": 7808
+      },
+      "rationale": "Subject sub-stroke0085: a low-confidence match to an occlusion of R-ACA on admission imaging. Laterality consistency: INCONSISTENT -- 60.5% of 7808 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the right side. Flagged for clinician review: predicted infarct laterality does not match the side the occlusion evidence points to.",
+      "ece": 0.0021,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0086",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 38293
+      },
+      "rationale": "Subject sub-stroke0086: a confident match to an occlusion of L-ICA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 38293 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0139,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0093",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 8392
+      },
+      "rationale": "Subject sub-stroke0093: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 8392 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0054,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0095",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 63364
+      },
+      "rationale": "Subject sub-stroke0095: a confident match to an occlusion of R-ICA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 63364 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0125,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0102",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.1885,
+        "n_predicted_voxels": 5911
+      },
+      "rationale": "Subject sub-stroke0102: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: CONSISTENT -- 81.2% of 5911 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0034,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0107",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 20563
+      },
+      "rationale": "Subject sub-stroke0107: a confident match to an occlusion of L-ICA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 20563 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.018,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0108",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 18686
+      },
+      "rationale": "Subject sub-stroke0108: a low-confidence match to an occlusion of L-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 18686 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0049,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0110",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 70168
+      },
+      "rationale": "Subject sub-stroke0110: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 70168 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0188,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0114",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 8063
+      },
+      "rationale": "Subject sub-stroke0114: a low-confidence match to an occlusion of L-PCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 8063 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0106,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0117",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.1016,
+        "n_predicted_voxels": 669
+      },
+      "rationale": "Subject sub-stroke0117: a confident match to an occlusion of L-PCA on admission imaging. Laterality consistency: CONSISTENT -- 89.8% of 669 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.001,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0135",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 15300
+      },
+      "rationale": "Subject sub-stroke0135: a confident match to an occlusion of R-ACA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 15300 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0017,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0136",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.382,
+        "n_predicted_voxels": 29090
+      },
+      "rationale": "Subject sub-stroke0136: a low-confidence match to an occlusion of L-MCA on admission imaging. Laterality consistency: CONSISTENT -- 61.8% of 29090 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0102,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0138",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 84923
+      },
+      "rationale": "Subject sub-stroke0138: a low-confidence match to an occlusion of BA on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.0145,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0142",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 85
+      },
+      "rationale": "Subject sub-stroke0142: a low-confidence match to an occlusion of BA on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.0027,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0143",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 16641
+      },
+      "rationale": "Subject sub-stroke0143: a low-confidence match to an occlusion of BA on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.0058,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0144",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 34591
+      },
+      "rationale": "Subject sub-stroke0144: a low-confidence match to an occlusion of BA on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.0125,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0147",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 5555
+      },
+      "rationale": "Subject sub-stroke0147: no large-vessel occlusion was identified on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.003,
+      "occlusion_status": "empty_lvo_mask",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0149",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 32759
+      },
+      "rationale": "Subject sub-stroke0149: a low-confidence match to an occlusion of R-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 32759 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0068,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0155",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 42899
+      },
+      "rationale": "Subject sub-stroke0155: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 42899 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0109,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0157",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 18182
+      },
+      "rationale": "Subject sub-stroke0157: a confident match to an occlusion of L-PCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 18182 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0128,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0158",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 46803
+      },
+      "rationale": "Subject sub-stroke0158: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 46803 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0178,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0162",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 10382
+      },
+      "rationale": "Subject sub-stroke0162: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 10382 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0056,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0165",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 14776
+      },
+      "rationale": "Subject sub-stroke0165: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 14776 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0014,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0168",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 61129
+      },
+      "rationale": "Subject sub-stroke0168: a confident match to an occlusion of L-ICA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 61129 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0047,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0169",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 10343
+      },
+      "rationale": "Subject sub-stroke0169: a low-confidence match to an occlusion of R-PCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 10343 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0034,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0172",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 7885
+      },
+      "rationale": "Subject sub-stroke0172: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 7885 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.004,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0178",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0002,
+        "n_predicted_voxels": 43475
+      },
+      "rationale": "Subject sub-stroke0178: a low-confidence match to an occlusion of L-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 43475 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.004,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0180",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 28818
+      },
+      "rationale": "Subject sub-stroke0180: a low-confidence match to an occlusion of L-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 28818 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0119,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0184",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 10086
+      },
+      "rationale": "Subject sub-stroke0184: a low-confidence match to an occlusion of L-ICA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 10086 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0061,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0185",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0,
+        "n_predicted_voxels": 6374
+      },
+      "rationale": "Subject sub-stroke0185: a confident match to an occlusion of L-PCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 6374 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0018,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0186",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "left",
+        "consistent": true,
+        "right_fraction": 0.0466,
+        "n_predicted_voxels": 11495
+      },
+      "rationale": "Subject sub-stroke0186: a confident match to an occlusion of L-PCA on admission imaging. Laterality consistency: CONSISTENT -- 95.3% of 11495 predicted lesion voxels sit on the left side of the midline; admission imaging places the occlusion on the left side.",
+      "ece": 0.0032,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0187",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": true,
+        "reason": null,
+        "predicted_side": "right",
+        "consistent": true,
+        "right_fraction": 1.0,
+        "n_predicted_voxels": 81310
+      },
+      "rationale": "Subject sub-stroke0187: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: CONSISTENT -- 100.0% of 81310 predicted lesion voxels sit on the right side of the midline; admission imaging places the occlusion on the right side.",
+      "ece": 0.0048,
+      "occlusion_status": "ok",
+      "confident": true
+    }
+  ],
+  "rationale_sample": []
+}

@@ -1,0 +1,237 @@
+{
+  "total_jobs": 21,
+  "started": "2026-09-18 05:54:26",
+  "jobs": [
+    {
+      "index": 0,
+      "name": "B0_fold0_seed0",
+      "model_type": "b0",
+      "fold": 0,
+      "seed_tag": 0,
+      "checkpoint": "outputs/checkpoints/segresnet_3fold_fold0_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 1,
+      "name": "B0_fold0_seed1",
+      "model_type": "b0",
+      "fold": 0,
+      "seed_tag": 1,
+      "checkpoint": "outputs/checkpoints/segresnet_3fold_fold0_seed1_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 2,
+      "name": "B0_fold0_seed2",
+      "model_type": "b0",
+      "fold": 0,
+      "seed_tag": 2,
+      "checkpoint": "outputs/checkpoints/segresnet_3fold_fold0_seed2_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 3,
+      "name": "B0_fold1_seed0",
+      "model_type": "b0",
+      "fold": 1,
+      "seed_tag": 0,
+      "checkpoint": "outputs/checkpoints/segresnet_3fold_fold1_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 4,
+      "name": "B0_fold1_seed1",
+      "model_type": "b0",
+      "fold": 1,
+      "seed_tag": 1,
+      "checkpoint": "outputs/checkpoints/segresnet_3fold_fold1_seed1_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 5,
+      "name": "B0_fold1_seed2",
+      "model_type": "b0",
+      "fold": 1,
+      "seed_tag": 2,
+      "checkpoint": "outputs/checkpoints/segresnet_3fold_fold1_seed2_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 6,
+      "name": "B0_fold2_seed0",
+      "model_type": "b0",
+      "fold": 2,
+      "seed_tag": 0,
+      "checkpoint": "outputs/checkpoints/segresnet_3fold_fold2_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 7,
+      "name": "B0_fold2_seed1",
+      "model_type": "b0",
+      "fold": 2,
+      "seed_tag": 1,
+      "checkpoint": "outputs/checkpoints/segresnet_3fold_fold2_seed1_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 8,
+      "name": "B0_fold2_seed2",
+      "model_type": "b0",
+      "fold": 2,
+      "seed_tag": 2,
+      "checkpoint": "outputs/checkpoints/segresnet_3fold_fold2_seed2_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 9,
+      "name": "B1_fold0_seed0",
+      "model_type": "b1",
+      "fold": 0,
+      "seed_tag": 0,
+      "checkpoint": "outputs/checkpoints/graph_seg_fold0_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 10,
+      "name": "B1_fold0_seed1",
+      "model_type": "b1",
+      "fold": 0,
+      "seed_tag": 1,
+      "checkpoint": "outputs/checkpoints/graph_seg_fold0_seed1_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 11,
+      "name": "B1_fold0_seed2",
+      "model_type": "b1",
+      "fold": 0,
+      "seed_tag": 2,
+      "checkpoint": "outputs/checkpoints/graph_seg_fold0_seed2_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 12,
+      "name": "B2_fold0_seed0",
+      "model_type": "b2",
+      "fold": 0,
+      "seed_tag": 0,
+      "checkpoint": "outputs/checkpoints/graph_seg_consistency_fold0_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 13,
+      "name": "B2_fold0_seed1",
+      "model_type": "b2",
+      "fold": 0,
+      "seed_tag": 1,
+      "checkpoint": "outputs/checkpoints/graph_seg_consistency_fold0_seed1_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 14,
+      "name": "B2_fold0_seed2",
+      "model_type": "b2",
+      "fold": 0,
+      "seed_tag": 2,
+      "checkpoint": "outputs/checkpoints/graph_seg_consistency_fold0_seed2_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 15,
+      "name": "B2_fold1_seed0",
+      "model_type": "b2",
+      "fold": 1,
+      "seed_tag": 0,
+      "checkpoint": "outputs/checkpoints/graph_seg_consistency_fold1_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 16,
+      "name": "B2_fold1_seed1",
+      "model_type": "b2",
+      "fold": 1,
+      "seed_tag": 1,
+      "checkpoint": "outputs/checkpoints/graph_seg_consistency_fold1_seed1_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 17,
+      "name": "B2_fold1_seed2",
+      "model_type": "b2",
+      "fold": 1,
+      "seed_tag": 2,
+      "checkpoint": "outputs/checkpoints/graph_seg_consistency_fold1_seed2_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 18,
+      "name": "B2_fold2_seed0",
+      "model_type": "b2",
+      "fold": 2,
+      "seed_tag": 0,
+      "checkpoint": "outputs/checkpoints/graph_seg_consistency_fold2_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 19,
+      "name": "B2_fold2_seed1",
+      "model_type": "b2",
+      "fold": 2,
+      "seed_tag": 1,
+      "checkpoint": "outputs/checkpoints/graph_seg_consistency_fold2_seed1_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    },
+    {
+      "index": 20,
+      "name": "B2_fold2_seed2",
+      "model_type": "b2",
+      "fold": 2,
+      "seed_tag": 2,
+      "checkpoint": "outputs/checkpoints/graph_seg_consistency_fold2_seed2_best.pt",
+      "status": "ok (pre-existing, verified checkpoint match)",
+      "minutes": 0.0,
+      "finished_at": "2026-09-18 05:54:26"
+    }
+  ]
+}

@@ -142,7 +142,8 @@ def main():
     from src.model.labels import load_auxiliary_labels, class_weights
     from src.model.multitask import MultiTaskSegResNet
     from monai.losses import DiceCELoss
-    from monai.data import list_data_collate
+    from monai.data import pad_list_data_collate
+    # pad_list_data_collate not list_data_collate: see train_baseline.py's comment at the same spot -- a real PersistentDataset cache-write bug (not a worker race, not a transform bug) found during Phase 8 fold-2 prep, 2026-09-17.
     from src.eval.metrics import isles24_metrics
 
     torch.manual_seed(args.seed)
@@ -171,10 +172,10 @@ def main():
 
     train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True,
                                num_workers=args.num_workers, pin_memory=True,
-                               collate_fn=list_data_collate)
+                               collate_fn=pad_list_data_collate)
     val_loader = DataLoader(val_ds, batch_size=1, shuffle=False,
                              num_workers=args.num_workers, pin_memory=True,
-                             collate_fn=list_data_collate)
+                             collate_fn=pad_list_data_collate)
 
     model = MultiTaskSegResNet(in_channels=6, n_lvo_classes=N_LVO_CLASSES,
                                 n_collateral_bins=N_COLLATERAL_BINS).to(device)

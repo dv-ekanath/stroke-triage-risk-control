@@ -1,0 +1,1161 @@
+{
+  "fold": 1,
+  "n_folds": 3,
+  "config": {
+    "root": "D:\\ISLES-2024\\train",
+    "audit_json": "outputs\\tables\\data_audit.json",
+    "fold": 1,
+    "n_folds": 3,
+    "epochs": 100,
+    "patch_size": [
+      128,
+      128,
+      64
+    ],
+    "wb_size": [
+      64,
+      64,
+      48
+    ],
+    "batch_size": 2,
+    "lr": 0.0001,
+    "val_interval": 10,
+    "num_workers": 0,
+    "cache_dir": "D:\\ISLES-2024\\cache_1mm_wb64",
+    "amp": true,
+    "seed": 2,
+    "max_val_subjects": null,
+    "warm_start": "outputs\\checkpoints\\segresnet_3fold_fold1_best.pt",
+    "gnn_stage": 1,
+    "lambda_consistency": 0.1
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "seg": 0.5016378402709961,
+      "consistency": 0.20159025117754936,
+      "seconds": 43.77220153808594,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 2,
+      "seg": 0.49037366688251494,
+      "consistency": 0.12903442792594433,
+      "seconds": 36.1306848526001,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 3,
+      "seg": 0.4907209950685501,
+      "consistency": 0.1368131384253502,
+      "seconds": 37.63211703300476,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 4,
+      "seg": 0.48217784345149994,
+      "consistency": 0.11564882412552834,
+      "seconds": 36.85039949417114,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 5,
+      "seg": 0.47833519518375395,
+      "consistency": 0.102922552973032,
+      "seconds": 36.23920750617981,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 6,
+      "seg": 0.4882522314786911,
+      "consistency": 0.09930008258670568,
+      "seconds": 35.534523487091064,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 7,
+      "seg": 0.48591194331645965,
+      "consistency": 0.08674786902964116,
+      "seconds": 34.97448778152466,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 8,
+      "seg": 0.4836424678564072,
+      "consistency": 0.08158218458294869,
+      "seconds": 34.99457669258118,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 9,
+      "seg": 0.47903974652290343,
+      "consistency": 0.06944137793034315,
+      "seconds": 34.2253532409668,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 10,
+      "seg": 0.48027104198932646,
+      "consistency": 0.07472006360068917,
+      "seconds": 36.235419273376465,
+      "n_nonfinite": 0,
+      "val_dice": 0.22400198731316326,
+      "val_consistency": 0.05452228385350994,
+      "gates": [
+        0.0001,
+        0.0,
+        -0.0009
+      ]
+    },
+    {
+      "epoch": 11,
+      "seg": 0.48297985792160036,
+      "consistency": 0.06286358326673508,
+      "seconds": 37.3534095287323,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 12,
+      "seg": 0.4752651458978653,
+      "consistency": 0.062288134470582006,
+      "seconds": 35.568296909332275,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 13,
+      "seg": 0.47670976936817167,
+      "consistency": 0.0771087840385735,
+      "seconds": 35.73752236366272,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 14,
+      "seg": 0.46950366377830505,
+      "consistency": 0.07419235087931156,
+      "seconds": 36.69944643974304,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 15,
+      "seg": 0.4754430055618286,
+      "consistency": 0.05839700343087315,
+      "seconds": 36.55183148384094,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 16,
+      "seg": 0.47607807636260985,
+      "consistency": 0.05319947753101587,
+      "seconds": 36.35879683494568,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 17,
+      "seg": 0.4689502811431885,
+      "consistency": 0.051347994953393934,
+      "seconds": 36.77027344703674,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 18,
+      "seg": 0.4724072360992432,
+      "consistency": 0.04802297548390925,
+      "seconds": 36.7457001209259,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 19,
+      "seg": 0.4631382888555527,
+      "consistency": 0.05324480671435595,
+      "seconds": 35.98761010169983,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 20,
+      "seg": 0.46218846321105955,
+      "consistency": 0.05345491396263242,
+      "seconds": 37.13153076171875,
+      "n_nonfinite": 0,
+      "val_dice": 0.22911242841793616,
+      "val_consistency": 0.05475232765279912,
+      "gates": [
+        -0.0007,
+        0.0017,
+        -0.0015
+      ]
+    },
+    {
+      "epoch": 21,
+      "seg": 0.4542426687479019,
+      "consistency": 0.08178654711693525,
+      "seconds": 37.70872688293457,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 22,
+      "seg": 0.45676543295383454,
+      "consistency": 0.05123935021460056,
+      "seconds": 36.82341170310974,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 23,
+      "seg": 0.4590147015452385,
+      "consistency": 0.04454506780952215,
+      "seconds": 36.9531786441803,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 24,
+      "seg": 0.4767695564031601,
+      "consistency": 0.040263556018471716,
+      "seconds": 36.06893014907837,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 25,
+      "seg": 0.44620936274528505,
+      "consistency": 0.045753618711605666,
+      "seconds": 36.958049297332764,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 26,
+      "seg": 0.4666252991557121,
+      "consistency": 0.04139687011949718,
+      "seconds": 36.515121936798096,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 27,
+      "seg": 0.4594678205251694,
+      "consistency": 0.04604322920553386,
+      "seconds": 36.51600122451782,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 28,
+      "seg": 0.458845876455307,
+      "consistency": 0.04075769537128508,
+      "seconds": 36.67752146720886,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 29,
+      "seg": 0.44589513063430786,
+      "consistency": 0.04063906504772603,
+      "seconds": 36.60508918762207,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 30,
+      "seg": 0.44751738488674164,
+      "consistency": 0.03336914667859674,
+      "seconds": 36.464599609375,
+      "n_nonfinite": 0,
+      "val_dice": 0.24822567553810004,
+      "val_consistency": 0.049075726155393025,
+      "gates": [
+        0.0004,
+        0.0034,
+        -0.0015
+      ]
+    },
+    {
+      "epoch": 31,
+      "seg": 0.46975099921226504,
+      "consistency": 0.0405951976031065,
+      "seconds": 37.5407292842865,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 32,
+      "seg": 0.4594733792543411,
+      "consistency": 0.03549195502884686,
+      "seconds": 36.84418082237244,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 33,
+      "seg": 0.44973724395036696,
+      "consistency": 0.02970222884789109,
+      "seconds": 36.5883002281189,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 34,
+      "seg": 0.4548364931344986,
+      "consistency": 0.04247643899638206,
+      "seconds": 36.916688203811646,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 35,
+      "seg": 0.4579355984926224,
+      "consistency": 0.032285626898519694,
+      "seconds": 37.001200675964355,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 36,
+      "seg": 0.44515473395586014,
+      "consistency": 0.04748836126178503,
+      "seconds": 37.45909547805786,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 37,
+      "seg": 0.44152785658836363,
+      "consistency": 0.03035766745451838,
+      "seconds": 37.663898229599,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 38,
+      "seg": 0.4472059196233749,
+      "consistency": 0.032256309003569184,
+      "seconds": 36.88147473335266,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 39,
+      "seg": 0.44555672466754914,
+      "consistency": 0.03761570130940527,
+      "seconds": 36.4333233833313,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 40,
+      "seg": 0.43625865638256073,
+      "consistency": 0.03098743224982172,
+      "seconds": 36.7704803943634,
+      "n_nonfinite": 0,
+      "val_dice": 0.24435911871586277,
+      "val_consistency": 0.04261353260812324,
+      "gates": [
+        -0.0006,
+        0.0058,
+        -0.0038
+      ]
+    },
+    {
+      "epoch": 41,
+      "seg": 0.4556534647941589,
+      "consistency": 0.044206996047869325,
+      "seconds": 37.67555260658264,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 42,
+      "seg": 0.45091286838054656,
+      "consistency": 0.02734824816696346,
+      "seconds": 36.24653458595276,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 43,
+      "seg": 0.4455002045631409,
+      "consistency": 0.027299195476807654,
+      "seconds": 36.80841279029846,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 44,
+      "seg": 0.43993324041366577,
+      "consistency": 0.025931175649166107,
+      "seconds": 36.40873885154724,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 45,
+      "seg": 0.42236784160137175,
+      "consistency": 0.02256054657045752,
+      "seconds": 36.23334240913391,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 46,
+      "seg": 0.4480567842721939,
+      "consistency": 0.030439165136776865,
+      "seconds": 36.382450103759766,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 47,
+      "seg": 0.43495535492897036,
+      "consistency": 0.03661601935978979,
+      "seconds": 35.799546003341675,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 48,
+      "seg": 0.43933370590209964,
+      "consistency": 0.03275183267891407,
+      "seconds": 36.26954174041748,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 49,
+      "seg": 0.43645324230194094,
+      "consistency": 0.02382775638718158,
+      "seconds": 36.30190086364746,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 50,
+      "seg": 0.42716781198978426,
+      "consistency": 0.043803878547623756,
+      "seconds": 36.514511823654175,
+      "n_nonfinite": 0,
+      "val_dice": 0.22753589629913576,
+      "val_consistency": 0.03421253906688779,
+      "gates": [
+        -0.0002,
+        0.0075,
+        -0.0047
+      ]
+    },
+    {
+      "epoch": 51,
+      "seg": 0.4285540109872818,
+      "consistency": 0.019219968486577272,
+      "seconds": 37.28436231613159,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 52,
+      "seg": 0.43055991768836976,
+      "consistency": 0.031114926962181925,
+      "seconds": 36.45281791687012,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 53,
+      "seg": 0.4352784770727158,
+      "consistency": 0.03431258409516886,
+      "seconds": 36.71483850479126,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 54,
+      "seg": 0.4274324691295624,
+      "consistency": 0.02573508032830432,
+      "seconds": 36.021066188812256,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 55,
+      "seg": 0.4306667977571487,
+      "consistency": 0.020712783709168434,
+      "seconds": 36.221415281295776,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 56,
+      "seg": 0.4297419613599777,
+      "consistency": 0.021577936774119736,
+      "seconds": 35.633923053741455,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 57,
+      "seg": 0.42932098627090454,
+      "consistency": 0.0145580975105986,
+      "seconds": 36.082141637802124,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 58,
+      "seg": 0.4247503191232681,
+      "consistency": 0.016936447143089027,
+      "seconds": 36.53668713569641,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 59,
+      "seg": 0.42668420761823656,
+      "consistency": 0.012713543802965433,
+      "seconds": 36.18567967414856,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 60,
+      "seg": 0.4192297148704529,
+      "consistency": 0.009042651837226003,
+      "seconds": 36.190208435058594,
+      "n_nonfinite": 0,
+      "val_dice": 0.2402758446762153,
+      "val_consistency": 0.04524360894464661,
+      "gates": [
+        0.0007,
+        0.0081,
+        -0.0051
+      ]
+    },
+    {
+      "epoch": 61,
+      "seg": 0.417765776515007,
+      "consistency": 0.01627569323638454,
+      "seconds": 37.146395683288574,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 62,
+      "seg": 0.4220467913150787,
+      "consistency": 0.005993524841032922,
+      "seconds": 36.38166928291321,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 63,
+      "seg": 0.4131593561172485,
+      "consistency": 0.017138810532633216,
+      "seconds": 36.41048979759216,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 64,
+      "seg": 0.42114603221416474,
+      "consistency": 0.00813389512943104,
+      "seconds": 35.64108633995056,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 65,
+      "seg": 0.4165500664710999,
+      "consistency": 0.015638402146287263,
+      "seconds": 36.811702251434326,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 66,
+      "seg": 0.41855122447013854,
+      "consistency": 0.007001978708431124,
+      "seconds": 35.42657399177551,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 67,
+      "seg": 0.4181583112478256,
+      "consistency": 0.005672458817716688,
+      "seconds": 35.820940256118774,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 68,
+      "seg": 0.4222492778301239,
+      "consistency": 0.007276781417895109,
+      "seconds": 35.98956656455994,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 69,
+      "seg": 0.42598662197589876,
+      "consistency": 0.014306586377788335,
+      "seconds": 36.20860004425049,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 70,
+      "seg": 0.4064398196339607,
+      "consistency": 0.006891913503641263,
+      "seconds": 36.12515139579773,
+      "n_nonfinite": 0,
+      "val_dice": 0.22265589015064313,
+      "val_consistency": 0.04282383417169488,
+      "gates": [
+        -0.0002,
+        0.0088,
+        -0.006
+      ]
+    },
+    {
+      "epoch": 71,
+      "seg": 0.4112369304895401,
+      "consistency": 0.008653913643211126,
+      "seconds": 37.243295431137085,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 72,
+      "seg": 0.40586819052696227,
+      "consistency": 0.028528558945981785,
+      "seconds": 36.04514813423157,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 73,
+      "seg": 0.41604828923940657,
+      "consistency": 0.006419963110238314,
+      "seconds": 35.90154671669006,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 74,
+      "seg": 0.4094525057077408,
+      "consistency": 0.007263352733571082,
+      "seconds": 36.570899963378906,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 75,
+      "seg": 0.4056219854950905,
+      "consistency": 0.005058668819256127,
+      "seconds": 35.845919609069824,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 76,
+      "seg": 0.40968203991651536,
+      "consistency": 0.005067496760748327,
+      "seconds": 36.32968068122864,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 77,
+      "seg": 0.41099936127662656,
+      "consistency": 0.0055535258445888755,
+      "seconds": 36.378774881362915,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 78,
+      "seg": 0.4027078166604042,
+      "consistency": 0.008258685616310686,
+      "seconds": 35.66631078720093,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 79,
+      "seg": 0.41274349302053454,
+      "consistency": 0.00761329170782119,
+      "seconds": 36.422741413116455,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 80,
+      "seg": 0.4047798362374306,
+      "consistency": 0.004805199628463015,
+      "seconds": 36.448604583740234,
+      "n_nonfinite": 0,
+      "val_dice": 0.2428582615611909,
+      "val_consistency": 0.040678821282297675,
+      "gates": [
+        -0.0,
+        0.0092,
+        -0.0065
+      ]
+    },
+    {
+      "epoch": 81,
+      "seg": 0.39662294238805773,
+      "consistency": 0.0048527980968356135,
+      "seconds": 37.30548310279846,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 82,
+      "seg": 0.40433489650487897,
+      "consistency": 0.010253850751323625,
+      "seconds": 36.18993926048279,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 83,
+      "seg": 0.4108996766805649,
+      "consistency": 0.00799100193195045,
+      "seconds": 35.998133182525635,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 84,
+      "seg": 0.39873905688524247,
+      "consistency": 0.003908027862198651,
+      "seconds": 35.905489921569824,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 85,
+      "seg": 0.3940714430809021,
+      "consistency": 0.008194971102057025,
+      "seconds": 36.2026789188385,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 86,
+      "seg": 0.4078055208921432,
+      "consistency": 0.004740120752248913,
+      "seconds": 36.05731463432312,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 87,
+      "seg": 0.4080357238650322,
+      "consistency": 0.016141542909899727,
+      "seconds": 35.83821511268616,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 88,
+      "seg": 0.4074507638812065,
+      "consistency": 0.004964687649626285,
+      "seconds": 35.99773597717285,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 89,
+      "seg": 0.3944336327910423,
+      "consistency": 0.005870232116430998,
+      "seconds": 36.341129541397095,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 90,
+      "seg": 0.40081688851118086,
+      "consistency": 0.004411513482918963,
+      "seconds": 36.32962608337402,
+      "n_nonfinite": 0,
+      "val_dice": 0.23748844119835344,
+      "val_consistency": 0.042062572677103754,
+      "gates": [
+        0.0001,
+        0.0093,
+        -0.0067
+      ]
+    },
+    {
+      "epoch": 91,
+      "seg": 0.39926912188529967,
+      "consistency": 0.0041224603983573615,
+      "seconds": 37.34399080276489,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 92,
+      "seg": 0.39596104741096494,
+      "consistency": 0.0037040791404433547,
+      "seconds": 36.57791256904602,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 93,
+      "seg": 0.39271708220243456,
+      "consistency": 0.005145683228038251,
+      "seconds": 36.426032304763794,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 94,
+      "seg": 0.3955979347229004,
+      "consistency": 0.0057112144387792795,
+      "seconds": 36.46686029434204,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 95,
+      "seg": 0.39650850236415863,
+      "consistency": 0.005007284412859008,
+      "seconds": 35.765106201171875,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 96,
+      "seg": 0.3869427260756493,
+      "consistency": 0.0032269265619106592,
+      "seconds": 36.214415073394775,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 97,
+      "seg": 0.3855516192317009,
+      "consistency": 0.004387439688434825,
+      "seconds": 36.37303066253662,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 98,
+      "seg": 0.40122593581676486,
+      "consistency": 0.005003379987319931,
+      "seconds": 35.87514066696167,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 99,
+      "seg": 0.3907288503646851,
+      "consistency": 0.003905436684144661,
+      "seconds": 36.306739807128906,
+      "n_nonfinite": 0
+    },
+    {
+      "epoch": 100,
+      "seg": 0.38391431272029874,
+      "consistency": 0.012265947225969284,
+      "seconds": 36.25355410575867,
+      "n_nonfinite": 0,
+      "val_dice": 0.23735274716071247,
+      "val_consistency": 0.04074024248591347,
+      "gates": [
+        0.0001,
+        0.0093,
+        -0.0067
+      ]
+    }
+  ],
+  "best_val_dice": 0.24822567553810004,
+  "final_segmentation": {
+    "per_subject": [
+      {
+        "dice": 0.2575236359494248,
+        "abs_volume_diff_ml": 28.891000000000002,
+        "lesion_f1": 0.22222222222222224,
+        "abs_lesion_count_diff": 19,
+        "subject": "sub-stroke0001"
+      },
+      {
+        "dice": 0.17771513489497956,
+        "abs_volume_diff_ml": 46.959,
+        "lesion_f1": 0.14285714285714288,
+        "abs_lesion_count_diff": 48,
+        "subject": "sub-stroke0005"
+      },
+      {
+        "dice": 0.3610511524142027,
+        "abs_volume_diff_ml": 40.278,
+        "lesion_f1": 1.0,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0006"
+      },
+      {
+        "dice": 0.3715448204598295,
+        "abs_volume_diff_ml": 8.52,
+        "lesion_f1": 0.4,
+        "abs_lesion_count_diff": 11,
+        "subject": "sub-stroke0009"
+      },
+      {
+        "dice": 0.04019300601900214,
+        "abs_volume_diff_ml": 6.877,
+        "lesion_f1": 0.14634146341463417,
+        "abs_lesion_count_diff": 29,
+        "subject": "sub-stroke0010"
+      },
+      {
+        "dice": 0.3962365180142278,
+        "abs_volume_diff_ml": 2.427,
+        "lesion_f1": 0.30769230769230765,
+        "abs_lesion_count_diff": 9,
+        "subject": "sub-stroke0012"
+      },
+      {
+        "dice": 0.2454404636985959,
+        "abs_volume_diff_ml": 12.575000000000001,
+        "lesion_f1": 1.0,
+        "abs_lesion_count_diff": 0,
+        "subject": "sub-stroke0015"
+      },
+      {
+        "dice": 0.05232058444348947,
+        "abs_volume_diff_ml": 9.508000000000001,
+        "lesion_f1": 0.16666666666666666,
+        "abs_lesion_count_diff": 24,
+        "subject": "sub-stroke0019"
+      },
+      {
+        "dice": 0.006107717934480844,
+        "abs_volume_diff_ml": 8.614,
+        "lesion_f1": 0.15384615384615383,
+        "abs_lesion_count_diff": 5,
+        "subject": "sub-stroke0020"
+      },
+      {
+        "dice": 0.4687573970457144,
+        "abs_volume_diff_ml": 81.025,
+        "lesion_f1": 0.4444444444444445,
+        "abs_lesion_count_diff": 6,
+        "subject": "sub-stroke0027"
+      },
+      {
+        "dice": 0.07350372047880945,
+        "abs_volume_diff_ml": 2.907,
+        "lesion_f1": 0.2,
+        "abs_lesion_count_diff": 26,
+        "subject": "sub-stroke0036"
+      },
+      {
+        "dice": 0.08019718206231836,
+        "abs_volume_diff_ml": 1.7730000000000001,
+        "lesion_f1": 0.8,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0045"
+      },
+      {
+        "dice": 0.007692845653542206,
+        "abs_volume_diff_ml": 12.779,
+        "lesion_f1": 0.16,
+        "abs_lesion_count_diff": 16,
+        "subject": "sub-stroke0057"
+      },
+      {
+        "dice": 0.24843923715043187,
+        "abs_volume_diff_ml": 1.258,
+        "lesion_f1": 0.3333333333333333,
+        "abs_lesion_count_diff": 12,
+        "subject": "sub-stroke0062"
+      },
+      {
+        "dice": 0.45571355874703157,
+        "abs_volume_diff_ml": 139.12800000000001,
+        "lesion_f1": 0.33333333333333337,
+        "abs_lesion_count_diff": 5,
+        "subject": "sub-stroke0070"
+      },
+      {
+        "dice": 0.05106580663605339,
+        "abs_volume_diff_ml": 50.547000000000004,
+        "lesion_f1": 0.3333333333333333,
+        "abs_lesion_count_diff": 12,
+        "subject": "sub-stroke0075"
+      },
+      {
+        "dice": 0.5807342160841328,
+        "abs_volume_diff_ml": 60.396,
+        "lesion_f1": 0.9090909090909091,
+        "abs_lesion_count_diff": 5,
+        "subject": "sub-stroke0078"
+      },
+      {
+        "dice": 0.6524847438212112,
+        "abs_volume_diff_ml": 73.559,
+        "lesion_f1": 0.9411764705882353,
+        "abs_lesion_count_diff": 8,
+        "subject": "sub-stroke0080"
+      },
+      {
+        "dice": 0.2486860351646094,
+        "abs_volume_diff_ml": 7.979,
+        "lesion_f1": 0.3636363636363636,
+        "abs_lesion_count_diff": 15,
+        "subject": "sub-stroke0081"
+      },
+      {
+        "dice": 0.38049499116087215,
+        "abs_volume_diff_ml": 12.748000000000001,
+        "lesion_f1": 0.18181818181818182,
+        "abs_lesion_count_diff": 9,
+        "subject": "sub-stroke0083"
+      },
+      {
+        "dice": 0.23279251765604123,
+        "abs_volume_diff_ml": 1.581,
+        "lesion_f1": 0.03508771929824561,
+        "abs_lesion_count_diff": 51,
+        "subject": "sub-stroke0088"
+      },
+      {
+        "dice": 0.05830326186938371,
+        "abs_volume_diff_ml": 11.846,
+        "lesion_f1": 0.25,
+        "abs_lesion_count_diff": 13,
+        "subject": "sub-stroke0089"
+      },
+      {
+        "dice": 0.1940898611033009,
+        "abs_volume_diff_ml": 19.788,
+        "lesion_f1": 0.4,
+        "abs_lesion_count_diff": 10,
+        "subject": "sub-stroke0090"
+      },
+      {
+        "dice": 0.05527011826224425,
+        "abs_volume_diff_ml": 26.149,
+        "lesion_f1": 0.6666666666666666,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0091"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 29.671,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 4,
+        "subject": "sub-stroke0094"
+      },
+      {
+        "dice": 0.12041360907271514,
+        "abs_volume_diff_ml": 50.152,
+        "lesion_f1": 0.23076923076923073,
+        "abs_lesion_count_diff": 2,
+        "subject": "sub-stroke0097"
+      },
+      {
+        "dice": 0.19119290791034207,
+        "abs_volume_diff_ml": 84.667,
+        "lesion_f1": 0.08333333333333334,
+        "abs_lesion_count_diff": 20,
+        "subject": "sub-stroke0098"
+      },
+      {
+        "dice": 0.06751687921980495,
+        "abs_volume_diff_ml": 4.4190000000000005,
+        "lesion_f1": 0.1818181818181818,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0099"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 0.448,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 2,
+        "subject": "sub-stroke0100"
+      },
+      {
+        "dice": 0.2497523970076915,
+        "abs_volume_diff_ml": 18.483,
+        "lesion_f1": 0.45714285714285713,
+        "abs_lesion_count_diff": 25,
+        "subject": "sub-stroke0104"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 1.883,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 35,
+        "subject": "sub-stroke0106"
+      },
+      {
+        "dice": 0.14408819564798767,
+        "abs_volume_diff_ml": 41.826,
+        "lesion_f1": 0.47619047619047616,
+        "abs_lesion_count_diff": 31,
+        "subject": "sub-stroke0111"
+      },
+      {
+        "dice": 0.3167323539949839,
+        "abs_volume_diff_ml": 2.738,
+        "lesion_f1": 0.8,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0112"
+      },
+      {
+        "dice": 0.5062346409392919,
+        "abs_volume_diff_ml": 0.514,
+        "lesion_f1": 0.5,
+        "abs_lesion_count_diff": 10,
+        "subject": "sub-stroke0113"
+      },
+      {
+        "dice": 0.053219394791638494,
+        "abs_volume_diff_ml": 11.261000000000001,
+        "lesion_f1": 0.08,
+        "abs_lesion_count_diff": 13,
+        "subject": "sub-stroke0118"
+      },
+      {
+        "dice": 0.016653696498054475,
+        "abs_volume_diff_ml": 13.9,
+        "lesion_f1": 0.22222222222222218,
+        "abs_lesion_count_diff": 19,
+        "subject": "sub-stroke0133"
+      },
+      {
+        "dice": 0.647426275490865,
+        "abs_volume_diff_ml": 36.554,
+        "lesion_f1": 0.33333333333333337,
+        "abs_lesion_count_diff": 4,
+        "subject": "sub-stroke0137"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 13.674,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 6,
+        "subject": "sub-stroke0141"
+      },
+      {
+        "dice": 0.6208689194207204,
+        "abs_volume_diff_ml": 0.552,
+        "lesion_f1": 0.36363636363636365,
+        "abs_lesion_count_diff": 1,
+        "subject": "sub-stroke0148"
+      },
+      {
+        "dice": 0.047609400324149106,
+        "abs_volume_diff_ml": 5.42,
+        "lesion_f1": 0.2222222222222222,
+        "abs_lesion_count_diff": 3,
+        "subject": "sub-stroke0150"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 2.508,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 2,
+        "subject": "sub-stroke0151"
+      },
+      {
+        "dice": 0.09605643994211288,
+        "abs_volume_diff_ml": 5.8180000000000005,
+        "lesion_f1": 0.2222222222222222,
+        "abs_lesion_count_diff": 57,
+        "subject": "sub-stroke0154"
+      },
+      {
+        "dice": 0.6460719579571487,
+        "abs_volume_diff_ml": 14.136000000000001,
+        "lesion_f1": 0.3333333333333333,
+        "abs_lesion_count_diff": 2,
+        "subject": "sub-stroke0156"
+      },
+      {
+        "dice": 0.5581957091096607,
+        "abs_volume_diff_ml": 22.797,
+        "lesion_f1": 0.10526315789473684,
+        "abs_lesion_count_diff": 17,
+        "subject": "sub-stroke0161"
+      },
+      {
+        "dice": 0.21878830327438278,
+        "abs_volume_diff_ml": 3.54,
+        "lesion_f1": 0.07407407407407407,
+        "abs_lesion_count_diff": 17,
+        "subject": "sub-stroke0163"
+      },
+      {
+        "dice": 0.46856528747984955,
+        "abs_volume_diff_ml": 5.267,
+        "lesion_f1": 0.25,
+        "abs_lesion_count_diff": 2,
+        "subject": "sub-stroke0173"
+      },
+      {
+        "dice": 0.5270725376101284,
+        "abs_volume_diff_ml": 3.333,
+        "lesion_f1": 0.16901408450704225,
+        "abs_lesion_count_diff": 50,
+        "subject": "sub-stroke0177"
+      },
+      {
+        "dice": 0.011222063718497384,
+        "abs_volume_diff_ml": 5.307,
+        "lesion_f1": 0.1818181818181818,
+        "abs_lesion_count_diff": 16,
+        "subject": "sub-stroke0182"
+      },
+      {
+        "dice": 0.426245114740956,
+        "abs_volume_diff_ml": 17.872,
+        "lesion_f1": 0.2,
+        "abs_lesion_count_diff": 11,
+        "subject": "sub-stroke0183"
+      }
+    ],
+    "mean": {
+      "dice": 0.23735274716071247,
+      "abs_volume_diff_ml": 21.731673469387758,
+      "lesion_f1": 0.31383550993387727,
+      "abs_lesion_count_diff": 14.020408163265307
+    }
+  },
+  "final_consistency_loss": 0.04074024248591347,
+  "b0_reference_dice": 0.247,
+  "b1_seg_reference_best_dice": 0.271
+}

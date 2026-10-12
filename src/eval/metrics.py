@@ -21,7 +21,8 @@ import numpy as np
 
 __all__ = ["dice", "absolute_volume_difference", "lesion_count_difference",
            "lesion_wise_f1", "isles24_metrics",
-           "balanced_accuracy", "matthews_corrcoef", "decision_metrics"]
+           "balanced_accuracy", "matthews_corrcoef", "decision_metrics",
+           "expected_calibration_error"]
 
 
 def _bin(x):
@@ -95,6 +96,46 @@ def matthews_corrcoef(y_pred, y_true) -> float:
     num = tp * tn - fp * fn
     den = np.sqrt(float((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn)))
     return float(num / den) if den > 0 else 0.0
+
+
+def expected_calibration_error(probs, labels, n_bins: int = 10) -> dict:
+    """Standard equal-width-bin ECE (Guo et al. 2017), scoped here to
+    per-VOXEL foreground probability vs. true lesion/not-lesion, over the
+    cropped head region every model already restricts its patch/whole-brain
+    view to (not the raw scan's background/air, which would trivially
+    inflate confidence with near-zero true-positive rate).
+
+    This is NOT the same quantity as the base paper's reported ECE (0.130,
+    per-decision calibration of its LVO/collateral/segmentation heads
+    together) -- ours is segmentation-only, since the classification heads
+    are shelved (see CLAUDE.md, Phase 3-4/5). Report side by side with that
+    caveat stated, never as a directly comparable number.
+
+    probs: predicted foreground probability, any shape, flattened here.
+    labels: same-shape ground truth (0/1, or any array where >0 is
+    foreground -- matches this module's `_bin` convention elsewhere).
+    """
+    p = np.asarray(probs, dtype=np.float64).ravel()
+    y = _bin(labels).ravel().astype(np.float64)
+    if p.size == 0:
+        return {"ece": None, "n": 0, "n_bins": n_bins, "bins": []}
+
+    edges = np.linspace(0.0, 1.0, n_bins + 1)
+    ece, bins = 0.0, []
+    for i in range(n_bins):
+        lo, hi = edges[i], edges[i + 1]
+        in_bin = (p > lo) & (p <= hi) if i > 0 else (p >= lo) & (p <= hi)
+        n_in = int(in_bin.sum())
+        if n_in == 0:
+            bins.append({"range": [round(float(lo), 3), round(float(hi), 3)], "n": 0,
+                         "confidence": None, "accuracy": None})
+            continue
+        conf = float(p[in_bin].mean())
+        acc = float(y[in_bin].mean())  # fraction actually foreground in this bin
+        ece += (n_in / p.size) * abs(acc - conf)
+        bins.append({"range": [round(float(lo), 3), round(float(hi), 3)], "n": n_in,
+                     "confidence": round(conf, 4), "accuracy": round(acc, 4)})
+    return {"ece": round(float(ece), 4), "n": int(p.size), "n_bins": n_bins, "bins": bins}
 
 
 def decision_metrics(y_pred_above, y_true_above) -> dict:

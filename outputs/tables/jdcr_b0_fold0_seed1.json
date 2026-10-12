@@ -1,0 +1,844 @@
+{
+  "model_type": "b0",
+  "checkpoint": "outputs\\checkpoints\\segresnet_3fold_fold0_seed1_best.pt",
+  "fold": 0,
+  "patch_size": [
+    128,
+    128,
+    64
+  ],
+  "wb_size": [
+    64,
+    64,
+    48
+  ],
+  "jdcr_strict": {
+    "n_total": 50,
+    "n_unknown_side": 7,
+    "n_known_side": 43,
+    "n_empty_prediction": 43,
+    "n_evaluated": 43,
+    "n_consistent": 0,
+    "coverage": 0.0,
+    "jdcr": 0.0,
+    "definition": "strict (abstaining counts against the model)"
+  },
+  "jdcr_lenient": {
+    "n_total": 50,
+    "n_unknown_side": 7,
+    "n_known_side": 43,
+    "n_empty_prediction": 43,
+    "n_evaluated": 0,
+    "n_consistent": 0,
+    "coverage": 0.0,
+    "jdcr": null,
+    "definition": "lenient (abstaining excluded from denominator -- read with coverage)"
+  },
+  "ece_mean": 0.058592000000000005,
+  "ece_std": 0.006073049975094886,
+  "ece_n_subjects": 50,
+  "ece_note": "voxel-level, segmentation-only -- NOT the base paper's 0.130, see docstring",
+  "rows": [
+    {
+      "subject": "sub-stroke0002",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0002: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0397,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0003",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0003: a confident match to an occlusion of L-ACA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0643,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0008",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0008: a low-confidence match to an occlusion of BA on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.0587,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0011",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0011: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.046,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0026",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0026: a confident match to an occlusion of L-ICA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0554,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0030",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0030: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0583,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0033",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0033: a confident match to an occlusion of L-ACA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0612,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0037",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0037: a confident match to an occlusion of R-ICA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0574,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0040",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0040: a confident match to an occlusion of R-ICA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0584,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0047",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0047: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0611,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0048",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0048: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0639,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0049",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0049: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0626,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0052",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0052: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0596,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0066",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0066: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0346,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0071",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0071: a confident match to an occlusion of R-ICA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0619,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0076",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0076: a low-confidence match to an occlusion of BA on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.0617,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0077",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0077: a low-confidence match to an occlusion of L-PCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0607,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0084",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0084: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0622,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0085",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0085: a low-confidence match to an occlusion of R-ACA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0594,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0086",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0086: a confident match to an occlusion of L-ICA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0659,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0093",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0093: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0576,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0095",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0095: a confident match to an occlusion of R-ICA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.06,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0102",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0102: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0608,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0107",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0107: a confident match to an occlusion of L-ICA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0453,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0108",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0108: a low-confidence match to an occlusion of L-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0617,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0110",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0110: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0623,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0114",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0114: a low-confidence match to an occlusion of L-PCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0513,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0117",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0117: a confident match to an occlusion of L-PCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0621,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0135",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0135: a confident match to an occlusion of R-ACA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0598,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0136",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0136: a low-confidence match to an occlusion of L-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0614,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0138",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0138: a low-confidence match to an occlusion of BA on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.055,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0142",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0142: a low-confidence match to an occlusion of BA on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.0627,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0143",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0143: a low-confidence match to an occlusion of BA on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.0628,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0144",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0144: a low-confidence match to an occlusion of BA on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.0613,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0147",
+      "expected_side": null,
+      "laterality": {
+        "evaluable": false,
+        "reason": "unknown_side",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0147: no large-vessel occlusion was identified on admission imaging. Laterality consistency: not evaluable -- the expected occlusion side or midline is unknown for this subject.",
+      "ece": 0.0625,
+      "occlusion_status": "empty_lvo_mask",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0149",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0149: a low-confidence match to an occlusion of R-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0599,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0155",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0155: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0533,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0157",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0157: a confident match to an occlusion of L-PCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0519,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0158",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0158: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0631,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0162",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0162: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0646,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0165",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0165: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0573,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0168",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0168: a confident match to an occlusion of L-ICA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0561,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0169",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0169: a low-confidence match to an occlusion of R-PCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0602,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0172",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0172: a confident match to an occlusion of L-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0631,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0178",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0178: a low-confidence match to an occlusion of L-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0577,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0180",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0180: a low-confidence match to an occlusion of L-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0641,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0184",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0184: a low-confidence match to an occlusion of L-ICA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0604,
+      "occlusion_status": "ok",
+      "confident": false
+    },
+    {
+      "subject": "sub-stroke0185",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0185: a confident match to an occlusion of L-PCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0601,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0186",
+      "expected_side": "left",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0186: a confident match to an occlusion of L-PCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0609,
+      "occlusion_status": "ok",
+      "confident": true
+    },
+    {
+      "subject": "sub-stroke0187",
+      "expected_side": "right",
+      "laterality": {
+        "evaluable": false,
+        "reason": "empty_prediction",
+        "predicted_side": null,
+        "consistent": null,
+        "right_fraction": null,
+        "n_predicted_voxels": 0
+      },
+      "rationale": "Subject sub-stroke0187: a confident match to an occlusion of R-MCA on admission imaging. Laterality consistency: INCONSISTENT (by the strict definition) -- the model predicted no lesion voxels at all, so its laterality cannot match the side admission imaging points to. Flagged for clinician review: a real prediction of 'no lesion' still needs to be checked against the occlusion evidence, not skipped.",
+      "ece": 0.0573,
+      "occlusion_status": "ok",
+      "confident": true
+    }
+  ],
+  "rationale_sample": []
+}

@@ -1,0 +1,369 @@
+{
+  "b0_all_9": {
+    "label": "B0, all 9 runs (includes 2 collapsed)",
+    "n_runs": 9,
+    "dice_final": {
+      "mean": 0.1912,
+      "sd": 0.0918,
+      "n": 9
+    },
+    "dice_best": {
+      "mean": 0.1937,
+      "sd": 0.0931,
+      "n": 9
+    },
+    "jdcr_strict": {
+      "mean": 0.7489,
+      "sd": 0.4009,
+      "n": 9
+    },
+    "ece": {
+      "mean": 0.0263,
+      "sd": 0.018,
+      "n": 9
+    }
+  },
+  "b0_clean_7": {
+    "label": "B0, 7 non-collapsed runs only",
+    "n_runs": 7,
+    "dice_final": {
+      "mean": 0.2401,
+      "sd": 0.0097,
+      "n": 7
+    },
+    "dice_best": {
+      "mean": 0.2433,
+      "sd": 0.0084,
+      "n": 7
+    },
+    "jdcr_strict": {
+      "mean": 0.9629,
+      "sd": 0.0242,
+      "n": 7
+    },
+    "ece": {
+      "mean": 0.0169,
+      "sd": 0.0035,
+      "n": 7
+    }
+  },
+  "b1_all_3": {
+    "label": "B1, 3 runs (fold 0 only)",
+    "n_runs": 3,
+    "dice_final": {
+      "mean": 0.2247,
+      "sd": 0.0024,
+      "n": 3
+    },
+    "dice_best": {
+      "mean": 0.2478,
+      "sd": 0.0072,
+      "n": 3
+    },
+    "jdcr_strict": {
+      "mean": 0.969,
+      "sd": 0.0219,
+      "n": 3
+    },
+    "ece": {
+      "mean": 0.0085,
+      "sd": 0.0015,
+      "n": 3
+    }
+  },
+  "b2_all_9": {
+    "label": "B2, all 9 runs",
+    "n_runs": 9,
+    "dice_final": {
+      "mean": 0.2416,
+      "sd": 0.0122,
+      "n": 9
+    },
+    "dice_best": {
+      "mean": 0.2566,
+      "sd": 0.008,
+      "n": 9
+    },
+    "jdcr_strict": {
+      "mean": 0.9651,
+      "sd": 0.0227,
+      "n": 9
+    },
+    "ece": {
+      "mean": 0.0097,
+      "sd": 0.0012,
+      "n": 9
+    }
+  },
+  "b0_collapsed_runs": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "passmarks_vs_b0_all_9": {
+    "jdcr_primary_pass": true,
+    "dice_gap": -0.0504,
+    "guard_pass": true
+  },
+  "passmarks_vs_b0_clean_7": {
+    "jdcr_primary_pass": true,
+    "dice_gap": -0.0015,
+    "guard_pass": true
+  },
+  "all_runs": {
+    "b0": [
+      {
+        "model": "b0",
+        "fold": 0,
+        "seed": 0,
+        "dice_best": 0.240638586025203,
+        "dice_final": 0.23595245458050393,
+        "jdcr_strict": 0.9302,
+        "coverage": 0.9767,
+        "ece": 0.015642,
+        "collapsed": false
+      },
+      {
+        "model": "b0",
+        "fold": 0,
+        "seed": 1,
+        "dice_best": 0.02,
+        "dice_final": 0.02,
+        "jdcr_strict": 0.0,
+        "coverage": 0.0,
+        "ece": 0.058592000000000005,
+        "collapsed": true
+      },
+      {
+        "model": "b0",
+        "fold": 0,
+        "seed": 2,
+        "dice_best": 0.2459821473714599,
+        "dice_final": 0.24445699068368412,
+        "jdcr_strict": 0.9767,
+        "coverage": 1.0,
+        "ece": 0.020888,
+        "collapsed": false
+      },
+      {
+        "model": "b0",
+        "fold": 1,
+        "seed": 0,
+        "dice_best": 0.23638237748297422,
+        "dice_final": 0.23114680868434678,
+        "jdcr_strict": 1.0,
+        "coverage": 1.0,
+        "ece": 0.021314285714285713,
+        "collapsed": false
+      },
+      {
+        "model": "b0",
+        "fold": 1,
+        "seed": 1,
+        "dice_best": 0.02040816326530612,
+        "dice_final": 0.02040816326530612,
+        "jdcr_strict": 0.0,
+        "coverage": 0.0,
+        "ece": 0.06020204081632652,
+        "collapsed": true
+      },
+      {
+        "model": "b0",
+        "fold": 1,
+        "seed": 2,
+        "dice_best": 0.23679504427900236,
+        "dice_final": 0.22865801412346468,
+        "jdcr_strict": 0.973,
+        "coverage": 1.0,
+        "ece": 0.017893877551020405,
+        "collapsed": false
+      },
+      {
+        "model": "b0",
+        "fold": 2,
+        "seed": 0,
+        "dice_best": 0.25392476202667963,
+        "dice_final": 0.25392476202667963,
+        "jdcr_strict": 0.9767,
+        "coverage": 1.0,
+        "ece": 0.013106122448979594,
+        "collapsed": false
+      },
+      {
+        "model": "b0",
+        "fold": 2,
+        "seed": 1,
+        "dice_best": 0.23315906162048528,
+        "dice_final": 0.23315906162048528,
+        "jdcr_strict": 0.9535,
+        "coverage": 0.9767,
+        "ece": 0.011110204081632652,
+        "collapsed": false
+      },
+      {
+        "model": "b0",
+        "fold": 2,
+        "seed": 2,
+        "dice_best": 0.25642767743225664,
+        "dice_final": 0.25312358939547813,
+        "jdcr_strict": 0.9302,
+        "coverage": 1.0,
+        "ece": 0.0180734693877551,
+        "collapsed": false
+      }
+    ],
+    "b1": [
+      {
+        "model": "b1",
+        "fold": 0,
+        "seed": 0,
+        "dice_best": 0.25413817727219606,
+        "dice_final": 0.22699961223643794,
+        "jdcr_strict": 1.0,
+        "coverage": 1.0,
+        "ece": 0.010538,
+        "collapsed": false
+      },
+      {
+        "model": "b1",
+        "fold": 0,
+        "seed": 1,
+        "dice_best": 0.237750096604069,
+        "dice_final": 0.22573626306313635,
+        "jdcr_strict": 0.9535,
+        "coverage": 1.0,
+        "ece": 0.007342,
+        "collapsed": false
+      },
+      {
+        "model": "b1",
+        "fold": 0,
+        "seed": 2,
+        "dice_best": 0.2516100636113407,
+        "dice_final": 0.22132450444285823,
+        "jdcr_strict": 0.9535,
+        "coverage": 1.0,
+        "ece": 0.0075780000000000005,
+        "collapsed": false
+      }
+    ],
+    "b2": [
+      {
+        "model": "b2",
+        "fold": 0,
+        "seed": 0,
+        "dice_best": 0.25963039351989564,
+        "dice_final": 0.23314907026910794,
+        "jdcr_strict": 1.0,
+        "coverage": 1.0,
+        "ece": 0.008878,
+        "collapsed": false
+      },
+      {
+        "model": "b2",
+        "fold": 0,
+        "seed": 1,
+        "dice_best": 0.24824946675710202,
+        "dice_final": 0.22135407932286624,
+        "jdcr_strict": 0.9767,
+        "coverage": 1.0,
+        "ece": 0.007352,
+        "collapsed": false
+      },
+      {
+        "model": "b2",
+        "fold": 0,
+        "seed": 2,
+        "dice_best": 0.25639858298453116,
+        "dice_final": 0.2347232761216145,
+        "jdcr_strict": 0.9535,
+        "coverage": 1.0,
+        "ece": 0.009352000000000001,
+        "collapsed": false
+      },
+      {
+        "model": "b2",
+        "fold": 1,
+        "seed": 0,
+        "dice_best": 0.24656857701985818,
+        "dice_final": 0.2375238675801568,
+        "jdcr_strict": 1.0,
+        "coverage": 1.0,
+        "ece": 0.010381632653061225,
+        "collapsed": false
+      },
+      {
+        "model": "b2",
+        "fold": 1,
+        "seed": 1,
+        "dice_best": 0.251211268586673,
+        "dice_final": 0.23799835468664496,
+        "jdcr_strict": 0.973,
+        "coverage": 1.0,
+        "ece": 0.01059795918367347,
+        "collapsed": false
+      },
+      {
+        "model": "b2",
+        "fold": 1,
+        "seed": 2,
+        "dice_best": 0.24822567553810004,
+        "dice_final": 0.23735274716071247,
+        "jdcr_strict": 0.9459,
+        "coverage": 1.0,
+        "ece": 0.01113673469387755,
+        "collapsed": false
+      },
+      {
+        "model": "b2",
+        "fold": 2,
+        "seed": 0,
+        "dice_best": 0.26641236413025643,
+        "dice_final": 0.2568893351439626,
+        "jdcr_strict": 0.9535,
+        "coverage": 1.0,
+        "ece": 0.01087142857142857,
+        "collapsed": false
+      },
+      {
+        "model": "b2",
+        "fold": 2,
+        "seed": 1,
+        "dice_best": 0.26550178228007604,
+        "dice_final": 0.25499336669221473,
+        "jdcr_strict": 0.9302,
+        "coverage": 1.0,
+        "ece": 0.008751020408163265,
+        "collapsed": false
+      },
+      {
+        "model": "b2",
+        "fold": 2,
+        "seed": 2,
+        "dice_best": 0.2673284443456202,
+        "dice_final": 0.2601600511296852,
+        "jdcr_strict": 0.9535,
+        "coverage": 1.0,
+        "ece": 0.0099,
+        "collapsed": false
+      }
+    ]
+  },
+  "paired_wilcoxon_test": {
+    "description": "per-subject paired dice, B2 vs B0, using only the 7 fold/seed combos where B0 did not collapse (345 paired subject-observations)",
+    "mean_b0_dice": 0.2401,
+    "mean_b2_dice": 0.2449,
+    "mean_paired_diff": 0.0048,
+    "n_b2_better": 165,
+    "n_b0_better": 147,
+    "n_tied": 33,
+    "wilcoxon_statistic": 22522.0,
+    "p_value": 0.2355,
+    "significant_at_0.05": false
+  }
+}
