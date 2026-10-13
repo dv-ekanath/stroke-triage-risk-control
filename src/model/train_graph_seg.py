@@ -52,6 +52,11 @@ def main():
     ap.add_argument("--warm-start", type=pathlib.Path, default=None,
                      help="Review 1 / B0 SegResNet checkpoint to initialize the shared trunk from")
     ap.add_argument("--gnn-stage", type=int, default=1)
+    ap.add_argument("--gate-init", type=float, default=0.0,
+                     help="initial value of each cross-attention gate (default 0.0 = provable "
+                          "no-op at init, every prior run). Nonzero 'forces the gate open' from "
+                          "the start, testing whether it HELPS when given the chance, not just "
+                          "whether it opens on its own -- CLAUDE.md 2026-10-13")
     ap.add_argument("--edge-mode", choices=["anatomical", "random"], default="anatomical",
                      help="'random' swaps the real CoW anatomy for a same-size random graph "
                           "(the 'is it the real anatomy or just a graph' ablation, CLAUDE.md 2026-10)")
@@ -66,6 +71,7 @@ def main():
     # each other -- defined once, up front, not inside the training loop
     seed_suffix = "" if args.seed == 0 else f"_seed{args.seed}"
     edge_tag = "" if args.edge_mode == "anatomical" else f"_random{args.edge_seed}"
+    gate_tag = "" if args.gate_init == 0.0 else f"_gateinit{args.gate_init}".replace(".", "p")
 
     from src.model.labels import load_auxiliary_labels
     from src.model.gnn_head import topcow_label_order
@@ -114,7 +120,10 @@ def main():
         from src.model.gnn_head import random_edge_index
         edge_index = random_edge_index(seed=args.edge_seed)
         print(f"  edge-mode: RANDOM (seed={args.edge_seed}) -- {edge_index.shape[1]//2} edges, not the real CoW anatomy")
-    model = GraphInjectedSegResNet(in_channels=6, gnn_stage=args.gnn_stage, edge_index=edge_index).to(device)
+    model = GraphInjectedSegResNet(in_channels=6, gnn_stage=args.gnn_stage, edge_index=edge_index,
+                                    gate_init=args.gate_init).to(device)
+    if args.gate_init != 0.0:
+        print(f"  gate-init: {args.gate_init} (forced open, not the provable-no-op default)")
     if args.warm_start:
         model.load_trunk_from_baseline(str(args.warm_start), map_location=device)
         print(f"  warm-started trunk from {args.warm_start}")
@@ -195,7 +204,7 @@ def main():
             if mean_dice > best_dice:
                 best_dice = mean_dice
                 torch.save(model.state_dict(),
-                           OUT_CKPT / f"graph_seg{edge_tag}_fold{args.fold}{seed_suffix}_best.pt")
+                           OUT_CKPT / f"graph_seg{edge_tag}{gate_tag}_fold{args.fold}{seed_suffix}_best.pt")
                 print("  new best, checkpoint saved")
 
     print("\nfinal evaluation:")
@@ -218,7 +227,7 @@ def main():
         "final_segmentation": {"per_subject": per_subject, "mean": agg},
         "b0_reference_dice": 0.247,
     }
-    out_path = OUT_TAB / f"b1_graph_seg{edge_tag}_fold{args.fold}{seed_suffix}.json"
+    out_path = OUT_TAB / f"b1_graph_seg{edge_tag}{gate_tag}_fold{args.fold}{seed_suffix}.json"
     out_path.write_text(json.dumps(payload, indent=2))
     print(f"\nwrote {out_path}")
 

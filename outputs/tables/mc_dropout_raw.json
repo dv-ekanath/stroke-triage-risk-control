@@ -1,0 +1,452 @@
+[
+  {
+    "fold": 0,
+    "subject": "sub-stroke0002",
+    "dice": 0.1351167604208109,
+    "pred_voxels": 14603,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.12837740300124445,
+    "mc_dropout_volume_cv": 0.08833871070478028
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0003",
+    "dice": 0.0,
+    "pred_voxels": 22086,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.08370892052664447,
+    "mc_dropout_volume_cv": 0.08496373398664504
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0008",
+    "dice": 0.017863049950380416,
+    "pred_voxels": 5357,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.1362167984671785,
+    "mc_dropout_volume_cv": 0.11655187546046485
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0011",
+    "dice": 0.38628145791148394,
+    "pred_voxels": 32398,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.07776259652383244,
+    "mc_dropout_volume_cv": 0.08150629977862561
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0026",
+    "dice": 0.0,
+    "pred_voxels": 1927,
+    "knowledge_flagged": true,
+    "mc_dropout_disagreement": 0.5709065571095362,
+    "mc_dropout_volume_cv": 0.6017019895302209
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0030",
+    "dice": 0.3351229738712481,
+    "pred_voxels": 5413,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.07627914688872539,
+    "mc_dropout_volume_cv": 0.04985806825336828
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0033",
+    "dice": 0.0,
+    "pred_voxels": 2273,
+    "knowledge_flagged": true,
+    "mc_dropout_disagreement": 0.5834665456742356,
+    "mc_dropout_volume_cv": 0.505360035564645
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0037",
+    "dice": 0.46965699208443273,
+    "pred_voxels": 10874,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.06552100783448944,
+    "mc_dropout_volume_cv": 0.054790372740860335
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0040",
+    "dice": 0.6061078552610355,
+    "pred_voxels": 22078,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.04693613762805715,
+    "mc_dropout_volume_cv": 0.059462773768185796
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0047",
+    "dice": 0.488572739788894,
+    "pred_voxels": 16124,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.07727749176347132,
+    "mc_dropout_volume_cv": 0.07310012571204605
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0048",
+    "dice": 0.00441257584114727,
+    "pred_voxels": 18585,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.10265752390736305,
+    "mc_dropout_volume_cv": 0.10448476285267903
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0049",
+    "dice": 0.006505735319294641,
+    "pred_voxels": 7628,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.16950700426577658,
+    "mc_dropout_volume_cv": 0.08007687686581592
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0052",
+    "dice": 0.678003012540152,
+    "pred_voxels": 23811,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.09662724355989705,
+    "mc_dropout_volume_cv": 0.09433930656345307
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0066",
+    "dice": 0.00041011760122215045,
+    "pred_voxels": 2561,
+    "knowledge_flagged": true,
+    "mc_dropout_disagreement": 0.6769609519057735,
+    "mc_dropout_volume_cv": 1.0684092316014142
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0071",
+    "dice": 0.40377033021192704,
+    "pred_voxels": 25132,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.0724674452635532,
+    "mc_dropout_volume_cv": 0.09485809372411061
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0076",
+    "dice": 0.29087236460042926,
+    "pred_voxels": 5173,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.16761734126711636,
+    "mc_dropout_volume_cv": 0.0995288500706965
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0077",
+    "dice": 0.1596958174904943,
+    "pred_voxels": 726,
+    "knowledge_flagged": true,
+    "mc_dropout_disagreement": 0.5149830737104422,
+    "mc_dropout_volume_cv": 0.21750797239954164
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0084",
+    "dice": 0.18272632674297606,
+    "pred_voxels": 8273,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.06297650426852353,
+    "mc_dropout_volume_cv": 0.07145203456011
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0085",
+    "dice": 0.0,
+    "pred_voxels": 192,
+    "knowledge_flagged": true,
+    "mc_dropout_disagreement": 0.7600226257837362,
+    "mc_dropout_volume_cv": 1.2109476682241909
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0086",
+    "dice": 0.0,
+    "pred_voxels": 30795,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.09298141970324536,
+    "mc_dropout_volume_cv": 0.08408642595189453
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0093",
+    "dice": 0.15206764027671021,
+    "pred_voxels": 12949,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.09487993713273646,
+    "mc_dropout_volume_cv": 0.06927968714077881
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0095",
+    "dice": 0.5266762990314122,
+    "pred_voxels": 51178,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.06585059777941682,
+    "mc_dropout_volume_cv": 0.0733251883898604
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0102",
+    "dice": 0.1398858075040783,
+    "pred_voxels": 649,
+    "knowledge_flagged": true,
+    "mc_dropout_disagreement": 0.2638744343799192,
+    "mc_dropout_volume_cv": 0.12768679291849291
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0107",
+    "dice": 0.23237851073969992,
+    "pred_voxels": 22159,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.08124163796253836,
+    "mc_dropout_volume_cv": 0.05782766946254116
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0108",
+    "dice": 0.38712949754319226,
+    "pred_voxels": 22733,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.0735275433998317,
+    "mc_dropout_volume_cv": 0.06377032663758098
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0110",
+    "dice": 0.00018083416215657655,
+    "pred_voxels": 68280,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.03859513154954175,
+    "mc_dropout_volume_cv": 0.0274307009951264
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0114",
+    "dice": 0.03169254393448217,
+    "pred_voxels": 1141,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.4262803807977641,
+    "mc_dropout_volume_cv": 0.5372937238561132
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0117",
+    "dice": 0.0,
+    "pred_voxels": 0,
+    "knowledge_flagged": true,
+    "mc_dropout_disagreement": 0.7427293064876958,
+    "mc_dropout_volume_cv": 1.0540541382378084
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0135",
+    "dice": 0.5047921587792892,
+    "pred_voxels": 19515,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.06026782195917291,
+    "mc_dropout_volume_cv": 0.058938101463164624
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0136",
+    "dice": 0.36330578512396694,
+    "pred_voxels": 7004,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.25519215821235897,
+    "mc_dropout_volume_cv": 0.3198057359280966
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0138",
+    "dice": 0.45692332984347556,
+    "pred_voxels": 75541,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.05166589414296652,
+    "mc_dropout_volume_cv": 0.047419968545275686
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0142",
+    "dice": 0.0,
+    "pred_voxels": 0,
+    "knowledge_flagged": true,
+    "mc_dropout_disagreement": 0.0,
+    "mc_dropout_volume_cv": NaN
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0143",
+    "dice": 0.3458754133523997,
+    "pred_voxels": 15366,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.14655337583554262,
+    "mc_dropout_volume_cv": 0.11865418436583153
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0144",
+    "dice": 0.2845553822152886,
+    "pred_voxels": 18226,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.14721217975770706,
+    "mc_dropout_volume_cv": 0.08389139078283259
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0147",
+    "dice": 0.0,
+    "pred_voxels": 4705,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.22834410747930045,
+    "mc_dropout_volume_cv": 0.3373121083487216
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0149",
+    "dice": 0.30060792397456504,
+    "pred_voxels": 23815,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.13207778591119423,
+    "mc_dropout_volume_cv": 0.12314628890775306
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0155",
+    "dice": 0.4336719655734806,
+    "pred_voxels": 33770,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.06373279947428778,
+    "mc_dropout_volume_cv": 0.03033499159716861
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0157",
+    "dice": 0.30903581087686144,
+    "pred_voxels": 16918,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.12292286199845948,
+    "mc_dropout_volume_cv": 0.08927490148789684
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0158",
+    "dice": 0.4250070160095548,
+    "pred_voxels": 34073,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.07423314656925906,
+    "mc_dropout_volume_cv": 0.0722969638668352
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0162",
+    "dice": 0.0,
+    "pred_voxels": 12432,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.13409380999166276,
+    "mc_dropout_volume_cv": 0.09326517138508095
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0165",
+    "dice": 0.48869688077382895,
+    "pred_voxels": 14756,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.07755475283507962,
+    "mc_dropout_volume_cv": 0.05573397910393528
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0168",
+    "dice": 0.6868567605328926,
+    "pred_voxels": 48374,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.05853820594725945,
+    "mc_dropout_volume_cv": 0.042592826288200845
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0169",
+    "dice": 0.19319992916592882,
+    "pred_voxels": 10084,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.2034679776431314,
+    "mc_dropout_volume_cv": 0.16757519803102786
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0172",
+    "dice": 0.0063043752364140716,
+    "pred_voxels": 4019,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.1438161409850972,
+    "mc_dropout_volume_cv": 0.15799364870909435
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0178",
+    "dice": 0.6636920339160474,
+    "pred_voxels": 37692,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.04865412522771628,
+    "mc_dropout_volume_cv": 0.05054301281780252
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0180",
+    "dice": 0.020192307692307693,
+    "pred_voxels": 24576,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.11631374930719895,
+    "mc_dropout_volume_cv": 0.11719236872585702
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0184",
+    "dice": 0.027530707327403644,
+    "pred_voxels": 1328,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.7035865078027573,
+    "mc_dropout_volume_cv": 0.728494810576199
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0185",
+    "dice": 0.0,
+    "pred_voxels": 0,
+    "knowledge_flagged": true,
+    "mc_dropout_disagreement": 0.5752212389380531,
+    "mc_dropout_volume_cv": 1.7844754773507516
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0186",
+    "dice": 0.3451926628093069,
+    "pred_voxels": 7808,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.13626330959786015,
+    "mc_dropout_volume_cv": 0.049259831708332605
+  },
+  {
+    "fold": 0,
+    "subject": "sub-stroke0187",
+    "dice": 0.5777825787547766,
+    "pred_voxels": 51124,
+    "knowledge_flagged": false,
+    "mc_dropout_disagreement": 0.11083977365514497,
+    "mc_dropout_volume_cv": 0.11508651532231393
+  }
+]

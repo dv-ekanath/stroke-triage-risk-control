@@ -70,13 +70,24 @@ The headline results:
   heads for a real, 98%-populated clinical label (NIHSS) shows multi-task
   learning was never broken on this architecture — it was the specific
   labels.
-- **Separately (§6c): segmentation accuracy improved by +0.033 Dice**
+- **Separately (§6d): segmentation accuracy improved by +0.033 Dice**
   (confirmed across 3 seeds, sd 0.0051), by adopting the ISLES'24
   challenge winner's own published preprocessing approach (skull-
   stripping + clinically-motivated perfusion windowing) — now within
   0.012 Dice of their actual winning score. This is explicitly **not**
   a novelty claim; it is applied engineering, reported separately from
   the project's actual contribution (§9).
+- **The strongest candidate for a genuine new contribution (§6c):** the
+  knowledge-grounded triage flag beats a standard ensemble-disagreement
+  uncertainty baseline by a wide margin at catching real segmentation
+  failures (AUROC 0.836 vs. 0.583), with a 100%-precision unique catch of
+  failures the baseline misses entirely. A second baseline (MC-dropout)
+  gives a more nuanced, equally honest result: it's competitive or better
+  on ordinary, non-catastrophic failures, while the knowledge flag
+  dominates specifically on catastrophic, structurally obvious ones. That
+  more qualified claim is the real, falsifiable finding — course-project
+  scale, not yet a submission-ready paper, but the clearest shot this
+  project has produced at an actual new contribution.
 
 ---
 
@@ -480,6 +491,54 @@ same tiny range regardless of wiring, which is a diagnosis, not just a
 result — very little information passes through this pathway either way.
 `outputs/tables/random_edge_ablation.json`.
 
+### Closing the loop: does an open gate help, and is feature quality the problem? (2026-10-13)
+
+Three more tests, the most direct evidence yet, from genuinely new angles:
+
+**Does our own vessel-presence data actually disagree with reality?**
+TopCoW's own team had already run expert vessel annotation on 26 of our
+own ISLES'24 subjects (`CTA_ISLES2024_TUM.zip`, Zenodo 15692630) — a
+rare chance to check our auto-derived features against real expert
+ground truth, not just a plausibility gate. Result: **91.8% agreement**
+across 182 comparisons, strong on every vessel (88–100%) except Acom
+specifically (76.9%). This weakens the case for the bigger TopCoW
+feature-grounding build (training a vessel segmenter on the 10.5GB main
+release) — our features aren't badly wrong across the board, so there's
+less headroom to recover than assumed. A direct follow-up — does feature
+disagreement with the experts predict worse Dice? — also came back null
+(rho=-0.13, p≈0.5 for both B0 and B2, pre-registered rho<0 and p<0.05).
+A separate, broader check (graph completeness, 0–12 vessels present,
+across all 1038 subject-run pairs from Phase 8) was also null, and in
+the wrong direction (rho=-0.09, p=0.003 — more complete graphs correlate
+with slightly *lower* Dice, likely a lesion-severity confound, not
+chased further).
+
+**Does the graph help if its gate is forced open from the start, not just
+observed never to open on its own?** Every prior test only showed the
+gate staying near zero *by itself*. B1, fold 0, 3 seeds, gate
+initialized to 1.0 instead of the provable-no-op 0.0:
+
+| seed | gate-open Dice | zero-init Dice | diff |
+|---|---|---|---|
+| 0 | 0.2272 | 0.2270 | +0.0002 |
+| 1 | 0.2244 | 0.2257 | −0.0014 |
+| 2 | 0.2204 | 0.2213 | −0.0009 |
+
+The gates **stayed open for all 100 epochs in all 3 seeds** (final
+values ~1.0–1.03, never drifted back toward zero) — so the zero-init
+gate never opening on its own was not the model actively suppressing
+the pathway; it simply had no reason to move. But an open, stable gate
+produced essentially identical Dice to a closed one (mean diff −0.0007).
+
+Combined with the random-edge ablation (doesn't matter what it's wired
+to) and this (doesn't matter how open it is), these three checks and
+this one experiment are as complete a mechanism-level case as this
+project can build: under every architectural condition tried, the graph
+pathway has nothing useful to contribute to segmentation accuracy.
+`outputs/tables/topcow_expert_vessel_validation.json`,
+`topcow_feature_quality_vs_dice.json`, `graph_completeness_vs_dice.json`,
+`gate_open_experiment.json`.
+
 ### Rejected: a second, independent collateral measure
 
 Checks 2/4/5 (§5, §8) already rejected HIR (a perfusion-based proxy) as a
@@ -584,7 +643,83 @@ single-task training coincided with avoiding that failure mode.
 
 ---
 
-## 6c. Closing the gap to the published state of the art (2026-10-11/12)
+## 6c. Does the knowledge-grounded triage flag beat a standard baseline? (2026-10-13)
+
+With the graph's accuracy claim closed by four independent checks (§6b),
+this is the strongest remaining candidate for a genuine new contribution:
+not "does our consistency check work" (already shown, §6b, p=1.4e-50) but
+"does it add something a standard statistical uncertainty method doesn't
+already give you for free." A check that only matches an existing,
+well-known method isn't a contribution; one that clearly beats it, or
+catches something it misses, is.
+
+**Setup.** Reused the 3 already-trained B0 seeds per fold (no new
+training). For fold 0 and fold 1 (99 subjects, 297 subject-seed
+predictions total), computed, alongside the knowledge flag, a standard
+**ensemble-disagreement** signal — how much the 3 seeds' own predictions
+disagree with each other (1 − mean pairwise Dice between them), the most
+standard uncertainty baseline in the field ("deep ensembles") — and a
+simpler volume-variability proxy. Separately, on a smaller, single-model
+subset (fold 0, seed 0, 50 subjects, no collapsed-seed cases), ran
+**MC-dropout** (6 stochastic passes per subject; this SegResNet has
+exactly one dropout layer, checked directly, not assumed — a real
+constraint on how strong this baseline can be here).
+
+**Result — the knowledge flag clearly beats the standard ensemble baseline:**
+
+| signal (n=297, fold 0+1) | Spearman rho vs. Dice | AUROC, severe-failure detection |
+|---|---|---|
+| **Knowledge flag** (laterality + near-zero volume) | **−0.754**, p=9×10⁻⁵⁶ | **0.836**, p=5×10⁻³³ |
+| Ensemble disagreement | −0.214, p=2×10⁻⁴ | 0.583, p=0.007 |
+| Volume coefficient of variation | −0.186, p=0.001 | 0.575, p=0.013 |
+
+(Severe failure fixed, before running, as Dice < 0.05; the ensemble
+baseline passes its own sanity check — it does predict Dice — so this is
+a real comparison, not a strawman.)
+
+**The most informative number isn't the AUC gap, it's the complementarity.**
+Of 156 real failures: the knowledge flag alone catches 69.2% (108),
+ensemble disagreement alone catches 32.7% (51). Of the 76 failures the
+knowledge flag catches that disagreement *misses entirely*, **100% are
+real failures** — essentially no false positives in that unique catch.
+Disagreement's own unique catches (40 cases) are only 47.5% real failures
+— much noisier. Together the two catch 81.4% of all failures; 18.6% are
+missed by both, reported as a real residual, not hidden.
+
+**The MC-dropout comparison is more nuanced, and that nuance is the
+honest finding, not a weakness to paper over.** On its smaller,
+single-model, no-collapse-cases subset, MC-dropout's volume
+coefficient-of-variation actually **beats** the knowledge flag (AUROC
+0.819 vs. 0.652). These two comparisons aren't on the same subset — the
+297-row comparison includes the collapsed-seed cases, which the
+knowledge flag's near-zero-volume criterion catches almost by
+construction. The honest, falsifiable reading: **knowledge-grounded
+checks dominate specifically at catching catastrophic, structurally
+obvious failures (total collapse, a clearly wrong-side prediction) that
+have an unambiguous domain signature; for subtler, within-normal-range
+uncertainty, a well-chosen statistical signal is competitive or better.**
+That is a more defensible claim than an unqualified "ours wins" — it is
+also, not coincidentally, the more interesting one for a paper, since it
+says something specific about *when* domain knowledge adds value rather
+than claiming it always does.
+
+**Scope and limits, disclosed:** one architecture (B0), 2 of 3 folds for
+the main comparison, a smaller and differently-scoped subset for
+MC-dropout (not directly comparable to the ensemble numbers), and a
+single dropout layer limiting how strong that particular baseline could
+ever be here. This is course-project-scale evidence for a real, specific,
+testable claim — not yet a submission-ready paper, which would need the
+comparison run at matched scope across both baselines, more folds, and
+ideally a second architecture or dataset.
+
+`outputs/tables/failure_detection_raw.json`,
+`failure_detection_comparison.json`, `mc_dropout_raw.json`. Code:
+`src/eval/failure_detection_baselines.py`, `mc_dropout_baseline.py`,
+`failure_detection_compare.py`.
+
+---
+
+## 6d. Closing the gap to the published state of the art (2026-10-11/12)
 
 **This section is applied engineering, not a novelty claim** — it is directly
 adapted from a published, challenge-winning team's documented approach, not
@@ -881,7 +1016,7 @@ against the data before a model is trained to obey them.
 
 **What this project does NOT claim as novel:** the +0.033 Dice
 improvement from adopting the ISLES'24 challenge winner's own published
-preprocessing approach (§6c). That closes a real gap against the state
+preprocessing approach (§6d). That closes a real gap against the state
 of the art, but it is applied engineering borrowed from a published
 source, not a contribution of this project's own, and is reported
 separately for exactly that reason.
@@ -919,6 +1054,9 @@ evidence shows, not adjusted to fit what we hoped to find.
 | Triage/abstention check | `src/eval/triage_check.py` |
 | Ensemble fix for the training collapse | `src/eval/ensemble_check.py` |
 | NIHSS auxiliary head (idea 3) | `src/model/segresnet_aux.py`, `src/model/train_seg_nihss.py`, `src/model/labels.py` (`load_nihss_labels`) |
+| Force-the-gate-open experiment | `src/model/segresnet_graph.py` (`gate_init`), `--gate-init` on `train_graph_seg.py` |
+| TopCoW expert-feature validation | ad hoc analysis against `CTA_ISLES2024_TUM.zip` (Zenodo 15692630), not a standing script |
+| Failure-detection baseline comparison | `src/eval/failure_detection_baselines.py`, `mc_dropout_baseline.py`, `failure_detection_compare.py` |
 
 ## 11. Where every number comes from
 
@@ -940,4 +1078,7 @@ evidence shows, not adjusted to fit what we hoped to find.
 | Triage/abstention check (§6b) | `outputs/tables/triage_check.json`, computed by `src/eval/triage_check.py` |
 | Ensemble fix for the training collapse (§6b) | `outputs/tables/ensemble_check.json`, computed by `src/eval/ensemble_check.py` |
 | NIHSS auxiliary head, idea 3 (§6b) | `outputs/tables/seg_nihss_fold0[_seed1,_seed2].json` |
+| Force-the-gate-open experiment (§6b) | `outputs/tables/gate_open_experiment.json`, `b1_graph_seg_gateinit1p0_fold0[_seed1,_seed2].json` |
+| TopCoW expert-feature validation (§6b) | `outputs/tables/topcow_expert_vessel_validation.json`, `topcow_feature_quality_vs_dice.json`, `graph_completeness_vs_dice.json` |
+| Knowledge-flag vs. baseline failure-detection comparison (§6c) | `outputs/tables/failure_detection_raw.json`, `mc_dropout_raw.json`, `failure_detection_comparison.json` |
 | **Phase 8 — run log, fixes, prep history** | `PHASE8_PLAN.md`, `outputs/tables/phase8_run_log.json` |

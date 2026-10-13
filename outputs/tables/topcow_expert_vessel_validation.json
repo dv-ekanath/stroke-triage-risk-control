@@ -1,0 +1,1335 @@
+{
+  "source": "TopCoW challenge data (Zenodo 15692630, CTA_ISLES2024_TUM.zip), antpos_edges_labelsTr -- expert-verified presence/absence of each communicating-artery segment, for 26 of our own ISLES'24 subjects.",
+  "purpose": "Cheap (no GPU, no training) de-risking check before committing to the full TopCoW vessel-anatomy feature-grounding build: is our own auto-derived segment_present actually unreliable (as the structural_collateral_reserve rejection's likely_reason assumed), or is it already reasonably accurate?",
+  "mapping_note": "L-A1/R-A1 and L-P1/R-P1 are proximal-segment labels, matched to our whole-vessel L/R-ACA and L/R-PCA nodes as the closest approximation; Acom/L-Pcom/R-Pcom are exact matches.",
+  "n_subjects": 26,
+  "n_comparisons": 182,
+  "overall_agreement": 0.918,
+  "per_vessel": {
+    "Acom": {
+      "n": 26,
+      "agree": 20,
+      "agree_pct": 0.769,
+      "expert_present_n": 19,
+      "our_present_n": 15
+    },
+    "L-Pcom": {
+      "n": 26,
+      "agree": 24,
+      "agree_pct": 0.923,
+      "expert_present_n": 8,
+      "our_present_n": 6
+    },
+    "R-Pcom": {
+      "n": 26,
+      "agree": 24,
+      "agree_pct": 0.923,
+      "expert_present_n": 12,
+      "our_present_n": 10
+    },
+    "L-ACA": {
+      "n": 26,
+      "agree": 26,
+      "agree_pct": 1.0,
+      "expert_present_n": 26,
+      "our_present_n": 26
+    },
+    "R-ACA": {
+      "n": 26,
+      "agree": 25,
+      "agree_pct": 0.962,
+      "expert_present_n": 25,
+      "our_present_n": 26
+    },
+    "L-PCA": {
+      "n": 26,
+      "agree": 25,
+      "agree_pct": 0.962,
+      "expert_present_n": 25,
+      "our_present_n": 26
+    },
+    "R-PCA": {
+      "n": 26,
+      "agree": 23,
+      "agree_pct": 0.885,
+      "expert_present_n": 23,
+      "our_present_n": 26
+    }
+  },
+  "rows": [
+    {
+      "subject": "sub-stroke0002",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0002",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0002",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0002",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0002",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0002",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0002",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0004",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0004",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0004",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0004",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0004",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0004",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0004",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0005",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0005",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 1,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0005",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0005",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0005",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0005",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0005",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0008",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0008",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0008",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 1,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0008",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0008",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0008",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0008",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0011",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0011",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0011",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0011",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0011",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0011",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0011",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0012",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0012",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0012",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0012",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0012",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0012",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0012",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0013",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0013",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0013",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0013",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0013",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0013",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0013",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0014",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0014",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0014",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0014",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0014",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0014",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0014",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0016",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0016",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0016",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0016",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0016",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0016",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0016",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0017",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0017",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0017",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0017",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0017",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0017",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0017",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0021",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0021",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0021",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0021",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0021",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0021",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0021",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0025",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0025",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0025",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0025",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0025",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0025",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0025",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 0,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0028",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0028",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 1,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0028",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0028",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0028",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0028",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0028",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0030",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0030",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0030",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0030",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0030",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0030",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0030",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0033",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0033",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0033",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0033",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0033",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 0,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0033",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0033",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0036",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0036",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0036",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0036",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0036",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0036",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0036",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0038",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0038",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0038",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 1,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0038",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0038",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0038",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0038",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0040",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0040",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0040",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0040",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0040",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0040",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0040",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0043",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0043",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0043",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0043",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0043",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0043",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0043",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 0,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0045",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 0,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0045",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0045",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0045",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0045",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0045",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 0,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0045",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0048",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0048",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0048",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0048",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0048",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0048",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0048",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0049",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0049",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0049",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0049",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0049",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0049",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0049",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0053",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0053",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0053",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0053",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0053",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0053",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0053",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0054",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0054",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0054",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0054",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0054",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0054",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0054",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0055",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0055",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0055",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0055",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0055",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0055",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0055",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 0,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0057",
+      "vessel": "Acom",
+      "topcow_label": "Acom",
+      "expert_present": 1,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0057",
+      "vessel": "L-Pcom",
+      "topcow_label": "L-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0057",
+      "vessel": "R-Pcom",
+      "topcow_label": "R-Pcom",
+      "expert_present": 0,
+      "our_present": 0
+    },
+    {
+      "subject": "sub-stroke0057",
+      "vessel": "L-ACA",
+      "topcow_label": "L-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0057",
+      "vessel": "R-ACA",
+      "topcow_label": "R-A1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0057",
+      "vessel": "L-PCA",
+      "topcow_label": "L-P1",
+      "expert_present": 1,
+      "our_present": 1
+    },
+    {
+      "subject": "sub-stroke0057",
+      "vessel": "R-PCA",
+      "topcow_label": "R-P1",
+      "expert_present": 1,
+      "our_present": 1
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "rule": "Does a patient's own graph completeness (how many of their 12 CoW vessels are actually visible/segmented, 0-12) predict segmentation reliability (Dice)? A different signal from the triage check (which used the PREDICTION's own laterality/volume) -- this uses only the INPUT graph's structure, known before any inference happens.",
+  "pass_mark": "Spearman rho > 0 and p < 0.05, fixed before running",
+  "n_pairs": 1038,
+  "overall": {
+    "rho": -0.0923,
+    "p": 0.0029048364553316552,
+    "passed": false
+  }
+}

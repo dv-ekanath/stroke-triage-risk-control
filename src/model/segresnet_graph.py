@@ -60,7 +60,7 @@ class GraphCrossAttention(nn.Module):
     from a checkpoint we already know works.
     """
 
-    def __init__(self, channels: int, graph_dim: int, heads: int = 4):
+    def __init__(self, channels: int, graph_dim: int, heads: int = 4, gate_init: float = 0.0):
         super().__init__()
         assert channels % heads == 0, f"{channels=} not divisible by {heads=}"
         self.heads = heads
@@ -69,7 +69,12 @@ class GraphCrossAttention(nn.Module):
         self.k_proj = nn.Linear(graph_dim, channels)
         self.v_proj = nn.Linear(graph_dim, channels)
         self.out_proj = nn.Conv3d(channels, channels, kernel_size=1)
-        self.gate = nn.Parameter(torch.zeros(1))
+        # gate_init != 0 (2026-10-13 "force the gate open" experiment, see
+        # CLAUDE.md): every prior run left this at its default zero-init,
+        # which only tells us the gate DIDN'T open on its own -- not
+        # whether an open gate would help if training started there.
+        # Default 0.0 keeps every existing call site byte-identical.
+        self.gate = nn.Parameter(torch.full((1,), gate_init))
 
     def forward(self, x: torch.Tensor, node_emb: torch.Tensor, node_present: torch.Tensor) -> torch.Tensor:
         """x: [B, C, D, H, W] decoder features. node_emb: [B, 12, graph_dim].
@@ -103,7 +108,7 @@ class GraphCrossAttention(nn.Module):
 class GraphInjectedSegResNet(nn.Module):
     def __init__(self, in_channels: int = 6, init_filters: int = 16, dropout_prob: float = 0.2,
                  gnn_stage: int = 1, graph_hidden: int = 32, attn_heads: int = 4,
-                 edge_index: torch.Tensor | None = None):
+                 edge_index: torch.Tensor | None = None, gate_init: float = 0.0):
         super().__init__()
         from monai.networks.nets import SegResNet
 
@@ -125,7 +130,7 @@ class GraphInjectedSegResNet(nn.Module):
         n_up = len(self.trunk.up_layers)
         decode_channels = [init_filters * (2 ** i) for i in range(n_up - 1, -1, -1)]
         self.cross_attn = nn.ModuleList([
-            GraphCrossAttention(c, graph_hidden, heads=attn_heads) for c in decode_channels
+            GraphCrossAttention(c, graph_hidden, heads=attn_heads, gate_init=gate_init) for c in decode_channels
         ])
 
     def compute_node_embeddings(self, x_wb: torch.Tensor, node_coords: torch.Tensor,

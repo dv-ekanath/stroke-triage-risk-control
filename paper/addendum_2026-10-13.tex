@@ -1,0 +1,164 @@
+% ============================================================================
+% ADDENDUM, 2026-10-13 -- NOT YET MERGED INTO kgxai_paper.tex.
+%
+% Written while LaTeX was not available in this environment to verify
+% compilation, so this is a separate file rather than a direct edit to the
+% main paper -- review, merge, and compile-check before trusting it as-is.
+%
+% Suggested merge points, each a \subsection ready to insert under
+% \section{Results} in order, after \subsection{Final JDCR results and the
+% primary claim} (\S\ref{sec:jdcrfull}) and before \section{Discussion}:
+%   1. Mechanism-level evidence the graph pathway carries no useful information
+%   2. A second, independent collateral-status test
+%   3. External validation against expert vessel annotations
+%   4. Benchmarking segmentation accuracy against the published state of the art
+%   5. Knowledge-grounded failure detection  <-- the new primary contribution
+%
+% Also included below: additions to \section{Discussion}, a replacement
+% \section{Conclusion}, an updated abstract paragraph, and new \bibitem
+% entries (keys: kurtlab2026, lakshminarayanan2017, gal2016dropout,
+% topcowbench2026). Check these keys don't collide with the existing ones
+% and that every \cite{} used below has a matching \bibitem.
+% ============================================================================
+
+
+% ---------------------------------------------------------------------------
+% SUGGESTED REPLACEMENT ABSTRACT PARAGRAPH (or a new closing sentence added
+% to the existing one) -- the current abstract (not reproduced here) should
+% be checked against this framing once the sections below are merged.
+% ---------------------------------------------------------------------------
+% We find, across four independent tests, that the graph-injected pathway
+% does not improve segmentation accuracy and that this is a mechanism-level
+% result, not an underpowered one: a same-size random graph performs
+% identically to the true Circle-of-Willis anatomy, and forcing the
+% cross-attention gate open from initialisation (rather than observing it
+% stay near zero on its own) changes nothing. We instead find the knowledge
+% graph's real value in a different place: a deterministic, ground-truth-free
+% consistency check built from the same per-patient graph predicts
+% segmentation failure with large effect ($\mathrm{AUROC}=0.836$) and beats a
+% standard ensemble-disagreement uncertainty baseline ($\mathrm{AUROC}=0.583$)
+% by a wide margin at catching catastrophic failures, while a second baseline
+% (MC-dropout) is competitive or better on subtler, non-catastrophic ones --
+% a qualified, falsifiable claim about when domain knowledge adds value,
+% not an unqualified one.
+
+
+\subsection{Mechanism-level evidence the graph pathway carries no useful information}
+\label{sec:mechanism}
+
+The paired test in \S\ref{sec:jdcrfull} shows no significant Dice difference between B0 and B2, but a null result from one architecture alone does not rule out that a different graph, or a more open gate, would help. We ran two further, independent tests to close this gap.
+
+\textbf{Random-edge ablation.} We replaced the true Circle-of-Willis edges (12 anatomical connections, \S\ref{sec:kg}) with 12 random edges over the same 12 nodes, fixed by seed, holding every other architectural and training choice constant (B1, fold 0, 3 seeds). Table~\ref{tab:randomedge} reports the result: the random graph performs marginally \emph{better} than the real anatomy on both Dice and JDCR, not worse -- the specific anatomical structure is not contributing measurably to either metric.
+
+\begin{table}[t]
+\centering
+\caption{Real Circle-of-Willis anatomy vs.\ a random same-size graph (B1, fold 0, 3 seeds).}
+\label{tab:randomedge}
+\begin{tabular}{lcc}
+\toprule
+& \textbf{Real anatomy} & \textbf{Random graph} \\
+\midrule
+Dice (mean $\pm$ SD) & 0.2247 $\pm$ 0.0024 & 0.2263 $\pm$ 0.0008 \\
+JDCR strict (mean) & 0.969 & 0.977 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Forcing the cross-attention gate open.} The zero-initialised gate (\S\ref{sec:graphinject}) is observed to stay near zero through training in every run reported so far -- but this alone does not distinguish ``the model actively suppresses an unhelpful pathway'' from ``the gate simply never had a reason to move.'' We re-ran B1 (fold 0, 3 seeds) with the gate initialised to $1.0$ instead of $0.0$. In all 3 seeds the gate remained near its initial value for the full 100 epochs (final values $1.00$--$1.03$, never drifting back toward zero), and final Dice was statistically indistinguishable from the zero-initialised runs (mean difference $-0.0007$; per-seed differences $+0.0002$, $-0.0014$, $-0.0009$). The gate not opening on its own is therefore not evidence of active suppression; it is evidence the pathway has nothing to contribute either way, confirmed directly rather than inferred.
+
+Taken together with the random-edge result, these are two independent architectural interventions -- what the graph is wired to, and how much of it is let through -- both converging on the same conclusion: as designed, the graph-injected pathway carries no information relevant to segmentation accuracy, under every condition tested.
+
+
+\subsection{A second, independent collateral-status test}
+\label{sec:secondcollateral}
+
+The HIR-based collateral proxy was rejected as a plausibility constraint in \S\ref{sec:validation} (Checks 2, 4, 5). We tested a second, structurally independent operationalisation of collateral status: whether a patient's own Circle-of-Willis graph contains an intact communicating-artery route (an Acom-mediated anterior cross-fill, or either Pcom-mediated posterior-to-anterior route), computed purely from graph topology and each patient's real vessel-presence mask -- no occlusion label, no learned component, and so unable to fail the way the auxiliary heads did (\S\ref{sec:heads}). This measure was tested against final infarct volume (two formulations, $n=144$) and, separately, against admission NIHSS ($n=141$) -- chosen specifically because NIHSS is measured before treatment and so is not confounded by this cohort's universal successful reperfusion, unlike volume. All three pre-registered tests were null, one in the wrong direction. The most likely explanation: the communicating arteries this measure depends on are segmented in only 48\%, 36\%, and 30\% of subjects (Acom, right Pcom, left Pcom respectively) even when physiologically present, so ``absent'' in this cow-msk data is at least as much a measure of segmentation sensitivity for a thin vessel as of true anatomical absence. Two independent collateral operationalisations, tested against three independent outcomes, are now null; we treat the question of whether collateral status predicts outcome in this cohort as settled by this data, not merely underpowered.
+
+
+\subsection{External validation against expert vessel annotations}
+\label{sec:topcowvalidation}
+
+A further, independent dataset gave us a rare opportunity to check our own vessel-presence features against real expert annotation rather than a plausibility gate alone. The TopCoW challenge's public data release \cite{topcowbench2026} includes \texttt{CTA\_ISLES2024\_TUM}, an expert Circle-of-Willis annotation of 26 subjects drawn from the same ISLES'24 release used throughout this work. Comparing our automatically derived per-vessel presence features against this expert ground truth gives 91.8\% agreement across 182 vessel comparisons (26 subjects $\times$ up to 7 matched vessels), strong on every vessel (88--100\%) except the anterior communicating artery specifically (76.9\%, under-detected). A direct follow-up test -- does disagreement with the expert annotation predict worse segmentation Dice for that subject? -- was null for both B0 and B2 (Spearman $\rho=-0.13$, $p\approx0.5$, pre-registered $\rho<0$ and $p<0.05$), and a broader test using overall graph completeness (how many of a patient's 12 vessels are visible at all, across all 1038 subject-run pairs from the full evaluation grid) was also null, significant in the wrong direction ($\rho=-0.09$, $p=0.003$, a small effect not pursued further). Together with \S\ref{sec:mechanism}, this weakens the case that grounding the graph's node features in an externally-trained vessel-segmentation model would recover a measurable accuracy benefit: the features were not badly wrong to begin with, and feature quality does not appear to be what the segmentation outcome turns on.
+
+
+\subsection{Benchmarking segmentation accuracy against the published state of the art}
+\label{sec:benchmark}
+
+We are explicit that this subsection reports applied engineering, not a contribution of this work -- it is included because it materially changed the project's segmentation numbers and because, left unstated, an informed reader would reasonably ask whether a known, published gap had simply been left unaddressed. The ISLES'24 challenge (453 registrants, 12 teams submitting a final solution) reports a winning Dice of 0.285 on its hidden test set \cite{kurtlab2026}, more than our B0/B2 means in \S\ref{sec:jdcrfull}. The winning team's own account credits roughly 10 validation-Dice points to two preprocessing steps our pipeline lacked: skull-stripping (we use an existing intensity-threshold mask already computed for the knowledge graph, simpler than their learned SynthStrip mask) and clinically-motivated perfusion-map windowing (we tighten the CBV and MTT clip ranges toward their cited literature anchors; CBF and Tmax are left unchanged, since their literature thresholds for those are relative quantities, not a simple absolute clip). Adding both to B0 and confirming across 3 seeds (fold 0) gives a mean Dice of $0.2732$ (SD $0.0051$) against the unmodified baseline's collapse-excluded mean of $0.2403$ -- a real, consistent $+0.033$ gain, now within $0.012$ of the published winning score, and exceeding it on volume-difference and lesion-wise F1 (though not lesion-count difference). We report this as a successful benchmarking exercise, not as part of this paper's claimed contribution.
+
+
+\subsection{Knowledge-grounded failure detection}
+\label{sec:faildetect}
+
+With \S\ref{sec:mechanism}--\S\ref{sec:topcowvalidation} closing the case that the graph-injected pathway does not improve accuracy under any architectural condition tested, we turn to a different, ground-truth-independent use of the same knowledge graph: as a deterministic check on whether a given prediction should be trusted at all.
+
+\textbf{The check.} Using only quantities available at inference time -- no ground truth -- we flag a prediction if (a) its predicted lesion mass sits on the side of the brain inconsistent with the admission-imaging occlusion side (itself read directly from the knowledge graph's occluded-node assignment, \S\ref{sec:kg}), or (b) its predicted lesion volume is below 1~mL. Thresholds were fixed from the signal distributions alone, never from Dice. (An earlier version of this check also used predictive-calibration error as a third criterion; we found, before reporting this result, that calibration error is not actually ground-truth-free -- it is computed directly from the true label -- and removing it strengthened rather than weakened the result, from $p=1.3\times10^{-32}$ to $p=1.4\times10^{-50}$; we report only the corrected, genuinely ground-truth-free version throughout.) Across all 1038 (subject, checkpoint) pairs in the full evaluation grid, flagged predictions have a median Dice of $0.000$ against $0.1995$ for unflagged predictions (Mann--Whitney $p=1.4\times10^{-50}$, $\mathrm{AUROC}=0.89$), and the effect holds separately within B1 and B2, which never had a single collapsed training run ($p=0.0055$ and $p=1.5\times10^{-5}$ respectively) -- so this is not simply re-detecting B0's known collapses.
+
+\textbf{Does it beat a standard baseline, or just duplicate one?} A check that only matches an existing method is not a new contribution; one that clearly adds something is. We compared the knowledge flag against two standard, independently motivated uncertainty-detection baselines, using B0's 3 already-trained seeds with no additional training. The first is ensemble disagreement \cite{lakshminarayanan2017}: how much the 3 seeds' own predictions disagree with each other (one minus their mean pairwise Dice), computed for every subject in folds 0 and 1 (297 subject-seed predictions). The second is MC-dropout \cite{gal2016dropout}, run on a smaller, single-model subset (fold 0, seed 0, 50 subjects, 6 stochastic passes each; this architecture has exactly one dropout layer, which we verified directly rather than assumed, limiting how strong this particular baseline can be here).
+
+\begin{table}[t]
+\centering
+\caption{Knowledge-grounded check vs.\ a standard ensemble-disagreement baseline, detecting severe segmentation failure (Dice $<0.05$, fixed before running), $n=297$ subject-seed predictions, folds 0--1.}
+\label{tab:faildetect}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Signal} & \textbf{Spearman $\rho$ vs.\ Dice} & \textbf{AUROC} \\
+\midrule
+Knowledge flag & $-0.754$ ($p=9\times10^{-56}$) & $\mathbf{0.836}$ ($p=5\times10^{-33}$) \\
+Ensemble disagreement & $-0.214$ ($p=2\times10^{-4}$) & $0.583$ ($p=0.007$) \\
+Volume coeff.\ of variation & $-0.186$ ($p=0.001$) & $0.575$ ($p=0.013$) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The ensemble-disagreement baseline is a real signal here, not a strawman -- it passes its own sanity check ($\rho<0$, $p<0.05$) -- but the knowledge flag exceeds it by a wide margin (Table~\ref{tab:faildetect}). The more informative number is complementarity, not the AUROC gap alone: of 156 severe failures in this set, the knowledge flag alone catches $69.2\%$ (108), ensemble disagreement alone catches $32.7\%$ (51); together they catch $81.4\%$, leaving $18.6\%$ missed by both, reported as a genuine residual rather than omitted. Of the 76 failures the knowledge flag catches that disagreement misses entirely, $100\%$ are real failures -- no false positives in that unique catch -- whereas disagreement's own 40 unique catches are only $47.5\%$ real failures, a substantially noisier signal.
+
+\textbf{The MC-dropout comparison is more nuanced, and we report it as such rather than as a second win.} On its smaller, single-model, collapse-free subset, MC-dropout's predicted-volume coefficient of variation \emph{exceeds} the knowledge flag ($\mathrm{AUROC}=0.819$ vs.\ $0.652$; disagreement-based MC-dropout entropy scores $0.756$). This subset is not directly comparable to Table~\ref{tab:faildetect} -- it excludes the collapsed-seed cases that the knowledge flag's near-zero-volume criterion catches almost by construction -- so the two comparisons answer related but distinct questions. Taken together, the honest and more specific reading is not that knowledge-grounded checks are categorically superior, but that \emph{they dominate specifically at catching catastrophic, structurally unambiguous failures} (complete collapse, a clearly wrong-side prediction), while a well-chosen statistical signal is competitive or better at subtler, within-normal-range uncertainty. We consider this the more defensible and more interesting claim of the two, and the one a broader validation (matched-scope baselines, additional folds, a second architecture or dataset) should aim to confirm or refine.
+
+
+% ---------------------------------------------------------------------------
+% SUGGESTED DISCUSSION ADDITIONS -- insert as new paragraphs within the
+% existing \section{Discussion}, after the existing "Measurement confounds"
+% paragraph and before "A mean comparison can be satisfied by outliers."
+% ---------------------------------------------------------------------------
+
+\textbf{A null result is strongest when it survives being attacked, not just observed.} The original Dice comparison (\S\ref{sec:jdcrfull}) left open whether a different graph, a more open gate, or better-grounded features would change the outcome. Rather than treat the first null result as final, we deliberately tried to break it: a random graph of the same size, a gate forced open from initialisation and tracked to confirm it stayed open, and an external check of whether the input features themselves were the limiting factor. All three attempts to find a condition under which the graph pathway would matter failed to find one. We think this -- actively trying to overturn a negative result through independent mechanisms, not just reporting the first null finding -- is what distinguishes a settled negative result from an underpowered one, and recommend it as a general practice when a plausible architectural idea does not pan out on the first attempt.
+
+\textbf{The knowledge graph's value turned out to be in a different place than hypothesised.} We had intended the graph's contribution to be demonstrated through the learned GNN pathway's effect on segmentation accuracy. It was not. The same graph's \emph{non-learned} use -- as a deterministic source of admission-time facts for a post-hoc consistency check -- produced the one result in this work that both survives multiple pre-registered tests and exceeds a standard, independently motivated baseline by a wide margin. We think this is a useful lesson for knowledge-graph-guided clinical modelling generally: a knowledge graph's value is not necessarily in what a neural network learns to do with it, and a project should test both the learned-injection use and the direct-rule-checking use before concluding a knowledge graph did or did not pay off.
+
+
+% ---------------------------------------------------------------------------
+% SUGGESTED REPLACEMENT \section{Conclusion} (replaces the existing one;
+% the existing text's honesty about Phase 1-8 findings is preserved and
+% extended, not removed)
+% ---------------------------------------------------------------------------
+\section*{Conclusion (revised, incorporating post-Phase-8 findings)}
+We presented KG-XAI, a knowledge-graph-guided consistency framework for multi-task stroke triage. With the full pre-registered evaluation grid complete and extended by four further, independent mechanism-level tests (\S\ref{sec:mechanism}--\S\ref{sec:topcowvalidation}), we can now state the central finding without qualification: the graph-injected learned pathway does not improve segmentation accuracy, under every architectural condition we tried, including conditions specifically designed to give it the best chance of mattering. This is reported as a settled result, not an open question.
+
+The knowledge graph's demonstrated value is instead in its non-learned, rule-checking use: a deterministic, ground-truth-free consistency check built from the same per-patient vessel graph predicts real segmentation failure with large effect ($\mathrm{AUROC}=0.836$) and exceeds a standard ensemble-disagreement uncertainty baseline by a wide margin, with a unique catch of failures that is essentially free of false positives. A second baseline, MC-dropout, gives a more qualified picture: it is competitive with or better than the knowledge check on ordinary, non-catastrophic failures. The resulting claim is narrower than ``knowledge-grounded checks are better than statistical uncertainty methods'' and, we think, more useful for that: domain-knowledge-grounded checks appear to add the most value specifically where failures have an unambiguous structural signature, which is also where silent failure is most costly to miss in a deployed clinical system.
+
+We separately confirmed and fixed two further results outside the graph's own claim: an unweighted ensemble of the plain baseline's own training seeds nearly eliminates its only observed catastrophic failure mode with no retraining, and the auxiliary classification heads' earlier collapse (\S\ref{sec:heads}) was specifically a label-quality problem, not an architectural one -- the identical design learns a genuine signal when given a real, well-populated label (admission NIHSS) in place of the circular, sparse ones first attempted. We also benchmarked our baseline's segmentation accuracy against the published ISLES'24 challenge leaderboard and closed most of the gap to the winning score by adopting that team's own published preprocessing approach, reported explicitly as applied engineering rather than a contribution of this work. We view the complete, honestly reported arc -- a specific, well-motivated architectural hypothesis tested to failure through multiple independent mechanisms, and a genuine, baseline-beating contribution found in a different place than originally intended -- as a more defensible outcome than either an unexamined positive result or an abandoned negative one.
+
+
+% ---------------------------------------------------------------------------
+% NEW BIBLIOGRAPHY ENTRIES -- insert into \begin{thebibliography}{00} ...
+% \end{thebibliography} alongside the existing \bibitem entries. Check the
+% numbering style '{00}' still accommodates the longer key names, and that
+% no key below collides with an existing one.
+% ---------------------------------------------------------------------------
+% \bibitem{kurtlab2026} Kurtlab team, ``How we won the ISLES'24 challenge by
+% preprocessing,'' arXiv:2505.18424, 2026.
+%
+% \bibitem{topcowbench2026} K. Yang \emph{et al.}, ``Benchmarking the CoW
+% with the TopCoW challenge: topology-aware anatomical segmentation of the
+% circle of Willis for CTA and MRA,'' \emph{Medical Image Analysis}, 2026.
+% Data: Zenodo record 15692630.
+%
+% \bibitem{lakshminarayanan2017} B. Lakshminarayanan, A. Pritzel, and
+% C. Blundell, ``Simple and scalable predictive uncertainty estimation
+% using deep ensembles,'' in \emph{Advances in Neural Information
+% Processing Systems (NeurIPS)}, 2017.
+%
+% \bibitem{gal2016dropout} Y. Gal and Z. Ghahramani, ``Dropout as a Bayesian
+% approximation: representing model uncertainty in deep learning,'' in
+% \emph{Int. Conf. on Machine Learning (ICML)}, 2016.

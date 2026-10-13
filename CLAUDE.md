@@ -507,7 +507,7 @@ recipe generally prevents collapse (that's the ensemble fix's job, a
 separate, already-evidenced finding). Scope: fold 0 only (same disclosed
 cut as B1), not yet the full 3-fold grid (~12 more GPU-hours, not run).
 **Explicitly not presented as this project's novelty** -- directly
-adapted from a published source; see PROGRESS_REPORT.md §6c and its
+adapted from a published source; see PROGRESS_REPORT.md §6d and its
 updated §9 novelty section for the honest separation between "what
 makes the numbers better" (this) and "what is actually new here" (JDCR
 as a proposed metric + the mechanism-level graph diagnosis).
@@ -515,6 +515,166 @@ Checkpoints/results: `*_skullstrip_tightclip*` in outputs/checkpoints,
 outputs/tables. Mid-run survived a session restart that killed seed 2 at
 epoch 74/100 (exit code 4, external termination, no data loss) --
 restarted clean from the still-warm cache, re-ran in full.
+
+**Three more tests, 2026-10-13 -- the most definitive evidence yet that the
+graph pathway carries no useful information, from a genuinely new angle
+(not more of the same check).**
+
+1. **TopCoW expert-vessel-feature validation (free, no GPU).** Downloaded
+   TopCoW's `CTA_ISLES2024_TUM.zip` (Zenodo 15692630) -- their team
+   already ran expert vessel annotation directly on 26 of OUR OWN
+   ISLES'24 subjects. Compared their expert presence/absence calls
+   against our own auto-derived `segment_present`: **91.8% overall
+   agreement** (182 comparisons), strong on every vessel (88-100%) except
+   Acom specifically (76.9%, we under-detect it). This directly weakens
+   the premise for the full TopCoW feature-grounding build (training a
+   vessel segmenter on the 10.5GB main release, 5-7 days) -- our features
+   were never badly wrong across the board, so there's less to fix than
+   assumed. `outputs/tables/topcow_expert_vessel_validation.json`.
+2. **Does feature disagreement with experts predict worse Dice?** (free,
+   no GPU, n=25 of the 26 subjects, matched to real Dice from existing
+   Phase 8 checkpoints). Pre-registered: rho<0, p<0.05. Result: FAIL for
+   both B0 (rho=-0.13, p=0.53) and B2 (rho=-0.13, p=0.55) -- no evidence
+   our feature quality (such as it varies) actually affects segmentation
+   outcome. Confirms the TopCoW de-prioritization from check 1.
+   `outputs/tables/topcow_feature_quality_vs_dice.json`.
+3. **Graph completeness (0-12 vessels present) vs Dice** (free, no GPU,
+   n=1038 subject-run pairs across all 21 Phase 8 checkpoints).
+   Pre-registered: rho>0, p<0.05. Result: FAIL -- significant but in the
+   WRONG direction (rho=-0.09, p=0.003): more complete graphs correlate
+   with slightly LOWER dice. Small effect, likely a lesion-severity
+   confound or noise from non-independent repeated-subject observations,
+   not chased further. `outputs/tables/graph_completeness_vs_dice.json`.
+4. **Force the cross-attention gate open** (`gate_init` param on
+   `GraphCrossAttention`/`GraphInjectedSegResNet`, `--gate-init` flag on
+   `train_graph_seg.py`, default 0.0 = unchanged behavior everywhere
+   else). Every prior run only showed the gate staying near zero
+   *on its own* -- never tested whether an open gate would actually help
+   if training started there. B1, fold 0, 3 seeds, gate_init=1.0:
+
+   | seed | gate-open dice | zero-init dice | diff |
+   |---|---|---|---|
+   | 0 | 0.2272 | 0.2270 | +0.0002 |
+   | 1 | 0.2244 | 0.2257 | -0.0014 |
+   | 2 | 0.2204 | 0.2213 | -0.0009 |
+
+   Mean diff -0.0007. **The gates stayed open the entire 100 epochs in
+   all 3 seeds** (final values ~1.0-1.03, never drifted back toward
+   zero) -- so the zero-init gate never opening on its own is NOT the
+   model actively suppressing the pathway; it simply never had a reason
+   to move. But an open, stable gate produces essentially identical Dice
+   to a closed one. Combined with the random-edge ablation (doesn't
+   matter what it's wired to) and this (doesn't matter how open it is),
+   this is about as complete a mechanism-level case as this project can
+   build: the graph pathway, as designed, has nothing useful to
+   contribute to segmentation accuracy, under every architectural
+   condition tried. `outputs/tables/gate_open_experiment.json`.
+
+## Candidate paper direction, started 2026-10-13: knowledge-grounded silent-failure detection
+
+With the graph's accuracy claim fully closed (random-edge + forced-gate-open
++ feature-quality checks above), the strongest remaining candidate for an
+actual new contribution is the triage finding (CLAUDE.md "Five further
+tests", triage_check.py) reframed as a proper method, benchmarked against
+standard uncertainty baselines rather than just validated on its own. User
+asked to pursue this (while away 6h); done autonomously, documented here
+for review on return.
+
+**Core question:** does the knowledge-grounded flag (laterality
+inconsistent OR predicted volume < 1mL, p=1.4e-50 on its own) actually add
+something over a standard statistical uncertainty baseline, or is it
+redundant with information an ensemble already gives you for free?
+
+**New code:** `src/eval/failure_detection_baselines.py` (collects, per
+(subject, seed), for B0's 3 existing seeds x fold0+fold1: dice, the
+knowledge flag, a standard ensemble-disagreement signal [1 - mean
+pairwise Dice between the 3 seeds' own predictions -- the most standard,
+most-cited uncertainty baseline, "deep ensembles"], and predicted-volume
+coefficient of variation). `src/eval/mc_dropout_baseline.py` (a second
+baseline, B0 fold0 seed0 only -- MC-dropout multiplies cost by N passes,
+didn't fit the same scope as the ensemble baseline in one GPU session;
+also disclosed: this SegResNet has exactly ONE Dropout3d layer total, not
+dropout at every layer, checked directly -- a real architecture
+constraint on how strong this baseline can be, not a choice made to
+weaken it). `src/eval/failure_detection_compare.py` (the actual
+comparison: AUROC for detecting severe failure, dice<0.05 fixed before
+running, plus a complementarity analysis of which method catches which
+failures).
+
+**Result (n=297 subject-seed pairs, fold0+fold1, 156 severe failures):**
+
+| signal | Spearman rho vs dice | AUROC (severe-failure detection) |
+|---|---|---|
+| knowledge flag | -0.754, p=9e-56 | **0.836**, p=5e-33 |
+| ensemble disagreement | -0.214, p=0.0002 | 0.583, p=0.007 |
+| volume CV (ensemble) | -0.186, p=0.001 | 0.575, p=0.013 |
+
+The standard ensemble-disagreement baseline IS a real signal here (passes
+its own sanity check, rho<0 and p<0.05) -- not a strawman -- but the
+knowledge flag beats it by a wide margin, 0.836 vs 0.583 AUC. **Most
+striking finding:** of the 156 real failures, the knowledge flag alone
+catches 69.2% (108), ensemble disagreement alone catches only 32.7% (51).
+Of the 76 cases the knowledge flag catches that disagreement MISSES, 76/76
+(100%) are real failures -- essentially zero false positives in that
+unique catch. Disagreement's own unique catches (40 cases) are only 19/40
+(47.5%) real failures -- much noisier. Together they catch 81.4% of
+failures; 18.6% are missed by both (a disclosed, honest residual, not
+hidden).
+
+**MC-dropout baseline -- a more nuanced, important result, NOT just a
+repeat win.** Scoped to fold0/seed0 only (50 subjects, N=6 passes, one
+Dropout3d layer -- see disclosed scope/architecture limits above). This
+is a DIFFERENT, smaller, single-model subset than the 297-row ensemble
+comparison (no collapsed-seed cases in it at all), so its numbers are
+not directly comparable to the ensemble ones above -- only each baseline
+to the knowledge flag within its own scope:
+
+| signal (this 50-subject subset only) | AUROC |
+|---|---|
+| knowledge flag | 0.652 |
+| mc_dropout_disagreement | 0.756 |
+| **mc_dropout_volume_cv** | **0.819** |
+
+On THIS subset, MC-dropout's volume coefficient-of-variation BEATS the
+knowledge flag outright. Honest, disclosed interpretation (reasoned, not
+separately tested): the ensemble comparison's dataset includes the
+catastrophic collapsed-seed1 cases, which the near-zero-volume half of
+the knowledge flag catches almost by construction -- that's a big, easy
+chunk of its 0.836 AUC there. This 50-subject subset has NO collapse
+cases at all, only a normally-behaving model's ordinary failures, and on
+that harder, more realistic case the statistical signal is competitive
+or better. **The honest conclusion is not "knowledge-grounded checks
+always win" -- it's narrower and more interesting: they excel
+specifically at catching catastrophic, structurally-obvious failures
+(total collapse, clear laterality violations) that have an unambiguous
+domain signature; for subtler within-normal-range uncertainty, a
+well-chosen statistical signal can match or beat them.** That's a more
+defensible, more publication-credible claim than an unqualified "ours is
+better," and it's what a fair, broader validation (more folds, more
+models, no cherry-picking which subset to report) would need to confirm
+or refine.
+
+`outputs/tables/failure_detection_raw.json` (the 297 raw rows),
+`failure_detection_comparison.json` (the full comparison incl. MC-dropout),
+`mc_dropout_raw.json` (the 50-row MC-dropout subset).
+
+**What this is worth, honestly:** this is the strongest, most complete
+candidate for an actual new contribution this project has produced --
+not just "our check works" (already shown) but a real, specific,
+falsifiable claim: knowledge-grounded checks dominate at catching
+catastrophic, structurally-obvious failures (where they beat a standard
+ensemble baseline by a wide margin, 0.836 vs 0.583 AUC, and have a
+100%-precision unique catch), while a well-chosen statistical signal
+(MC-dropout volume CV) is competitive or better at subtler,
+non-catastrophic failures. That more nuanced version is MORE
+publication-credible than an unqualified "ours wins," not less -- it
+survived the temptation to only report the comparison that looked best.
+Still a course-project-scale result (297 rows for the main comparison,
+50 for MC-dropout, 2 of 3 folds, one architecture), not a
+submission-ready paper on its own -- would need broader validation (more
+folds/architectures, matched-scope MC-dropout, maybe another dataset) to
+be reviewer-proof, but the core comparison is real and the direction is
+sound.
 
 ## Phase 8 prep — COMPLETE (2026-09-17, superseded by the above). Plan and pass marks: `PHASE8_PLAN.md`.
 

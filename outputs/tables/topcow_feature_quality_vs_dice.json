@@ -1,0 +1,196 @@
+{
+  "rule": "Does disagreement between our auto-derived vessel-presence features and TopCoW's expert ground truth (per subject, 0-7 vessels compared) predict worse segmentation Dice? Tests whether our features are a real bottleneck.",
+  "pass_mark": "Spearman rho < 0 (more disagreement -> lower dice) and p < 0.05, for B0 and B2 separately, fixed before running",
+  "n_subjects": 25,
+  "rows": [
+    {
+      "subject": "sub-stroke0002",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.15161437062290362,
+      "b2_dice": 0.13251766670310994
+    },
+    {
+      "subject": "sub-stroke0004",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.07285483000539665,
+      "b2_dice": 0.03976731192690702
+    },
+    {
+      "subject": "sub-stroke0005",
+      "n_disagree": 1,
+      "n_total": 7,
+      "b0_dice": 0.21228479719871607,
+      "b2_dice": 0.2022180273714016
+    },
+    {
+      "subject": "sub-stroke0008",
+      "n_disagree": 1,
+      "n_total": 7,
+      "b0_dice": 0.00675422138836773,
+      "b2_dice": 0.0
+    },
+    {
+      "subject": "sub-stroke0011",
+      "n_disagree": 1,
+      "n_total": 7,
+      "b0_dice": 0.3920220462861409,
+      "b2_dice": 0.30052092152312276
+    },
+    {
+      "subject": "sub-stroke0012",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.2699102340804257,
+      "b2_dice": 0.3939613037568326
+    },
+    {
+      "subject": "sub-stroke0013",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.003207924135408166,
+      "b2_dice": 0.0067953923924753456
+    },
+    {
+      "subject": "sub-stroke0014",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.5372537299708039,
+      "b2_dice": 0.5226499570200097
+    },
+    {
+      "subject": "sub-stroke0016",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.3150793409070143,
+      "b2_dice": 0.2083839736327119
+    },
+    {
+      "subject": "sub-stroke0017",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.11133711861234168,
+      "b2_dice": 0.0365427859389715
+    },
+    {
+      "subject": "sub-stroke0021",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.09601854151146429,
+      "b2_dice": 0.0784226107356309
+    },
+    {
+      "subject": "sub-stroke0025",
+      "n_disagree": 1,
+      "n_total": 7,
+      "b0_dice": 0.647309109408482,
+      "b2_dice": 0.6360637327156594
+    },
+    {
+      "subject": "sub-stroke0028",
+      "n_disagree": 1,
+      "n_total": 7,
+      "b0_dice": 0.38406364386517994,
+      "b2_dice": 0.27121389866487905
+    },
+    {
+      "subject": "sub-stroke0030",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.32684191793359435,
+      "b2_dice": 0.4739043824701195
+    },
+    {
+      "subject": "sub-stroke0033",
+      "n_disagree": 1,
+      "n_total": 7,
+      "b0_dice": 0.00041523928163604275,
+      "b2_dice": 0.0
+    },
+    {
+      "subject": "sub-stroke0036",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.08932985902318434,
+      "b2_dice": 0.0686387657170625
+    },
+    {
+      "subject": "sub-stroke0038",
+      "n_disagree": 2,
+      "n_total": 7,
+      "b0_dice": 0.0,
+      "b2_dice": 0.005780764506105932
+    },
+    {
+      "subject": "sub-stroke0040",
+      "n_disagree": 1,
+      "n_total": 7,
+      "b0_dice": 0.598531245669946,
+      "b2_dice": 0.6230201809324982
+    },
+    {
+      "subject": "sub-stroke0045",
+      "n_disagree": 2,
+      "n_total": 7,
+      "b0_dice": 0.04845921450151058,
+      "b2_dice": 0.05003920450495403
+    },
+    {
+      "subject": "sub-stroke0048",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.0026506269752268326,
+      "b2_dice": 0.0037127668551177116
+    },
+    {
+      "subject": "sub-stroke0049",
+      "n_disagree": 1,
+      "n_total": 7,
+      "b0_dice": 0.013383407306247866,
+      "b2_dice": 0.02588661661920787
+    },
+    {
+      "subject": "sub-stroke0053",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.022873361716336922,
+      "b2_dice": 0.016542487138548872
+    },
+    {
+      "subject": "sub-stroke0054",
+      "n_disagree": 0,
+      "n_total": 7,
+      "b0_dice": 0.50302043968775,
+      "b2_dice": 0.6289714593430263
+    },
+    {
+      "subject": "sub-stroke0055",
+      "n_disagree": 1,
+      "n_total": 7,
+      "b0_dice": 0.1530009093664747,
+      "b2_dice": 0.33134713434486146
+    },
+    {
+      "subject": "sub-stroke0057",
+      "n_disagree": 1,
+      "n_total": 7,
+      "b0_dice": 0.005629736557199567,
+      "b2_dice": 0.0070852891683641835
+    }
+  ],
+  "results": {
+    "b0_dice": {
+      "n": 25,
+      "rho": -0.1323,
+      "p": 0.5283,
+      "passed": false
+    },
+    "b2_dice": {
+      "n": 25,
+      "rho": -0.1263,
+      "p": 0.5474,
+      "passed": false
+    }
+  }
+}
