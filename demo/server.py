@@ -400,9 +400,7 @@ class Handler(BaseHTTPRequestHandler):
         u = urlparse(self.path)
         q = {k: v[0] for k, v in parse_qs(u.query).items()}
         try:
-            if u.path in ("/", "/index.html"):
-                self._send((REPO / "demo" / "index.html").read_bytes(), "text/html; charset=utf-8")
-            elif u.path in ("/compare", "/compare.html"):
+            if u.path in ("/", "/index.html", "/compare", "/compare.html"):
                 self._send((REPO / "demo" / "compare.html").read_bytes(), "text/html; charset=utf-8")
             elif u.path == "/api/subjects":
                 self._json({"subjects": self.demo.subjects(), "channels": CHANNELS,
