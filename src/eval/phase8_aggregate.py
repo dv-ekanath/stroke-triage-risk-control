@@ -2,7 +2,7 @@
 Phase 8 final aggregation -- pulls Dice (from the training result JSONs) and
 JDCR/ECE (from the Rule Evaluator JSONs, src/eval/run_phase8_eval.py) for
 all 21 real checkpoints, computes mean +/- SD per model, and checks the
-pass marks fixed in PHASE8_PLAN.md BEFORE this run started:
+pass marks fixed in PROJECT_REPORT.md (Appendix C) BEFORE this run started:
 
     Primary claim: B2's mean strict JDCR > B0's mean strict JDCR
     Guard rail:    B2's mean Dice within 0.02 of B0's mean Dice
@@ -109,7 +109,7 @@ def main():
         print(f"  ECE:           {s['ece']['mean']:.4f} +/- {s['ece']['sd']:.4f}")
 
     print("\n" + "=" * 70)
-    print("PRE-REGISTERED PASS MARKS (PHASE8_PLAN.md, fixed before this run)")
+    print("PRE-REGISTERED PASS MARKS (PROJECT_REPORT.md (Appendix C), fixed before this run)")
     print("=" * 70)
     for b0_key, note in (("b0_all_9", "including collapses"), ("b0_clean_7", "excluding collapses")):
         b0, b2 = summary[b0_key], summary["b2_all_9"]

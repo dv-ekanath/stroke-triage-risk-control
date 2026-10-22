@@ -1,7 +1,7 @@
 # CLAUDE.md — KG-XAI project context
 
 Read this first. Then `PROJECT_PLAN.md` (plan of record) and
-`PHASE1_REPORT.md` (latest results and what's carried forward).
+`PROJECT_REPORT.md (Appendix A)` (latest results and what's carried forward).
 
 ## What this project is
 
@@ -49,7 +49,7 @@ Git identity for this repo: `dv-ekanath <ekanath.dv2023@vitstudent.ac.in>`
   re-test of the two collateral constraints (n=143, rho=0.052, p=0.54 —
   decisively negative, not just underpowered). **Net: 1 of 7 plausibility
   constraints supported** (laterality, from Phase 1), 5 rejected, 1
-  untestable. See `PHASE2_PROGRESS.md` for the full picture.
+  untestable. See `PROJECT_REPORT.md (Appendix B)` for the full picture.
 - **Decision made (2026-09-14): ~2 weeks available, not 6. Territory/atlas
   rule DROPPED from scope** (deferred to "if time remains after Phase 8," not
   required) — three related location/size tests already failed for the same
@@ -63,7 +63,7 @@ Git identity for this repo: `dv-ekanath <ekanath.dv2023@vitstudent.ac.in>`
 
 ## Phase 2 — remaining work
 
-Read `PHASE2_PROGRESS.md` first — it has the constraint-testing results and
+Read `PROJECT_REPORT.md (Appendix B)` first — it has the constraint-testing results and
 why the plan below changed from the original Phase 2 list.
 
 1. ~~Re-test the two collateral constraints properly~~ **Done — settled
@@ -84,11 +84,11 @@ why the plan below changed from the original Phase 2 list.
    clot within 7mm of the same-side ICA — a real ICA occlusion explains the
    invisible MCA, not a segmentation failure; already correctly classified.
    4 more have both ICA and MCA missing (likely a more complete occlusion).
-   Only 3 remain unexplained. See `PHASE2_PROGRESS.md`.
+   Only 3 remain unexplained. See `PROJECT_REPORT.md (Appendix B)`.
 6. ~~Manually look at sub-stroke0049 and sub-stroke0079~~ **Done.** Rendered
    and visually reviewed. Both confirm the known side mismatch; neither shows
    a clear, fixable label error. No relabeling — both stay as known
-   exceptions within the laterality gate's 94.7%. See `PHASE1_REPORT.md`.
+   exceptions within the laterality gate's 94.7%. See `PROJECT_REPORT.md (Appendix A)`.
 
 **Phase 2 is now fully closed.** Only the deferred territory rule and the
 skippable vessel-sharpening step remain, neither blocking Phase 3.
@@ -166,7 +166,7 @@ GNN" into one build, per-vessel features instead of one pooled vector:
   solution (verified by inspecting actual per-subject predictions, not
   just aggregate accuracy: the model predicts ONE constant class for all
   50 validation subjects on both heads). Recommended: stop iterating on
-  these two heads — report as a finding (see PHASE2_PROGRESS.md's finding
+  these two heads — report as a finding (see PROJECT_REPORT.md (Appendix B)'s finding
   for the matching honest-negative-result precedent), put the project's
   main "does KG-XAI help" claim on segmentation quality via Phase 5's
   cross-attention graph injection instead, where B0 has a real working
@@ -311,7 +311,7 @@ consistency loss. Eligibility rules stay unevaluable (no timing data).
   (sub-stroke0033, sub-stroke0185) are logged with full rationale text in
   the JSON.
 
-## Phase 8 — COMPLETE (2026-09-18). Real result: PROGRESS_REPORT.md §6a, PHASE8_PLAN.md.
+## Phase 8 — COMPLETE (2026-09-18). Real result: PROJECT_REPORT.md (Part 1) §6a, PROJECT_REPORT.md (Appendix C).
 
 All 21 runs (18 trained + 3 reused per-fold trunks) scored and aggregated.
 **Headline: no significant Dice difference B2 vs B0** (paired per-patient
@@ -321,7 +321,7 @@ lesion for every patient — in 2/9 runs; B1/B2 (warm-started) never
 collapsed in 12/12 runs.** Disclosed confound: can't yet separate "the
 graph stabilizes training" from "warm-starting stabilizes training" since
 there's no warm-started graph-free B0 variant. Both results reported
-plainly in PROGRESS_REPORT.md §6a, not adjusted to favor the project.
+plainly in PROJECT_REPORT.md (Part 1) §6a, not adjusted to favor the project.
 
 Survived a mid-run power loss (2026-09-17, ~1h20min lost, zero data lost —
 every job writes its own file, backed up the progress log, fixed a resume
@@ -330,7 +330,7 @@ launch: `--seed` was silently controlling fold splits too (fixed: pinned
 to a separate constant); none of the training scripts put seed in their
 output filenames (fixed: seed 0 keeps old names, seeds 1+ get `_seedN`).
 
-**Phase 9: deck corrections done** — `DECK_CORRECTIONS.md` (slide-by-slide,
+**Phase 9: deck corrections done** — the deck-corrections notes (removed from the tree; see git history, `git show f2c8ab5~1:DECK_CORRECTIONS.md`) (slide-by-slide,
 including a full replacement "expected results" slide using Phase 8's real
 numbers, a suggested new negative-findings slide, and one-line answers to
 likely faculty questions). The original deck .pptx isn't in this repo
@@ -338,7 +338,7 @@ likely faculty questions). The original deck .pptx isn't in this repo
 apply by hand, not an edited file.
 
 **Interactive demo: built and running (2026-09-19)** — `demo/server.py` +
-`demo/index.html` (+ `demo/README.md`). Local stdlib web app, live GPU
+`demo/compare.html` (+ `demo/README.md`). Local stdlib web app, live GPU
 inference on the 50 fold-0 held-out patients, 4 real checkpoints (B2, B1,
 B0 seed0, and the COLLAPSED B0 seed1 on purpose), rule check + template
 rationale, compare-all-models view. Run: `python -m demo.server --root
@@ -507,7 +507,7 @@ recipe generally prevents collapse (that's the ensemble fix's job, a
 separate, already-evidenced finding). Scope: fold 0 only (same disclosed
 cut as B1), not yet the full 3-fold grid (~12 more GPU-hours, not run).
 **Explicitly not presented as this project's novelty** -- directly
-adapted from a published source; see PROGRESS_REPORT.md §6d and its
+adapted from a published source; see PROJECT_REPORT.md (Part 1) §6d and its
 updated §9 novelty section for the honest separation between "what
 makes the numbers better" (this) and "what is actually new here" (JDCR
 as a proposed metric + the mechanism-level graph diagnosis).
@@ -676,7 +676,7 @@ folds/architectures, matched-scope MC-dropout, maybe another dataset) to
 be reviewer-proof, but the core comparison is real and the direction is
 sound.
 
-## Phase 8 prep — COMPLETE (2026-09-17, superseded by the above). Plan and pass marks: `PHASE8_PLAN.md`.
+## Phase 8 prep — COMPLETE (2026-09-17, superseded by the above). Plan and pass marks: `PROJECT_REPORT.md (Appendix C)`.
 
 All 3 per-fold baseline trunks trained (`segresnet_3fold_fold{0,1,2}_best.pt`
 -- these double as B0/seed0 for each fold, so Phase 8 only needs 6 more B0
@@ -691,7 +691,7 @@ every future fold/seed benefits. ECE was also actually wired into
 `src/eval/run_rule_evaluator.py` (existed since fix 8.2 but was never
 called from a real path until now). B1, B2, and the Rule Evaluator all
 smoke-tested clean on fold 0's fresh trunk. **Full detail, and the exact
-remaining run count/schedule: `PHASE8_PLAN.md`.**
+remaining run count/schedule: `PROJECT_REPORT.md (Appendix C)`.**
 
 **Launched 2026-09-17** — `python -m src.model.run_phase8 --root D:/ISLES-2024/train`,
 running as one background task that sequentially runs all 18 remaining jobs
@@ -715,7 +715,7 @@ after an interruption).
   All three models now score identically (JDCR 0.977, coverage 100%) once
   scored on their real full-resolution prediction instead of a downscaled
   view. The earlier "B2 commits to more patients" story was the scoring
-  bug, not a real B2 property. Full detail: `PHASE8_PLAN.md`.
+  bug, not a real B2 property. Full detail: `PROJECT_REPORT.md (Appendix C)`.
 - **Fix 8.1 (validation overlap): code done, retraining in progress.**
   `train_baseline.py` now names per-n_folds checkpoints separately
   (`segresnet_{n_folds}fold_fold{N}_best.pt`) so it stops colliding with
@@ -726,7 +726,7 @@ after an interruption).
   voxel-level, explicitly NOT the same quantity as the base paper's 0.130
   (segmentation-only here, their heads are shelved) -- unit-tested on
   synthetic well-calibrated/overconfident cases before trusting it.
-- `PROGRESS_REPORT.md` updated in place with the corrected JDCR numbers
+- `PROJECT_REPORT.md (Part 1)` updated in place with the corrected JDCR numbers
   and fix status -- re-send/re-share if already given to faculty.
 
 ## KNOWN ISSUES — fix BEFORE launching Phase 8 (found 2026-09-14)

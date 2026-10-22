@@ -248,7 +248,7 @@ def main():
                 # that 5-fold checkpoint put 20/50 val subjects in its own
                 # training set)
                 # seed 0 keeps the un-suffixed name (matches the already-
-                # trained fold trunks B1/B2 warm-start from, see PHASE8_PLAN.md);
+                # trained fold trunks B1/B2 warm-start from, see PROJECT_REPORT.md (Appendix C));
                 # seeds 1+ get their own name so B0's extra seeds (Phase 8)
                 # don't collide with that trunk or each other
                 seed_suffix = "" if args.seed == 0 else f"_seed{args.seed}"

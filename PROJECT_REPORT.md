@@ -1,4 +1,23 @@
-# KG-XAI — Progress Report
+# KG-XAI: Project Report
+
+Ekanath DV (23MIA1023) · Rohan Julius Preetan (23MIA1160)
+
+One combined record of the project. Part 1 is the final progress report with the headline results. Appendices A to C are the earlier phase documents, kept intact: the Phase 1 knowledge-graph report, the Phase 2 constraint tests, and the Phase 8 plan whose pass marks were written before the runs.
+
+Other documents: [`README.md`](README.md) (how to run), [`PROJECT_PLAN.md`](PROJECT_PLAN.md) (plan of record), [`KNOWLEDGE_GRAPH_SOURCES.md`](KNOWLEDGE_GRAPH_SOURCES.md) (verified sources), [`CLAUDE.md`](CLAUDE.md) (working notes), `paper/` (the conference paper).
+
+## Contents
+
+- [Part 1: Final progress report](#part-1-final-progress-report)
+- [Appendix A: Phase 1 report (knowledge graph)](#appendix-a-phase-1-report-knowledge-graph)
+- [Appendix B: Phase 2 progress (labels and constraint tests)](#appendix-b-phase-2-progress-labels-and-constraint-tests)
+- [Appendix C: Phase 8 plan and pre-registered pass marks](#appendix-c-phase-8-plan-and-pre-registered-pass-marks)
+
+---
+
+## Part 1: Final progress report
+
+*Originally `PROGRESS_REPORT.md`: KG-XAI — Progress Report*
 
 **Knowledge-Graph-Guided Multi-Task Learning for Stroke Triage**
 Ekanath DV (23MIA1023) · Rohan Julius Preetan (23MIA1160)
@@ -14,7 +33,7 @@ re-scored afterwards.
 
 ---
 
-## 1. Summary
+### 1. Summary
 
 After Review 1 we went back to the knowledge-graph plan from the proposal,
 with a GNN at its core. Phases 1–7 of the 9-phase plan are built and tested.
@@ -91,7 +110,7 @@ The headline results:
 
 ---
 
-## 2. What changed since Review 1
+### 2. What changed since Review 1
 
 | Review 1 feedback | What we did |
 |---|---|
@@ -101,7 +120,7 @@ The headline results:
 
 ---
 
-## 3. Dataset (ISLES'24 public training release, measured, not assumed)
+### 3. Dataset (ISLES'24 public training release, measured, not assumed)
 
 | Fact | Value | Consequence |
 |---|---|---|
@@ -117,7 +136,7 @@ The headline results:
 
 ---
 
-## 4. The system as built
+### 4. The system as built
 
 ```mermaid
 flowchart LR
@@ -147,9 +166,9 @@ B2 all use the same trunk, so the comparison between them is still fair.
 
 ---
 
-## 5. What we tested, phase by phase
+### 5. What we tested, phase by phase
 
-### Phase 1: Knowledge graph
+#### Phase 1: Knowledge graph
 
 - **Layer 1:** Circle of Willis, 12 vessel nodes, 12 anatomical edges.
   Sources: TopCoW (arXiv:2312.17670), Alastruey 2007 (PMID 17045276),
@@ -167,7 +186,7 @@ B2 all use the same trunk, so the comparison between them is still fair.
   the nearest vessel whenever the true occlusion is far from everything.
 - **Gate: laterality agreement ≥ 80%. Result: 89/94 = 94.7%. PASS.**
 
-### Phase 2: Perfusion quantities and plausibility-rule testing
+#### Phase 2: Perfusion quantities and plausibility-rule testing
 
 - Brain mask, acute core, penumbra, mismatch ratio and volume, HIR.
   **Gate: intracranial volume plausible (1000–1900 mL) for ≥ 90% of
@@ -190,7 +209,7 @@ B2 all use the same trunk, so the comparison between them is still fair.
   decisive tests (occlusion level vs volume; HIR vs volume) separately in
   each center. **Both fail in both centers independently.**
 
-### Phase 3: B0 with two new heads
+#### Phase 3: B0 with two new heads
 
 - Extended the Review 1 trunk with an LVO-localization head (4 classes) and
   a collateral-proxy head (4 HIR bins). Verified that the segmentation output
@@ -200,7 +219,7 @@ B2 all use the same trunk, so the comparison between them is still fair.
 - Result: Dice 0.247 passed. LVO 56.0% and collateral 60.0% were **both
   below the majority-class baseline. FAIL.**
 
-### Phases 4–5a: Fixing the heads with the GNN (four attempts)
+#### Phases 4–5a: Fixing the heads with the GNN (four attempts)
 
 We diagnosed the failure one step at a time. The pass mark stayed the same
 throughout.
@@ -225,7 +244,7 @@ throughout.
   from the images by any of the four designs. **Heads shelved.** The graph's
   contribution was redirected to segmentation.
 
-### Phase 5: B1, graph injected into the segmentation decoder
+#### Phase 5: B1, graph injected into the segmentation decoder
 
 - Cross-attention from every decoder stage onto the 12 graph-node
   embeddings. The injection starts at exactly zero (a "zero-init gate"), and
@@ -234,7 +253,7 @@ throughout.
   Training did move the gates away from zero, so the graph is being used.
 - Result in §6.
 
-### Phase 6: B2, laterality consistency loss
+#### Phase 6: B2, laterality consistency loss
 
 - A differentiable penalty on the fraction of predicted lesion that lies on
   the wrong side of the brain's midline. It uses the one supported rule only,
@@ -246,7 +265,7 @@ throughout.
 - The expected side comes from **admission imaging only**. Follow-up
   imaging is used only as the target, never as an input.
 
-### Phase 7: Rule Evaluator, JDCR, rationale
+#### Phase 7: Rule Evaluator, JDCR, rationale
 
 - For each patient: does the predicted infarct sit on the side the admission
   occlusion points to? From this we compute the **Joint-Decision Consistency
@@ -268,13 +287,13 @@ Example rationale (B2, real patient):
 
 ---
 
-## 6. Model comparison metrics
+### 6. Model comparison metrics
 
 **Setup:** fold 0 of 3, seed 0, the same 50 validation patients for every
 model, 100 epochs each. **Read with the caveat in §8.1:** these absolute
 numbers are affected by validation overlap.
 
-### Segmentation (all four official ISLES'24 metrics)
+#### Segmentation (all four official ISLES'24 metrics)
 
 | Model | Dice (best checkpoint) | Dice (final) | Dice (mean of 10 checkpoints) | Abs. volume diff (mL) ↓ | Lesion-wise F1 | Abs. lesion-count diff ↓ |
 |---|---|---|---|---|---|---|
@@ -290,7 +309,7 @@ numbers are affected by validation overlap.
   tighter than B1's (0.055). The consistency loss appears to stabilize
   training.
 
-### Consistency (JDCR, laterality rule only)
+#### Consistency (JDCR, laterality rule only)
 
 **First measurement (below the line): invalid, disclosed in §8.2, now
 fixed.** As originally defined, JDCR skipped a patient if the model
@@ -320,12 +339,12 @@ between B0, B1 and B2.** Whether a real difference exists is what Phase 8's
 full 3-fold × 3-seed run (§9) will show — a gap this small, on one run, is
 not yet a finding either way.
 
-### Classification heads
+#### Classification heads
 
 See the table in Phases 4–5a. All attempts are below the majority-class
 baseline.
 
-### Base paper, for context only (not comparable)
+#### Base paper, for context only (not comparable)
 
 The base paper reports LVO AUC 0.92, collateral κ 0.72, Dice 0.81 and
 ECE 0.130. These cannot be compared with our numbers for four reasons:
@@ -341,7 +360,7 @@ This is why improvement is shown as B2 vs B0 on identical data.
 
 ---
 
-## 6a. Phase 8 — the real result (3 folds × 3 seeds, 21 runs, complete 2026-09-18)
+### 6a. Phase 8 — the real result (3 folds × 3 seeds, 21 runs, complete 2026-09-18)
 
 **Setup:** B0 and B2 trained 9 times each (3 folds × 3 seeds); B1 trained 3
 times (fold 0 only, isolating graph-injection from the consistency loss —
@@ -349,10 +368,10 @@ a deliberate, disclosed scope cut given the two-week budget). 100 epochs
 each, ~17.3 GPU-hours total. Fold splits are identical across every seed
 (fixed at a separate, constant split-seed — found and fixed a real bug
 where training-seed and fold-split-seed were conflated, before launching;
-see `PHASE8_PLAN.md`). Every run scored with the fixed Rule Evaluator
+see `Appendix C`). Every run scored with the fixed Rule Evaluator
 (§8.2) on its own real full-resolution prediction.
 
-### The headline finding: B0 is fragile, B1/B2 are not
+#### The headline finding: B0 is fragile, B1/B2 are not
 
 | Model | Runs | Collapsed to predicting nothing |
 |---|---|---|
@@ -371,7 +390,7 @@ training" from "warm-starting stabilizes training" — there is no
 warm-started, graph-free B0 variant to isolate the two. We report the
 pattern, not an overclaimed cause.
 
-### Per-run results
+#### Per-run results
 
 | Run | Dice (final) | JDCR (strict) | ECE |
 |---|---|---|---|
@@ -401,9 +420,9 @@ Full detail, both collapsed runs' raw per-subject predictions, and the
 complete aggregation code: `outputs/tables/phase8_summary.json`,
 `src/eval/phase8_aggregate.py`.
 
-### Aggregate (mean ± SD) and the pre-registered pass marks
+#### Aggregate (mean ± SD) and the pre-registered pass marks
 
-Pass marks were written down in `PHASE8_PLAN.md` **before** this run was
+Pass marks were written down in `Appendix C` **before** this run was
 launched: (1) primary — B2's mean JDCR beats B0's; (2) guard rail — B2's
 mean Dice stays within 0.02 of B0's.
 
@@ -431,7 +450,7 @@ technically pass either way, but passing because of B0's failures, not
 because B2 segments more accurately, is not the result the primary claim
 was written to detect — so we checked further, properly.
 
-### The real test: a paired, per-patient comparison
+#### The real test: a paired, per-patient comparison
 
 Aggregate means can hide a lot. We ran a per-subject paired comparison —
 B2 vs. B0, matched by patient, using only the 7 fold/seed combinations
@@ -445,7 +464,7 @@ collapsed prediction would trivially and misleadingly favor B2):
   tied on 33 — close to a coin flip.
 - **Wilcoxon signed-rank test: p = 0.24. Not statistically significant.**
 
-### What Phase 8 actually shows, stated plainly
+#### What Phase 8 actually shows, stated plainly
 
 1. **No evidence the graph improves raw segmentation accuracy.** The
    properly-powered, per-patient test found no significant difference.
@@ -463,14 +482,14 @@ plainly, including when it doesn't favor the thing we built.
 
 ---
 
-## 6b. Five further tests, after Phase 8 (2026-10-04 to 2026-10-11)
+### 6b. Five further tests, after Phase 8 (2026-10-04 to 2026-10-11)
 
 With the graph's accuracy claim settled negative, five more tests were run
 — two more rejections on the same question, three genuinely new positive
 results that don't depend on the graph winning at all. All pre-registered
 before running, same as everything above.
 
-### Rejected: is it the real anatomy, or just having a graph at all?
+#### Rejected: is it the real anatomy, or just having a graph at all?
 
 The cross-attention gate (§6a) barely opens in training regardless of
 outcome — so does the SPECIFIC Circle-of-Willis wiring matter, or would
@@ -491,7 +510,7 @@ same tiny range regardless of wiring, which is a diagnosis, not just a
 result — very little information passes through this pathway either way.
 `outputs/tables/random_edge_ablation.json`.
 
-### Closing the loop: does an open gate help, and is feature quality the problem? (2026-10-13)
+#### Closing the loop: does an open gate help, and is feature quality the problem? (2026-10-13)
 
 Three more tests, the most direct evidence yet, from genuinely new angles:
 
@@ -539,7 +558,7 @@ pathway has nothing useful to contribute to segmentation accuracy.
 `topcow_feature_quality_vs_dice.json`, `graph_completeness_vs_dice.json`,
 `gate_open_experiment.json`.
 
-### Rejected: a second, independent collateral measure
+#### Rejected: a second, independent collateral measure
 
 Checks 2/4/5 (§5, §8) already rejected HIR (a perfusion-based proxy) as a
 collateral signal. A second, completely different operationalization —
@@ -559,7 +578,7 @@ outcomes, both null — treat "does collateral status predict anything in
 this cohort" as settled, not underpowered.
 `outputs/tables/constraint_support.json` (checks 6-8).
 
-### New result: the Rule Evaluator as a triage signal, not just a score
+#### New result: the Rule Evaluator as a triage signal, not just a score
 
 Does the Rule Evaluator's own ground-truth-free output predict which
 predictions are actually wrong? **A correction caught before this went
@@ -591,7 +610,7 @@ This turns the Rule Evaluator from a pure evaluation metric into a usable
 "flag this prediction for radiologist review" mechanism.
 `outputs/tables/triage_check.json`.
 
-### New result: ensembling erases the training-collapse problem
+#### New result: ensembling erases the training-collapse problem
 
 Phase 8 found B0 collapsed in 2/9 runs (fold 0 seed 1, fold 1 seed 1, both
 dice=0.02 — predicts no lesion for anyone). No retraining: average the 3
@@ -609,7 +628,7 @@ Both within the pre-registered 0.02 pass mark. A simple, well-known fix
 nearly completely absorbs a catastrophic training failure, with no need
 to detect the collapse beforehand. `outputs/tables/ensemble_check.json`.
 
-### New result: multi-task learning works, given a real label
+#### New result: multi-task learning works, given a real label
 
 §5's two classification heads (LVO localization, collateral proxy)
 collapsed to one constant answer on every design tried. Open question:
@@ -643,7 +662,7 @@ single-task training coincided with avoiding that failure mode.
 
 ---
 
-## 6c. Does the knowledge-grounded triage flag beat a standard baseline? (2026-10-13)
+### 6c. Does the knowledge-grounded triage flag beat a standard baseline? (2026-10-13)
 
 With the graph's accuracy claim closed by four independent checks (§6b),
 this is the strongest remaining candidate for a genuine new contribution:
@@ -719,7 +738,7 @@ ideally a second architecture or dataset.
 
 ---
 
-## 6d. Closing the gap to the published state of the art (2026-10-11/12)
+### 6d. Closing the gap to the published state of the art (2026-10-11/12)
 
 **This section is applied engineering, not a novelty claim** — it is directly
 adapted from a published, challenge-winning team's documented approach, not
@@ -728,7 +747,7 @@ headline Dice number more than anything else attempted, and because
 honestly separating "what made the numbers better" from "what is new here"
 matters for how this project should be presented.
 
-### Why we looked at this at all
+#### Why we looked at this at all
 
 The ISLES'24 challenge itself (arXiv:2408.10966; 453 participants
 registered, 12 teams submitted a final solution) gives real external
@@ -753,7 +772,7 @@ project), not a clinically meaningful core/penumbra window, and there was
 no skull-stripping step in the segmentation pipeline at all (only in the
 separate KG perfusion-volume calculations).
 
-### What we changed
+#### What we changed
 
 - **Skull-stripping**, reusing the already-validated (98.6% plausible ICV)
   HU-threshold + largest-connected-component mask from
@@ -771,7 +790,7 @@ separate KG perfusion-volume calculations).
   Off by default -- zero risk to every existing B0/B1/B2 checkpoint and
   cache.
 
-### Result: confirmed across 3 seeds, fold 0
+#### Result: confirmed across 3 seeds, fold 0
 
 | Seed | Dice (new recipe) | Dice (plain recipe, same seed) |
 |---|---|---|
@@ -795,7 +814,7 @@ then broke out and reached 0.267. Interesting, not proof that this
 recipe generally prevents collapse; the ensemble fix (§6b) is the
 evidenced fix for that specific problem, not this one.
 
-### Honest scope and limits
+#### Honest scope and limits
 
 - **Not a novelty claim.** Directly adapted from a published approach;
   see §9's "Novelty claim, restated" for what the actual contribution is.
@@ -813,9 +832,9 @@ evidenced fix for that specific problem, not this one.
 
 ---
 
-## 7. What went right, and what went wrong
+### 7. What went right, and what went wrong
 
-### Went right
+#### Went right
 
 - A knowledge graph with every citation verified against primary sources,
   and laterality validated at 94.7%.
@@ -830,7 +849,7 @@ evidenced fix for that specific problem, not this one.
 - Infrastructure in place for Phase 8: all three models train end-to-end on
   8 GB, and every result is written to a traceable file.
 
-### Went wrong, and what we did about it
+#### Went wrong, and what we did about it
 
 | Problem | What we did |
 |---|---|
@@ -848,7 +867,7 @@ evidenced fix for that specific problem, not this one.
 
 ---
 
-## 8. Methodological issues found in this review
+### 8. Methodological issues found in this review
 
 **Status as of 2026-09-18: both fixed, both re-run.** §8.2 was fixed and
 re-run on 2026-09-16 (result in the old §6). §8.1 was fixed by training 3
@@ -856,7 +875,7 @@ fresh per-fold trunks (2026-09-17), which every Phase 8 run (§6a) actually
 used as its starting point — so §6a's numbers are already clean of this
 issue, not still pending it.
 
-### 8.1 Validation overlap in Phases 3–7
+#### 8.1 Validation overlap in Phases 3–7
 
 Every model starts from the Review 1 checkpoint, which was trained on a
 **5-fold** split. Phases 3–7 validate on a **3-fold** split. **20 of the 50
@@ -873,7 +892,7 @@ validation patients were in that checkpoint's training data.**
 - **Fix:** for each fold, train a fresh starting checkpoint on that fold's
   training patients only.
 
-### 8.2 JDCR measured at a scale only B2 was trained on — FIXED
+#### 8.2 JDCR measured at a scale only B2 was trained on — FIXED
 
 - B0 and B1 were evaluated on a downscaled whole-brain view they never
   learned to segment. This explained why they appeared to predict nothing
@@ -890,13 +909,13 @@ validation patients were in that checkpoint's training data.**
 
 ---
 
-## 9. Plan ahead
+### 9. Plan ahead
 
-### Step 0 and Phase 8: DONE (2026-09-16 to 2026-09-18)
+#### Step 0 and Phase 8: DONE (2026-09-16 to 2026-09-18)
 
 Everything planned here was completed, in order: both fixes (§8.1, §8.2)
 applied and verified before launch; ECE implemented and unit-tested; pass
-marks written into `PHASE8_PLAN.md` before any run started; the full 21-run
+marks written into `Appendix C` before any run started; the full 21-run
 evaluation (18 training runs, ~17.3 GPU-hours, plus 3 already-existing
 per-fold trunks that doubled as B0/seed0) executed, survived a mid-run
 power loss with zero data loss, and was scored end to end. Real results:
@@ -904,7 +923,7 @@ power loss with zero data loss, and was scored end to end. Real results:
 in at 17.3 GPU-hours, under the 25-30 estimated, because the per-fold
 trunks already built for warm-starting also counted as 3 of B0's 9 runs.
 
-### External data (request pending)
+#### External data (request pending)
 
 Before shelving the two classification heads, we searched for a public
 dataset that supplies what ISLES'24 lacks — a real, expert-graded
@@ -941,7 +960,7 @@ target itself.
   arrives too late to use, the classification-head result stands as
   reported in §5.
 
-### Open data, in place of CODEC-IV (identified 2026-10-04, in progress)
+#### Open data, in place of CODEC-IV (identified 2026-10-04, in progress)
 
 With CODEC-IV dead, two genuinely open datasets (no application, no
 gatekeeper) were identified and are the project's route to the two things
@@ -966,12 +985,12 @@ a single-dataset, graph-didn't-beat-baseline story leaves open:
   preprocessing, a new training run, re-wiring the feature source), not
   attempted unless there is enough runway left.
 
-### Phase 9: write-up
+#### Phase 9: write-up
 
 - Final report and results document, including the "1 of 7 rules survived"
   finding and the head-collapse diagnosis as stated results — **this
   document**, updated in place with Phase 8's real results (§6a).
-- **Deck corrections: done — see `DECK_CORRECTIONS.md`.** Slide-by-slide
+- **Deck corrections: done — see the deck-corrections notes (removed from the tree; see git history, `git show f2c8ab5~1:DECK_CORRECTIONS.md`).** Slide-by-slide
   changes (2 centers not 7, final infarct not core/penumbra, shared-encoder
   B0, localization instead of binary LVO), a full replacement for the
   "expected results" slide using Phase 8's real numbers, a suggested new
@@ -981,7 +1000,7 @@ a single-dataset, graph-didn't-beat-baseline story leaves open:
   shared in conversation), so this is a corrections guide to apply by
   hand, not an edited .pptx.
 
-### Optional, only if time remains
+#### Optional, only if time remains
 
 - Territory rule (needs atlas registration).
 - Concept-attention alignment (do attention weights concentrate on the
@@ -989,7 +1008,7 @@ a single-dataset, graph-didn't-beat-baseline story leaves open:
 - CTA vessel enhancement.
 - The conformal volume decision inside the Rule Evaluator.
 
-### Novelty claim, restated for the evidence we have
+#### Novelty claim, restated for the evidence we have
 
 **What the evidence rules out:** the learned GNN pathway does not improve
 segmentation accuracy (paired test, p=0.24), and — tested directly,
@@ -1034,7 +1053,7 @@ evidence shows, not adjusted to fit what we hoped to find.
 
 ---
 
-## 10. Code map
+### 10. Code map
 
 | Component | File |
 |---|---|
@@ -1049,7 +1068,7 @@ evidence shows, not adjusted to fit what we hoped to find.
 | Training: B0 / B1 / B2 | `src/model/train_multitask.py`, `train_graph_seg.py`, `train_graph_seg_consistency.py` |
 | Rule Evaluator, JDCR, rationale | `src/eval/rule_evaluator.py`, `src/eval/run_rule_evaluator.py` |
 | Phase 8 orchestration (training queue, scoring pass, aggregation) | `src/model/run_phase8.py`, `src/eval/run_phase8_eval.py`, `src/eval/phase8_aggregate.py` |
-| Interactive demo (live inference on held-out patients) | `demo/server.py`, `demo/index.html`, `demo/README.md` |
+| Interactive demo (live inference on held-out patients) | `demo/server.py`, `demo/compare.html`, `demo/README.md` |
 | Random-edge-GNN ablation | `src/model/gnn_head.py` (`random_edge_index`), `--edge-mode` on `train_graph_seg.py`/`run_rule_evaluator.py` |
 | Triage/abstention check | `src/eval/triage_check.py` |
 | Ensemble fix for the training collapse | `src/eval/ensemble_check.py` |
@@ -1058,7 +1077,7 @@ evidence shows, not adjusted to fit what we hoped to find.
 | TopCoW expert-feature validation | ad hoc analysis against `CTA_ISLES2024_TUM.zip` (Zenodo 15692630), not a standing script |
 | Failure-detection baseline comparison | `src/eval/failure_detection_baselines.py`, `mc_dropout_baseline.py`, `failure_detection_compare.py` |
 
-## 11. Where every number comes from
+### 11. Where every number comes from
 
 | Numbers | File |
 |---|---|
@@ -1081,4 +1100,562 @@ evidence shows, not adjusted to fit what we hoped to find.
 | Force-the-gate-open experiment (§6b) | `outputs/tables/gate_open_experiment.json`, `b1_graph_seg_gateinit1p0_fold0[_seed1,_seed2].json` |
 | TopCoW expert-feature validation (§6b) | `outputs/tables/topcow_expert_vessel_validation.json`, `topcow_feature_quality_vs_dice.json`, `graph_completeness_vs_dice.json` |
 | Knowledge-flag vs. baseline failure-detection comparison (§6c) | `outputs/tables/failure_detection_raw.json`, `mc_dropout_raw.json`, `failure_detection_comparison.json` |
-| **Phase 8 — run log, fixes, prep history** | `PHASE8_PLAN.md`, `outputs/tables/phase8_run_log.json` |
+| **Phase 8 — run log, fixes, prep history** | `Appendix C`, `outputs/tables/phase8_run_log.json` |
+
+---
+
+## Appendix A: Phase 1 report (knowledge graph)
+
+*Originally `PHASE1_REPORT.md`: Phase 1 Report — Knowledge Graph*
+
+**Status: PASSED** (2026-09-13). One open item carried to Phase 2 (below).
+
+Phase 1's job, from `PROJECT_PLAN.md` §8: finalize both layers of the
+knowledge graph, verify every rule against its source, audit whether the
+clinical data can support the rules, and build the per-patient vessel
+features with the confidence filter.
+
+### Gate results
+
+| Gate | Result | Evidence |
+|---|---|---|
+| Both graphs load and validate | ✅ Pass | Layer 1: 12 vessels, 12 connections, connected, both carotids reach MCA+ACA, Acom bridges both sides. Layer 2: 16 concepts, 7 rules, 4 constraints, all references resolve. `outputs/tables/kg_validation.json` |
+| Every rule has a checked citation | ✅ Pass | 7/7 sources verified against PubMed (NCBI E-utilities), ClinicalTrials.gov (NCT02142283, NCT02586415) or arXiv. **Caveat:** AHA/ASA 2026 recommendation *wording* unverified — full text blocked. |
+| Confident cases land on the correct vessel | ✅ Pass — **94.7%** | Clot side vs. side of the follow-up infarct, 89/94 confident front-of-brain cases. Pass mark 80%, fixed before running. PCA 6/6. `outputs/tables/kg_node_features.json` |
+| Time-window data audited | ✅ Done — **absent** | All 7 timing columns empty, 149/149. `outputs/tables/clinical_completeness.json` |
+
+### What was built
+
+| File | Purpose |
+|---|---|
+| `kg/cow_topology.json` | Layer 1 — Circle of Willis graph, verified sources, measured vessel presence, leakage rule |
+| `kg/guideline_rules.json` | Layer 2 — concepts, 7 eligibility rules with quoted source text, 4 plausibility constraints with support status |
+| `src/graph/build.py` | Validates both graphs, checks provenance, reports what's evaluable on ISLES'24, cross-checks against real data |
+| `src/graph/features.py` | Per-patient vessel features + the laterality gate |
+| `src/data/clinical_audit.py` | Completeness of every clinical column |
+| `KNOWLEDGE_GRAPH_SOURCES.md` | Where every node and edge came from |
+
+Per-patient features now available for all 149 subjects: which vessels are
+present, which is occluded (confident matches only), and, for unlocalized
+occlusions, a flag plus the side.
+
+### Findings
+
+1. **ISLES'24 has no timing data.** Every time-window condition in DAWN,
+   DEFUSE 3 and the AHA/ASA guideline is non-evaluable. Combined with no
+   ASPECTS, **no eligibility rule is fully evaluable on this dataset.** The
+   Rule Evaluator will report "imaging and clinical criteria met; time window
+   not recorded" — never "eligible."
+2. **JDCR must rest on the plausibility constraints, and today only 1 of 4 is
+   supported** (infarct side matches occlusion side, 94.7%). Two need Phase
+   2's collateral proxy; one can't be checked (4 LVO-negative patients). **This
+   is the main risk to the novelty claim** — see "Carried to Phase 2."
+3. **The draft rules had three errors, now fixed.** DAWN was missing the
+   premorbid mRS 0–1 condition; DEFUSE 3 was missing the age limits and both
+   mismatch criteria; and all trial rules were checked against the model's
+   *final infarct* volume when the trials use *acute core* at admission.
+4. **Two invented thresholds removed.** The collateral constraints used 100
+   mL / 5 mL cut-offs with no source; they now say "set from the training
+   fold."
+5. **The basilar default sink.** 19 of 20 "basilar" matches were
+   low-confidence at a median 39 mm. The confidence filter keeps them out;
+   the validator now flags any such sink automatically.
+6. **Collateral vessels are often missing** (Pcom 44–54/149, Acom 71/149).
+   This is anatomically normal and useful to the GNN — a missing collateral
+   route is signal.
+7. **Low-confidence clots still carry a reliable side** (17/17), now a
+   feature (`unlocalized_side`).
+8. **Leakage guarded.** Features use admission data only; the follow-up
+   infarct mask is stored separately and used only to validate.
+9. **Label 15** (TopCoW's rare 13th vessel) is in 5/149 patients and never
+   the clot site — excluded from the fixed graph.
+
+### Manual review (2026-09-14) — done, closed
+
+| Subject | Why | Finding |
+|---|---|---|
+| sub-stroke0049 | Confident L-MCA clot, but 81% of the infarct is on the right | Visually confirmed: infarct sits on the opposite side from the clot marker, matching the numeric finding. The clot marker sits among the small midline vessel structures, close to where left/right nearly touch anatomically — a small side mix-up there is plausible without being an obvious error. |
+| sub-stroke0079 | Confident R-MCA clot, but 98% of the infarct is on the left | Visually confirmed, more starkly: infarct is large and almost entirely on the opposite side. MCA is not normally as close to the midline as the vessels in 0049's case, so this is less easily explained the same way. Cannot be adjudicated as a real label error vs. an unusual clinical pattern (e.g. watershed injury) from one image slice — that call needs a radiologist. |
+| sub-stroke0003, sub-stroke0033 | L-ACA clot, right-sided infarct | Not separately re-imaged — ACA sits at the midline by anatomy, so side ambiguity here is expected, same reasoning as 0049. |
+
+**Decision:** no relabeling or exclusion. Both are already correctly counted
+among the laterality gate's known disagreements (89/94 = 94.7%, not 100%) —
+this review didn't find a clear bug to fix, it confirmed the exceptions are
+real and are already accounted for in that number, not hidden by it.
+Diagnostic images: `sub-stroke0049_check.png`, `sub-stroke0079_check.png`
+(scratchpad, not committed — regenerate via the snippet in this session's
+history if needed again).
+
+### Follow-up check (2026-09-14): a candidate size rule — not supported
+
+Tested: *clots in upstream vessels (ICA/M1) come with bigger infarcts than
+distal clots.* Pass mark fixed before running: higher median and one-sided
+Mann–Whitney p < 0.05.
+
+| Group | n | Median final infarct |
+|---|---|---|
+| ICA/M1 | 87 | 13.8 mL |
+| Distal / beyond the circle | 42 | 13.1 mL |
+
+**Result: fail** (p = 0.66, AUC 0.478). Recorded in
+`kg/guideline_rules.json` as `not_supported` and excluded from JDCR. Source:
+`outputs/tables/constraint_support.json` (`python -m src.graph.constraint_support`).
+
+What it tells us:
+
+- **Size rules are weak in this dataset; location rules aren't.** Every
+  patient was successfully reperfused, so final infarct size reflects how fast
+  flow returned more than where the clot was (reasoned, not tested). The
+  location-based side rule held at 94.7%; this size-based rule failed. The
+  two collateral rules are also size-based and may fail the same way.
+  **Priority for Phase 2: location-based constraints — the territory rule
+  first.**
+- **Label noise in the "distal" class.** 11 of 42 have the clot-side MCA/ICA
+  missing from the vessel mask (vs. 15/87 upstream), so some may be upstream
+  clots in a vessel the CTA never showed. Rename the class
+  **"unlocalized"** (location uncertain), not "distal".
+- **Lead to re-test:** ICA infarcts are larger than MCA infarcts (median 25.7
+  vs 11.0 mL, p = 0.035) — but it was one of two unplanned tests and doesn't
+  survive correction. Re-test on training folds only.
+
+### Carried to Phase 2
+
+- Build **acute core** (relative CBF < 30%), **penumbra** (Tmax > 6 s),
+  mismatch ratio/volume, and the **HIR collateral proxy** — these make the
+  DAWN/DEFUSE 3 imaging conditions evaluable.
+- **Add a territory constraint** — the occluded vessel's territory should
+  match where the infarct is, using the Liu 2023 atlas. It's cross-task,
+  clinically solid, and testable on real data. This is the main mitigation
+  for finding 2.
+- Support-check the two collateral constraints on the training fold. If
+  fewer than 3 constraints hold in total, narrow the JDCR claim and say so.
+- Confirm whether the 17 MCA-absent subjects are occluded MCAs not visible on
+  CTA.
+- Fix the final LVO label scheme (proposed: proximal-anterior 87 /
+  other-confident 15 / distal-unlocalized 42 / none 4).
+
+---
+
+## Appendix B: Phase 2 progress (labels and constraint tests)
+
+*Originally `PHASE2_PROGRESS.md`: Phase 2 Progress — Perfusion Volumes and Constraint Testing*
+
+**Status: partial — pausing here to report before the heavier atlas work.**
+Built and gated: brain mask, acute core, penumbra, mismatch, HIR. Tested: 4
+more plausibility constraints, on top of Phase 1's 1. **Net result: only 1 of
+7 plausibility constraints in the graph is supported.** This changes the risk
+picture reported at the end of Phase 1 and needs a decision before continuing
+into atlas registration.
+
+### What was built and gated
+
+| Gate | Result |
+|---|---|
+| Brain mask (skull-stripped from NCCT) plausible for ≥90% of subjects | ✅ **98.6%** in [1000, 1900] mL, mean 1517 mL |
+| HIR computed | ✅ 148/148, mean 0.371 |
+| Acute core / penumbra / mismatch computed | ✅ 123/148 (needs a known occlusion side) |
+
+New files: `src/graph/perfusion_volumes.py` (brain mask, core, penumbra,
+mismatch, HIR — `outputs/tables/perfusion_volumes.json`), 4 new checks in
+`src/graph/constraint_support.py`.
+
+**One real gain:** the `large_core_therapeutic_ceiling` eligibility rule
+(Kim 2026, ≥110 mL) is now fully evaluable on ISLES'24 — it only needed
+`acute_core_volume`, which is built. It's the only eligibility rule that is.
+
+### Every plausibility constraint tested so far
+
+| Constraint | Status | What it means |
+|---|---|---|
+| Infarct side matches clot side | **Supported** | 94.7% (89/94), Phase 1 |
+| Proximal (ICA/M1) clot → bigger infarct | **Rejected** | p=0.66, no difference |
+| High HIR → low mismatch ratio | **Rejected** | Significant, but backwards (rho=+0.19). Also found: the check wasn't as independent as intended — both quantities share a term |
+| Infarct inside admission Tmax>6s region | **Rejected** | Median only 51% overlap; 49% of subjects below half; some near 0%. Not a registration bug (affines confirmed byte-identical) — see below |
+| Poor collateral (HIR) → bigger infarct, proximal only, binned | **Rejected** | Right direction (19.97 vs 11.0 mL) but p=0.134, n=9 |
+| **Re-test: same, continuous, ALL occlusion-positive patients** | **Rejected** | n=143, rho=0.052, p=0.54 — essentially no relationship. Doesn't just miss significance, finds a near-zero effect. The n=9 "right direction" result does not replicate. |
+| Poor collateral → non-trivial infarct (mirror) | **Rejected** | Same underlying test |
+| Large infarct needs a clot | **Untestable** | Only 4 patients have no clot |
+
+**Current count: 1 supported, 5 rejected, 1 untestable, of 7.**
+
+### The perfusion-overlap failure — why it's not a bug
+
+Checked, in order:
+1. **Registration/alignment.** Affines for Tmax and lesion-msk are
+   byte-identical for every subject checked. Ruled out.
+2. **CTP's limited slab coverage** (it doesn't cover the whole head like NCCT
+   does). Explains 2 of the 5 worst cases (75–84% of the lesion falls outside
+   the perfusion slab). Doesn't explain the other 3 — their lesion is 99.5–100%
+   inside the covered slices, and overlap is still near 0%.
+
+For those 3, lesion and Tmax>6s centroids are **20–72 mm apart** in real
+physical space. **My working explanation:** every ISLES'24 patient had
+successful mechanical thrombectomy, and distal embolization of clot
+fragments during the procedure — a documented complication — can infarct
+tissue in a *different* territory on the same side, one the pre-procedure
+perfusion scan never showed as at risk. I have not confirmed this against
+procedural records; ISLES'24 doesn't provide them. It's the most consistent
+explanation for the pattern, not a proven one.
+
+### What this changes
+
+**The pattern from Phase 1 was "location survives reperfusion, size doesn't."
+That was too optimistic.** Gross laterality (left/right) survives — distal
+embolization essentially never crosses to the other hemisphere. But
+*precise* location — exact voxel overlap with the original perfusion deficit
+— does not survive, for the same procedural reason that scrambles size.
+
+**Where that leaves the novelty claim:** 1 of 7 constraints supported, 2
+inconclusive with a plausible path to becoming supported (bigger sample,
+continuous correlation instead of binned groups), 1 fully-evaluable
+eligibility rule gained. JDCR today would mostly measure the laterality
+check. That is real, but it's a single, comparatively simple relationship —
+worth saying plainly before it's presented as a bigger result than it is.
+
+### Update, same day: the cheap re-test is done, and it didn't help
+
+Ran option 2 below first, since it was cheap. **It came back negative, not
+inconclusive.** The continuous, whole-cohort version (n=143, rho=0.052,
+p=0.54) found essentially no relationship between HIR and final infarct
+volume — this isn't a sample-size problem the n=9 test had; a real effect of
+any real size would have shown up in 143 patients. The earlier "right
+direction" reading from the small binned test doesn't replicate and was most
+likely noise. Both collateral constraints are now recorded `not_supported`
+in `kg/guideline_rules.json`, not `inconclusive`.
+
+**Count now: 1 of 7 supported, 5 rejected, 1 untestable.** Three independent
+tests (this one, `collateral_hir_vs_mismatch`, and the fact that HIR itself
+never validated against an independent signal) now agree that HIR is not
+behaving as a collateral proxy in this cohort, and that final infarct size is
+not a size measure the graph's rules can use reliably — both conclusions
+independent of each other, which makes them harder to dismiss as one fluke.
+
+### Phase 2 cleanup (2026-09-14) — closed out
+
+Three small remaining items from `CLAUDE.md`'s task list, done:
+
+1. **Label rename.** "distal_unlocalized" → "unlocalized" throughout the code
+   and graph file (`src/graph/constraint_support.py`, `kg/guideline_rules.json`).
+   Pure rename — the underlying numbers are unchanged, only the name was wrong.
+2. **MCA-absent subjects checked.** Of 23 subjects with the MCA missing from
+   the vessel mask on their clot's side (more than the 17 first estimated), 13
+   have their clot located within 7mm of the same-side ICA — consistent with a
+   real ICA-level occlusion, where the MCA is genuinely invisible on the scan
+   because no blood is reaching it, not a segmentation failure. Those 13 are
+   already correctly classified as ICA occlusions. 4 more have *both* ICA and
+   MCA missing on that side, suggesting an even more complete blockage. Only 3
+   remain unexplained this way (real distance >25mm to the ICA) — a small,
+   acceptable residue.
+3. **The 2 flagged subjects, manually reviewed.** Rendered NCCT slices with
+   the clot location and final infarct overlaid for sub-stroke0049 and
+   sub-stroke0079. Both visually confirm the known side mismatch; neither
+   shows a clear, fixable labeling error — sub-stroke0049's clot sits near
+   midline structures where a small side mix-up is plausible without being a
+   bug, sub-stroke0079's is starker and can't be resolved from an image slice
+   without a radiologist. **No relabeling done** — both stay counted as the
+   real exceptions the laterality gate (94.7%, not 100%) already reflects.
+
+Phase 2 is now fully closed except for the deferred territory rule and the
+lowest-priority item (CTA vessel sharpening), neither blocking Phase 3.
+
+### Decision needed before continuing
+
+The next planned step (`CLAUDE.md`'s Phase 2 list) was a coarse **territory
+rule** — same idea as the failed overlap check, but using broad arterial
+territories (MCA/ACA/PCA regions) instead of exact Tmax>6s pixels, on the
+reasoning that distal embolization usually stays inside the same broad
+territory even when it changes the exact location. That reasoning still
+holds, but it is now a real bet, not a safe next step — the overlap check
+was expected to be one of the sturdier tests, and it wasn't, and the cheap
+rescue attempt for the collateral constraints just failed too. The territory
+rule needs atlas registration (Liu 2023), the heaviest single task in
+Phase 2, for a graph that currently has exactly one working rule to add to.
+
+Two ways forward, not mutually exclusive:
+
+1. **Build the territory rule anyway.** It might hold where exact overlap
+   didn't — coarser tests are more forgiving of small location shifts. Real
+   cost: the atlas registration work, with no cheap way left to de-risk it
+   first, and no guarantee it passes either.
+2. **Accept a narrower JDCR** built mainly on the laterality constraint, and
+   put more of the project's weight on the GNN and cross-attention pieces
+   (Phases 3–6) rather than on having many plausibility constraints. Report
+   the testing process itself — 7 candidate rules formalized from the
+   literature, rigorously tested against real data, only 1 surviving — as an
+   honest finding about post-thrombectomy cohorts, not a shortfall. This is
+   also a defensible, presentable result on its own: it says something real
+   about why collateral grading and infarct-size prediction are hard in a
+   uniformly-successfully-treated population, which is itself worth a
+   paragraph in the write-up.
+
+My honest read: the collateral proxy (HIR) is not going to work as a
+plausibility signal in this cohort no matter how it's re-tested, and that's
+settled now, not still open. The open question is only whether the
+territory rule is worth the atlas-registration cost given everything else
+built on final-infarct location or size has failed. I'd want a clearer sense
+of the project's time budget before recommending either way.
+
+---
+
+## Appendix C: Phase 8 plan and pre-registered pass marks
+
+*Originally `PHASE8_PLAN.md`: Phase 8 — full evaluation: plan and pass marks*
+
+Written 2026-09-16, **before** any Phase 8 run is launched. Per this
+project's own rule (CLAUDE.md, "Rules this project runs on"): pass marks are
+fixed before running, not adjusted after seeing results.
+
+### Why this file exists
+
+While preparing Part 1, two problems were found in every
+Phase 3–7 result:
+
+1. **Validation overlap.** Every model warm-started from
+   `outputs/checkpoints/segresnet_fold0_best.pt`, trained on the 5-fold
+   split's fold-0 training set. Phases 3–7 validated on the 3-fold split's
+   fold-0 val set. 20 of those 50 validation subjects were in the
+   checkpoint's own training data.
+2. **JDCR scale mismatch.** The Rule Evaluator scored laterality on a
+   64×64×48 whole-brain view only B2 was ever trained to segment; B0/B1's
+   high "predicted nothing" rate there likely reflected that, not the
+   consistency loss.
+
+Both are now fixed in code (see CLAUDE.md "KNOWN ISSUES" for the technical
+detail). This file locks in how Phase 8 will be run and judged, before
+launching it.
+
+### Fixes applied (done, 2026-09-16)
+
+- `src/model/train_baseline.py`: per-fold checkpoint/results naming
+  (`segresnet_{n_folds}fold_fold{N}_best.pt`) so a 3-fold baseline run no
+  longer overwrites the original 5-fold one.
+- `src/model/dataset.py`: `build_transforms_gnn(..., native_midline=True)`
+  computes `native_midline_voxel_x` on the same native-resolution grid
+  sliding-window inference uses, not the downscaled wb view. Verified
+  against the existing wb-grid midline on 4 real subjects — fractional
+  position agrees to within 1%.
+- `src/eval/rule_evaluator.py`: `evaluate_laterality` now distinguishes
+  *why* a subject isn't evaluable (`unknown_side` vs `empty_prediction`);
+  `compute_jdcr(strict=True)` (new default) counts an empty prediction
+  against the model instead of excluding it, and reports `coverage`
+  alongside `jdcr` so neither number is read alone.
+- `src/eval/run_rule_evaluator.py`: scores every model's REAL sliding-window
+  prediction (same one Dice uses) instead of a downscaled view; reports
+  both `jdcr_strict` (headline) and `jdcr_lenient` (for continuity/
+  comparison with the Phase 7 numbers already in the report).
+- `src/eval/metrics.py`: `expected_calibration_error` (ECE) added,
+  voxel-level, scoped to segmentation only — explicitly NOT the same
+  quantity as the base paper's reported 0.130 (see its docstring).
+
+### Fixed JDCR, re-run on the existing (fold-0, contaminated-split) checkpoints
+
+Before touching per-fold retraining, re-ran all three existing checkpoints
+through the fixed evaluator, to see what the fix itself changes:
+
+| | JDCR (old, wb-grid) | JDCR (fixed, native-res) | coverage (old → fixed) |
+|---|---|---|---|
+| B0 | 1.00 (27/27) | 0.977 (42/43) | 54% → **100%** |
+| B1 | 1.00 (23/23) | 0.977 (42/43) | 46% → **100%** |
+| B2 | 0.95 (40/42) | 0.977 (42/43) | 84% → **100%** |
+
+**The fix confirms the suspicion exactly, and changes the conclusion.** At
+full resolution, all three models predict *something* for every evaluable
+patient (coverage 100%, all three, identical), and all three are laterality-
+consistent 42/43 times. The earlier "B2 commits to way more patients" story
+was entirely the downscaled-view artifact — B0 and B1 were never really
+abstaining, they were just being scored on a resolution they'd never
+learned to segment. **On this single fold, JDCR shows no measurable
+difference between B0/B1/B2.** Whether one emerges with real statistical
+power is exactly what the 3×3 run below will show.
+
+### Still to do before launch
+
+- [x] Fold 0 baseline trunk (`segresnet_3fold_fold0_best.pt`) — done
+      2026-09-16, best val dice 0.241, final 0.236 over 50 subjects.
+      Confirmed it saved to its own file, original 5-fold checkpoint
+      untouched.
+- [ ] Fold 1 baseline trunk — hit a real bug, fixed operationally,
+      retrying. **DataLoader cache-write race**: PersistentDataset's cache
+      is subject-identity-keyed and shared across folds/n_folds (by
+      design, safe on its own), but the first time a `num_workers>1`
+      DataLoader encounters a subject NOT YET cached under a given
+      cache subdirectory, two workers can race to write that subject's
+      cache file concurrently and corrupt it (surfaced as
+      `AttributeError: 'numpy.ndarray' object has no attribute 'numel'`
+      deep in collation). Fold 0 didn't hit this (subjects already cached
+      from earlier runs); fold 1 pulled in subjects new to the "train"
+      cache folder. **Operational rule for the rest of Phase 8**: the
+      FIRST run touching a new (fold, cache-subdir) combination uses
+      `--num-workers 0`; once that run completes (cache fully populated,
+      read-only from then on), later runs reusing the same fold/cache can
+      safely go back to `--num-workers 4`.
+- [x] Fold 1 baseline trunk (`segresnet_3fold_fold1_best.pt`) — done
+      2026-09-17 after the cache-corruption retry (cleared and rebuilt the
+      "train"/"val" cache dirs, `--num-workers 0`). Final dice 0.231 over
+      49 subjects.
+- [x] Fold 2 baseline trunk (`segresnet_3fold_fold2_best.pt`) — done
+      2026-09-17, final dice 0.254 over 49 subjects. **All 3 per-fold
+      baseline trunks now exist** (fold0 0.236, fold1 0.231, fold2 0.254).
+      Note: these three runs ARE B0's seed-0 entries for each fold (not
+      just warm-start prep for B1/B2) — `baseline_3fold_fold{N}.json`
+      already covers B0/fold{N}/seed0. Phase 8 only needs 2 MORE B0 seeds
+      per fold (6 more runs, not 9 fresh) to complete B0's 3×3 set.
+- [x] (superseded description below, kept for the debugging trail) Fold 2
+      baseline trunk — hit a SECOND, unrelated bug, real root cause
+      found and fixed in code (not worked around). `RandCropByPosNegLabeld`
+      attaches `foreground_start_coord`/`foreground_end_coord` metadata
+      that's a `Tensor` for a normal crop but a plain `numpy.ndarray` when
+      it falls back to an all-background crop (a subject with zero lesion
+      voxels) — `EnsureTyped` was never applied to these two keys, so a
+      batch pairing one of each type crashed collation. Confirmed via an
+      isolated single-item check (297 calls, 3 passes, zero bad outputs —
+      ruled out a per-item transform bug) and by reading `pad_list_data_
+      collate`'s own failure, which named the exact two mismatched-type
+      keys. **Fix**: `DeleteItemsd` drops both keys right after the crop
+      (unused downstream) in both `build_transforms` and
+      `build_transforms_gnn` — not just this one run; every Phase 8 script
+      shares this crop transform and would have hit it on some other
+      fold/seed eventually. `pad_list_data_collate` (tried first, didn't
+      fix this specific error but is a reasonable general upgrade) kept in
+      all 5 training scripts alongside the real fix. Retrying now.
+- [x] B1 smoke test (fold 0, 3 epochs, 4 val subjects, warm-started from
+      the new `segresnet_3fold_fold0_best.pt`) — clean, no crash, gates
+      moved under real gradient. **Note**: this overwrote
+      `outputs/tables/b1_graph_seg_fold0.json` (the file behind the real
+      numbers already quoted in Part 1) with meaningless
+      smoke-test values. Not a data-loss concern (the real numbers are
+      already text in the report, and Phase 8 regenerates a proper
+      B1/fold0 result anyway) but noted for traceability honesty.
+- [x] B2 smoke test (fold 0, 3 epochs, 4 val subjects) — clean, consistency
+      loss visibly dropping (0.206→0.107 train). Same overwrite caveat
+      applies to `b2_graph_seg_consistency_fold0.json` as B1's.
+- [x] ECE wired into `src/eval/run_rule_evaluator.py` for real (it existed
+      and was unit-tested but was never called from an actual evaluation
+      path until now) — per-subject voxel-level ECE, mean+SD across the
+      val set, written to the JSON payload alongside JDCR.
+- [x] Rule Evaluator (native JDCR + ECE) smoke test against the smoke-
+      tested B2 checkpoint — clean: JDCR 0.977 (42/43, coverage 1.0,
+      consistent with the earlier real-checkpoint numbers), ECE
+      0.0187 ± 0.0060 over 50 subjects, ran without error.
+
+### One more real bug, found while wiring up the launch (2026-09-17)
+
+`--seed` was being passed straight into `make_datasets`/`make_gnn_datasets`,
+which uses it as `StratifiedKFold`'s `random_state` -- meaning varying
+`--seed` for the planned seed-variance runs would have silently reshuffled
+WHICH SUBJECTS are in which fold too, confounding fold-split variance with
+training-seed variance and making "fold 0, seed 1" not actually the same
+fold 0 at all. **Fixed** in `train_baseline.py`, `train_graph_seg.py`,
+`train_graph_seg_consistency.py`: the fold-split seed is now hardcoded to
+0 always; `--seed` only drives `torch.manual_seed` (weight init, batch
+order) from here on. The 3 baseline trunks already built are unaffected
+(they used seed=0 throughout already, for both purposes at once).
+Also fixed: `train_baseline.py`/`train_graph_seg.py`/
+`train_graph_seg_consistency.py` never included seed in their checkpoint/
+result filenames at all -- every one of Phase 8's 9 B2 runs would have
+overwritten the same two files. Seed 0 keeps the original name (matches
+existing references); seeds 1+ get a `_seed{N}` suffix.
+Not yet fixed (not used by Phase 8, so not blocking, but latent):
+`train_multitask.py`/`train_multitask_gnn.py` have the same seed/fold-split
+conflation -- fine for now since neither is part of the Phase 8 launch.
+
+### PHASE 8: COMPLETE (2026-09-18) — real result in Part 1 §6a
+
+All 18 training runs + 3 pre-existing per-fold trunks (21 total) scored via
+`src/eval/run_phase8_eval.py`, aggregated via `src/eval/phase8_aggregate.py`
+→ `outputs/tables/phase8_summary.json`. Headline: no significant Dice
+difference B2 vs B0 (paired Wilcoxon, p=0.24, n=345); B0 collapsed
+completely in 2/9 runs, B1/B2 never did in 12/12 — real finding, disclosed
+confound (B0 trains from scratch, B1/B2 warm-start). Full writeup:
+Part 1 §6a. Next: Phase 9 (write-up already updated; deck
+corrections still open) and the interactive demo discussed with the user.
+
+### Phase 8 prep: COMPLETE (2026-09-17)
+
+All three baseline trunks exist (and double as B0/seed0 for each fold).
+Both real bugs found during prep (cache-write race red herring, then the
+actual root cause -- RandCropByPosNegLabeld's inconsistently-typed
+foreground_start_coord/foreground_end_coord metadata) are fixed in code,
+not worked around, in both `build_transforms` and `build_transforms_gnn` --
+every future Phase 8 run across every fold benefits, not just fold 2.
+B1, B2, and the fixed Rule Evaluator (native-resolution JDCR + newly-wired
+ECE) all smoke-tested clean end-to-end on fold 0's fresh trunk.
+
+**Interrupted by a power loss ~2026-09-17 18:30-19:47** (machine turned
+off), mid-way through job 13/18 (B2_fold1_seed0, no partial checkpoint --
+nothing corrupted, just that one job's progress lost). Jobs 0-11 all
+completed and saved successfully beforehand. Resumed via `--start-at 12`.
+Found and fixed a real bug surfaced by this: `run_phase8.py` started its
+progress log fresh on every invocation, so resuming would have silently
+overwritten the record of jobs 0-11 (the actual checkpoints/results were
+never at risk, only this summary log) -- fixed to load and extend the
+existing log on a `--start-at` resume. The pre-overwrite log was also
+backed up by hand: `outputs/tables/phase8_run_log_jobs0-11_backup.json`.
+
+**Launched 2026-09-17** via `src/model/run_phase8.py`, an orchestrator that
+runs all 18 remaining jobs sequentially (one GPU, no parallelism) and keeps
+going past a failed job rather than losing the whole unattended queue to
+one bad run. Progress log: `outputs/tables/phase8_run_log.json`, updated
+after every job.
+
+Two more real bugs found and fixed in the last mile before launch (see
+"One more real bug" section below for the fold-seed one; the other:
+`train_baseline.py`/`train_graph_seg.py`/`train_graph_seg_consistency.py`
+never included seed in their checkpoint/result filenames, so all 9 B2 runs
+would have overwritten the same two files). `run_rule_evaluator.py`'s B0
+loader was also pointed at the wrong architecture (`multitask_fold0_best.pt`'s
+`MultiTaskSegResNet`, Phase 3's shelved heads) instead of the plain
+`SegResNet` `train_baseline.py` actually produces -- fixed to load the
+correct architecture for Phase 8's real B0 checkpoints.
+- [ ] Launch the full run (see schedule below).
+
+### Pass marks (fixed now, not after)
+
+**Primary claim:** B2's strict JDCR, averaged across all 3 folds × 3 seeds,
+is higher than B0's strict JDCR under the same averaging. This is the
+project's central novelty claim (PROJECT_PLAN.md §2: "JDCR is where the
+knowledge graph should show a clear gain — that is what it is designed to
+do"), so it is the one number this phase is really testing.
+
+**Guard rail (non-inferiority):** B2's mean Dice, averaged the same way,
+is no more than 0.02 below B0's mean Dice. If B2 buys JDCR at a bigger
+segmentation cost than that, it gets reported as a real trade-off, not
+absorbed into the primary claim.
+
+**Everything else is descriptive, not gating:** B1 vs B0 (isolates the
+graph-injection effect from the consistency loss), per-patient paired
+comparison (Wilcoxon signed-rank, B2 vs B0 on the fold/seed combinations
+where both have a prediction for that patient), ECE, coverage, and the
+standard deviation across seeds/folds for every number above.
+
+**If the primary claim fails:** report it as failed, the same way Phase 2's
+6/7 rules and Phase 3–5's auxiliary heads were reported as failed. Do not
+adjust `strict`/`lenient` after seeing which one passes — `strict` is
+already fixed as the headline definition, above, before the run starts.
+
+### Schedule
+
+| Runs | What | Epochs | Approx. time |
+|---|---|---|---|
+| 3 | Per-fold baseline trunks (3-fold split) — **done**, these ARE B0/seed0 | 100 | ~1h each → ~3h ✅ |
+| 6 | B0, remaining seeds 1-2 × 3 folds (seed 0 already covered above) | 100 | ~1.2h each → ~7h |
+| 9 | B2, 3 folds × 3 seeds | 100 | ~1.3h each → ~12h |
+| 3 | B1, fold 0 × 3 seeds (isolates injection from consistency loss) | 100 | ~1.2h each → ~4h |
+| — | Rule Evaluator + ECE pass over all 21 checkpoints | — | ~1-2h |
+
+**Total remaining: roughly 24-26 GPU-hours** (down from ~30 since baseline
+prep is done and doubles as B0/seed0), run as a background queue, mostly
+unattended. Seeds: 0, 1, 2 (matching the seed already used throughout
+Phases 3–7, so seed 0's numbers are comparable to what's already reported).
+
+### Naming convention for Phase 8 outputs
+
+To avoid any more of the collisions this file exists because of:
+
+- Checkpoints: `outputs/checkpoints/{model}_3fold_fold{F}_seed{S}_best.pt`
+- Baseline trunks: `outputs/checkpoints/segresnet_3fold_fold{F}_best.pt`
+  (no seed — baseline is warm-start prep, not part of the seeded comparison)
+- Result tables: `outputs/tables/{model}_3fold_fold{F}_seed{S}.json`
+- JDCR tables: `outputs/tables/jdcr_{model}_fold{F}_seed{S}.json`
+- Aggregate summary (written after all runs complete):
+  `outputs/tables/phase8_summary.json`

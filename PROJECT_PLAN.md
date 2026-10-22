@@ -406,7 +406,7 @@ fit — see §3 (B0 extends the Review 1 trunk instead of 3 new encoders) and
 §7 (3 folds × 3 seeds, not 5 × 3). The territory/atlas constraint originally
 planned inside Phase 2 is **dropped from this window**: three related
 location/size tests already failed for the same underlying reason (every
-patient here was successfully reperfused — see `PHASE2_PROGRESS.md`), so a
+patient here was successfully reperfused — see `PROJECT_REPORT.md (Appendix B)`), so a
 fourth attempt needing the heaviest remaining setup (registration to the
 Liu 2023 atlas) is deferred to "if time remains after Phase 8," not treated
 as required.
@@ -417,8 +417,8 @@ file, the NaN losses and the basilar artifact earlier in this project.
 
 | # | Phase | Build | Gate (must pass to move on) |
 |---|---|---|---|
-| **1** | **Knowledge graph** | ✅ Done | Passed — `PHASE1_REPORT.md` |
-| **2** | **Labels & perfusion features** | ✅ Mostly done (brain mask, core, penumbra, HIR, constraint testing). Remaining: finalize the LVO label scheme, manually check sub-stroke0049/0079. **Territory rule dropped from scope.** | Done items already gated — `PHASE2_PROGRESS.md`. Remaining items: no new gate, just cleanup |
+| **1** | **Knowledge graph** | ✅ Done | Passed — `PROJECT_REPORT.md (Appendix A)` |
+| **2** | **Labels & perfusion features** | ✅ Mostly done (brain mask, core, penumbra, HIR, constraint testing). Remaining: finalize the LVO label scheme, manually check sub-stroke0049/0079. **Territory rule dropped from scope.** | Done items already gated — `PROJECT_REPORT.md (Appendix B)`. Remaining items: no new gate, just cleanup |
 | **3** | **PyTorch Geometric + B0** | Install PyTorch Geometric first, smoke-test on the GPU alone (new territory — de-risk before building on it). Then extend the Review 1 trunk with two new heads (LVO localization, collateral proxy), no graph yet | PyG forward pass runs on GPU; both new heads beat their trivial baseline; Dice stays at or above 0.215 |
 | **4** | **GNN standalone** | GAT over the 12-node vascular graph, trained alone to predict localization / collateral proxy from node features | Beats the same features in a plain classifier — otherwise the graph structure adds nothing yet |
 | **5** | **B1 — guideline injection** | Cross-attention of graph embeddings into the shared decoder | Fold 0, 3 seeds vs. B0: no head gets worse; at least one improves |

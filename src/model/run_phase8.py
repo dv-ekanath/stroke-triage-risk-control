@@ -1,7 +1,7 @@
 """
 Phase 8 orchestrator -- runs every remaining B0/B1/B2 fold x seed
 combination sequentially (one GPU, can't parallelize), then a final Rule
-Evaluator + ECE pass over every checkpoint. See PHASE8_PLAN.md for the pass
+Evaluator + ECE pass over every checkpoint. See PROJECT_REPORT.md (Appendix C) for the pass
 marks (fixed before this was launched) and the full prep history.
 
 Already done before this script runs (not repeated here):
@@ -43,7 +43,7 @@ def build_jobs(root: str, cache_base: str, cache_wb: str) -> list[dict]:
     jobs = []
 
     # B0: 6 more runs (seeds 1-2 x 3 folds; seed 0 per fold already done,
-    # see PHASE8_PLAN.md)
+    # see PROJECT_REPORT.md (Appendix C))
     for fold in (0, 1, 2):
         for seed in (1, 2):
             jobs.append({
@@ -119,7 +119,7 @@ def main():
 
     print(f"\nAll {len(jobs)} Phase 8 training jobs done. See {LOG_PATH} for the run log.", flush=True)
     print("Next: run the Rule Evaluator + ECE pass over every checkpoint "
-          "(not automated here -- see PHASE8_PLAN.md).", flush=True)
+          "(not automated here -- see PROJECT_REPORT.md (Appendix C)).", flush=True)
 
 
 if __name__ == "__main__":
