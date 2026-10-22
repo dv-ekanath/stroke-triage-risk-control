@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StrokeGuard</title>
+<style>
+  :root {
+    --bg: #0b0d11; --panel: #15181d; --panel2: #1b1f26; --line: #272c34;
+    --text: #eef1f5; --muted: #8b94a3; --accent: #4f9dff; --accent2: #7fc8ff;
+    --good: #35d08c; --bad: #ff5d6c; --warn: #ffb545;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 14px/1.5 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+
+  header { padding: 12px 22px; border-bottom: 1px solid var(--line); display: flex;
+           align-items: center; gap: 18px; background: var(--panel); position: sticky; top: 0; z-index: 10; }
+  .brand { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 16px; }
+  .brand .mark { width: 22px; height: 22px; border-radius: 6px; background: linear-gradient(135deg, var(--accent), var(--accent2));
+                 display: inline-block; }
+  nav { display: flex; gap: 4px; margin-left: 8px; }
+  nav a { color: var(--muted); text-decoration: none; font-size: 13px; padding: 6px 10px; border-radius: 7px; }
+  nav a:hover { background: var(--panel2); color: var(--text); }
+  nav a.active { background: var(--panel2); color: var(--text); }
+  .envtag { margin-left: auto; font-size: 11px; color: var(--muted); border: 1px solid var(--line);
+            padding: 3px 9px; border-radius: 999px; }
+
+  main { max-width: 1180px; margin: 0 auto; padding: 28px 22px 48px; }
+
+  /* ---- upload screen ---- */
+  .uploadScreen { display: flex; flex-direction: column; align-items: center; padding: 48px 0 10px; }
+  .uploadScreen h1 { font-size: 24px; margin: 0 0 6px; font-weight: 700; }
+  .uploadScreen .tagline { color: var(--muted); font-size: 14px; margin: 0 0 32px; text-align: center; max-width: 520px; }
+  .drop { width: 100%; max-width: 560px; border: 1.5px dashed #394150; border-radius: 16px; padding: 36px 28px;
+          text-align: center; background: var(--panel); cursor: pointer; transition: all .15s; }
+  .drop.over { border-color: var(--accent); background: var(--panel2); }
+  .drop .icon { width: 44px; height: 44px; margin: 0 auto 14px; border-radius: 12px; background: var(--panel2);
+                display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--accent2); }
+  .drop h2 { margin: 0 0 4px; font-size: 15px; font-weight: 600; }
+  .drop p { margin: 0; color: var(--muted); font-size: 12.5px; }
+  .drop input { display: none; }
+  .samples { margin-top: 28px; text-align: center; }
+  .samples .lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px; }
+  .samples .row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .samples button { background: var(--panel); color: var(--text); border: 1px solid var(--line);
+                     border-radius: 999px; padding: 7px 14px; font-size: 12.5px; cursor: pointer; }
+  .samples button:hover { border-color: var(--accent); color: var(--accent2); }
+  .err { color: var(--bad); font-size: 13px; margin-top: 14px; text-align: center; }
+
+  /* ---- results screen ---- */
+  .hidden { display: none !important; }
+  .statusbar { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+  .statusbar .patient { font-weight: 700; font-size: 16px; }
+  .statusbar .occl { color: var(--muted); font-size: 13px; }
+  .statusbar .spacer { flex: 1; }
+  .btn { background: var(--panel2); color: var(--text); border: 1px solid var(--line); border-radius: 9px;
+         padding: 7px 13px; font-size: 13px; cursor: pointer; }
+  .btn:hover { border-color: var(--accent); }
+  select.ctl { background: var(--panel2); color: var(--text); border: 1px solid var(--line);
+               border-radius: 9px; padding: 7px 10px; font-size: 13px; }
+
+  .summary { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line);
+             border-radius: 11px; padding: 11px 14px; margin-bottom: 18px; font-size: 13px; color: var(--muted); }
+  .summary b { color: var(--text); }
+  .summary .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); flex-shrink: 0; }
+
+  .benchmark { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px;
+               margin-bottom: 18px; }
+  .benchmark-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+  .benchmark-head h3 { margin: 0; font-size: 14px; font-weight: 650; }
+  .benchmark-sub { color: var(--muted); font-size: 11.5px; }
+  .bench-row { display: grid; grid-template-columns: 220px 1fr 56px; gap: 10px; align-items: center; margin: 7px 0; }
+  @media (max-width: 640px) { .bench-row { grid-template-columns: 1fr; } .bench-val { text-align: left; } }
+  .bench-label { font-size: 12.5px; color: var(--text); }
+  .bench-label em { color: var(--muted); font-style: normal; font-size: 11px; display: block; }
+  .bench-bar { background: var(--panel2); border-radius: 999px; height: 9px; overflow: hidden; }
+  .bench-fill { height: 100%; border-radius: 999px; background: #5b6474; }
+  .bench-fill.lead { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .bench-val { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; font-size: 13px; color: var(--muted); }
+  .bench-val.lead { color: var(--accent2); }
+  .bench-foot { color: var(--muted); font-size: 10.5px; margin-top: 8px; }
+
+  .slicebar { display: flex; gap: 10px; align-items: center; margin: 0 0 18px; color: var(--muted); font-size: 12px; }
+  .slicebar input[type=range] { flex: 1; accent-color: var(--accent); }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 860px) { .cols { grid-template-columns: 1fr; } }
+  .col { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+  .col.right { box-shadow: 0 0 0 1px rgba(79,157,255,.25) inset; }
+  .colhead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+  .colhead h3 { margin: 0; font-size: 13.5px; font-weight: 650; }
+  .colhead select { max-width: 55%; }
+  .viewer { position: relative; background: #000; border-radius: 10px; overflow: hidden; min-height: 220px;
+            display: flex; align-items: center; justify-content: center; }
+  .viewer img { width: 100%; height: auto; image-rendering: pixelated; display: block; }
+  .spin { position: absolute; inset: 0; background: #000b; display: none; align-items: center;
+          justify-content: center; color: var(--muted); font-size: 12px; }
+  .spin.on { display: flex; }
+
+  .statgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+  .stat { background: var(--panel2); border-radius: 9px; padding: 9px 11px; }
+  .stat .k { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+  .stat .v { font-size: 17px; font-weight: 700; margin-top: 2px; font-variant-numeric: tabular-nums; }
+
+  .trust { display: flex; align-items: center; gap: 8px; margin-top: 12px; padding: 9px 11px; border-radius: 9px; font-size: 12.5px; }
+  .trust.on { background: #381818; color: #ff9b9b; }
+  .trust.off { background: #0f2a1d; color: #7ce8ae; }
+  .trust .ic { font-weight: 800; }
+  .trustwhy { color: var(--muted); font-size: 11.5px; margin-top: 5px; line-height: 1.4; }
+  .trustwhy.clinical { color: #ffc9c9; font-size: 12.5px; font-weight: 500; }
+  .trustwhy.clinical b { color: #ffe3e3; }
+  .tinynote { color: var(--warn); font-size: 11.5px; margin-top: 6px; line-height: 1.4; }
+
+  .rationale { margin-top: 12px; padding: 10px 11px; background: var(--panel2); border-radius: 9px;
+               font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+  .assist { margin-top: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .assist h3 { margin: 0 0 4px; font-size: 14px; font-weight: 650; }
+  .assist .sub { color: var(--muted); font-size: 11.5px; margin-bottom: 12px; }
+  .assist .qrow { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; }
+  .assist .qrow .btn { font-size: 12px; padding: 6px 11px; }
+  .assist .ask { display: flex; gap: 7px; margin-bottom: 12px; }
+  .assist .ask input { flex: 1; background: var(--panel2); color: var(--text); border: 1px solid var(--line);
+                       border-radius: 9px; padding: 8px 11px; font-size: 13px; }
+  .assist .ans { background: var(--panel2); border-radius: 10px; padding: 12px 14px; font-size: 13px; line-height: 1.55; min-height: 20px; }
+  .assist .ans .src { color: var(--muted); font-size: 11px; margin-top: 8px; }
+  .assist .ans .note { color: var(--warn); font-size: 11.5px; margin-top: 6px; }
+  .assist .cite { color: var(--accent2); font-size: 11px; vertical-align: super; cursor: default; }
+  .assist details { margin-top: 8px; }
+  .assist details summary { cursor: pointer; color: var(--muted); font-size: 11.5px; }
+  .assist .fact { color: var(--muted); font-size: 11.5px; margin: 3px 0; }
+  .assist .fact b { color: var(--accent2); }
+
+  .why { margin-top: 12px; }
+  .why .whybtn { width: 100%; text-align: left; }
+  .whybox { background: var(--panel2); border-radius: 9px; padding: 10px 11px; }
+  .whybox .whyhead { font-size: 12.5px; color: var(--text); margin-bottom: 8px; line-height: 1.45; }
+  .whybox .whyhead b { color: var(--accent2); }
+  .chrow { display: grid; grid-template-columns: 46px 1fr 42px; gap: 8px; align-items: center; margin: 4px 0;
+           font-size: 12px; cursor: pointer; border-radius: 6px; padding: 1px 3px; }
+  .chrow:hover { background: #ffffff0a; }
+  .chrow.sel { outline: 1px solid var(--warn); }
+  .chrow .nm { color: var(--muted); }
+  .chrow .bar { background: var(--bg); border-radius: 999px; height: 8px; overflow: hidden; }
+  .chrow .fill { height: 100%; border-radius: 999px; background: #5b6474; }
+  .chrow.top .fill { background: linear-gradient(90deg, #ff8a1f, #ffd23f); }
+  .chrow .pc { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+  .whyfoot { color: var(--muted); font-size: 10.5px; margin-top: 7px; line-height: 1.4; }
+  .whytools { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .whytools .btn { padding: 5px 10px; font-size: 12px; }
+  .whytools .btn.on { border-color: var(--warn); color: var(--warn); }
+
+  details.more { margin-top: 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 11px; }
+  details.more summary { cursor: pointer; padding: 12px 16px; font-size: 13px; color: var(--muted); list-style: none; }
+  details.more summary::-webkit-details-marker { display: none; }
+  details.more summary::before { content: "▸ "; color: var(--accent2); }
+  details.more[open] summary::before { content: "▾ "; }
+  details.more .body { padding: 0 16px 16px; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+  details.more .body a { color: var(--accent2); }
+
+  footer { max-width: 1180px; margin: 20px auto 0; padding: 14px 22px 30px; color: var(--muted);
+           font-size: 11.5px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="mark"></span>StrokeGuard</div>
+  <span class="envtag">Research prototype</span>
+</header>
+
+<main>
+
+  <div id="uploadScreen" class="uploadScreen">
+    <h1>Stroke segmentation, with a built-in trust check</h1>
+    <p class="tagline">Upload a patient's admission scan to run the full pipeline: segmentation, a
+      knowledge-graph consistency check, and a plain-language rationale — with and without graph guidance,
+      side by side.</p>
+    <div id="dropZone" class="drop">
+      <div class="icon">&#8613;</div>
+      <h2>Drop a scan file here, or click to choose one</h2>
+      <p>e.g. sub-stroke0033_ses-01_ncct.nii.gz</p>
+      <input type="file" id="fileInput" accept=".nii,.gz,.nii.gz">
+    </div>
+    <div class="samples">
+      <div class="lbl">Or try a sample patient</div>
+      <div class="row" id="samples"></div>
+    </div>
+    <div class="err" id="uploadErr"></div>
+  </div>
+
+  <div id="result" class="hidden">
+    <div class="statusbar">
+      <span class="patient" id="patientName"></span>
+      <span class="occl" id="patientMeta"></span>
+      <span class="spacer"></span>
+      <label style="color:var(--muted);font-size:12px">View</label>
+      <select id="channel" class="ctl"></select>
+      <button class="btn" id="resetBtn">New scan</button>
+    </div>
+
+    <div class="summary"><span class="dot"></span>
+      Both models are independently checked by the same ground-truth-free trust rule. Which one gets flagged
+      varies by patient — segmentation accuracy itself is equivalent with or without the graph. The graph
+      model's one reliable advantage: it never fails completely the way a baseline training run can (see
+      "Failed training run" below).
+    </div>
+
+    <div class="benchmark">
+      <div class="benchmark-head">
+        <h3>Failure-detection benchmark</h3>
+        <span class="benchmark-sub">AUROC detecting severe segmentation failure &middot; 297 held-out predictions</span>
+      </div>
+      <div class="bench-row">
+        <span class="bench-label">Our check <em>(vessel anatomy + occlusion side)</em></span>
+        <div class="bench-bar"><div class="bench-fill lead" style="width:83.6%"></div></div>
+        <span class="bench-val lead">0.836</span>
+      </div>
+      <div class="bench-row">
+        <span class="bench-label">MC-dropout <em>(stochastic forward passes)</em></span>
+        <div class="bench-bar"><div class="bench-fill" style="width:81.9%"></div></div>
+        <span class="bench-val">0.819<sup>*</sup></span>
+      </div>
+      <div class="bench-row">
+        <span class="bench-label">Ensemble disagreement <em>(3 trained models)</em></span>
+        <div class="bench-bar"><div class="bench-fill" style="width:58.3%"></div></div>
+        <span class="bench-val">0.583</span>
+      </div>
+      <div class="bench-foot"><sup>*</sup>smaller, single-model evaluation subset — see Methodology below</div>
+    </div>
+
+    <div class="slicebar"><span>Inf.</span><input type="range" id="z" min="0" max="100" value="50">
+      <span>Sup.</span><span id="zLabel" style="min-width:60px;text-align:right"></span></div>
+    <div style="color:var(--muted);font-size:11.5px;margin:-12px 0 18px">
+      The trust check below judges the whole 3D prediction at once, so it stays the same as you scroll through slices.
+    </div>
+
+    <div class="cols">
+      <div class="col left">
+        <div class="colhead">
+          <h3>Baseline model</h3>
+          <select id="leftModel" class="ctl">
+            <option value="b0_s0">Standard training run</option>
+            <option value="b0_s1">Failed training run</option>
+            <option value="b0_ensemble">3-run ensemble</option>
+          </select>
+        </div>
+        <div class="viewer"><img id="imgL"><div class="spin" id="spinL">Running inference…</div></div>
+        <div class="statgrid" id="statsL"></div>
+        <div id="flagL"></div>
+        <div class="rationale" id="ratL"></div>
+        <div class="why" id="whyL"></div>
+      </div>
+      <div class="col right">
+        <div class="colhead">
+          <h3>Graph-guided model</h3>
+          <select id="rightModel" class="ctl">
+            <option value="b2_s0">Full system</option>
+            <option value="b1_s0">Graph only</option>
+          </select>
+        </div>
+        <div class="viewer"><img id="imgR"><div class="spin" id="spinR">Running inference…</div></div>
+        <div class="statgrid" id="statsR"></div>
+        <div id="flagR"></div>
+        <div class="rationale" id="ratR"></div>
+        <div class="why" id="whyR"></div>
+      </div>
+    </div>
+
+    <div class="assist">
+      <h3>Triage assistant</h3>
+      <div class="sub">A small local model phrases answers from this patient's computed results. Every statement must cite a
+        numbered fact; answers that add numbers or advice not in the facts are rejected and replaced by a built-in summary.
+        Research prototype, not medical advice.</div>
+      <div class="qrow">
+        <button class="btn" onclick="askAssistant('summary')">Summarise this patient</button>
+        <button class="btn" onclick="askAssistant('flag')">Why flagged / passed?</button>
+        <button class="btn" onclick="askAssistant('trust')">Which model to trust?</button>
+        <button class="btn" onclick="askAssistant('used')">What did they rely on?</button>
+        <button class="btn" onclick="askAssistant('severity')">Can we tell the severity?</button>
+      </div>
+      <div class="ask">
+        <input id="askText" placeholder="Or ask your own question about this patient…" maxlength="200">
+        <button class="btn" onclick="askAssistant($('askText').value)">Ask</button>
+      </div>
+      <div class="ans" id="assistAns">Pick a question above.</div>
+    </div>
+
+    <details class="more">
+      <summary>Methodology &amp; limitations</summary>
+      <div class="body">
+        Segmentation Dice is statistically indistinguishable between the baseline and graph-guided models
+        (paired test, p&nbsp;=&nbsp;0.59, n&nbsp;=&nbsp;148 patients) — the graph is not presented as making
+        segmentation more accurate. Its demonstrated value is twofold: across the full training grid the
+        graph-guided model never collapsed to a near-empty prediction (0/9 runs) where the plain baseline did
+        twice (2/9) — try "Failed training run" above to see that failure mode directly — and the trust check
+        shown on each panel, built from admission occlusion side and predicted volume with no ground truth
+        required, detects severe segmentation failure with large effect (AUROC&nbsp;0.84) and a wide margin
+        over a standard ensemble-disagreement baseline (AUROC&nbsp;0.58). Patients here are the 50 held-out
+        ISLES'24 validation subjects; none of these models trained on them. Uploading identifies which
+        held-out patient you mean from the filename and runs inference on our preprocessed copy of their data
+        — it does not process a genuinely new, unprocessed scan (that would additionally require a perfusion
+        pipeline and a vessel-segmentation model this project does not include). Full numbers in
+        <code>outputs/tables/</code> and <code>paper/kgxai_paper.tex</code>.
+      </div>
+    </details>
+  </div>
+
+</main>
+
+<footer>StrokeGuard — a research prototype, not a medical device. Not for clinical use.</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+let ALL_SUBJECTS = [];
+let SUBJECT_META = {};
+let S = { subject: null, ch: 0, z: 0, shape: null, token: 0, leftModel: 'b0_s0', rightModel: 'b2_s0',
+          heat: { L: false, R: false }, src: { L: 'all', R: 'all' }, meta: { L: null, R: null }, why: { L: null, R: null } };
+async function api(path) {
+  const r = await fetch(path);
+  const j = await r.json();
+  if (j.error) throw new Error(j.error);
+  return j;
+}
+
+function trustReasons(m) {
+  const out = [];
+  const lat = m.laterality || {};
+  if (lat.reason === 'empty_prediction') {
+    out.push('No lesion was predicted at all — nothing to compare against the known occlusion side.');
+  } else if (lat.evaluable && lat.consistent === false) {
+    out.push(`The predicted damage is on the <b>${lat.predicted_side}</b> side, but admission imaging shows ` +
+              `the blocked vessel is on the <b>${m.expected_side}</b> side.`);
+  }
+  if ((m.flag_reason || '').includes('near zero') && lat.reason !== 'empty_prediction') {
+    out.push(`Predicted lesion volume (${m.pred_ml}&nbsp;mL) is implausibly small to represent a real infarct.`);
+  }
+  return out;
+}
+
+function extractSubjectId(filename) {
+  const m = filename.match(/sub-stroke\d+/i);
+  return m ? m[0].toLowerCase() : null;
+}
+
+async function init() {
+  const d = await api('/api/subjects');
+  ALL_SUBJECTS = d.subjects.map(s => s.id);
+  d.subjects.forEach(s => SUBJECT_META[s.id] = s);
+  $('channel').innerHTML = d.channels.map((c, i) => `<option value="${i}">${c}</option>`).join('');
+  // Pick typical-lesion-size patients for the quick-try row (median ~12.4 mL across
+  // the 50 held-out subjects) so the first try isn't a near-zero-Dice edge case.
+  const typical = d.subjects.filter(s => s.actual_ml >= 10 && s.actual_ml <= 50).map(s => s.id);
+  const sampleIds = (typical.length >= 5 ? typical : ALL_SUBJECTS).slice(0, 5);
+  $('samples').innerHTML = sampleIds.map(id => `<button data-id="${id}">${id}</button>`).join('');
+  $('samples').querySelectorAll('button').forEach(b => b.onclick = () => selectSubject(b.dataset.id));
+}
+
+function handleFile(file) {
+  $('uploadErr').textContent = '';
+  const id = extractSubjectId(file.name);
+  if (!id) {
+    $('uploadErr').textContent = `Couldn't find a "sub-strokeNNNN" pattern in "${file.name}".`;
+    return;
+  }
+  if (!ALL_SUBJECTS.includes(id)) {
+    $('uploadErr').textContent = `"${id}" isn't in the held-out evaluation set this demo can run (try a sample below).`;
+    return;
+  }
+  selectSubject(id);
+}
+
+async function selectSubject(id) {
+  S.subject = id;
+  S.z = null;
+  $('uploadScreen').classList.add('hidden');
+  $('result').classList.remove('hidden');
+  $('patientName').textContent = id;
+  const meta = SUBJECT_META[id];
+  $('patientMeta').textContent = meta && meta.expected_side
+    ? `Admission occlusion side: ${meta.expected_side} · true lesion ${meta.actual_ml} mL` : '';
+  await loadBoth();
+}
+
+async function loadSide(side) {
+  const model = side === 'L' ? S.leftModel : S.rightModel;
+  $('spin' + side).classList.add('on');
+  try {
+    const m = await api(`/api/case?subject=${encodeURIComponent(S.subject)}&model=${model}`);
+    if (S.z === null) { S.z = m.default_z; S.shape = m.shape; $('z').max = m.shape[2] - 1; $('z').value = S.z;
+                         $('zLabel').textContent = `${S.z + 1} / ${m.shape[2]}`; }
+    const tinyNote = m.actual_ml < 2
+      ? `<div class="tinynote">True lesion is very small (${m.actual_ml} mL) — even a plausible, correct-side
+         prediction can score near-zero Dice by missing a target this small.</div>` : '';
+    $('stats' + side).innerHTML = `
+      <div class="stat"><div class="k">Dice vs. ground truth</div><div class="v">${m.dice.toFixed(3)}</div></div>
+      <div class="stat"><div class="k">Predicted volume</div><div class="v">${m.pred_ml} mL</div></div>`;
+    if (m.flagged) {
+      const reasons = trustReasons(m);
+      $('flag' + side).innerHTML = `<div class="trust on"><span class="ic">&#9888;</span> Flagged for review
+        ${reasons.map(r => `<div class="trustwhy clinical">${r}</div>`).join('')}
+        <div class="trustwhy">Detected with no ground truth — computable at the moment of prediction.</div></div>${tinyNote}`;
+    } else {
+      $('flag' + side).innerHTML = `<div class="trust off"><span class="ic">&#10003;</span> Passed trust check
+        <div class="trustwhy">Predicted side matches the known occlusion side; volume is plausible. No ground truth was used.</div></div>${tinyNote}`;
+    }
+    $('rat' + side).textContent = m.rationale;
+    S.meta[side] = m;
+    resetWhy(side);
+    setImg(side);
+  } catch (e) { $('uploadErr').textContent = e.message; }
+  finally { $('spin' + side).classList.remove('on'); }
+}
+
+function setImg(side) {
+  const model = side === 'L' ? S.leftModel : S.rightModel;
+  const base = `subject=${encodeURIComponent(S.subject)}&model=${model}&z=${S.z}&ch=${S.ch}`;
+  $('img' + side).src = S.heat[side] && S.why[side]
+    ? `/explain.png?${base}&src=${S.src[side]}`
+    : `/slice.png?${base}&pred=1&gt=1&mid=1`;
+}
+
+// ---- Triage assistant (demo/assistant.py) ----
+function esc(s) { return String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])); }
+
+async function askAssistant(q) {
+  q = (q || '').trim();
+  if (!q || !S.subject) return;
+  const box = $('assistAns');
+  box.innerHTML = 'Collecting the results and asking the local model… (a few seconds)';
+  try {
+    const r = await api(`/api/assistant?subject=${encodeURIComponent(S.subject)}&left=${S.leftModel}` +
+                        `&right=${S.rightModel}&q=${encodeURIComponent(q)}`);
+    const body = esc(r.answer).replace(/\[(F\d+)\]/g, (_, id) => `<span class="cite" title="see facts below">[${id}]</span>`);
+    box.innerHTML = `<div><b>${esc(r.question)}</b></div><div style="margin-top:6px">${body}</div>
+      <div class="src">Source: ${esc(r.source)}</div>
+      ${r.note ? `<div class="note">${esc(r.note)}</div>` : ''}
+      <details><summary>Facts this answer is built from</summary>
+        ${r.facts.map(f => `<div class="fact"><b>${f.id}</b> ${esc(f.text)}</div>`).join('')}</details>`;
+  } catch (e) { box.textContent = 'Could not get an answer: ' + e.message; }
+}
+$('askText').addEventListener('keydown', e => { if (e.key === 'Enter') askAssistant(e.target.value); });
+
+// ---- "Why this prediction?" (channel occlusion, demo/explain.py) ----
+function resetWhy(side) {
+  S.heat[side] = false; S.src[side] = 'all'; S.why[side] = null;
+  $('why' + side).innerHTML =
+    `<button class="btn whybtn" onclick="explainSide('${side}')">Why this prediction? &rarr;</button>`;
+}
+
+async function explainSide(side) {
+  const model = side === 'L' ? S.leftModel : S.rightModel;
+  const box = $('why' + side);
+  box.innerHTML = `<div class="whybox"><div class="whyhead">Re-running the model with each scan channel removed in turn
+    (about 15&nbsp;s the first time for a patient; instant after)&hellip;</div></div>`;
+  try {
+    const x = await api(`/api/explain?subject=${encodeURIComponent(S.subject)}&model=${model}`);
+    if (model !== (side === 'L' ? S.leftModel : S.rightModel)) return;   // user switched model meanwhile
+    S.why[side] = x;
+    renderWhy(side);
+  } catch (e) { box.innerHTML = `<div class="whybox"><div class="whyhead">Couldn't compute the explanation: ${e.message}</div></div>`; }
+}
+
+function renderWhy(side) {
+  const x = S.why[side], box = $('why' + side);
+  if (!x.available) { box.innerHTML = `<div class="whybox"><div class="whyhead">${x.note}</div></div>`; return; }
+  if (x.empty_prediction) {
+    box.innerHTML = `<div class="whybox"><div class="whyhead">${x.note}</div></div>`; return;
+  }
+  const max = Math.max(...x.channels.map(c => c.drop || 0), 1e-6);
+  const topRow = x.channels.find(c => c.channel === x.top);
+  const m = S.meta[side];
+  const flagNote = m && m.flagged
+    ? `<div class="whyfoot" style="color:#ffc9c9">This prediction was flagged for review, so treat this as a description of
+       what the model relied on, not as evidence the outline is right.</div>` : '';
+  box.innerHTML = `<div class="whybox">
+    <div class="whyhead">The model relied most on <b>${x.top}</b>: blanking it removes
+      <b>${Math.round(topRow.drop * 100)}%</b> of its confidence inside the predicted lesion.</div>
+    ${x.channels.map(c => `<div class="chrow ${c.channel === x.top ? 'top' : ''} ${S.heat[side] && S.src[side] == x.channels.indexOf(c) ? 'sel' : ''}"
+        onclick="pickChannel('${side}', ${x.channels.indexOf(c)})" title="Show where ${c.channel} mattered on the slice">
+        <span class="nm">${c.channel}</span>
+        <span class="bar"><span class="fill" style="display:block;width:${((c.drop || 0) / max * 100).toFixed(1)}%"></span></span>
+        <span class="pc">${Math.round((c.drop || 0) * 100)}%</span></div>`).join('')}
+    <div class="whytools">
+      <button class="btn ${S.heat[side] && S.src[side] === 'all' ? 'on' : ''}" onclick="toggleHeat('${side}')">
+        ${S.heat[side] ? 'Hide heatmap' : 'Show heatmap on slice'}</button>
+      <button class="btn" onclick="pickChannel('${side}', 'all')">All channels</button>
+    </div>
+    <div class="whyfoot">Orange/yellow on the slice = where removing the channel lowers the model's lesion confidence.
+      Red outline = prediction, green = true lesion. This explains the model's behaviour, not the patient's physiology.</div>
+    ${flagNote}</div>`;
+}
+
+function toggleHeat(side) {
+  S.heat[side] = !S.heat[side];
+  renderWhy(side); setImg(side);
+}
+
+function pickChannel(side, src) {
+  S.src[side] = src; S.heat[side] = true;
+  renderWhy(side); setImg(side);
+}
+
+function loadBoth() { return Promise.all([loadSide('L'), loadSide('R')]); }
+
+$('dropZone').onclick = e => { if (e.target.tagName !== 'BUTTON') $('fileInput').click(); };
+$('fileInput').onchange = e => { if (e.target.files[0]) handleFile(e.target.files[0]); };
+['dragover', 'dragleave', 'drop'].forEach(evt =>
+  $('dropZone').addEventListener(evt, e => {
+    e.preventDefault();
+    $('dropZone').classList.toggle('over', evt === 'dragover');
+    if (evt === 'drop' && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+  }));
+$('resetBtn').onclick = () => { $('result').classList.add('hidden'); $('uploadScreen').classList.remove('hidden'); };
+$('channel').onchange = e => { S.ch = +e.target.value; setImg('L'); setImg('R'); };
+$('z').oninput = e => { S.z = +e.target.value; $('zLabel').textContent = `${S.z + 1} / ${S.shape[2]}`; setImg('L'); setImg('R'); };
+$('leftModel').onchange = e => { S.leftModel = e.target.value; loadSide('L'); };
+$('rightModel').onchange = e => { S.rightModel = e.target.value; loadSide('R'); };
+
+init().catch(e => $('uploadErr').textContent = e.message);
+</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KG-XAI Architecture</title>
+<style>
+  :root {
+    --bg: #0f1216; --panel: #171b21; --panel2: #1d222a; --line: #2a303a;
+    --text: #e6e9ee; --muted: #98a1ae; --accent: #5aa9ff;
+    --good: #46d37a; --bad: #ff6b6b; --warn: #ffd60a;
+    --vessel: #c58af2; --guide: #ff9f6b; --rule: #46d37a; --neg: #6a7280;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 14px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { padding: 18px 24px; border-bottom: 1px solid var(--line); display: flex;
+           gap: 16px; align-items: baseline; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 19px; font-weight: 650; }
+  header .sub { color: var(--muted); font-size: 13px; }
+  .badge { margin-left: auto; font-size: 12px; color: var(--warn); border: 1px solid #5a4d10;
+           background: #221e0a; padding: 3px 10px; border-radius: 999px; }
+  main { max-width: 1180px; margin: 0 auto; padding: 24px; }
+  section { margin-bottom: 36px; }
+  section > h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em;
+                 color: var(--muted); margin: 0 0 14px; font-weight: 650; }
+  section > p.lead { color: var(--muted); font-size: 13px; margin: -8px 0 16px; max-width: 760px; }
+
+  /* ---- pipeline flow ---- */
+  .flow { display: flex; flex-direction: column; gap: 10px; }
+  .row { display: flex; align-items: stretch; gap: 10px; flex-wrap: wrap; }
+  .arrow-down { text-align: center; color: var(--muted); font-size: 18px; margin: -2px 0; }
+  .node { border-radius: 10px; padding: 12px 14px; border: 1px solid var(--line); background: var(--panel);
+          flex: 1; min-width: 160px; }
+  .node h3 { margin: 0 0 4px; font-size: 13px; font-weight: 650; }
+  .node p { margin: 0; color: var(--muted); font-size: 12px; }
+  .node.input { border-color: #2f4a6e; background: #121a26; }
+  .node.prep { border-color: #3d2f5e; background: #171226; }
+  .node.encoder { border-color: #2f4a6e; background: #121a26; }
+  .node.vessel { border-color: #5a3f78; background: #1d1526; }
+  .node.vessel h3 { color: var(--vessel); }
+  .node.guide { border-color: #7a4a2a; background: #251a10; }
+  .node.guide h3 { color: var(--guide); }
+  .node.rule { border-color: #22583a; background: #0f2219; }
+  .node.rule h3 { color: var(--rule); }
+  .node.neg { border-color: #40454d; background: #181b20; border-style: dashed; opacity: .88; }
+  .node.neg h3 { color: var(--neg); }
+  .pill { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+          margin-left: 6px; vertical-align: 1px; }
+  .pill.pass { background: #12301f; color: var(--good); }
+  .pill.fail { background: #341717; color: var(--bad); }
+  .pill.untest { background: #23262c; color: var(--muted); }
+  .gate { text-align: center; font-size: 11px; color: var(--accent); font-weight: 650;
+          border: 1px dashed #3a5a85; border-radius: 8px; padding: 6px 10px; margin: 4px auto; max-width: 420px; }
+
+  /* ---- evidence cards ---- */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  .card .k { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 6px; }
+  .card .v { font-size: 20px; font-weight: 700; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+  .card .d { color: var(--muted); font-size: 12px; }
+  .card.ok .v { color: var(--good); }
+  .card.null .v { color: var(--muted); }
+
+  /* ---- tables ---- */
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+  td.num { font-variant-numeric: tabular-nums; text-align: right; }
+  tr.supported td:first-child { color: var(--good); font-weight: 600; }
+  .tablewrap { background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+               padding: 4px 14px; overflow-x: auto; }
+
+  footer { max-width: 1180px; margin: 0 auto; padding: 4px 24px 32px; color: var(--muted); font-size: 12px;
+           line-height: 1.6; border-top: 1px solid var(--line); padding-top: 18px; }
+  code { background: var(--panel2); padding: 1px 5px; border-radius: 4px; font-size: 11.5px; }
+  a { color: var(--accent); }
+  @media (max-width: 720px) { .row { flex-direction: column; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>KG-XAI System Architecture</h1>
+  <span class="sub">What was actually built and evaluated — not the proposal</span>
+  <span class="badge">Static walkthrough — no model runs here</span>
+</header>
+
+<main>
+
+<section>
+  <h2>1 &middot; Data flow and model pipeline</h2>
+  <p class="lead">One shared encoder, two branches: a lesion-centered patch for segmentation, and a whole-brain
+  view that feeds the knowledge graph. This replaced the originally proposed three-encoder, late-fusion design
+  (not enough GPU memory or time to train it as specified) — disclosed, not hidden, in the paper.</p>
+
+  <div class="flow">
+    <div class="row">
+      <div class="node input"><h3>Input &mdash; 6 channels</h3><p>NCCT, CTA, CBF, CBV, MTT, Tmax &middot; 1&nbsp;mm isotropic &middot; admission (session&nbsp;1) only &middot; 148 usable ISLES'24 subjects</p></div>
+      <div class="node input"><h3>Input &mdash; vessel mask</h3><p>Admission Circle-of-Willis segmentation, used only to locate the 12 CoW vessel coordinates per patient</p></div>
+    </div>
+    <div class="arrow-down">&#8595;</div>
+    <div class="row">
+      <div class="node prep"><h3>Preprocessing</h3><p>Resample to common grid &middot; intensity normalize &middot; crop 128&times;128&times;64 lesion-centered patch, in parallel with a fixed-size whole-brain view</p></div>
+    </div>
+    <div class="arrow-down">&#8595;</div>
+    <div class="row">
+      <div class="node encoder"><h3>Shared SegResNet Encoder</h3><p>ONE encoder, 6-channel input &mdash; not three per-modality encoders. Same weights process both the patch and the whole-brain view. Warm-started from a pretrained trunk.</p></div>
+    </div>
+    <div class="arrow-down">&#8595;</div>
+    <div class="row">
+      <div class="node encoder" style="flex:1.3"><h3>Patch branch &rarr; Decoder</h3><p>Convolutional SegResNet decoder (not a Transformer) &middot; cross-attention from the vessel graph injected at every stage &middot; outputs the final infarct mask (binary &mdash; not core/penumbra)</p></div>
+      <div class="node vessel"><h3>Whole-brain branch</h3><p>Trilinear sampling of stage-1 features at the patient's 12 real vessel coordinates</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>2 &middot; Knowledge graph, layer 1 &mdash; vessel graph (feeds the GAT)</h2>
+  <p class="lead">This is the only graph the learned pathway ever sees. It is patient-specific: coordinates and
+  presence come from that patient's own CoW mask, not a population atlas.</p>
+  <div class="flow">
+    <div class="row">
+      <div class="node vessel"><h3>12-node, 12-edge CoW graph</h3><p>ICA, MCA, ACA, PCA, Acom, Pcom, BA (bilateral where applicable) &middot; absent vessels = a flag, not a different edge set</p></div>
+      <div class="node vessel"><h3>2-layer GAT encoder</h3><p>2 attention heads, ELU, dropout 0.2 &middot; hidden size 32 &middot; no pooling</p></div>
+      <div class="node vessel"><h3>12 vessel embeddings</h3><p>One 32-dim vector per node, absent-vessel nodes masked out downstream</p></div>
+    </div>
+    <div class="gate">&darr; cross-attention into every decoder stage, through a per-stage gate initialized to g&nbsp;=&nbsp;0<br>
+    verified byte-identical to the no-graph trunk at epoch 0 &mdash; the graph can only help through training, never silently break a working baseline</div>
+    <div class="row">
+      <div class="node rule"><h3>B1 = this pathway alone</h3><p>Graph injection, no consistency loss</p></div>
+      <div class="node rule"><h3>B2 = B1 + consistency loss</h3><p>Adds the laterality loss below, trained on the whole-brain branch's coarse segmentation</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>3 &middot; Knowledge graph, layer 2 &mdash; guideline rules (validated, not assumed)</h2>
+  <p class="lead">Every candidate rule is tested against real outcome data <em>before</em> it is allowed anywhere
+  near training, with the pass mark fixed in advance. Six of seven fail. Only the survivor becomes a loss term
+  &mdash; the other six are not softly weighted in, they are left out entirely.</p>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Rule</th><th>Test</th><th>Result</th><th>Status</th></tr>
+    <tr class="supported"><td>Infarct on same side as occluded vessel</td><td>Side agreement, confident-occlusion subjects</td><td class="num">89/94 = 94.7%</td><td><span class="pill pass">Supported</span></td></tr>
+    <tr><td>Proximal occlusion &rArr; larger infarct</td><td>Mann-Whitney U, proximal vs. unlocalized volume</td><td class="num">p = 0.66</td><td><span class="pill fail">Rejected</span></td></tr>
+    <tr><td>Good collaterals limit infarct size</td><td>HIR vs. final volume, Spearman</td><td class="num">&rho; = 0.05, p = 0.54</td><td><span class="pill fail">Rejected</span></td></tr>
+    <tr><td>Poor collaterals &rArr; larger infarct</td><td>Same data, binned</td><td class="num">p = 0.13</td><td><span class="pill fail">Rejected</span></td></tr>
+    <tr><td>HIR behaves like a collateral signal</td><td>HIR vs. mismatch ratio, Spearman</td><td class="num">&rho; = +0.19 (wrong sign)</td><td><span class="pill fail">Rejected</span></td></tr>
+    <tr><td>Final infarct lies inside admission penumbra</td><td>Fraction within Tmax&gt;6s region</td><td class="num">median 0.51 (mark 0.70)</td><td><span class="pill fail">Rejected</span></td></tr>
+    <tr><td>Large infarct requires an occlusion</td><td>Needs no-occlusion controls</td><td class="num">only 4 exist</td><td><span class="pill untest">Untestable</span></td></tr>
+  </table>
+  </div>
+  <div class="gate" style="margin-top:14px">only the laterality rule &rarr; the differentiable consistency loss used in B2:<br>
+  <code>L = L_seg + 0.1 &middot; L_lat</code> &mdash; soft by design, since 5.3% of real patients are themselves exceptions</div>
+</section>
+
+<section>
+  <h2>4 &middot; Rule evaluator &mdash; runs on every prediction, no ground truth needed at inference</h2>
+  <div class="flow">
+    <div class="row">
+      <div class="node rule"><h3>Predicted mask + admission occlusion side</h3><p>Both available at inference time, before any outcome is known</p></div>
+      <div class="node rule"><h3>Hard laterality check</h3><p>&gt;50% of predicted lesion mass on the wrong side = inconsistent</p></div>
+    </div>
+    <div class="arrow-down">&#8595;</div>
+    <div class="row">
+      <div class="node rule"><h3>JDCR</h3><p>Joint-Decision Consistency Rate: % of evaluable subjects that are laterality-consistent</p></div>
+      <div class="node rule"><h3>Template rationale</h3><p>Deterministic sentence from computed numbers &mdash; no LLM, no "activated concepts"</p></div>
+      <div class="node rule"><h3>Triage flag</h3><p>Laterality-inconsistent OR predicted volume &lt; 1&nbsp;mL &mdash; both computable with zero ground truth</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>5 &middot; Disclosed negative result &mdash; auxiliary heads</h2>
+  <div class="node neg">
+    <h3>LVO localization (4-class) + collateral grading (4-bin HIR proxy)</h3>
+    <p>Tried under 4 independent regimes &mdash; pooled-feature heads, per-vessel GNN heads, GNN + augmentation,
+    and a frozen-encoder ablation that rules out gradient competition. All four collapse to predicting one
+    constant class for every patient. Diagnosed as a data-scale ceiling at 98 training patients with imbalanced
+    classes and no true (non-proxy) collateral label &mdash; not an architecture or wiring bug. Not part of the
+    working pipeline; kept out of the outputs above rather than reported as if functional.</p>
+  </div>
+</section>
+
+<section>
+  <h2>6 &middot; Does the graph pathway actually help accuracy? Four independent tests, all null</h2>
+  <div class="cards">
+    <div class="card null"><div class="k">Paired Dice, B2 vs B0</div><div class="v">p = 0.59</div><div class="d">148 matched patients, both trained normally &mdash; indistinguishable</div></div>
+    <div class="card null"><div class="k">Paired JDCR, B2 vs B0</div><div class="v">p = 0.84</div><div class="d">7 non-collapsed fold/seed pairs &mdash; indistinguishable</div></div>
+    <div class="card null"><div class="k">Random-edge ablation</div><div class="v">no real edge advantage</div><div class="d">Random same-size graph scores marginally <em>better</em> than true CoW anatomy</div></div>
+    <div class="card null"><div class="k">Forced-open gate</div><div class="v">&Delta;Dice = &minus;0.0007</div><div class="d">Gate held open 100 epochs, 3/3 seeds &mdash; no accuracy change either way</div></div>
+    <div class="card null"><div class="k">TopCoW expert validation</div><div class="v">91.8% agreement</div><div class="d">Vessel features aren't badly wrong; disagreement doesn't predict Dice (p&asymp;0.5)</div></div>
+    <div class="card ok"><div class="k">Robustness, not accuracy</div><div class="v">0/9 vs 2/9</div><div class="d">B2 had zero catastrophic collapses across its grid; B0 collapsed twice</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>7 &middot; Where the graph <em>does</em> add value &mdash; failure detection, benchmarked</h2>
+  <p class="lead">Not the learned pathway &mdash; the same graph used as a non-learned, ground-truth-free consistency
+  check, compared head-to-head against two standard uncertainty-estimation baselines on the same predictions.</p>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Signal</th><th>AUROC (severe failure, Dice&nbsp;&lt;&nbsp;0.05)</th><th>Basis</th></tr>
+    <tr class="supported"><td>Knowledge-grounded flag</td><td class="num">0.836</td><td>297 predictions, folds 0&ndash;1, p = 5&times;10<sup>&minus;33</sup></td></tr>
+    <tr><td>Ensemble disagreement</td><td class="num">0.583</td><td>Standard deep-ensembles baseline, same predictions</td></tr>
+    <tr><td>MC-dropout (volume CV)</td><td class="num">0.819*</td><td>*smaller, single-model, collapse-free subset &mdash; not directly comparable</td></tr>
+  </table>
+  </div>
+  <div class="cards" style="margin-top:12px">
+    <div class="card ok"><div class="k">Unique catches, knowledge flag</div><div class="v">100% precision</div><div class="d">76 failures caught that disagreement misses &mdash; zero false positives</div></div>
+    <div class="card null"><div class="k">Unique catches, disagreement</div><div class="v">47.5% precision</div><div class="d">40 failures caught that the flag misses &mdash; noisier signal</div></div>
+  </div>
+  <p class="lead" style="margin-top:12px">Honest nuance: MC-dropout is competitive or better specifically on subtler,
+  non-catastrophic failures, on its own smaller subset. Read together, the knowledge flag dominates on
+  catastrophic, structurally unambiguous failures &mdash; which is also where a silent miss is most costly in a
+  deployed clinical system &mdash; not categorically on every kind of uncertainty.</p>
+</section>
+
+</main>
+
+<footer>
+  This page is a static architecture reference, not a working demo &mdash; it runs no model and loads no GPU.
+  For live inference on held-out patients, see the separate <a href="index.html">inference explorer</a>.
+  Every number here is pulled from <code>outputs/tables/*.json</code> and the pre-registered 3-fold&times;3-seed
+  evaluation grid described in <code>paper/kgxai_paper.tex</code> and <code>PROGRESS_REPORT.md</code>.
+</footer>
+
+</body>
+</html>

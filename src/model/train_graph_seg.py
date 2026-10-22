@@ -63,6 +63,12 @@ def main():
     ap.add_argument("--edge-seed", type=int, default=0,
                      help="seed for the random graph -- held FIXED across --seed 0/1/2 so this arm "
                           "compares training noise, not a different random graph per run")
+    ap.add_argument("--channels", type=str, default=None,
+                     help="comma-separated subset of ncct,cta,cbf,cbv,mtt,tmax (default: all 6). "
+                          "Pre-registered ablation: with perfusion maps removed, does the graph "
+                          "stop being redundant? --warm-start must point at a baseline checkpoint "
+                          "trained with the SAME --channels, or the trunk's first conv layer won't "
+                          "match shapes.")
     args = ap.parse_args()
     wb_size = tuple(args.wb_size) if args.wb_size else tuple(args.patch_size)
     # seed 0 keeps the original un-suffixed name (matches what
@@ -73,12 +79,24 @@ def main():
     edge_tag = "" if args.edge_mode == "anatomical" else f"_random{args.edge_seed}"
     gate_tag = "" if args.gate_init == 0.0 else f"_gateinit{args.gate_init}".replace(".", "p")
 
+    from src.model.dataset import MODALITIES
     from src.model.labels import load_auxiliary_labels
     from src.model.gnn_head import topcow_label_order
     from src.model.segresnet_graph import GraphInjectedSegResNet
     from src.model.train_multitask_gnn import make_gnn_datasets
     from monai.losses import DiceCELoss
     from monai.data import pad_list_data_collate
+
+    if args.channels:
+        chosen = [c.strip().lower() for c in args.channels.split(",")]
+        bad = [c for c in chosen if c not in MODALITIES]
+        if bad:
+            raise SystemExit(f"--channels: unknown modality name(s) {bad}, expected a subset of {MODALITIES}")
+        channel_idx = [MODALITIES.index(c) for c in chosen]
+        channel_tag = f"_ch-{'-'.join(chosen)}"
+    else:
+        channel_idx = list(range(len(MODALITIES)))
+        channel_tag = ""
     # pad_list_data_collate not list_data_collate: see train_baseline.py's comment at the same spot -- a real PersistentDataset cache-write bug (not a worker race, not a transform bug) found during Phase 8 fold-2 prep, 2026-09-17.
     from monai.inferers import sliding_window_inference
     from src.eval.metrics import isles24_metrics
@@ -120,10 +138,12 @@ def main():
         from src.model.gnn_head import random_edge_index
         edge_index = random_edge_index(seed=args.edge_seed)
         print(f"  edge-mode: RANDOM (seed={args.edge_seed}) -- {edge_index.shape[1]//2} edges, not the real CoW anatomy")
-    model = GraphInjectedSegResNet(in_channels=6, gnn_stage=args.gnn_stage, edge_index=edge_index,
+    model = GraphInjectedSegResNet(in_channels=len(channel_idx), gnn_stage=args.gnn_stage, edge_index=edge_index,
                                     gate_init=args.gate_init).to(device)
     if args.gate_init != 0.0:
         print(f"  gate-init: {args.gate_init} (forced open, not the provable-no-op default)")
+    if args.channels:
+        print(f"  channels: {chosen} (in_channels={len(channel_idx)}, ablation run)")
     if args.warm_start:
         model.load_trunk_from_baseline(str(args.warm_start), map_location=device)
         print(f"  warm-started trunk from {args.warm_start}")
@@ -138,8 +158,8 @@ def main():
         seg_preds, seg_labels, subs = [], [], []
         with torch.no_grad():
             for batch in val_loader:
-                image = batch["image"].to(device)
-                image_wb = batch["image_wb"].to(device)
+                image = batch["image"].to(device)[:, channel_idx]
+                image_wb = batch["image_wb"].to(device)[:, channel_idx]
                 node_coords = torch.as_tensor(np.asarray(batch["node_coords"]), dtype=torch.float32).to(device)
                 node_present = torch.as_tensor(np.asarray(batch["node_present"]), dtype=torch.float32).to(device)
 
@@ -166,9 +186,9 @@ def main():
         t0 = time.time()
         running_seg, n_finite, n_nonfinite = 0.0, 0, 0
         for batch in train_loader:
-            image = batch["image"].to(device)
+            image = batch["image"].to(device)[:, channel_idx]
             label = batch["label"].to(device)
-            image_wb = batch["image_wb"].to(device)
+            image_wb = batch["image_wb"].to(device)[:, channel_idx]
             node_coords = torch.as_tensor(np.asarray(batch["node_coords"]), dtype=torch.float32).to(device)
             node_present = torch.as_tensor(np.asarray(batch["node_present"]), dtype=torch.float32).to(device)
 
@@ -204,7 +224,7 @@ def main():
             if mean_dice > best_dice:
                 best_dice = mean_dice
                 torch.save(model.state_dict(),
-                           OUT_CKPT / f"graph_seg{edge_tag}{gate_tag}_fold{args.fold}{seed_suffix}_best.pt")
+                           OUT_CKPT / f"graph_seg{edge_tag}{gate_tag}{channel_tag}_fold{args.fold}{seed_suffix}_best.pt")
                 print("  new best, checkpoint saved")
 
     print("\nfinal evaluation:")
@@ -227,7 +247,7 @@ def main():
         "final_segmentation": {"per_subject": per_subject, "mean": agg},
         "b0_reference_dice": 0.247,
     }
-    out_path = OUT_TAB / f"b1_graph_seg{edge_tag}{gate_tag}_fold{args.fold}{seed_suffix}.json"
+    out_path = OUT_TAB / f"b1_graph_seg{edge_tag}{gate_tag}{channel_tag}_fold{args.fold}{seed_suffix}.json"
     out_path.write_text(json.dumps(payload, indent=2))
     print(f"\nwrote {out_path}")
 

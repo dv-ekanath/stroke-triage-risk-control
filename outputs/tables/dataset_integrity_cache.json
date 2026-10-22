@@ -4170,5 +4170,2805 @@
   "D:\\ISLES-2024\\train\\derivatives\\sub-stroke0189\\ses-02\\sub-stroke0189_ses-02_space-ncct_lesion-msk.nii.gz": {
     "fingerprint": "910606:1754384314932595300",
     "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0002\\ses-01\\sub-stroke0002_ses-01_ncct.nii.gz": {
+    "fingerprint": "10615053:1754384324623734600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0002\\ses-01\\sub-stroke0002_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11669502:1754382834220661100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0002\\ses-01\\perfusion-maps\\sub-stroke0002_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "5622568:1754382833911657200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0002\\ses-01\\perfusion-maps\\sub-stroke0002_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "5609974:1754382833967657900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0002\\ses-01\\perfusion-maps\\sub-stroke0002_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "5340054:1754382834014658500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0002\\ses-01\\perfusion-maps\\sub-stroke0002_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "5234971:1754382834074659300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0002\\ses-02\\sub-stroke0002_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "874036:1754382836698691800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0003\\ses-01\\sub-stroke0003_ses-01_ncct.nii.gz": {
+    "fingerprint": "15040199:1754384325894752900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0003\\ses-01\\sub-stroke0003_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "16521008:1754382837190697900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0003\\ses-01\\perfusion-maps\\sub-stroke0003_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "7981207:1754382836774692800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0003\\ses-01\\perfusion-maps\\sub-stroke0003_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8080135:1754382836830693500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0003\\ses-01\\perfusion-maps\\sub-stroke0003_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7813139:1754382836906694400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0003\\ses-01\\perfusion-maps\\sub-stroke0003_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7391497:1754382836983695400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0003\\ses-02\\sub-stroke0003_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "793722:1754382847841830100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0008\\ses-01\\sub-stroke0008_ses-01_ncct.nii.gz": {
+    "fingerprint": "16425686:1754384374480448700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0008\\ses-01\\sub-stroke0008_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "19195313:1754382868605087500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0008\\ses-01\\perfusion-maps\\sub-stroke0008_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "19188507:1754382867982079800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0008\\ses-01\\perfusion-maps\\sub-stroke0008_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "15015082:1754382868124081600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0008\\ses-01\\perfusion-maps\\sub-stroke0008_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "14796999:1754382868265083300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0008\\ses-01\\perfusion-maps\\sub-stroke0008_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "14206926:1754382868391084900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0008\\ses-02\\sub-stroke0008_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "809222:1754382879371220900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0011\\ses-01\\sub-stroke0011_ses-01_ncct.nii.gz": {
+    "fingerprint": "15429837:1754384380325532000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0011\\ses-01\\sub-stroke0011_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "17821143:1754382920953735300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0011\\ses-01\\perfusion-maps\\sub-stroke0011_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8519276:1754382920252726700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0011\\ses-01\\perfusion-maps\\sub-stroke0011_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8643279:1754382920329727600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0011\\ses-01\\perfusion-maps\\sub-stroke0011_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8180104:1754382920390728400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0011\\ses-01\\perfusion-maps\\sub-stroke0011_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6789000:1754382920461729300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0011\\ses-02\\sub-stroke0011_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "887927:1754382925144787100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0026\\ses-01\\sub-stroke0026_ses-01_ncct.nii.gz": {
+    "fingerprint": "15769967:1754384403619863800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0026\\ses-01\\sub-stroke0026_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "18832908:1754383033130118300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0026\\ses-01\\perfusion-maps\\sub-stroke0026_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8050449:1754383032663112500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0026\\ses-01\\perfusion-maps\\sub-stroke0026_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8276525:1754383032750113600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0026\\ses-01\\perfusion-maps\\sub-stroke0026_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8015048:1754383032824114500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0026\\ses-01\\perfusion-maps\\sub-stroke0026_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7157328:1754383032907115500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0026\\ses-02\\sub-stroke0026_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "898740:1754383037547172600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0030\\ses-01\\sub-stroke0030_ses-01_ncct.nii.gz": {
+    "fingerprint": "13197877:1754384431357257500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0030\\ses-01\\sub-stroke0030_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "13529145:1754383051178340200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0030\\ses-01\\perfusion-maps\\sub-stroke0030_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "4458897:1754383050922337100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0030\\ses-01\\perfusion-maps\\sub-stroke0030_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "4584607:1754383050966337600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0030\\ses-01\\perfusion-maps\\sub-stroke0030_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "4404214:1754383051020338300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0030\\ses-01\\perfusion-maps\\sub-stroke0030_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "3682861:1754383051065338800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0030\\ses-02\\sub-stroke0030_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "681718:1754383053423367800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0033\\ses-01\\sub-stroke0033_ses-01_ncct.nii.gz": {
+    "fingerprint": "19077637:1754384443196425200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0033\\ses-01\\sub-stroke0033_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "21958244:1754383053978374600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0033\\ses-01\\perfusion-maps\\sub-stroke0033_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "9688281:1754383053521369000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0033\\ses-01\\perfusion-maps\\sub-stroke0033_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9994726:1754383053617370200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0033\\ses-01\\perfusion-maps\\sub-stroke0033_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9657409:1754383053693371100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0033\\ses-01\\perfusion-maps\\sub-stroke0033_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8903952:1754383053764372000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0033\\ses-02\\sub-stroke0033_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "861003:1754383058816434100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0037\\ses-01\\sub-stroke0037_ses-01_ncct.nii.gz": {
+    "fingerprint": "7922745:1754384450668530900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0037\\ses-01\\sub-stroke0037_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "8123001:1754383074348624900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0037\\ses-01\\perfusion-maps\\sub-stroke0037_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "2988207:1754383072782605600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0037\\ses-01\\perfusion-maps\\sub-stroke0037_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "2992416:1754383073072609200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0037\\ses-01\\perfusion-maps\\sub-stroke0037_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "2898474:1754383073290611900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0037\\ses-01\\perfusion-maps\\sub-stroke0037_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "2849493:1754383073527614800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0037\\ses-02\\sub-stroke0037_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "483040:1754383084737752400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0040\\ses-01\\sub-stroke0040_ses-01_ncct.nii.gz": {
+    "fingerprint": "29297014:1754384453280567800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0040\\ses-01\\sub-stroke0040_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "30310289:1754383110710071200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0040\\ses-01\\perfusion-maps\\sub-stroke0040_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "17682888:1754383109973062100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0040\\ses-01\\perfusion-maps\\sub-stroke0040_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "17759225:1754383110142064200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0040\\ses-01\\perfusion-maps\\sub-stroke0040_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "16496357:1754383110265065700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0040\\ses-01\\perfusion-maps\\sub-stroke0040_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "15999938:1754383110407067500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0040\\ses-02\\sub-stroke0040_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "1653122:1754383128787292800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0047\\ses-01\\sub-stroke0047_ses-01_ncct.nii.gz": {
+    "fingerprint": "15044756:1754384458787645600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0047\\ses-01\\sub-stroke0047_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "17212779:1754383138388410500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0047\\ses-01\\perfusion-maps\\sub-stroke0047_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8434089:1754383137971405400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0047\\ses-01\\perfusion-maps\\sub-stroke0047_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8512846:1754383138052406400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0047\\ses-01\\perfusion-maps\\sub-stroke0047_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7962542:1754383138108407100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0047\\ses-01\\perfusion-maps\\sub-stroke0047_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6696025:1754383138218408400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0047\\ses-02\\sub-stroke0047_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "739964:1754383154430607100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0048\\ses-01\\sub-stroke0048_ses-01_ncct.nii.gz": {
+    "fingerprint": "14956067:1754384461180679400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0048\\ses-01\\sub-stroke0048_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "17275431:1754383157073639400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0048\\ses-01\\perfusion-maps\\sub-stroke0048_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8907815:1754383154914613000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0048\\ses-01\\perfusion-maps\\sub-stroke0048_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9100295:1754383155388618800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0048\\ses-01\\perfusion-maps\\sub-stroke0048_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8691448:1754383155832624200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0048\\ses-01\\perfusion-maps\\sub-stroke0048_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7645107:1754383156279629700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0048\\ses-02\\sub-stroke0048_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "774541:1754383186225098200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0049\\ses-01\\sub-stroke0049_ses-01_ncct.nii.gz": {
+    "fingerprint": "15634644:1754384463083706300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0049\\ses-01\\sub-stroke0049_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "18084162:1754383188543151800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0049\\ses-01\\perfusion-maps\\sub-stroke0049_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8185341:1754383186703109300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0049\\ses-01\\perfusion-maps\\sub-stroke0049_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8268341:1754383187225121400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0049\\ses-01\\perfusion-maps\\sub-stroke0049_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7781434:1754383187690132100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0049\\ses-01\\perfusion-maps\\sub-stroke0049_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6854806:1754383187769134000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0049\\ses-02\\sub-stroke0049_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "814282:1754383192626246000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0052\\ses-01\\sub-stroke0052_ses-01_ncct.nii.gz": {
+    "fingerprint": "16778847:1754384464638728200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0052\\ses-01\\sub-stroke0052_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "19109213:1754383193223259700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0052\\ses-01\\perfusion-maps\\sub-stroke0052_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "9746218:1754383192722248200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0052\\ses-01\\perfusion-maps\\sub-stroke0052_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9945768:1754383192807250100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0052\\ses-01\\perfusion-maps\\sub-stroke0052_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9513824:1754383192983254200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0052\\ses-01\\perfusion-maps\\sub-stroke0052_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8764424:1754383193051255800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0052\\ses-02\\sub-stroke0052_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "772295:1754383197589360000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0066\\ses-01\\sub-stroke0066_ses-01_ncct.nii.gz": {
+    "fingerprint": "12899741:1754384475932887600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0066\\ses-01\\sub-stroke0066_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "13446397:1754383241562350300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0066\\ses-01\\perfusion-maps\\sub-stroke0066_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "5004647:1754383239768310600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0066\\ses-01\\perfusion-maps\\sub-stroke0066_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "5020335:1754383240214320500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0066\\ses-01\\perfusion-maps\\sub-stroke0066_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "4726237:1754383240683330800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0066\\ses-01\\perfusion-maps\\sub-stroke0066_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "4215286:1754383240738332100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0066\\ses-02\\sub-stroke0066_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "761082:1754383259409742600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0071\\ses-01\\sub-stroke0071_ses-01_ncct.nii.gz": {
+    "fingerprint": "11366598:1754384496296174400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0071\\ses-01\\sub-stroke0071_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "12476746:1754383272972037100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0071\\ses-01\\perfusion-maps\\sub-stroke0071_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "6621330:1754383272682030800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0071\\ses-01\\perfusion-maps\\sub-stroke0071_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "6653784:1754383272743032200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0071\\ses-01\\perfusion-maps\\sub-stroke0071_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "6235316:1754383272808033600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0071\\ses-01\\perfusion-maps\\sub-stroke0071_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "4955251:1754383272857034600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0071\\ses-02\\sub-stroke0071_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "705176:1754383279705182200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0076\\ses-01\\sub-stroke0076_ses-01_ncct.nii.gz": {
+    "fingerprint": "13500257:1754384522890548000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0076\\ses-01\\sub-stroke0076_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "15312030:1754383297070553100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0076\\ses-01\\perfusion-maps\\sub-stroke0076_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "7191529:1754383294271493700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0076\\ses-01\\perfusion-maps\\sub-stroke0076_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "7307829:1754383294883506700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0076\\ses-01\\perfusion-maps\\sub-stroke0076_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "6984302:1754383295158512500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0076\\ses-01\\perfusion-maps\\sub-stroke0076_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6642513:1754383295420518100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0076\\ses-02\\sub-stroke0076_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "867025:1754383321025057200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0077\\ses-01\\sub-stroke0077_ses-01_ncct.nii.gz": {
+    "fingerprint": "16641837:1754384524403569200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0077\\ses-01\\sub-stroke0077_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "17706180:1754383325479149900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0077\\ses-01\\perfusion-maps\\sub-stroke0077_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "9626525:1754383322994098200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0077\\ses-01\\perfusion-maps\\sub-stroke0077_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9900324:1754383323735113600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0077\\ses-01\\perfusion-maps\\sub-stroke0077_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9557894:1754383324089121000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0077\\ses-01\\perfusion-maps\\sub-stroke0077_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8857098:1754383324594131500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0077\\ses-02\\sub-stroke0077_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "659928:1754383340852467900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0084\\ses-01\\sub-stroke0084_ses-01_ncct.nii.gz": {
+    "fingerprint": "13218179:1754384537401751400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0084\\ses-01\\sub-stroke0084_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "14938079:1754383389605454600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0084\\ses-01\\perfusion-maps\\sub-stroke0084_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "7260757:1754383389212446800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0084\\ses-01\\perfusion-maps\\sub-stroke0084_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "7479349:1754383389282448200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0084\\ses-01\\perfusion-maps\\sub-stroke0084_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7213611:1754383389361449800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0084\\ses-01\\perfusion-maps\\sub-stroke0084_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6425789:1754383389432451200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0084\\ses-02\\sub-stroke0084_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "670980:1754383393321528600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0085\\ses-01\\sub-stroke0085_ses-01_ncct.nii.gz": {
+    "fingerprint": "17592452:1754384539731784100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0085\\ses-01\\sub-stroke0085_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "18656628:1754383393842538900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0085\\ses-01\\perfusion-maps\\sub-stroke0085_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8094794:1754383393405530200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0085\\ses-01\\perfusion-maps\\sub-stroke0085_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8422776:1754383393491531900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0085\\ses-01\\perfusion-maps\\sub-stroke0085_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8171106:1754383393553533200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0085\\ses-01\\perfusion-maps\\sub-stroke0085_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7408985:1754383393629534700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0085\\ses-02\\sub-stroke0085_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "702906:1754383398818637600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0086\\ses-01\\sub-stroke0086_ses-01_ncct.nii.gz": {
+    "fingerprint": "14998738:1754384541717811900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0086\\ses-01\\sub-stroke0086_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "18008253:1754383399315647400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0086\\ses-01\\perfusion-maps\\sub-stroke0086_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8185159:1754383398901639200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0086\\ses-01\\perfusion-maps\\sub-stroke0086_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8142026:1754383398963640400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0086\\ses-01\\perfusion-maps\\sub-stroke0086_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7643406:1754383399028641700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0086\\ses-01\\perfusion-maps\\sub-stroke0086_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7331183:1754383399080642800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0086\\ses-02\\sub-stroke0086_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "668010:1754383419848051100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0093\\ses-01\\sub-stroke0093_ses-01_ncct.nii.gz": {
+    "fingerprint": "11260339:1754384554790994900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0093\\ses-01\\sub-stroke0093_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "13110870:1754383479987204700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0093\\ses-01\\perfusion-maps\\sub-stroke0093_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "6447513:1754383479670198800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0093\\ses-01\\perfusion-maps\\sub-stroke0093_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "6551965:1754383479738200100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0093\\ses-01\\perfusion-maps\\sub-stroke0093_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "6251116:1754383479802201300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0093\\ses-01\\perfusion-maps\\sub-stroke0093_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "5325935:1754383479873202600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0093\\ses-02\\sub-stroke0093_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "745509:1754383488428363400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0095\\ses-01\\sub-stroke0095_ses-01_ncct.nii.gz": {
+    "fingerprint": "15619430:1754384572016235600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0095\\ses-01\\sub-stroke0095_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "16399545:1754383494750481800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0095\\ses-01\\perfusion-maps\\sub-stroke0095_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8969248:1754383494192471400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0095\\ses-01\\perfusion-maps\\sub-stroke0095_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8931073:1754383494284473100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0095\\ses-01\\perfusion-maps\\sub-stroke0095_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8201449:1754383494336474100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0095\\ses-01\\perfusion-maps\\sub-stroke0095_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7226967:1754383494627479500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0095\\ses-02\\sub-stroke0095_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "723935:1754383516470885200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0102\\ses-01\\sub-stroke0102_ses-01_ncct.nii.gz": {
+    "fingerprint": "14313351:1754384612373798100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0102\\ses-01\\sub-stroke0102_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "15669484:1754383577739998300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0102\\ses-01\\perfusion-maps\\sub-stroke0102_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8194441:1754383577427992700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0102\\ses-01\\perfusion-maps\\sub-stroke0102_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8345947:1754383577494993900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0102\\ses-01\\perfusion-maps\\sub-stroke0102_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7884282:1754383577564995200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0102\\ses-01\\perfusion-maps\\sub-stroke0102_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6262053:1754383577619996100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0102\\ses-02\\sub-stroke0102_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "627437:1754383581477065100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0107\\ses-01\\sub-stroke0107_ses-01_ncct.nii.gz": {
+    "fingerprint": "16303299:1754384621773928900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0107\\ses-01\\sub-stroke0107_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "20742621:1754383660701452600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0107\\ses-01\\perfusion-maps\\sub-stroke0107_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "9105666:1754383660329446200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0107\\ses-01\\perfusion-maps\\sub-stroke0107_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9041688:1754383660400447400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0107\\ses-01\\perfusion-maps\\sub-stroke0107_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8222782:1754383660458448400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0107\\ses-01\\perfusion-maps\\sub-stroke0107_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6803146:1754383660521449500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0107\\ses-02\\sub-stroke0107_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "871626:1754383664402516200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0108\\ses-01\\sub-stroke0108_ses-01_ncct.nii.gz": {
+    "fingerprint": "15222234:1754384624697969500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0108\\ses-01\\sub-stroke0108_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "16256261:1754383664837523700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0108\\ses-01\\perfusion-maps\\sub-stroke0108_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "7823098:1754383664492517800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0108\\ses-01\\perfusion-maps\\sub-stroke0108_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "7974400:1754383664554518800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0108\\ses-01\\perfusion-maps\\sub-stroke0108_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7584174:1754383664623520000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0108\\ses-01\\perfusion-maps\\sub-stroke0108_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6507029:1754383664687521100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0108\\ses-02\\sub-stroke0108_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "642941:1754383668699589900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0110\\ses-01\\sub-stroke0110_ses-01_ncct.nii.gz": {
+    "fingerprint": "15347273:1754384628037015900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0110\\ses-01\\sub-stroke0110_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "17268069:1754383674065681800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0110\\ses-01\\perfusion-maps\\sub-stroke0110_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8464414:1754383673662674900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0110\\ses-01\\perfusion-maps\\sub-stroke0110_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8562005:1754383673726676000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0110\\ses-01\\perfusion-maps\\sub-stroke0110_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8059115:1754383673797677200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0110\\ses-01\\perfusion-maps\\sub-stroke0110_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6959417:1754383673897678900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0110\\ses-02\\sub-stroke0110_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "801678:1754383677492740300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0114\\ses-01\\sub-stroke0114_ses-01_ncct.nii.gz": {
+    "fingerprint": "15219397:1754384635938125700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0114\\ses-01\\sub-stroke0114_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "16451670:1754383737863758100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0114\\ses-01\\perfusion-maps\\sub-stroke0114_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8710103:1754383737520752300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0114\\ses-01\\perfusion-maps\\sub-stroke0114_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9036200:1754383737592753500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0114\\ses-01\\perfusion-maps\\sub-stroke0114_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8718145:1754383737660754700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0114\\ses-01\\perfusion-maps\\sub-stroke0114_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8007802:1754383737723755700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0114\\ses-02\\sub-stroke0114_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "627359:1754383742593836800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0117\\ses-01\\sub-stroke0117_ses-01_ncct.nii.gz": {
+    "fingerprint": "17209594:1754384664820526300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0117\\ses-01\\sub-stroke0117_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "18948530:1754383757971091600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0117\\ses-01\\perfusion-maps\\sub-stroke0117_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "10694812:1754383757605085600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0117\\ses-01\\perfusion-maps\\sub-stroke0117_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10868431:1754383757689086900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0117\\ses-01\\perfusion-maps\\sub-stroke0117_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "10274997:1754383757767088200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0117\\ses-01\\perfusion-maps\\sub-stroke0117_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9877598:1754383757832089300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0117\\ses-02\\sub-stroke0117_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "640080:1754383762406164800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0135\\ses-01\\sub-stroke0135_ses-01_ncct.nii.gz": {
+    "fingerprint": "11608719:1754384687005833500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0135\\ses-01\\sub-stroke0135_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "13721589:1754383821434128100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0135\\ses-01\\perfusion-maps\\sub-stroke0135_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "14122138:1754383818052073500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0135\\ses-01\\perfusion-maps\\sub-stroke0135_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "12084960:1754383818681083600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0135\\ses-01\\perfusion-maps\\sub-stroke0135_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "11871773:1754383819321094000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0135\\ses-01\\perfusion-maps\\sub-stroke0135_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "10577537:1754383821014121300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0135\\ses-02\\sub-stroke0135_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "479640:1754383828956249400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0136\\ses-01\\sub-stroke0136_ses-01_ncct.nii.gz": {
+    "fingerprint": "11310306:1754384688371852400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0136\\ses-01\\sub-stroke0136_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "13058773:1754383829487258000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0136\\ses-01\\perfusion-maps\\sub-stroke0136_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "13585392:1754383829087251500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0136\\ses-01\\perfusion-maps\\sub-stroke0136_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "11629001:1754383829194253300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0136\\ses-01\\perfusion-maps\\sub-stroke0136_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "11355023:1754383829284254700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0136\\ses-01\\perfusion-maps\\sub-stroke0136_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9342450:1754383829357255900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0136\\ses-02\\sub-stroke0136_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "527198:1754383837735390600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0138\\ses-01\\sub-stroke0138_ses-01_ncct.nii.gz": {
+    "fingerprint": "10619022:1754384692856914400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0138\\ses-01\\sub-stroke0138_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "12396479:1754383842611468900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0138\\ses-01\\perfusion-maps\\sub-stroke0138_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "13050758:1754383842259463200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0138\\ses-01\\perfusion-maps\\sub-stroke0138_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "11068804:1754383842340464500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0138\\ses-01\\perfusion-maps\\sub-stroke0138_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "10831518:1754383842424465900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0138\\ses-01\\perfusion-maps\\sub-stroke0138_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "10110221:1754383842501467100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0138\\ses-02\\sub-stroke0138_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "473272:1754383845429514000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0142\\ses-01\\sub-stroke0142_ses-01_ncct.nii.gz": {
+    "fingerprint": "11152952:1754384699418005100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0142\\ses-01\\sub-stroke0142_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "12830915:1754383861326768000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0142\\ses-01\\perfusion-maps\\sub-stroke0142_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "12353978:1754383860703758100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0142\\ses-01\\perfusion-maps\\sub-stroke0142_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10699413:1754383860781759400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0142\\ses-01\\perfusion-maps\\sub-stroke0142_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "10544571:1754383860861760600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0142\\ses-01\\perfusion-maps\\sub-stroke0142_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8950824:1754383861228766500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0142\\ses-02\\sub-stroke0142_ses-02_lesion-msk.nii": {
+    "fingerprint": "26618208:1754383873719965100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0143\\ses-01\\sub-stroke0143_ses-01_ncct.nii.gz": {
+    "fingerprint": "9712208:1754384700773023800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0143\\ses-01\\sub-stroke0143_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11575062:1754383876988017000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0143\\ses-01\\perfusion-maps\\sub-stroke0143_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "12186914:1754383874507977600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0143\\ses-01\\perfusion-maps\\sub-stroke0143_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10022194:1754383875026985900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0143\\ses-01\\perfusion-maps\\sub-stroke0143_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9770233:1754383875383991500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0143\\ses-01\\perfusion-maps\\sub-stroke0143_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9180692:1754383875870999300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0143\\ses-02\\sub-stroke0143_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "440584:1754383900277384900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0144\\ses-01\\sub-stroke0144_ses-01_ncct.nii.gz": {
+    "fingerprint": "9830986:1754384701758037400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0144\\ses-01\\sub-stroke0144_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "10415475:1754383904339448900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0144\\ses-01\\perfusion-maps\\sub-stroke0144_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "13046320:1754383901166398900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0144\\ses-01\\perfusion-maps\\sub-stroke0144_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "11127271:1754383901508404300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0144\\ses-01\\perfusion-maps\\sub-stroke0144_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "10849449:1754383902379418000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0144\\ses-01\\perfusion-maps\\sub-stroke0144_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9296915:1754383903730439300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0144\\ses-02\\sub-stroke0144_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "384481:1754383916736643400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0147\\ses-01\\sub-stroke0147_ses-01_ncct.nii.gz": {
+    "fingerprint": "9804138:1754384707952123000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0147\\ses-01\\sub-stroke0147_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11383431:1754383925140774900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0147\\ses-01\\perfusion-maps\\sub-stroke0147_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "11697410:1754383924775769200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0147\\ses-01\\perfusion-maps\\sub-stroke0147_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9577506:1754383924861770600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0147\\ses-01\\perfusion-maps\\sub-stroke0147_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9384516:1754383924934771700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0147\\ses-01\\perfusion-maps\\sub-stroke0147_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7416887:1754383924998772700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0147\\ses-02\\sub-stroke0147_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "522594:1754383927821816800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0149\\ses-01\\sub-stroke0149_ses-01_ncct.nii.gz": {
+    "fingerprint": "12635340:1754384710926164000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0149\\ses-01\\sub-stroke0149_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "13316255:1754383931242870200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0149\\ses-01\\perfusion-maps\\sub-stroke0149_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "12647802:1754383930866864400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0149\\ses-01\\perfusion-maps\\sub-stroke0149_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10035810:1754383930953865700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0149\\ses-01\\perfusion-maps\\sub-stroke0149_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9867216:1754383931031866900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0149\\ses-01\\perfusion-maps\\sub-stroke0149_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8970718:1754383931101868000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0149\\ses-02\\sub-stroke0149_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "804040:1754383934253917200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0155\\ses-01\\sub-stroke0155_ses-01_ncct.nii.gz": {
+    "fingerprint": "9253863:1754384752363735400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0155\\ses-01\\sub-stroke0155_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "10543475:1754384009005070500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0155\\ses-01\\perfusion-maps\\sub-stroke0155_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "11555894:1754384007013040000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0155\\ses-01\\perfusion-maps\\sub-stroke0155_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9656153:1754384007374045500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0155\\ses-01\\perfusion-maps\\sub-stroke0155_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9401823:1754384007928054000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0155\\ses-01\\perfusion-maps\\sub-stroke0155_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8945663:1754384008444061900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0155\\ses-02\\sub-stroke0155_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "407529:1754384018074208900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0157\\ses-01\\sub-stroke0157_ses-01_ncct.nii.gz": {
+    "fingerprint": "6479042:1754384755306775900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0157\\ses-01\\sub-stroke0157_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "7857535:1754384021502261100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0157\\ses-01\\perfusion-maps\\sub-stroke0157_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8318810:1754384021090254800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0157\\ses-01\\perfusion-maps\\sub-stroke0157_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "6613458:1754384021156255800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0157\\ses-01\\perfusion-maps\\sub-stroke0157_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "6503080:1754384021220256800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0157\\ses-01\\perfusion-maps\\sub-stroke0157_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "5927634:1754384021286257800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0157\\ses-02\\sub-stroke0157_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "369532:1754384023285288200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0158\\ses-01\\sub-stroke0158_ses-01_ncct.nii.gz": {
+    "fingerprint": "13607993:1754384756351790300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0158\\ses-01\\sub-stroke0158_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "14866471:1754384023806296200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0158\\ses-01\\perfusion-maps\\sub-stroke0158_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "15130169:1754384023415290200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0158\\ses-01\\perfusion-maps\\sub-stroke0158_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "12354926:1754384023507291600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0158\\ses-01\\perfusion-maps\\sub-stroke0158_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "12067182:1754384023599293000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0158\\ses-01\\perfusion-maps\\sub-stroke0158_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "10770442:1754384023673294100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0158\\ses-02\\sub-stroke0158_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "988650:1754384027223348200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0162\\ses-01\\sub-stroke0162_ses-01_ncct.nii.gz": {
+    "fingerprint": "11069984:1754384761089855500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0162\\ses-01\\sub-stroke0162_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "12887237:1754384034695461700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0162\\ses-01\\perfusion-maps\\sub-stroke0162_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "12124753:1754384034211454300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0162\\ses-01\\perfusion-maps\\sub-stroke0162_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9972857:1754384034310455800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0162\\ses-01\\perfusion-maps\\sub-stroke0162_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9780117:1754384034386457000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0162\\ses-01\\perfusion-maps\\sub-stroke0162_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9269414:1754384034479458400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0162\\ses-02\\sub-stroke0162_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "520022:1754384037905510400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0165\\ses-01\\sub-stroke0165_ses-01_ncct.nii.gz": {
+    "fingerprint": "8943704:1754384765902921800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0165\\ses-01\\sub-stroke0165_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "10458382:1754384051397714700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0165\\ses-01\\perfusion-maps\\sub-stroke0165_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "11333620:1754384051036709300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0165\\ses-01\\perfusion-maps\\sub-stroke0165_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9389700:1754384051124710600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0165\\ses-01\\perfusion-maps\\sub-stroke0165_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9203388:1754384051208711900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0165\\ses-01\\perfusion-maps\\sub-stroke0165_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8240174:1754384051293713200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0165\\ses-02\\sub-stroke0165_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "388745:1754384061825872200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0168\\ses-01\\sub-stroke0168_ses-01_ncct.nii.gz": {
+    "fingerprint": "9758201:1754384770999991900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0168\\ses-01\\sub-stroke0168_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11298571:1754384113003639800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0168\\ses-01\\perfusion-maps\\sub-stroke0168_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "11121042:1754384112258628700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0168\\ses-01\\perfusion-maps\\sub-stroke0168_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9302422:1754384112678635000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0168\\ses-01\\perfusion-maps\\sub-stroke0168_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9109873:1754384112762636200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0168\\ses-01\\perfusion-maps\\sub-stroke0168_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8301884:1754384112840637400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0168\\ses-02\\sub-stroke0168_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "549859:1754384116252688300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0169\\ses-01\\sub-stroke0169_ses-01_ncct.nii.gz": {
+    "fingerprint": "9532185:1754384773157021500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0169\\ses-01\\sub-stroke0169_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "10980251:1754384116770696000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0169\\ses-01\\perfusion-maps\\sub-stroke0169_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "12168084:1754384116363689900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0169\\ses-01\\perfusion-maps\\sub-stroke0169_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10085839:1754384116455691300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0169\\ses-01\\perfusion-maps\\sub-stroke0169_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9871778:1754384116565692900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0169\\ses-01\\perfusion-maps\\sub-stroke0169_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9025355:1754384116639694000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0169\\ses-02\\sub-stroke0169_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "504885:1754384120075745200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0172\\ses-01\\sub-stroke0172_ses-01_ncct.nii.gz": {
+    "fingerprint": "9111912:1754384777528081600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0172\\ses-01\\sub-stroke0172_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11025943:1754384136437988500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0172\\ses-01\\perfusion-maps\\sub-stroke0172_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "12388313:1754384136014982200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0172\\ses-01\\perfusion-maps\\sub-stroke0172_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10000461:1754384136114983700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0172\\ses-01\\perfusion-maps\\sub-stroke0172_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9761907:1754384136203985000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0172\\ses-01\\perfusion-maps\\sub-stroke0172_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7982064:1754384136281986200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0172\\ses-02\\sub-stroke0172_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "504270:1754384139679036600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0178\\ses-01\\sub-stroke0178_ses-01_ncct.nii.gz": {
+    "fingerprint": "9795548:1754384798985376400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0178\\ses-01\\sub-stroke0178_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "10970847:1754384203674980000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0178\\ses-01\\perfusion-maps\\sub-stroke0178_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "11935131:1754384203318974800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0178\\ses-01\\perfusion-maps\\sub-stroke0178_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10051824:1754384203419976300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0178\\ses-01\\perfusion-maps\\sub-stroke0178_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9841959:1754384203498977400",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0178\\ses-01\\perfusion-maps\\sub-stroke0178_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7889472:1754384203572978500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0178\\ses-02\\sub-stroke0178_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "414470:1754384207097030200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0180\\ses-01\\sub-stroke0180_ses-01_ncct.nii.gz": {
+    "fingerprint": "9207935:1754384813030569200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0180\\ses-01\\sub-stroke0180_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11007999:1754384211972101500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0180\\ses-01\\perfusion-maps\\sub-stroke0180_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "13337367:1754384211570095600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0180\\ses-01\\perfusion-maps\\sub-stroke0180_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "11354729:1754384211683097300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0180\\ses-01\\perfusion-maps\\sub-stroke0180_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "11065933:1754384211794098900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0180\\ses-01\\perfusion-maps\\sub-stroke0180_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9352391:1754384211881100200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0180\\ses-02\\sub-stroke0180_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "394125:1754384215886158800",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0184\\ses-01\\sub-stroke0184_ses-01_ncct.nii.gz": {
+    "fingerprint": "13904240:1754384822969705500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0184\\ses-01\\sub-stroke0184_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "15901840:1754384241254528900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0184\\ses-01\\perfusion-maps\\sub-stroke0184_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8228783:1754384237752477900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0184\\ses-01\\perfusion-maps\\sub-stroke0184_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8417643:1754384238354486700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0184\\ses-01\\perfusion-maps\\sub-stroke0184_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8055456:1754384238642490900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0184\\ses-01\\perfusion-maps\\sub-stroke0184_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7264685:1754384238710491900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0184\\ses-02\\sub-stroke0184_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "694027:1754384275930032300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0185\\ses-01\\sub-stroke0185_ses-01_ncct.nii.gz": {
+    "fingerprint": "19258358:1754384824661728700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0185\\ses-01\\sub-stroke0185_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "20844505:1754384280953105000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0185\\ses-01\\perfusion-maps\\sub-stroke0185_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "9738937:1754384278089063600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0185\\ses-01\\perfusion-maps\\sub-stroke0185_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10086721:1754384278854074600",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0185\\ses-01\\perfusion-maps\\sub-stroke0185_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9760006:1754384279455083300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0185\\ses-01\\perfusion-maps\\sub-stroke0185_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8007011:1754384280034091700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0185\\ses-02\\sub-stroke0185_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "717544:1754384292728275200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0186\\ses-01\\sub-stroke0186_ses-01_ncct.nii.gz": {
+    "fingerprint": "16918562:1754384826284750900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0186\\ses-01\\sub-stroke0186_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "21379325:1754384293369284500",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0186\\ses-01\\perfusion-maps\\sub-stroke0186_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "10246334:1754384292877277300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0186\\ses-01\\perfusion-maps\\sub-stroke0186_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10351579:1754384292986278900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0186\\ses-01\\perfusion-maps\\sub-stroke0186_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9713164:1754384293079280300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0186\\ses-01\\perfusion-maps\\sub-stroke0186_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8036296:1754384293154281300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0186\\ses-02\\sub-stroke0186_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "737038:1754384298347356300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\raw_data\\sub-stroke0187\\ses-01\\sub-stroke0187_ses-01_ncct.nii.gz": {
+    "fingerprint": "12779713:1754384828385779700",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0187\\ses-01\\sub-stroke0187_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11501698:1754384298747362100",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0187\\ses-01\\perfusion-maps\\sub-stroke0187_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "6182791:1754384298413357200",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0187\\ses-01\\perfusion-maps\\sub-stroke0187_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "6152531:1754384298489358300",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0187\\ses-01\\perfusion-maps\\sub-stroke0187_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "5878514:1754384298536359000",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0187\\ses-01\\perfusion-maps\\sub-stroke0187_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6302531:1754384298598359900",
+    "ok": true
+  },
+  "D:\\ISLES-2024-demo-trimmed\\derivatives\\sub-stroke0187\\ses-02\\sub-stroke0187_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "783090:1754384302906422000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0002\\ses-01\\sub-stroke0002_ses-01_ncct.nii.gz": {
+    "fingerprint": "10615053:1754384324623734600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0002\\ses-01\\sub-stroke0002_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11669502:1754382834220661100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0002\\ses-01\\perfusion-maps\\sub-stroke0002_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "5622568:1754382833911657200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0002\\ses-01\\perfusion-maps\\sub-stroke0002_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "5609974:1754382833967657900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0002\\ses-01\\perfusion-maps\\sub-stroke0002_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "5340054:1754382834014658500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0002\\ses-01\\perfusion-maps\\sub-stroke0002_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "5234971:1754382834074659300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0002\\ses-02\\sub-stroke0002_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "874036:1754382836698691800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0003\\ses-01\\sub-stroke0003_ses-01_ncct.nii.gz": {
+    "fingerprint": "15040199:1754384325894752900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0003\\ses-01\\sub-stroke0003_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "16521008:1754382837190697900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0003\\ses-01\\perfusion-maps\\sub-stroke0003_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "7981207:1754382836774692800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0003\\ses-01\\perfusion-maps\\sub-stroke0003_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8080135:1754382836830693500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0003\\ses-01\\perfusion-maps\\sub-stroke0003_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7813139:1754382836906694400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0003\\ses-01\\perfusion-maps\\sub-stroke0003_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7391497:1754382836983695400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0003\\ses-02\\sub-stroke0003_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "793722:1754382847841830100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0008\\ses-01\\sub-stroke0008_ses-01_ncct.nii.gz": {
+    "fingerprint": "16425686:1754384374480448700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0008\\ses-01\\sub-stroke0008_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "19195313:1754382868605087500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0008\\ses-01\\perfusion-maps\\sub-stroke0008_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "19188507:1754382867982079800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0008\\ses-01\\perfusion-maps\\sub-stroke0008_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "15015082:1754382868124081600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0008\\ses-01\\perfusion-maps\\sub-stroke0008_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "14796999:1754382868265083300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0008\\ses-01\\perfusion-maps\\sub-stroke0008_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "14206926:1754382868391084900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0008\\ses-02\\sub-stroke0008_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "809222:1754382879371220900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0011\\ses-01\\sub-stroke0011_ses-01_ncct.nii.gz": {
+    "fingerprint": "15429837:1754384380325532000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0011\\ses-01\\sub-stroke0011_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "17821143:1754382920953735300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0011\\ses-01\\perfusion-maps\\sub-stroke0011_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8519276:1754382920252726700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0011\\ses-01\\perfusion-maps\\sub-stroke0011_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8643279:1754382920329727600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0011\\ses-01\\perfusion-maps\\sub-stroke0011_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8180104:1754382920390728400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0011\\ses-01\\perfusion-maps\\sub-stroke0011_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6789000:1754382920461729300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0011\\ses-02\\sub-stroke0011_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "887927:1754382925144787100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0026\\ses-01\\sub-stroke0026_ses-01_ncct.nii.gz": {
+    "fingerprint": "15769967:1754384403619863800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0026\\ses-01\\sub-stroke0026_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "18832908:1754383033130118300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0026\\ses-01\\perfusion-maps\\sub-stroke0026_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8050449:1754383032663112500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0026\\ses-01\\perfusion-maps\\sub-stroke0026_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8276525:1754383032750113600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0026\\ses-01\\perfusion-maps\\sub-stroke0026_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8015048:1754383032824114500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0026\\ses-01\\perfusion-maps\\sub-stroke0026_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7157328:1754383032907115500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0026\\ses-02\\sub-stroke0026_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "898740:1754383037547172600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0030\\ses-01\\sub-stroke0030_ses-01_ncct.nii.gz": {
+    "fingerprint": "13197877:1754384431357257500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0030\\ses-01\\sub-stroke0030_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "13529145:1754383051178340200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0030\\ses-01\\perfusion-maps\\sub-stroke0030_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "4458897:1754383050922337100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0030\\ses-01\\perfusion-maps\\sub-stroke0030_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "4584607:1754383050966337600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0030\\ses-01\\perfusion-maps\\sub-stroke0030_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "4404214:1754383051020338300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0030\\ses-01\\perfusion-maps\\sub-stroke0030_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "3682861:1754383051065338800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0030\\ses-02\\sub-stroke0030_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "681718:1754383053423367800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0033\\ses-01\\sub-stroke0033_ses-01_ncct.nii.gz": {
+    "fingerprint": "19077637:1754384443196425200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0033\\ses-01\\sub-stroke0033_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "21958244:1754383053978374600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0033\\ses-01\\perfusion-maps\\sub-stroke0033_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "9688281:1754383053521369000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0033\\ses-01\\perfusion-maps\\sub-stroke0033_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9994726:1754383053617370200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0033\\ses-01\\perfusion-maps\\sub-stroke0033_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9657409:1754383053693371100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0033\\ses-01\\perfusion-maps\\sub-stroke0033_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8903952:1754383053764372000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0033\\ses-02\\sub-stroke0033_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "861003:1754383058816434100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0037\\ses-01\\sub-stroke0037_ses-01_ncct.nii.gz": {
+    "fingerprint": "7922745:1754384450668530900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0037\\ses-01\\sub-stroke0037_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "8123001:1754383074348624900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0037\\ses-01\\perfusion-maps\\sub-stroke0037_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "2988207:1754383072782605600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0037\\ses-01\\perfusion-maps\\sub-stroke0037_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "2992416:1754383073072609200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0037\\ses-01\\perfusion-maps\\sub-stroke0037_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "2898474:1754383073290611900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0037\\ses-01\\perfusion-maps\\sub-stroke0037_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "2849493:1754383073527614800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0037\\ses-02\\sub-stroke0037_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "483040:1754383084737752400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0040\\ses-01\\sub-stroke0040_ses-01_ncct.nii.gz": {
+    "fingerprint": "29297014:1754384453280567800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0040\\ses-01\\sub-stroke0040_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "30310289:1754383110710071200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0040\\ses-01\\perfusion-maps\\sub-stroke0040_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "17682888:1754383109973062100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0040\\ses-01\\perfusion-maps\\sub-stroke0040_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "17759225:1754383110142064200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0040\\ses-01\\perfusion-maps\\sub-stroke0040_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "16496357:1754383110265065700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0040\\ses-01\\perfusion-maps\\sub-stroke0040_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "15999938:1754383110407067500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0040\\ses-02\\sub-stroke0040_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "1653122:1754383128787292800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0047\\ses-01\\sub-stroke0047_ses-01_ncct.nii.gz": {
+    "fingerprint": "15044756:1754384458787645600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0047\\ses-01\\sub-stroke0047_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "17212779:1754383138388410500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0047\\ses-01\\perfusion-maps\\sub-stroke0047_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8434089:1754383137971405400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0047\\ses-01\\perfusion-maps\\sub-stroke0047_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8512846:1754383138052406400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0047\\ses-01\\perfusion-maps\\sub-stroke0047_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7962542:1754383138108407100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0047\\ses-01\\perfusion-maps\\sub-stroke0047_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6696025:1754383138218408400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0047\\ses-02\\sub-stroke0047_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "739964:1754383154430607100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0048\\ses-01\\sub-stroke0048_ses-01_ncct.nii.gz": {
+    "fingerprint": "14956067:1754384461180679400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0048\\ses-01\\sub-stroke0048_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "17275431:1754383157073639400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0048\\ses-01\\perfusion-maps\\sub-stroke0048_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8907815:1754383154914613000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0048\\ses-01\\perfusion-maps\\sub-stroke0048_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9100295:1754383155388618800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0048\\ses-01\\perfusion-maps\\sub-stroke0048_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8691448:1754383155832624200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0048\\ses-01\\perfusion-maps\\sub-stroke0048_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7645107:1754383156279629700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0048\\ses-02\\sub-stroke0048_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "774541:1754383186225098200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0049\\ses-01\\sub-stroke0049_ses-01_ncct.nii.gz": {
+    "fingerprint": "15634644:1754384463083706300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0049\\ses-01\\sub-stroke0049_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "18084162:1754383188543151800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0049\\ses-01\\perfusion-maps\\sub-stroke0049_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8185341:1754383186703109300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0049\\ses-01\\perfusion-maps\\sub-stroke0049_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8268341:1754383187225121400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0049\\ses-01\\perfusion-maps\\sub-stroke0049_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7781434:1754383187690132100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0049\\ses-01\\perfusion-maps\\sub-stroke0049_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6854806:1754383187769134000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0049\\ses-02\\sub-stroke0049_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "814282:1754383192626246000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0052\\ses-01\\sub-stroke0052_ses-01_ncct.nii.gz": {
+    "fingerprint": "16778847:1754384464638728200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0052\\ses-01\\sub-stroke0052_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "19109213:1754383193223259700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0052\\ses-01\\perfusion-maps\\sub-stroke0052_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "9746218:1754383192722248200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0052\\ses-01\\perfusion-maps\\sub-stroke0052_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9945768:1754383192807250100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0052\\ses-01\\perfusion-maps\\sub-stroke0052_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9513824:1754383192983254200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0052\\ses-01\\perfusion-maps\\sub-stroke0052_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8764424:1754383193051255800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0052\\ses-02\\sub-stroke0052_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "772295:1754383197589360000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0066\\ses-01\\sub-stroke0066_ses-01_ncct.nii.gz": {
+    "fingerprint": "12899741:1754384475932887600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0066\\ses-01\\sub-stroke0066_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "13446397:1754383241562350300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0066\\ses-01\\perfusion-maps\\sub-stroke0066_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "5004647:1754383239768310600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0066\\ses-01\\perfusion-maps\\sub-stroke0066_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "5020335:1754383240214320500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0066\\ses-01\\perfusion-maps\\sub-stroke0066_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "4726237:1754383240683330800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0066\\ses-01\\perfusion-maps\\sub-stroke0066_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "4215286:1754383240738332100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0066\\ses-02\\sub-stroke0066_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "761082:1754383259409742600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0071\\ses-01\\sub-stroke0071_ses-01_ncct.nii.gz": {
+    "fingerprint": "11366598:1754384496296174400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0071\\ses-01\\sub-stroke0071_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "12476746:1754383272972037100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0071\\ses-01\\perfusion-maps\\sub-stroke0071_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "6621330:1754383272682030800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0071\\ses-01\\perfusion-maps\\sub-stroke0071_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "6653784:1754383272743032200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0071\\ses-01\\perfusion-maps\\sub-stroke0071_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "6235316:1754383272808033600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0071\\ses-01\\perfusion-maps\\sub-stroke0071_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "4955251:1754383272857034600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0071\\ses-02\\sub-stroke0071_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "705176:1754383279705182200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0076\\ses-01\\sub-stroke0076_ses-01_ncct.nii.gz": {
+    "fingerprint": "13500257:1754384522890548000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0076\\ses-01\\sub-stroke0076_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "15312030:1754383297070553100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0076\\ses-01\\perfusion-maps\\sub-stroke0076_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "7191529:1754383294271493700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0076\\ses-01\\perfusion-maps\\sub-stroke0076_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "7307829:1754383294883506700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0076\\ses-01\\perfusion-maps\\sub-stroke0076_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "6984302:1754383295158512500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0076\\ses-01\\perfusion-maps\\sub-stroke0076_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6642513:1754383295420518100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0076\\ses-02\\sub-stroke0076_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "867025:1754383321025057200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0077\\ses-01\\sub-stroke0077_ses-01_ncct.nii.gz": {
+    "fingerprint": "16641837:1754384524403569200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0077\\ses-01\\sub-stroke0077_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "17706180:1754383325479149900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0077\\ses-01\\perfusion-maps\\sub-stroke0077_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "9626525:1754383322994098200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0077\\ses-01\\perfusion-maps\\sub-stroke0077_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9900324:1754383323735113600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0077\\ses-01\\perfusion-maps\\sub-stroke0077_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9557894:1754383324089121000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0077\\ses-01\\perfusion-maps\\sub-stroke0077_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8857098:1754383324594131500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0077\\ses-02\\sub-stroke0077_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "659928:1754383340852467900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0084\\ses-01\\sub-stroke0084_ses-01_ncct.nii.gz": {
+    "fingerprint": "13218179:1754384537401751400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0084\\ses-01\\sub-stroke0084_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "14938079:1754383389605454600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0084\\ses-01\\perfusion-maps\\sub-stroke0084_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "7260757:1754383389212446800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0084\\ses-01\\perfusion-maps\\sub-stroke0084_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "7479349:1754383389282448200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0084\\ses-01\\perfusion-maps\\sub-stroke0084_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7213611:1754383389361449800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0084\\ses-01\\perfusion-maps\\sub-stroke0084_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6425789:1754383389432451200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0084\\ses-02\\sub-stroke0084_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "670980:1754383393321528600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0085\\ses-01\\sub-stroke0085_ses-01_ncct.nii.gz": {
+    "fingerprint": "17592452:1754384539731784100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0085\\ses-01\\sub-stroke0085_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "18656628:1754383393842538900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0085\\ses-01\\perfusion-maps\\sub-stroke0085_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8094794:1754383393405530200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0085\\ses-01\\perfusion-maps\\sub-stroke0085_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8422776:1754383393491531900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0085\\ses-01\\perfusion-maps\\sub-stroke0085_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8171106:1754383393553533200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0085\\ses-01\\perfusion-maps\\sub-stroke0085_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7408985:1754383393629534700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0085\\ses-02\\sub-stroke0085_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "702906:1754383398818637600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0086\\ses-01\\sub-stroke0086_ses-01_ncct.nii.gz": {
+    "fingerprint": "14998738:1754384541717811900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0086\\ses-01\\sub-stroke0086_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "18008253:1754383399315647400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0086\\ses-01\\perfusion-maps\\sub-stroke0086_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8185159:1754383398901639200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0086\\ses-01\\perfusion-maps\\sub-stroke0086_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8142026:1754383398963640400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0086\\ses-01\\perfusion-maps\\sub-stroke0086_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7643406:1754383399028641700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0086\\ses-01\\perfusion-maps\\sub-stroke0086_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7331183:1754383399080642800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0086\\ses-02\\sub-stroke0086_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "668010:1754383419848051100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0093\\ses-01\\sub-stroke0093_ses-01_ncct.nii.gz": {
+    "fingerprint": "11260339:1754384554790994900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0093\\ses-01\\sub-stroke0093_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "13110870:1754383479987204700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0093\\ses-01\\perfusion-maps\\sub-stroke0093_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "6447513:1754383479670198800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0093\\ses-01\\perfusion-maps\\sub-stroke0093_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "6551965:1754383479738200100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0093\\ses-01\\perfusion-maps\\sub-stroke0093_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "6251116:1754383479802201300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0093\\ses-01\\perfusion-maps\\sub-stroke0093_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "5325935:1754383479873202600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0093\\ses-02\\sub-stroke0093_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "745509:1754383488428363400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0095\\ses-01\\sub-stroke0095_ses-01_ncct.nii.gz": {
+    "fingerprint": "15619430:1754384572016235600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0095\\ses-01\\sub-stroke0095_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "16399545:1754383494750481800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0095\\ses-01\\perfusion-maps\\sub-stroke0095_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8969248:1754383494192471400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0095\\ses-01\\perfusion-maps\\sub-stroke0095_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8931073:1754383494284473100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0095\\ses-01\\perfusion-maps\\sub-stroke0095_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8201449:1754383494336474100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0095\\ses-01\\perfusion-maps\\sub-stroke0095_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7226967:1754383494627479500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0095\\ses-02\\sub-stroke0095_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "723935:1754383516470885200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0102\\ses-01\\sub-stroke0102_ses-01_ncct.nii.gz": {
+    "fingerprint": "14313351:1754384612373798100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0102\\ses-01\\sub-stroke0102_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "15669484:1754383577739998300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0102\\ses-01\\perfusion-maps\\sub-stroke0102_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8194441:1754383577427992700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0102\\ses-01\\perfusion-maps\\sub-stroke0102_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8345947:1754383577494993900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0102\\ses-01\\perfusion-maps\\sub-stroke0102_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7884282:1754383577564995200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0102\\ses-01\\perfusion-maps\\sub-stroke0102_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6262053:1754383577619996100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0102\\ses-02\\sub-stroke0102_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "627437:1754383581477065100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0107\\ses-01\\sub-stroke0107_ses-01_ncct.nii.gz": {
+    "fingerprint": "16303299:1754384621773928900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0107\\ses-01\\sub-stroke0107_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "20742621:1754383660701452600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0107\\ses-01\\perfusion-maps\\sub-stroke0107_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "9105666:1754383660329446200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0107\\ses-01\\perfusion-maps\\sub-stroke0107_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9041688:1754383660400447400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0107\\ses-01\\perfusion-maps\\sub-stroke0107_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8222782:1754383660458448400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0107\\ses-01\\perfusion-maps\\sub-stroke0107_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6803146:1754383660521449500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0107\\ses-02\\sub-stroke0107_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "871626:1754383664402516200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0108\\ses-01\\sub-stroke0108_ses-01_ncct.nii.gz": {
+    "fingerprint": "15222234:1754384624697969500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0108\\ses-01\\sub-stroke0108_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "16256261:1754383664837523700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0108\\ses-01\\perfusion-maps\\sub-stroke0108_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "7823098:1754383664492517800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0108\\ses-01\\perfusion-maps\\sub-stroke0108_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "7974400:1754383664554518800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0108\\ses-01\\perfusion-maps\\sub-stroke0108_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "7584174:1754383664623520000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0108\\ses-01\\perfusion-maps\\sub-stroke0108_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6507029:1754383664687521100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0108\\ses-02\\sub-stroke0108_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "642941:1754383668699589900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0110\\ses-01\\sub-stroke0110_ses-01_ncct.nii.gz": {
+    "fingerprint": "15347273:1754384628037015900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0110\\ses-01\\sub-stroke0110_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "17268069:1754383674065681800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0110\\ses-01\\perfusion-maps\\sub-stroke0110_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8464414:1754383673662674900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0110\\ses-01\\perfusion-maps\\sub-stroke0110_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8562005:1754383673726676000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0110\\ses-01\\perfusion-maps\\sub-stroke0110_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8059115:1754383673797677200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0110\\ses-01\\perfusion-maps\\sub-stroke0110_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6959417:1754383673897678900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0110\\ses-02\\sub-stroke0110_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "801678:1754383677492740300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0114\\ses-01\\sub-stroke0114_ses-01_ncct.nii.gz": {
+    "fingerprint": "15219397:1754384635938125700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0114\\ses-01\\sub-stroke0114_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "16451670:1754383737863758100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0114\\ses-01\\perfusion-maps\\sub-stroke0114_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8710103:1754383737520752300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0114\\ses-01\\perfusion-maps\\sub-stroke0114_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9036200:1754383737592753500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0114\\ses-01\\perfusion-maps\\sub-stroke0114_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8718145:1754383737660754700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0114\\ses-01\\perfusion-maps\\sub-stroke0114_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8007802:1754383737723755700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0114\\ses-02\\sub-stroke0114_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "627359:1754383742593836800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0117\\ses-01\\sub-stroke0117_ses-01_ncct.nii.gz": {
+    "fingerprint": "17209594:1754384664820526300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0117\\ses-01\\sub-stroke0117_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "18948530:1754383757971091600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0117\\ses-01\\perfusion-maps\\sub-stroke0117_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "10694812:1754383757605085600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0117\\ses-01\\perfusion-maps\\sub-stroke0117_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10868431:1754383757689086900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0117\\ses-01\\perfusion-maps\\sub-stroke0117_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "10274997:1754383757767088200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0117\\ses-01\\perfusion-maps\\sub-stroke0117_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9877598:1754383757832089300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0117\\ses-02\\sub-stroke0117_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "640080:1754383762406164800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0135\\ses-01\\sub-stroke0135_ses-01_ncct.nii.gz": {
+    "fingerprint": "11608719:1754384687005833500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0135\\ses-01\\sub-stroke0135_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "13721589:1754383821434128100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0135\\ses-01\\perfusion-maps\\sub-stroke0135_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "14122138:1754383818052073500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0135\\ses-01\\perfusion-maps\\sub-stroke0135_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "12084960:1754383818681083600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0135\\ses-01\\perfusion-maps\\sub-stroke0135_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "11871773:1754383819321094000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0135\\ses-01\\perfusion-maps\\sub-stroke0135_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "10577537:1754383821014121300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0135\\ses-02\\sub-stroke0135_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "479640:1754383828956249400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0136\\ses-01\\sub-stroke0136_ses-01_ncct.nii.gz": {
+    "fingerprint": "11310306:1754384688371852400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0136\\ses-01\\sub-stroke0136_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "13058773:1754383829487258000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0136\\ses-01\\perfusion-maps\\sub-stroke0136_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "13585392:1754383829087251500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0136\\ses-01\\perfusion-maps\\sub-stroke0136_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "11629001:1754383829194253300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0136\\ses-01\\perfusion-maps\\sub-stroke0136_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "11355023:1754383829284254700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0136\\ses-01\\perfusion-maps\\sub-stroke0136_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9342450:1754383829357255900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0136\\ses-02\\sub-stroke0136_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "527198:1754383837735390600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0138\\ses-01\\sub-stroke0138_ses-01_ncct.nii.gz": {
+    "fingerprint": "10619022:1754384692856914400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0138\\ses-01\\sub-stroke0138_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "12396479:1754383842611468900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0138\\ses-01\\perfusion-maps\\sub-stroke0138_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "13050758:1754383842259463200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0138\\ses-01\\perfusion-maps\\sub-stroke0138_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "11068804:1754383842340464500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0138\\ses-01\\perfusion-maps\\sub-stroke0138_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "10831518:1754383842424465900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0138\\ses-01\\perfusion-maps\\sub-stroke0138_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "10110221:1754383842501467100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0138\\ses-02\\sub-stroke0138_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "473272:1754383845429514000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0142\\ses-01\\sub-stroke0142_ses-01_ncct.nii.gz": {
+    "fingerprint": "11152952:1754384699418005100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0142\\ses-01\\sub-stroke0142_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "12830915:1754383861326768000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0142\\ses-01\\perfusion-maps\\sub-stroke0142_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "12353978:1754383860703758100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0142\\ses-01\\perfusion-maps\\sub-stroke0142_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10699413:1754383860781759400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0142\\ses-01\\perfusion-maps\\sub-stroke0142_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "10544571:1754383860861760600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0142\\ses-01\\perfusion-maps\\sub-stroke0142_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8950824:1754383861228766500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0142\\ses-02\\sub-stroke0142_ses-02_lesion-msk.nii": {
+    "fingerprint": "26618208:1754383873719965100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0143\\ses-01\\sub-stroke0143_ses-01_ncct.nii.gz": {
+    "fingerprint": "9712208:1754384700773023800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0143\\ses-01\\sub-stroke0143_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11575062:1754383876988017000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0143\\ses-01\\perfusion-maps\\sub-stroke0143_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "12186914:1754383874507977600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0143\\ses-01\\perfusion-maps\\sub-stroke0143_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10022194:1754383875026985900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0143\\ses-01\\perfusion-maps\\sub-stroke0143_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9770233:1754383875383991500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0143\\ses-01\\perfusion-maps\\sub-stroke0143_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9180692:1754383875870999300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0143\\ses-02\\sub-stroke0143_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "440584:1754383900277384900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0144\\ses-01\\sub-stroke0144_ses-01_ncct.nii.gz": {
+    "fingerprint": "9830986:1754384701758037400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0144\\ses-01\\sub-stroke0144_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "10415475:1754383904339448900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0144\\ses-01\\perfusion-maps\\sub-stroke0144_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "13046320:1754383901166398900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0144\\ses-01\\perfusion-maps\\sub-stroke0144_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "11127271:1754383901508404300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0144\\ses-01\\perfusion-maps\\sub-stroke0144_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "10849449:1754383902379418000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0144\\ses-01\\perfusion-maps\\sub-stroke0144_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9296915:1754383903730439300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0144\\ses-02\\sub-stroke0144_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "384481:1754383916736643400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0147\\ses-01\\sub-stroke0147_ses-01_ncct.nii.gz": {
+    "fingerprint": "9804138:1754384707952123000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0147\\ses-01\\sub-stroke0147_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11383431:1754383925140774900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0147\\ses-01\\perfusion-maps\\sub-stroke0147_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "11697410:1754383924775769200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0147\\ses-01\\perfusion-maps\\sub-stroke0147_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9577506:1754383924861770600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0147\\ses-01\\perfusion-maps\\sub-stroke0147_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9384516:1754383924934771700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0147\\ses-01\\perfusion-maps\\sub-stroke0147_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7416887:1754383924998772700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0147\\ses-02\\sub-stroke0147_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "522594:1754383927821816800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0149\\ses-01\\sub-stroke0149_ses-01_ncct.nii.gz": {
+    "fingerprint": "12635340:1754384710926164000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0149\\ses-01\\sub-stroke0149_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "13316255:1754383931242870200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0149\\ses-01\\perfusion-maps\\sub-stroke0149_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "12647802:1754383930866864400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0149\\ses-01\\perfusion-maps\\sub-stroke0149_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10035810:1754383930953865700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0149\\ses-01\\perfusion-maps\\sub-stroke0149_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9867216:1754383931031866900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0149\\ses-01\\perfusion-maps\\sub-stroke0149_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8970718:1754383931101868000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0149\\ses-02\\sub-stroke0149_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "804040:1754383934253917200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0155\\ses-01\\sub-stroke0155_ses-01_ncct.nii.gz": {
+    "fingerprint": "9253863:1754384752363735400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0155\\ses-01\\sub-stroke0155_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "10543475:1754384009005070500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0155\\ses-01\\perfusion-maps\\sub-stroke0155_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "11555894:1754384007013040000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0155\\ses-01\\perfusion-maps\\sub-stroke0155_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9656153:1754384007374045500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0155\\ses-01\\perfusion-maps\\sub-stroke0155_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9401823:1754384007928054000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0155\\ses-01\\perfusion-maps\\sub-stroke0155_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8945663:1754384008444061900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0155\\ses-02\\sub-stroke0155_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "407529:1754384018074208900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0157\\ses-01\\sub-stroke0157_ses-01_ncct.nii.gz": {
+    "fingerprint": "6479042:1754384755306775900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0157\\ses-01\\sub-stroke0157_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "7857535:1754384021502261100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0157\\ses-01\\perfusion-maps\\sub-stroke0157_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8318810:1754384021090254800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0157\\ses-01\\perfusion-maps\\sub-stroke0157_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "6613458:1754384021156255800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0157\\ses-01\\perfusion-maps\\sub-stroke0157_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "6503080:1754384021220256800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0157\\ses-01\\perfusion-maps\\sub-stroke0157_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "5927634:1754384021286257800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0157\\ses-02\\sub-stroke0157_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "369532:1754384023285288200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0158\\ses-01\\sub-stroke0158_ses-01_ncct.nii.gz": {
+    "fingerprint": "13607993:1754384756351790300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0158\\ses-01\\sub-stroke0158_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "14866471:1754384023806296200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0158\\ses-01\\perfusion-maps\\sub-stroke0158_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "15130169:1754384023415290200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0158\\ses-01\\perfusion-maps\\sub-stroke0158_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "12354926:1754384023507291600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0158\\ses-01\\perfusion-maps\\sub-stroke0158_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "12067182:1754384023599293000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0158\\ses-01\\perfusion-maps\\sub-stroke0158_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "10770442:1754384023673294100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0158\\ses-02\\sub-stroke0158_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "988650:1754384027223348200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0162\\ses-01\\sub-stroke0162_ses-01_ncct.nii.gz": {
+    "fingerprint": "11069984:1754384761089855500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0162\\ses-01\\sub-stroke0162_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "12887237:1754384034695461700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0162\\ses-01\\perfusion-maps\\sub-stroke0162_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "12124753:1754384034211454300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0162\\ses-01\\perfusion-maps\\sub-stroke0162_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9972857:1754384034310455800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0162\\ses-01\\perfusion-maps\\sub-stroke0162_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9780117:1754384034386457000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0162\\ses-01\\perfusion-maps\\sub-stroke0162_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9269414:1754384034479458400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0162\\ses-02\\sub-stroke0162_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "520022:1754384037905510400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0165\\ses-01\\sub-stroke0165_ses-01_ncct.nii.gz": {
+    "fingerprint": "8943704:1754384765902921800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0165\\ses-01\\sub-stroke0165_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "10458382:1754384051397714700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0165\\ses-01\\perfusion-maps\\sub-stroke0165_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "11333620:1754384051036709300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0165\\ses-01\\perfusion-maps\\sub-stroke0165_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9389700:1754384051124710600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0165\\ses-01\\perfusion-maps\\sub-stroke0165_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9203388:1754384051208711900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0165\\ses-01\\perfusion-maps\\sub-stroke0165_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8240174:1754384051293713200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0165\\ses-02\\sub-stroke0165_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "388745:1754384061825872200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0168\\ses-01\\sub-stroke0168_ses-01_ncct.nii.gz": {
+    "fingerprint": "9758201:1754384770999991900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0168\\ses-01\\sub-stroke0168_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11298571:1754384113003639800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0168\\ses-01\\perfusion-maps\\sub-stroke0168_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "11121042:1754384112258628700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0168\\ses-01\\perfusion-maps\\sub-stroke0168_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "9302422:1754384112678635000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0168\\ses-01\\perfusion-maps\\sub-stroke0168_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9109873:1754384112762636200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0168\\ses-01\\perfusion-maps\\sub-stroke0168_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8301884:1754384112840637400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0168\\ses-02\\sub-stroke0168_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "549859:1754384116252688300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0169\\ses-01\\sub-stroke0169_ses-01_ncct.nii.gz": {
+    "fingerprint": "9532185:1754384773157021500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0169\\ses-01\\sub-stroke0169_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "10980251:1754384116770696000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0169\\ses-01\\perfusion-maps\\sub-stroke0169_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "12168084:1754384116363689900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0169\\ses-01\\perfusion-maps\\sub-stroke0169_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10085839:1754384116455691300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0169\\ses-01\\perfusion-maps\\sub-stroke0169_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9871778:1754384116565692900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0169\\ses-01\\perfusion-maps\\sub-stroke0169_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9025355:1754384116639694000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0169\\ses-02\\sub-stroke0169_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "504885:1754384120075745200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0172\\ses-01\\sub-stroke0172_ses-01_ncct.nii.gz": {
+    "fingerprint": "9111912:1754384777528081600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0172\\ses-01\\sub-stroke0172_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11025943:1754384136437988500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0172\\ses-01\\perfusion-maps\\sub-stroke0172_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "12388313:1754384136014982200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0172\\ses-01\\perfusion-maps\\sub-stroke0172_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10000461:1754384136114983700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0172\\ses-01\\perfusion-maps\\sub-stroke0172_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9761907:1754384136203985000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0172\\ses-01\\perfusion-maps\\sub-stroke0172_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7982064:1754384136281986200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0172\\ses-02\\sub-stroke0172_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "504270:1754384139679036600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0178\\ses-01\\sub-stroke0178_ses-01_ncct.nii.gz": {
+    "fingerprint": "9795548:1754384798985376400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0178\\ses-01\\sub-stroke0178_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "10970847:1754384203674980000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0178\\ses-01\\perfusion-maps\\sub-stroke0178_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "11935131:1754384203318974800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0178\\ses-01\\perfusion-maps\\sub-stroke0178_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10051824:1754384203419976300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0178\\ses-01\\perfusion-maps\\sub-stroke0178_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9841959:1754384203498977400",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0178\\ses-01\\perfusion-maps\\sub-stroke0178_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7889472:1754384203572978500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0178\\ses-02\\sub-stroke0178_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "414470:1754384207097030200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0180\\ses-01\\sub-stroke0180_ses-01_ncct.nii.gz": {
+    "fingerprint": "9207935:1754384813030569200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0180\\ses-01\\sub-stroke0180_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11007999:1754384211972101500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0180\\ses-01\\perfusion-maps\\sub-stroke0180_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "13337367:1754384211570095600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0180\\ses-01\\perfusion-maps\\sub-stroke0180_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "11354729:1754384211683097300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0180\\ses-01\\perfusion-maps\\sub-stroke0180_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "11065933:1754384211794098900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0180\\ses-01\\perfusion-maps\\sub-stroke0180_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "9352391:1754384211881100200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0180\\ses-02\\sub-stroke0180_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "394125:1754384215886158800",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0184\\ses-01\\sub-stroke0184_ses-01_ncct.nii.gz": {
+    "fingerprint": "13904240:1754384822969705500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0184\\ses-01\\sub-stroke0184_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "15901840:1754384241254528900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0184\\ses-01\\perfusion-maps\\sub-stroke0184_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "8228783:1754384237752477900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0184\\ses-01\\perfusion-maps\\sub-stroke0184_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "8417643:1754384238354486700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0184\\ses-01\\perfusion-maps\\sub-stroke0184_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "8055456:1754384238642490900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0184\\ses-01\\perfusion-maps\\sub-stroke0184_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "7264685:1754384238710491900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0184\\ses-02\\sub-stroke0184_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "694027:1754384275930032300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0185\\ses-01\\sub-stroke0185_ses-01_ncct.nii.gz": {
+    "fingerprint": "19258358:1754384824661728700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0185\\ses-01\\sub-stroke0185_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "20844505:1754384280953105000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0185\\ses-01\\perfusion-maps\\sub-stroke0185_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "9738937:1754384278089063600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0185\\ses-01\\perfusion-maps\\sub-stroke0185_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10086721:1754384278854074600",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0185\\ses-01\\perfusion-maps\\sub-stroke0185_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9760006:1754384279455083300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0185\\ses-01\\perfusion-maps\\sub-stroke0185_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8007011:1754384280034091700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0185\\ses-02\\sub-stroke0185_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "717544:1754384292728275200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0186\\ses-01\\sub-stroke0186_ses-01_ncct.nii.gz": {
+    "fingerprint": "16918562:1754384826284750900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0186\\ses-01\\sub-stroke0186_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "21379325:1754384293369284500",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0186\\ses-01\\perfusion-maps\\sub-stroke0186_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "10246334:1754384292877277300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0186\\ses-01\\perfusion-maps\\sub-stroke0186_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "10351579:1754384292986278900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0186\\ses-01\\perfusion-maps\\sub-stroke0186_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "9713164:1754384293079280300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0186\\ses-01\\perfusion-maps\\sub-stroke0186_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "8036296:1754384293154281300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0186\\ses-02\\sub-stroke0186_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "737038:1754384298347356300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\raw_data\\sub-stroke0187\\ses-01\\sub-stroke0187_ses-01_ncct.nii.gz": {
+    "fingerprint": "12779713:1754384828385779700",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0187\\ses-01\\sub-stroke0187_ses-01_space-ncct_cta.nii.gz": {
+    "fingerprint": "11501698:1754384298747362100",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0187\\ses-01\\perfusion-maps\\sub-stroke0187_ses-01_space-ncct_cbf.nii.gz": {
+    "fingerprint": "6182791:1754384298413357200",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0187\\ses-01\\perfusion-maps\\sub-stroke0187_ses-01_space-ncct_cbv.nii.gz": {
+    "fingerprint": "6152531:1754384298489358300",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0187\\ses-01\\perfusion-maps\\sub-stroke0187_ses-01_space-ncct_mtt.nii.gz": {
+    "fingerprint": "5878514:1754384298536359000",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0187\\ses-01\\perfusion-maps\\sub-stroke0187_ses-01_space-ncct_tmax.nii.gz": {
+    "fingerprint": "6302531:1754384298598359900",
+    "ok": true
+  },
+  "C:\\Ekanath\\College\\bundle\\ISLES-2024\\train\\derivatives\\sub-stroke0187\\ses-02\\sub-stroke0187_ses-02_space-ncct_lesion-msk.nii.gz": {
+    "fingerprint": "783090:1754384302906422000",
+    "ok": true
   }
 }

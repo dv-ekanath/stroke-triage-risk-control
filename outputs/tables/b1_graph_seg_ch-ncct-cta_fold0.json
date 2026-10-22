@@ -1,0 +1,90 @@
+{
+  "fold": 0,
+  "n_folds": 3,
+  "config": {
+    "root": "D:\\ISLES-2024\\train",
+    "audit_json": "outputs\\tables\\data_audit.json",
+    "fold": 0,
+    "n_folds": 3,
+    "epochs": 2,
+    "patch_size": [
+      128,
+      128,
+      64
+    ],
+    "wb_size": null,
+    "batch_size": 2,
+    "lr": 0.0001,
+    "val_interval": 1,
+    "num_workers": 4,
+    "cache_dir": "D:\\ISLES-2024\\cache_1mm_wb64",
+    "amp": true,
+    "seed": 0,
+    "max_val_subjects": 3,
+    "warm_start": null,
+    "gnn_stage": 1,
+    "gate_init": 0.0,
+    "edge_mode": "anatomical",
+    "edge_seed": 0,
+    "channels": "ncct,cta"
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "seg": 0.8382506528679206,
+      "seconds": 37.41926670074463,
+      "n_nonfinite": 0,
+      "val_dice": 0.0,
+      "gates": [
+        0.0012,
+        -0.0007,
+        0.0008
+      ]
+    },
+    {
+      "epoch": 2,
+      "seg": 0.7948659840895205,
+      "seconds": 34.88736820220947,
+      "n_nonfinite": 0,
+      "val_dice": 0.0,
+      "gates": [
+        0.0012,
+        -0.0007,
+        0.0009
+      ]
+    }
+  ],
+  "best_val_dice": 0.0,
+  "final_segmentation": {
+    "per_subject": [
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 183.966,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 12,
+        "subject": "sub-stroke0002"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 0.722,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 4,
+        "subject": "sub-stroke0003"
+      },
+      {
+        "dice": 0.0,
+        "abs_volume_diff_ml": 15.804,
+        "lesion_f1": 0.0,
+        "abs_lesion_count_diff": 16,
+        "subject": "sub-stroke0008"
+      }
+    ],
+    "mean": {
+      "dice": 0.0,
+      "abs_volume_diff_ml": 66.83066666666667,
+      "lesion_f1": 0.0,
+      "abs_lesion_count_diff": 10.666666666666666
+    }
+  },
+  "b0_reference_dice": 0.247
+}

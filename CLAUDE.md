@@ -800,6 +800,49 @@ These are what made the work defensible. Don't relax them.
   excluded from the graph.
 - Raw 4D CTP has 44–60 frames per subject → use the derived perfusion maps.
 
+## Pre-registered: does removing perfusion maps make the graph stop being redundant? (2026-10-13, before running)
+
+**Hypothesis.** The graph's null effect on Dice (settled four ways already --
+see "Candidate paper direction" above) is explained by redundancy: the four
+perfusion maps (CBF/CBV/MTT/Tmax) already give the model a precise,
+voxel-level signal of tissue damage, so the vessel graph's coarse 12-point
+hint adds nothing on top. If that's the real mechanism, removing the
+perfusion maps should be exactly the condition where the graph's hint stops
+being redundant and starts mattering.
+
+**Test.** B0 (no graph) vs. B1 (graph injection only), both retrained from
+scratch on **NCCT + CTA only** (2 channels, not the usual 6), fold 0, 2 seeds
+each as a first confirmation pass (matching this project's established
+"2 seeds, then decide whether to commit further" pattern -- see the
+skull-strip/tight-clip preprocessing test above).
+
+**Pass mark, fixed now:** paired per-patient Dice test (same style as every
+other Dice comparison in this project), B1 vs. B0 on the 2-channel input,
+p < 0.05 in B1's favor = primary claim passes. No threshold on effect size
+is pre-set beyond that p-value; "passes" and "doesn't pass" are the only two
+outcomes that will be reported, with the actual p-value and mean difference
+stated either way.
+
+**Required sanity check, not optional:** both 2-channel models' Dice must be
+meaningfully lower than the existing 6-channel numbers (B0 6ch: 0.240 mean,
+collapse-excluded). If 2-channel Dice is close to the 6-channel number, the
+ablation didn't actually remove useful signal and the test doesn't mean what
+it's meant to mean -- that outcome will be reported as inconclusive, not
+silently treated as support for either direction.
+
+**What would make this NOT a fair test, disclosed up front:** only one
+pre-specified channel subset (NCCT+CTA) is being tried. No other subset
+(e.g. NCCT+CTA+CBF) will be tested as part of this run; trying several and
+reporting whichever one shows an effect would be exactly the kind of
+post-hoc search this project has avoided everywhere else, and is explicitly
+not what's happening here.
+
+Implementation: `--channels` flag added to `train_baseline.py` and
+`train_graph_seg.py` (slices `MODALITIES`-ordered channels right before the
+model call, no change to the dataset/caching pipeline). B1's `--warm-start`
+for the 2-channel run must point at the 2-channel B0 checkpoint from this
+same test, not the existing 6-channel one (shapes won't match otherwise).
+
 ## Working with the user
 
 - Explain in simple, plain terms; they often ask for simpler wording.

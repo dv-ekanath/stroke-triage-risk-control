@@ -45,7 +45,7 @@ def build_model(in_channels: int, device):
     return model.to(device)
 
 
-def run_validation(model, val_loader, device, patch_size, amp: bool):
+def run_validation(model, val_loader, device, patch_size, amp: bool, channel_idx):
     """Sliding-window inference over each full validation volume; returns
     per-subject predicted masks (as numpy, in the resampled 1mm grid) plus
     the ground-truth labels, for the four ISLES'24 metrics."""
@@ -55,7 +55,7 @@ def run_validation(model, val_loader, device, patch_size, amp: bool):
     preds, labels, subjects = [], [], []
     with torch.no_grad():
         for batch in val_loader:
-            image = batch["image"].to(device)
+            image = batch["image"].to(device)[:, channel_idx]
             label = batch["label"].numpy()[0, 0]  # (1,1,H,W,D) -> (H,W,D)
 
             with torch.autocast(device_type="cuda", enabled=amp):
@@ -111,9 +111,23 @@ def main():
     ap.add_argument("--tight-perfusion-clip", action="store_true",
                      help="use TIGHT_PERFUSION_CLIP (CBV/MTT tightened toward literature "
                           "core/penumbra thresholds) instead of the default artifact-only clip")
+    ap.add_argument("--channels", type=str, default=None,
+                     help="comma-separated subset of ncct,cta,cbf,cbv,mtt,tmax (default: all 6, "
+                          "unchanged behavior). E.g. --channels ncct,cta for the no-perfusion-maps "
+                          "ablation (pre-registered: does the graph stop being redundant once the "
+                          "model loses its precise perfusion-derived damage signal?).")
     args = ap.parse_args()
 
-    from src.model.dataset import make_datasets, TIGHT_PERFUSION_CLIP
+    from src.model.dataset import make_datasets, TIGHT_PERFUSION_CLIP, MODALITIES
+
+    if args.channels:
+        chosen = [c.strip().lower() for c in args.channels.split(",")]
+        bad = [c for c in chosen if c not in MODALITIES]
+        if bad:
+            raise SystemExit(f"--channels: unknown modality name(s) {bad}, expected a subset of {MODALITIES}")
+        channel_idx = [MODALITIES.index(c) for c in chosen]
+    else:
+        channel_idx = list(range(len(MODALITIES)))
     from monai.losses import DiceCELoss
     from src.eval.metrics import isles24_metrics
 
@@ -169,7 +183,9 @@ def main():
                              num_workers=args.num_workers, pin_memory=True,
                              collate_fn=pad_list_data_collate)
 
-    model = build_model(in_channels=6, device=device)
+    model = build_model(in_channels=len(channel_idx), device=device)
+    if args.channels:
+        print(f"  channels: {chosen} (in_channels={len(channel_idx)}, ablation run)")
     loss_fn = DiceCELoss(to_onehot_y=True, softmax=True)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
@@ -181,7 +197,7 @@ def main():
         t0 = time.time()
         running_loss, n_finite, n_nonfinite = 0.0, 0, 0
         for batch in train_loader:
-            image = batch["image"].to(device)
+            image = batch["image"].to(device)[:, channel_idx]
             label = batch["label"].to(device)
 
             optimizer.zero_grad(set_to_none=True)
@@ -216,7 +232,7 @@ def main():
 
         if (epoch + 1) % args.val_interval == 0 or epoch == args.epochs - 1:
             subjects, preds, labels = run_validation(
-                model, val_loader, device, tuple(args.patch_size), args.amp)
+                model, val_loader, device, tuple(args.patch_size), args.amp, channel_idx)
             dices = [isles24_metrics(p, l)["dice"] for p, l in zip(preds, labels)]
             mean_dice = float(np.mean(dices)) if dices else float("nan")
             print(f"  val Dice (fold {args.fold}): {mean_dice:.4f} "
@@ -237,7 +253,8 @@ def main():
                 # don't collide with that trunk or each other
                 seed_suffix = "" if args.seed == 0 else f"_seed{args.seed}"
                 recipe_tag = ("_skullstrip" if args.skull_strip else "") + \
-                             ("_tightclip" if args.tight_perfusion_clip else "")
+                             ("_tightclip" if args.tight_perfusion_clip else "") + \
+                             (f"_ch-{'-'.join(chosen)}" if args.channels else "")
                 ckpt_name = (f"segresnet_fold{args.fold}_best.pt" if args.n_folds == 5
                              else f"segresnet_{args.n_folds}fold_fold{args.fold}{seed_suffix}{recipe_tag}_best.pt")
                 torch.save(model.state_dict(), OUT_CKPT / ckpt_name)
@@ -246,7 +263,7 @@ def main():
     # final full evaluation with all four ISLES'24 metrics
     print("\nfinal evaluation, all four ISLES'24 metrics:")
     subjects, preds, labels = run_validation(
-        model, val_loader, device, tuple(args.patch_size), args.amp)
+        model, val_loader, device, tuple(args.patch_size), args.amp, channel_idx)
     per_subject = []
     for sub, p, l in zip(subjects, preds, labels):
         m = isles24_metrics(p, l)
@@ -275,7 +292,8 @@ def main():
     }
     seed_suffix = "" if args.seed == 0 else f"_seed{args.seed}"
     recipe_tag = ("_skullstrip" if args.skull_strip else "") + \
-                 ("_tightclip" if args.tight_perfusion_clip else "")
+                 ("_tightclip" if args.tight_perfusion_clip else "") + \
+                 (f"_ch-{'-'.join(chosen)}" if args.channels else "")
     out_name = (f"baseline_fold{args.fold}.json" if args.n_folds == 5
                 else f"baseline_{args.n_folds}fold_fold{args.fold}{seed_suffix}{recipe_tag}.json")
     out_path = OUT_TAB / out_name
